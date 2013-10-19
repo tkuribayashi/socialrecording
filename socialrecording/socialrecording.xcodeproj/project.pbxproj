@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DD4350D180FA9EF001DF5A1 /* TokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */; };
+		0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350F1810F480001DF5A1 /* UIToggleView.m */; };
+		0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD43512181163B3001DF5A1 /* UIToggleButton.m */; };
 		319824141806A73400796825 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824131806A73400796825 /* Foundation.framework */; };
 		319824161806A73400796825 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824151806A73400796825 /* CoreGraphics.framework */; };
 		319824181806A73400796825 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824171806A73400796825 /* UIKit.framework */; };
@@ -14,8 +17,6 @@
 		319824201806A73400796825 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198241F1806A73400796825 /* main.m */; };
 		319824241806A73400796825 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 319824231806A73400796825 /* AppDelegate.m */; };
 		319824271806A73400796825 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 319824251806A73400796825 /* Main.storyboard */; };
-		3198242A1806A73400796825 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 319824291806A73400796825 /* FirstViewController.m */; };
-		3198242D1806A73400796825 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198242C1806A73400796825 /* SecondViewController.m */; };
 		3198242F1806A73400796825 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3198242E1806A73400796825 /* Images.xcassets */; };
 		319824361806A73400796825 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824351806A73400796825 /* XCTest.framework */; };
 		319824371806A73400796825 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824131806A73400796825 /* Foundation.framework */; };
@@ -35,6 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DD4350B180FA9EF001DF5A1 /* TokoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokoViewController.h; sourceTree = "<group>"; };
+		0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokoViewController.m; sourceTree = "<group>"; };
+		0DD4350E1810F480001DF5A1 /* UIToggleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIToggleView.h; sourceTree = "<group>"; };
+		0DD4350F1810F480001DF5A1 /* UIToggleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIToggleView.m; sourceTree = "<group>"; };
+		0DD43511181163B3001DF5A1 /* UIToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIToggleButton.h; sourceTree = "<group>"; };
+		0DD43512181163B3001DF5A1 /* UIToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIToggleButton.m; sourceTree = "<group>"; };
 		319824101806A73400796825 /* socialrecording.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialrecording.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		319824131806A73400796825 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		319824151806A73400796825 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,10 +53,6 @@
 		319824221806A73400796825 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		319824231806A73400796825 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		319824261806A73400796825 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		319824281806A73400796825 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		319824291806A73400796825 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		3198242B1806A73400796825 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		3198242C1806A73400796825 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		3198242E1806A73400796825 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		319824341806A73400796825 /* socialrecordingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = socialrecordingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		319824351806A73400796825 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -118,12 +121,14 @@
 				319824221806A73400796825 /* AppDelegate.h */,
 				319824231806A73400796825 /* AppDelegate.m */,
 				319824251806A73400796825 /* Main.storyboard */,
-				319824281806A73400796825 /* FirstViewController.h */,
-				319824291806A73400796825 /* FirstViewController.m */,
-				3198242B1806A73400796825 /* SecondViewController.h */,
-				3198242C1806A73400796825 /* SecondViewController.m */,
 				3198242E1806A73400796825 /* Images.xcassets */,
 				3198241A1806A73400796825 /* Supporting Files */,
+				0DD4350B180FA9EF001DF5A1 /* TokoViewController.h */,
+				0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */,
+				0DD4350E1810F480001DF5A1 /* UIToggleView.h */,
+				0DD4350F1810F480001DF5A1 /* UIToggleView.m */,
+				0DD43511181163B3001DF5A1 /* UIToggleButton.h */,
+				0DD43512181163B3001DF5A1 /* UIToggleButton.m */,
 			);
 			path = socialrecording;
 			sourceTree = "<group>";
@@ -254,10 +259,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3198242D1806A73400796825 /* SecondViewController.m in Sources */,
 				319824241806A73400796825 /* AppDelegate.m in Sources */,
-				3198242A1806A73400796825 /* FirstViewController.m in Sources */,
+				0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */,
+				0DD4350D180FA9EF001DF5A1 /* TokoViewController.m in Sources */,
 				319824201806A73400796825 /* main.m in Sources */,
+				0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +317,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -350,7 +355,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -408,7 +412,6 @@
 		319824491806A73400796825 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/socialrecording.app/socialrecording";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -431,7 +434,6 @@
 		3198244A1806A73400796825 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/socialrecording.app/socialrecording";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -466,6 +468,7 @@
 				319824471806A73400796825 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		319824481806A73400796825 /* Build configuration list for PBXNativeTarget "socialrecordingTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +477,7 @@
 				3198244A1806A73400796825 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
