@@ -244,8 +244,14 @@
     }
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    NSString *title = self.table_data[indexPath.row];
+    NSString *iine = [NSString stringWithFormat:@"いいね%@件" , self.table_data[indexPath.row]];
+    
     UILabel *label = (UILabel *)[cell viewWithTag:1];
-    [label setText:self.table_data[indexPath.row]];
+    [label setText:title];
+    
+    label = (UILabel *)[cell viewWithTag:2];
+    [label setText:iine];
 }
 - (void)set_load_statusWithOn:(BOOL)on{
     self.flg_load_record = on;
