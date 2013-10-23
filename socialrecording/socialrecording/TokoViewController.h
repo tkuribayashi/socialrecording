@@ -15,10 +15,13 @@
 
 - (IBAction)search_button_tapped:(id)sender;
 - (IBAction)sort_button_tapped:(id)sender;
+- (IBAction)genre_button_tapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UIToggleButton *search_button;
 @property (weak, nonatomic) IBOutlet UIToggleButton *sort_button;
+@property (weak, nonatomic) IBOutlet UIToggleButton *genre_button;
 @property (weak, nonatomic) IBOutlet UIView *table_view;
-
+@property (weak, nonatomic) IBOutlet UITableView *table;
+@property (nonatomic) NSMutableArray *table_data;
 
 @property (nonatomic) UIToggleView *search_view;
 @property (nonatomic) UISearchBar *search_bar;
@@ -28,8 +31,9 @@
 
 @property (nonatomic) UIToggleView *sort_view;
 
-@property (weak, nonatomic) IBOutlet UITableView *table;
-@property (nonatomic) NSMutableArray *table_data;
+@property (nonatomic) UIToggleView *genre_view;
+
+
 @property (nonatomic) BOOL flg_load_record;
 
 @property (nonatomic) UIView *view_load;

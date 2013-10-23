@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNi-ez-BWe" customClass="UIToggleButton">
-                                <rect key="frame" x="0.0" y="64" width="160" height="30"/>
+                                <rect key="frame" x="0.0" y="64" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="検索">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,13 +27,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aE-7d-NwN" customClass="UIToggleButton">
-                                <rect key="frame" x="160" y="64" width="160" height="30"/>
+                                <rect key="frame" x="106" y="64" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="並び替え">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="sort_button_tapped:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="RVl-08-csC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cET-7q-1oa" customClass="UIToggleButton">
+                                <rect key="frame" x="213" y="64" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ジャンル">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="genre_button_tapped:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="YXO-OR-Zd5"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9OO-fX-TVW">
@@ -80,6 +90,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="投稿一覧" id="YMH-ss-7e9"/>
                     <connections>
+                        <outlet property="genre_button" destination="cET-7q-1oa" id="Iyo-yF-04e"/>
                         <outlet property="navigate_title" destination="YMH-ss-7e9" id="W9g-CY-Gxj"/>
                         <outlet property="search_button" destination="YNi-ez-BWe" id="bl9-j8-6tI"/>
                         <outlet property="sort_button" destination="3aE-7d-NwN" id="VXQ-x0-fMv"/>
@@ -672,6 +683,10 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

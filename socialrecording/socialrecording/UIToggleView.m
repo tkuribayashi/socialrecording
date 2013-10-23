@@ -10,10 +10,11 @@
 
 @implementation UIToggleView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame sync_toggle_button:(UIToggleButton *)sync_toggle_button
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.sync_toggle_button = sync_toggle_button;
         CGRect f = self.frame;
         self.original_frame = f;
         self.hidden = true;
@@ -74,6 +75,11 @@
     self.frame = start_frame;
     self.view_contain_subviews.frame = subview_start_frame;
     downview.frame = downview_start_frame;
+    if(self.is_hidden == NO && !self.sync_toggle_button.is_on){
+        [self.sync_toggle_button toggle];
+    }else if(self.is_hidden == YES && self.sync_toggle_button.is_on){
+        [self.sync_toggle_button toggle];
+    }
     
     [UIView animateWithDuration:0.2f
                           delay:0.0f
@@ -86,6 +92,29 @@
                          self.is_animating = NO;
                          callback();
                      }];
+}
++ (BOOL)animationToggle{
+    return YES;
+}
++ (void)animationSelectWithSelectView:(UIToggleView *)target_view downview:(UIView *)downview callback:(void(^)())callback{
+    UIView *superview = target_view.superview;
+    for (UIToggleView *view in superview.subviews) {
+        //どれかがアニメーション中なら抜ける
+        if( [view isKindOfClass:[UIToggleView class]] && view.is_animating == YES ){
+            return;
+        }
+    }
+
+    for (UIToggleView *view in superview.subviews) {
+        if( [view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO && view != target_view ){
+            //他のを閉じてからターゲットをトグル
+            [view toggleWithDownView:downview callback:^{
+                [target_view toggleWithDownView:downview callback:^{}];
+            }];
+            return;
+        }
+    }
+    [target_view toggleWithDownView:downview callback:^{}];
 }
 
 @end
