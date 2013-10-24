@@ -7,12 +7,15 @@
 //
 
 #import "TokoViewController.h"
+#import "RetrieveJson.h"
 
 @interface TokoViewController ()
 
 @end
 
-@implementation TokoViewController
+@implementation TokoViewController {
+    RetrieveJson *json;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -107,8 +110,27 @@
     
     [self set_load_statusWithOn:YES];
     //HTTP Request
-    //新着ボイス順、ジャンル指定無しで表示
-    self.table_data = [@[@"aa",@"bb",@"cc",@"dd",@"ee",@"ff",@"gg",@"hh"] mutableCopy];
+    //self.table_data = [@[@"aa",@"bb",@"cc",@"dd",@"ee",@"ff",@"gg",@"hh"] mutableCopy];
+    
+	json = [[RetrieveJson alloc]init];
+    
+    NSString *param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
+    
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];/*
+    NSMutableArray *temp = [NSMutableArray array];
+    for(NSMutableDictionary *dict in data){
+        //self.table_data = [[dict valueForKeyPath:@"comment"] mutableCopy];
+        [temp addObject:[dict valueForKeyPath:@"comment"]];
+        //NSLog(@"%@",[dict valueForKeyPath:@"comment"]);
+    }
+    for(NSString *s  in temp){
+        NSLog(@"here¥n%@",s);
+    }
+    self.table_data = [temp mutableCopy];*/
+    
+    NSLog(@"data retrieval and display done");
+    
     [self set_load_statusWithOn:NO];
 }
 
@@ -285,8 +307,8 @@
     }
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSString *title = self.table_data[indexPath.row];
-    NSString *iine = [NSString stringWithFormat:@"いいね%@件" , self.table_data[indexPath.row]];
+    NSString *title = self.table_data[indexPath.row][@"comment"];
+    NSString *iine = [NSString stringWithFormat:@"いいね %@件" , self.table_data[indexPath.row][@"votes"]];
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     [label setText:title];
