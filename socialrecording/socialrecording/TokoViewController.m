@@ -307,7 +307,7 @@
     }
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSString *title = self.table_data[indexPath.row][@"comment"];
+    NSString *title = self.table_data[indexPath.row][@"name"];
     NSString *iine = [NSString stringWithFormat:@"いいね %@件" , self.table_data[indexPath.row][@"votes"]];
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
