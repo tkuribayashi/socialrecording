@@ -8,6 +8,7 @@
 
 #import "TokoViewController.h"
 #import "RetrieveJson.h"
+#import "TokoShosaiViewController.h"
 
 @interface TokoViewController ()
 
@@ -285,6 +286,20 @@
     [self updateCell:cell atIndexPath:indexPath];
     
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.toko_id = [self.table_data[indexPath.row][@"id"] integerValue];
+    [self performSegueWithIdentifier:@"TokoToShosai" sender:self];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"TokoToShosai"]) {
+        TokoShosaiViewController *viewController = (TokoShosaiViewController*)[segue destinationViewController];
+        viewController.toko_id = self.toko_id;
+    }
+}
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){

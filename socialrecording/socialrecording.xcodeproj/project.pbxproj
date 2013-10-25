@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D121315181A25A400AB1C92 /* TokoShosaiViewController.m */; };
 		0DD4350D180FA9EF001DF5A1 /* TokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */; };
 		0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350F1810F480001DF5A1 /* UIToggleView.m */; };
 		0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD43512181163B3001DF5A1 /* UIToggleButton.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D121314181A25A400AB1C92 /* TokoShosaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokoShosaiViewController.h; sourceTree = "<group>"; };
+		0D121315181A25A400AB1C92 /* TokoShosaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokoShosaiViewController.m; sourceTree = "<group>"; };
 		0DD4350B180FA9EF001DF5A1 /* TokoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokoViewController.h; sourceTree = "<group>"; };
 		0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokoViewController.m; sourceTree = "<group>"; };
 		0DD4350E1810F480001DF5A1 /* UIToggleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIToggleView.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				0DD4350F1810F480001DF5A1 /* UIToggleView.m */,
 				0DD43511181163B3001DF5A1 /* UIToggleButton.h */,
 				0DD43512181163B3001DF5A1 /* UIToggleButton.m */,
+				0D121314181A25A400AB1C92 /* TokoShosaiViewController.h */,
+				0D121315181A25A400AB1C92 /* TokoShosaiViewController.m */,
 			);
 			path = socialrecording;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 				0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */,
 				0DD4350D180FA9EF001DF5A1 /* TokoViewController.m in Sources */,
 				319824201806A73400796825 /* main.m in Sources */,
+				0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */,
 				0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
