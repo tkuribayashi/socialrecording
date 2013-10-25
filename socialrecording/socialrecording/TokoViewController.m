@@ -105,7 +105,6 @@
         [self.genre_view addSubview:button];
     }
     
-    
     self.table.delegate = self;
     self.table.dataSource = self;
     
@@ -144,7 +143,6 @@
 - (IBAction)search_button_tapped:(id)sender {
     [self.search_bar resignFirstResponder];
     [UIToggleView animationSelectWithSelectView:self.search_view downview:self.table_view callback:^{}];
-    [self.search_bar resignFirstResponder];
 }
 
 - (IBAction)sort_button_tapped:(id)sender {
@@ -300,6 +298,23 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    for (UIToggleView *view in self.view.subviews) {
+        if([view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO){
+            [UIView animateWithDuration:0.1f
+                                  delay:0.0f
+                                options:UIViewAnimationOptionCurveLinear
+                             animations:^{
+                             } completion:^(BOOL finished) {
+                                 CGRect table_frame = self.table_view.frame;
+                                 table_frame.origin.y += view.frame.size.height;
+                                 self.table_view.frame = table_frame;
+                             }];
+        }
+    }
+    
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){
