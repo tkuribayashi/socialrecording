@@ -37,5 +37,5 @@
 @property (nonatomic) BOOL flg_load_record;
 
 @property (nonatomic) UIView *view_load;
-@property (nonatomic) int toko_id;
+@property (nonatomic, copy) NSDictionary *toko_data;
 @end

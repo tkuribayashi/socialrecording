@@ -286,13 +286,13 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.toko_id = [self.table_data[indexPath.row][@"id"] integerValue];
+    self.toko_data = self.table_data[indexPath.row];
     [self performSegueWithIdentifier:@"TokoToShosai" sender:self];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"TokoToShosai"]) {
         TokoShosaiViewController *viewController = (TokoShosaiViewController*)[segue destinationViewController];
-        viewController.toko_id = self.toko_id;
+        viewController.toko_data = self.toko_data;
     }
 }
 - (void) viewWillAppear:(BOOL)animated {
@@ -303,7 +303,7 @@
     [super viewDidAppear:animated];
     for (UIToggleView *view in self.view.subviews) {
         if([view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO){
-            [UIView animateWithDuration:0.1f
+            [UIView animateWithDuration:0.0f
                                   delay:0.0f
                                 options:UIViewAnimationOptionCurveLinear
                              animations:^{

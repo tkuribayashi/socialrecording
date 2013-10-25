@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TokoShosaiViewController : UIViewController
-@property (nonatomic) int toko_id;
+@interface TokoShosaiViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *label_name;
+@property (weak, nonatomic) IBOutlet UITextView *text_comment;
+@property (weak, nonatomic) IBOutlet UILabel *label_genre;
+@property (weak, nonatomic) IBOutlet UIButton *button_record;
+@property (weak, nonatomic) IBOutlet UITableView *table;
+
+
+
+
+
+@property (nonatomic, copy) NSDictionary *toko_data;
+@property (nonatomic) NSMutableArray *voice_data;
+@property (nonatomic) BOOL flg_load_record;
 @end
