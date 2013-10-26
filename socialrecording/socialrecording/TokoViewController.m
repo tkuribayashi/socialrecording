@@ -170,14 +170,14 @@
     
 	json = [[RetrieveJson alloc]init];
     
-    /* 並び替えとジャンル選択の選択状態を取得*/
+    /* 並び替えとジャンルの選択状態を取得*/
     int sort = [self getSort];
     int genre = [self getGenre];
     
     NSString *param;
     if (querytext != NULL){
         param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];//初期は新着ボイス順、ジャンル指定無しで表示
-    } else {param = [NSString stringWithFormat:@"odai/search/?target=%d&sort=%d&page=0",target,sort];
+    } else {param = [NSString stringWithFormat:@"odai/search/?target=%d&sort=%d&page=0",target,sort];//queryがないとき
     }
     
     //APIアクセスでJSONを取得
@@ -199,6 +199,7 @@
     
     int genre = [self getGenre];
     querytext = searchBar.text;
+    target = search_target;
     
     [self searchWithQuery];
     
@@ -258,12 +259,25 @@
     [self.navigate_title setTitle:[NSString stringWithFormat:@"投稿一覧(%@)",  v.titleLabel.text]];
     
     [self genre_button_tapped:self.genre_button];
-        
+    
     [self set_load_statusWithOn:YES];
     //HTTP Request
     //更新　sort、genre変数を用いる
-    [self searchWithQuery];
     
+    int sort = [self getSort];
+    int genre = [self getGenre];
+    target = 2;
+    
+    NSArray *genre_button_titles = @[@"指定無し",@"萌え",@"モノマネ",@"早口言葉"];
+    querytext =genre_button_titles[genre];
+    
+    NSString *param;
+    param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];//
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];
+    
+    NSLog(@"data retrieval and display done");
+
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
 }
