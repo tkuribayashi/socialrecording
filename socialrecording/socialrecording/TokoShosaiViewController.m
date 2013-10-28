@@ -73,7 +73,7 @@
         self.playing_number = indexPath.row;
         
         //HTTP Request
-        //音データをDLして再生
+        //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
         
     }
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
