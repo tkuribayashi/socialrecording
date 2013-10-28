@@ -128,7 +128,7 @@
         NSLog(@"here¥n%@",s);
     }
     self.table_data = [temp mutableCopy];*/
-    
+    //self.table_data = [@[@{@"name": @"aa",@"comment":@"aa",@"votes":@"10"}] mutableCopy];
     NSLog(@"data retrieval and display done");
     
     [self set_load_statusWithOn:NO];

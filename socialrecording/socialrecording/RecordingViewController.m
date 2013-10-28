@@ -28,6 +28,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+- (void)viewDidAppear:(BOOL)animated{
+    if(self.flag_end){
+        self.flag_end = NO;
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -42,5 +48,8 @@
 }
 
 - (IBAction)button_send_tapped:(id)sender {
+    //投稿が成功すれば投稿完了画面へ
+    self.flag_end = YES;
+    [self performSegueWithIdentifier:@"RecordingToCompleteRecording" sender:self];
 }
 @end

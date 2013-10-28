@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *label_genre;
 @property (weak, nonatomic) IBOutlet UIButton *button_record;
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (nonatomic) UIImage *playing_image;
+@property (nonatomic) UIImage *not_playing_image;
 
 
 
@@ -22,4 +24,5 @@
 @property (nonatomic, copy) NSDictionary *toko_data;
 @property (nonatomic) NSMutableArray *voice_data;
 @property (nonatomic) BOOL flg_load_record;
+@property (nonatomic) int playing_number;
 @end

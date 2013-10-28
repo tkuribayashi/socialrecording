@@ -12,4 +12,5 @@
 - (IBAction)button_record_tapped:(id)sender;
 - (IBAction)button_play_tapped:(id)sender;
 - (IBAction)button_send_tapped:(id)sender;
+@property (nonatomic)BOOL flag_end;
 @end

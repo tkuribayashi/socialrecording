@@ -29,8 +29,12 @@
     [self.label_name setText:self.toko_data[@"name"]];
     [self.text_comment setText:self.toko_data[@"comment"]];
     
+    self.playing_number = -1;
+    
     self.table.dataSource = self;
     self.table.delegate = self;
+    self.not_playing_image = [UIImage imageNamed:@"first"];
+    self.playing_image = [UIImage imageNamed:@"second"];
     
     //HTTP Request
     //ジャンルの取得、ボイス一覧の取得
@@ -52,6 +56,26 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
+    UIImageView *image_view = (UIImageView *)[cell viewWithTag:2];
+    if( indexPath.row == self.playing_number ){
+        self.playing_number = -1;
+        [image_view setImage:self.not_playing_image];
+    }else{
+        if( self.playing_number != -1 ){
+            UITableViewCell *cell2 = [self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
+            UIImageView *image_view2 = (UIImageView *)[cell2 viewWithTag:2];
+            [image_view2 setImage:self.not_playing_image];
+        }
+        [image_view setImage:self.playing_image];
+        self.playing_number = indexPath.row;
+        
+        //HTTP Request
+        //音データをDLして再生
+        
+    }
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
