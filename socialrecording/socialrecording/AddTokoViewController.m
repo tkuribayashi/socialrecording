@@ -28,17 +28,31 @@
 {
     [super viewDidLoad];
     self.buttons_genre = @[self.toggle_button_1, self.toggle_button_2, self.toggle_button_3];
-    self.text_comment = [[UITextView alloc] initWithFrame:CGRectMake(20, 245, 280, 128)];
+    
     self.text_comment.layer.borderWidth = 1;
     self.text_comment.layer.borderColor = [[UIColor groupTableViewBackgroundColor] CGColor];
     self.text_comment.layer.cornerRadius = 5;
     self.text_comment.delegate = self;
-    [self.view addSubview:self.text_comment];
     
     self.button_edit_end = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.button_edit_end setFrame:self.view.frame];
     [self.button_edit_end setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     [self.button_edit_end addTarget:self action:@selector(button_edit_end_tapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.button_edit_end setHidden:YES];
+    [self.view addSubview:self.button_edit_end];
+    [self.view bringSubviewToFront:self.text_comment];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    if ( self.flag_complete == YES ) {
+        self.text_name.text = @"";
+        self.text_comment.text = @"";
+        for (UIToggleButton *button in self.buttons_genre) {
+            if(button.is_on){
+                [button toggle];
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,38 +83,27 @@
     [self resignFirstResponder];
 }
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    [self.view addSubview:self.button_edit_end];
-    [self.view bringSubviewToFront:self.text_comment];
+    [self.button_edit_end setHidden:NO];
     
-    [UIView animateWithDuration:0.2f
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         CGRect frame = self.text_comment.frame;
-                         frame.origin.y = 85;
-                         frame.size.height = 200;
-                         self.text_comment.frame = frame;
-                     } completion:^(BOOL finished) {
-                         
-                     }];
+    [UIView animateWithDuration:0.2f animations:^{
+        CGRect frame = self.text_comment.frame;
+        frame.origin.y = 85;
+        frame.size.height = 200;
+        self.text_comment.frame = frame;
+    }];
     
     return YES;
 }
 - (void)button_edit_end_tapped:(id)sender{
     [self.text_comment resignFirstResponder];
-    [self.button_edit_end removeFromSuperview];
+    [self.button_edit_end setHidden:YES];
     
-    [UIView animateWithDuration:0.2f
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         CGRect frame = self.text_comment.frame;
-                         frame.origin.y = 245;
-                         frame.size.height = 128;
-                         self.text_comment.frame = frame;
-                     } completion:^(BOOL finished) {
-                         
-                     }];
+    [UIView animateWithDuration:0.2f animations:^{
+        CGRect frame = self.text_comment.frame;
+        frame.origin.y = 245;
+        frame.size.height = 128;
+        self.text_comment.frame = frame;
+    }];
 }
 
 - (IBAction)button_add_tapped:(id)sender {
@@ -119,7 +122,8 @@
     
     //HTTP Request
     //新規投稿
-    
+    self.flag_complete = YES;
+    [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
 }
 
 @end

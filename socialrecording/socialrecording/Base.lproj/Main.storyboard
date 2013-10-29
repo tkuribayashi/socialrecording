@@ -190,20 +190,68 @@
                                     <action selector="toggle_button_3_tapped:" destination="dZd-My-jdq" eventType="touchUpInside" id="Xp1-ka-Lev"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fYM-cB-Paf">
+                                <rect key="frame" x="20" y="245" width="280" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="280" minY="0.0" maxX="128" maxY="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0cF-yW-b1g"/>
+                    <navigationItem key="navigationItem" title="新規投稿" id="0cF-yW-b1g"/>
                     <connections>
+                        <outlet property="text_comment" destination="fYM-cB-Paf" id="UI0-X4-9R0"/>
                         <outlet property="text_name" destination="1gO-Mu-9yD" id="Akh-zt-4nk"/>
                         <outlet property="toggle_button_1" destination="kyN-mM-QWo" id="Edt-V3-jHj"/>
                         <outlet property="toggle_button_2" destination="hdB-Jc-sV4" id="162-kB-wVc"/>
                         <outlet property="toggle_button_3" destination="fwD-Ko-pzl" id="UbM-E8-CWW"/>
+                        <segue destination="HFV-Xf-sJz" kind="push" identifier="AddTokoToCompleteAddToko" id="bcX-0h-AjJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FP-lT-9Xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1263" y="1428"/>
+        </scene>
+        <!--Complete Add Toko View Controller - 投稿完了-->
+        <scene sceneID="hLq-pt-RtM">
+            <objects>
+                <viewController id="HFV-Xf-sJz" customClass="CompleteAddTokoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c0a-ek-5EJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="iN4-Jn-eFm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OAK-yn-Pan">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="投稿が完了しました！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGi-Cm-06t">
+                                <rect key="frame" x="0.0" y="75" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOm-Rn-4Dj">
+                                <rect key="frame" x="145" y="269" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="button_back_tapped:" destination="HFV-Xf-sJz" eventType="touchUpInside" id="zxi-ZJ-0IJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="投稿完了" id="wGb-4O-UNx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAd-9t-7LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="1428"/>
         </scene>
         <!--Seiyu View Controller - 声優一覧-->
         <scene sceneID="ot8-2e-RuS">
