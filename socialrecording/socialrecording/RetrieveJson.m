@@ -19,7 +19,13 @@
 	NSLog(@"%s %@", __func__, param);
     // 引数からURLを生成
     NSString *url = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/%@", param];
-    NSLog(@"%@",url);
+    
+    
+    // URLをUTF-8でエンコーディングする
+    url = [url stringByAddingPercentEscapesUsingEncoding:
+           NSUTF8StringEncoding];
+    NSLog(@"%@", url); // URLをコンソールに出力
+
     //URLからリクエストを生成
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:url]];
@@ -37,7 +43,7 @@
     //JSONをパース
     json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
     
-    //NSLog(@"%@",json);
+    //NSLog(@"JSON:%@",json);
     
     return json;
 }

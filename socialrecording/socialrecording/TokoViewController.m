@@ -16,6 +16,8 @@
 
 @implementation TokoViewController {
     RetrieveJson *json;
+    NSString *querytext;
+    int target;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -117,18 +119,8 @@
     NSString *param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
     
     //APIアクセスでJSONを取得
-    self.table_data = [json retrieveJson:param];/*
-    NSMutableArray *temp = [NSMutableArray array];
-    for(NSMutableDictionary *dict in data){
-        //self.table_data = [[dict valueForKeyPath:@"comment"] mutableCopy];
-        [temp addObject:[dict valueForKeyPath:@"comment"]];
-        //NSLog(@"%@",[dict valueForKeyPath:@"comment"]);
-    }
-    for(NSString *s  in temp){
-        NSLog(@"here¥n%@",s);
-    }
-    self.table_data = [temp mutableCopy];*/
-    //self.table_data = [@[@{@"name": @"aa",@"comment":@"aa",@"votes":@"10"}] mutableCopy];
+    self.table_data = [json retrieveJson:param];
+    
     NSLog(@"data retrieval and display done");
     
     [self set_load_statusWithOn:NO];
@@ -170,6 +162,30 @@
     }
     [sender toggle];
 }
+
+/* 検索を行うメソッド */
+- (void)searchWithQuery{
+    //HTTP Request
+    //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
+    
+	json = [[RetrieveJson alloc]init];
+    
+    /* 並び替えとジャンルの選択状態を取得*/
+    int sort = [self getSort];
+    int genre = [self getGenre];
+    
+    NSString *param;
+    if (querytext != NULL){
+        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];//初期は新着ボイス順、ジャンル指定無しで表示
+    } else {param = [NSString stringWithFormat:@"odai/search/?target=%d&sort=%d&page=0",target,sort];//queryがないとき
+    }
+    
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];
+    
+    NSLog(@"data retrieval and display done");
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     int search_target = 0;
     UIView *view = self.search_view.subviews[0];
@@ -181,11 +197,13 @@
     }
     [self set_load_statusWithOn:YES];
     
-    int sort = [self getSort];
     int genre = [self getGenre];
+    querytext = searchBar.text;
+    target = search_target;
     
-    //HTTP Request
-    //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
+    [self searchWithQuery];
+    
+    
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
     
@@ -210,12 +228,13 @@
     
     [self sort_button_tapped:self.sort_button];
     
-    int sort = [self getSort];
-    int genre = [self getGenre];
     
     [self set_load_statusWithOn:YES];
     //HTTP Request
     //更新　sort、genre変数を用いる
+    [self searchWithQuery];
+
+    
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
 }
@@ -241,12 +260,24 @@
     
     [self genre_button_tapped:self.genre_button];
     
-    int sort = [self getSort];
-    int genre = [self getGenre];
-    
     [self set_load_statusWithOn:YES];
     //HTTP Request
     //更新　sort、genre変数を用いる
+    
+    int sort = [self getSort];
+    int genre = [self getGenre];
+    target = 2;
+    
+    NSArray *genre_button_titles = @[@"指定無し",@"萌え",@"モノマネ",@"早口言葉"];
+    querytext =genre_button_titles[genre];
+    
+    NSString *param;
+    param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];//
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];
+    
+    NSLog(@"data retrieval and display done");
+
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
 }
