@@ -7,12 +7,15 @@
 //
 
 #import "TokoShosaiViewController.h"
+#import "RetrieveJson.h"
 
 @interface TokoShosaiViewController ()
 
 @end
 
 @implementation TokoShosaiViewController
+
+@synthesize toko_id = _toko_id;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +41,25 @@
     
     //HTTP Request
     //ジャンルの取得、ボイス一覧の取得
-    [self.label_genre setText:@"（ジャンル）"];
+    NSLog(@"received id = %@",self.toko_id);
+    
+	RetrieveJson *json = [[RetrieveJson alloc]init];
+    NSString *param = [NSString stringWithFormat:@"odai/%@/",self.toko_id];
+    
+    NSMutableDictionary *toko_shosai = [json retrieveJsonDictionary:param];
+    //[self.label_genre setText:@"（ジャンル）"];
+    NSString *genre = @"no genre";
+    NSArray *tags = toko_shosai[@"tags"];
+    
+    for (NSDictionary *t in tags){
+        if(t[@"genre"]){
+            genre = t[@"name"];
+            break;
+        }
+    }
+    
+    [self.label_genre setText:genre];
+    
     self.voice_data = [@[@"test1",@"test2",@"test3",@"test4"] mutableCopy];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

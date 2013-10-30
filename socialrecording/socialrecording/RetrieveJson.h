@@ -10,9 +10,11 @@
 
 @interface RetrieveJson : NSObject{
     NSMutableArray *json;
+    NSMutableDictionary *jsonD;
 }
 
 - (NSMutableArray *)retrieveJson:(NSString *)param;
+- (NSMutableDictionary *)retrieveJsonDictionary:(NSString *)param;
 - (void)accessServer:(NSString *)param;
 
 

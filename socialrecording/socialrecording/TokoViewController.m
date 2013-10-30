@@ -328,11 +328,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.toko_data = self.table_data[indexPath.row];
+    _toko_id = (NSString *)self.table_data[indexPath.row][@"id"];
     [self performSegueWithIdentifier:@"TokoToShosai" sender:self];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"TokoToShosai"]) {
         TokoShosaiViewController *viewController = (TokoShosaiViewController*)[segue destinationViewController];
+        viewController.toko_id = _toko_id;
+        NSLog(@"id=%@",_toko_id);
+
         viewController.toko_data = self.toko_data;
     }
 }

@@ -25,7 +25,7 @@
     url = [url stringByAddingPercentEscapesUsingEncoding:
            NSUTF8StringEncoding];
     NSLog(@"%@", url); // URLをコンソールに出力
-
+    
     //URLからリクエストを生成
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:url]];
@@ -46,6 +46,40 @@
     //NSLog(@"JSON:%@",json);
     
     return json;
+}
+
+/* JSONを返すAPIにアクセス */
+- (NSMutableDictionary *)retrieveJsonDictionary:(NSString *)param{
+	NSLog(@"%s %@", __func__, param);
+    // 引数からURLを生成
+    NSString *url = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/%@", param];
+    
+    
+    // URLをUTF-8でエンコーディングする
+    url = [url stringByAddingPercentEscapesUsingEncoding:
+           NSUTF8StringEncoding];
+    NSLog(@"%@", url); // URLをコンソールに出力
+    
+    //URLからリクエストを生成
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:url]];
+    NSLog(@"request ready");
+    //結果をNSDataで受け取る
+    NSData *data = [ NSURLConnection sendSynchronousRequest:request returningResponse: nil error: nil ];
+    NSLog(@"received json");
+    //NSStringに変換(クオテーション処理)
+    NSString *jsonstring = [[[NSString alloc] initWithBytes: [data bytes] length:[data length] encoding: NSNonLossyASCIIStringEncoding] stringByReplacingOccurrencesOfString: @"&quot;" withString: @"\""];
+    NSLog(@"%@", jsonstring);
+    //NSDataに戻す
+    data = [jsonstring dataUsingEncoding:NSUnicodeStringEncoding];
+    
+    NSError * error;
+    //JSONをパース
+    jsonD = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+    
+    //NSLog(@"JSON:%@",json);
+    
+    return jsonD;
 }
 
 /* JSONを返さないAPI(vote, view etc.)にアクセス */
