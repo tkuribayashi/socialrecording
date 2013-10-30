@@ -51,14 +51,14 @@
     self.search_tag_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
     [self.search_tag_button setFrame:CGRectMake(106, 0, 107, 30)];
     [self.search_tag_button setTitle:@"タグ" forState:UIControlStateNormal];
-    [self.search_odai_button setTag:1];
+    [self.search_tag_button setTag:1];
     [self.search_tag_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.search_view addSubview:self.search_tag_button];
     
     self.search_seiyu_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
     [self.search_seiyu_button setFrame:CGRectMake(213, 0, 107, 30)];
     [self.search_seiyu_button setTitle:@"声優" forState:UIControlStateNormal];
-    [self.search_odai_button setTag:2];
+    [self.search_seiyu_button setTag:2];
     [self.search_seiyu_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.search_view addSubview:self.search_seiyu_button];
     
