@@ -15,6 +15,9 @@
 
 @implementation TokoShosaiViewController
 
+@synthesize session;
+@synthesize recorder;
+@synthesize player;
 @synthesize toko_id = _toko_id;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,7 +63,10 @@
     
     [self.label_genre setText:genre];
     
-    self.voice_data = [@[@"test1",@"test2",@"test3",@"test4"] mutableCopy];
+    //self.voice_data = [@[@"test1",@"test2",@"test3",@"test4"] mutableCopy];
+    self.voice_data = toko_shosai[@"voices"];
+    
+    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.voice_data count];
@@ -95,6 +101,33 @@
         
         //HTTP Request
         //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
+        NSString *filePath = self.voice_data[indexPath.row][@"vfile"];
+        NSLog(@"%@",filePath);
+        
+        /*
+        NSError *error = nil;
+        
+        NSString *urlString = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/static/%@",filePath];
+        NSLog(@"%@",urlString);
+        
+        NSURL *url = [NSURL fileURLWithPath:urlString];
+        
+        if ( [[NSFileManager defaultManager] fileExistsAtPath:[url path]] )
+        {
+            self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+            if ( error != nil )
+            {
+                NSLog(@"Error %@", [error localizedDescription]);
+            }
+            
+            [self.player prepareToPlay];
+            NSLog(@"start playing");
+            [self.player play];
+        }
+        
+        NSLog(@"failed playing");
+
+        */
         
     }
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
@@ -116,8 +149,8 @@
     }
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSString *name = self.voice_data[indexPath.row];
-    NSString *iine = self.voice_data[indexPath.row];
+    NSString *name = self.voice_data[indexPath.row][@"username"];
+    NSString *iine = self.voice_data[indexPath.row][@"votes"];
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     [label setText:[NSString stringWithFormat:@"%@さんのボイス",name]];

@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface TokoShosaiViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
     NSString *_toko_id;
 }
+@property (nonatomic)AVAudioRecorder *recorder;
+@property (nonatomic)AVAudioSession *session;
+@property (nonatomic)AVAudioPlayer *player;
+
 @property (weak, nonatomic) IBOutlet UILabel *label_name;
 @property (weak, nonatomic) IBOutlet UITextView *text_comment;
 @property (weak, nonatomic) IBOutlet UILabel *label_genre;
