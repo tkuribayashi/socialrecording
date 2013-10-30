@@ -18,6 +18,8 @@
     RetrieveJson *json;
     NSString *querytext;
     int target;
+    int sort;
+    int genre;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -171,13 +173,13 @@
 	json = [[RetrieveJson alloc]init];
     
     /* 並び替えとジャンルの選択状態を取得*/
-    int sort = [self getSort];
-    int genre = [self getGenre];
+    sort = [self getSort];
     
     NSString *param;
-    if (querytext != NULL){
-        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];//初期は新着ボイス順、ジャンル指定無しで表示
-    } else {param = [NSString stringWithFormat:@"odai/search/?target=%d&sort=%d&page=0",target,sort];//queryがないとき
+    if (querytext == NULL && genre == 0){//検索クエリがNULLかつジャンル指定がない場合はsortのみ設定
+        param = [NSString stringWithFormat:@"odai/search/?target=%d&sort=%d&page=0",target,sort];
+    } else {
+        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];
     }
     
     //APIアクセスでJSONを取得
@@ -197,7 +199,6 @@
     }
     [self set_load_statusWithOn:YES];
     
-    int genre = [self getGenre];
     querytext = searchBar.text;
     target = search_target;
     
@@ -264,15 +265,24 @@
     //HTTP Request
     //更新　sort、genre変数を用いる
     
-    int sort = [self getSort];
-    int genre = [self getGenre];
+    sort = [self getSort];
+    genre = [self getGenre];
     target = 2;
     
     NSArray *genre_button_titles = @[@"指定無し",@"萌え",@"モノマネ",@"早口言葉"];
-    querytext =genre_button_titles[genre];
+    
+    if (genre != 0){
+        querytext = genre_button_titles[genre];
+    } else {
+        querytext = NULL;
+    }
     
     NSString *param;
-    param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];//
+    if (genre != 0){
+        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];
+    } else {
+        param = [NSString stringWithFormat:@"odai/search/?sort=%d&page=0",sort];
+    }
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
     
