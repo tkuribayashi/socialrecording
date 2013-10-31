@@ -222,7 +222,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([[segue identifier] isEqualToString:@"Shosai"]) {
+    if ([[segue identifier] isEqualToString:@"TokoShosaiToRecording"]) {
         RecordingViewController *viewController = (RecordingViewController*)[segue destinationViewController];
         viewController.toko_id = _toko_id;
         NSLog(@"id=%@",_toko_id);
@@ -237,5 +237,6 @@
 }
 
 - (IBAction)button_recording_tapped:(id)sender {
+    [self performSegueWithIdentifier:@"TokoShosaiToRecording" sender:self];
 }
 @end
