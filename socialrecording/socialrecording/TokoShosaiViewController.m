@@ -33,6 +33,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     [self.label_name setText:self.toko_data[@"name"]];
     [self.text_comment setText:self.toko_data[@"comment"]];
     
@@ -66,7 +71,6 @@
     
     //self.voice_data = [@[@"test1",@"test2",@"test3",@"test4"] mutableCopy];
     self.voice_data = toko_shosai[@"voices"];
-    
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
