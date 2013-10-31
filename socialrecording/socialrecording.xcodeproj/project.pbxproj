@@ -17,6 +17,7 @@
 		0DDBE553181FBDCD00E5FAB7 /* CompleteAddTokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBE552181FBDCD00E5FAB7 /* CompleteAddTokoViewController.m */; };
 		310B78BD1819451100BE54F3 /* RetrieveJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 310B78BC1819451100BE54F3 /* RetrieveJson.m */; };
 		310B78BF181A7B0600BE54F3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310B78BE181A7B0600BE54F3 /* AVFoundation.framework */; };
+		31859E36182257F700DDDBC1 /* RetrieveCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 31859E35182257F700DDDBC1 /* RetrieveCookie.m */; };
 		319824141806A73400796825 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824131806A73400796825 /* Foundation.framework */; };
 		319824161806A73400796825 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824151806A73400796825 /* CoreGraphics.framework */; };
 		319824181806A73400796825 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824171806A73400796825 /* UIKit.framework */; };
@@ -62,6 +63,8 @@
 		310B78BB1819451100BE54F3 /* RetrieveJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveJson.h; sourceTree = "<group>"; };
 		310B78BC1819451100BE54F3 /* RetrieveJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveJson.m; sourceTree = "<group>"; };
 		310B78BE181A7B0600BE54F3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		31859E34182257F700DDDBC1 /* RetrieveCookie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveCookie.h; sourceTree = "<group>"; };
+		31859E35182257F700DDDBC1 /* RetrieveCookie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveCookie.m; sourceTree = "<group>"; };
 		319824101806A73400796825 /* socialrecording.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialrecording.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		319824131806A73400796825 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		319824151806A73400796825 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -163,6 +166,8 @@
 				0DD4350F1810F480001DF5A1 /* UIToggleView.m */,
 				0DD43511181163B3001DF5A1 /* UIToggleButton.h */,
 				0DD43512181163B3001DF5A1 /* UIToggleButton.m */,
+				31859E34182257F700DDDBC1 /* RetrieveCookie.h */,
+				31859E35182257F700DDDBC1 /* RetrieveCookie.m */,
 			);
 			path = socialrecording;
 			sourceTree = "<group>";
@@ -243,6 +248,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = taku;
 				TargetAttributes = {
+					3198240F1806A73400796825 = {
+						DevelopmentTeam = 7227T2USU9;
+					};
 					319824331806A73400796825 = {
 						TestTargetID = 3198240F1806A73400796825;
 					};
@@ -304,6 +312,7 @@
 				0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */,
 				0DDBE553181FBDCD00E5FAB7 /* CompleteAddTokoViewController.m in Sources */,
 				0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */,
+				31859E36182257F700DDDBC1 /* RetrieveCookie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,10 +439,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "socialrecording/socialrecording-Prefix.pch";
 				INFOPLIST_FILE = "socialrecording/socialrecording-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -443,10 +455,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "socialrecording/socialrecording-Prefix.pch";
 				INFOPLIST_FILE = "socialrecording/socialrecording-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

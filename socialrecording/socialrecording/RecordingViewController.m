@@ -7,6 +7,7 @@
 //
 
 #import "RecordingViewController.h"
+#import "RetrieveCookie.h"
 
 @interface RecordingViewController ()
 
@@ -85,6 +86,7 @@
     // File Path
     NSString *dir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [dir stringByAppendingPathComponent:@"test.caf"];
+    
     NSURL *url = [NSURL fileURLWithPath:filePath];
     
     // recorder = [[AVAudioRecorder alloc] initWithURL:url settings:nil error:&error];
@@ -154,16 +156,29 @@
     NSString *filePath = [dir stringByAppendingPathComponent:@"test.caf"];
     NSURL *pathURL = [NSURL fileURLWithPath:filePath];//File Url of the recorded audio
     NSData *voiceData = [[NSData alloc]initWithContentsOfURL:pathURL];
-    NSString *urlString = @"http://http://49.212.174.30/sociareco/api/"; // You can give your url here for uploading
+    NSString *urlString = @"http://49.212.174.30/sociareco/api/voice/create/"; // You can give your url here for uploading
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
     
     @try
     {
+        RetrieveCookie *rc = [[RetrieveCookie alloc]init];
+
+        /* cookie処理 */
+        NSString *cookie = [rc getcsrftoken];
+        
+        if(cookie==nil){
+            cookie = [rc setcookie];
+        }
+        /* cookie処理ここまで */
+        
+        
+        NSLog(@"cookie: %@",cookie);
         [request setURL:[NSURL URLWithString:urlString]];
         [request setHTTPMethod:@"POST"];
         NSString *boundary = @"---------------------------14737809831466499882746641449";
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
         [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+        [request addValue:cookie forHTTPHeaderField:@"X-CSRFToken"];
         
         NSMutableData *body = [NSMutableData data];
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
