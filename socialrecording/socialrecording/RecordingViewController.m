@@ -161,19 +161,24 @@
     
     @try
     {
-        RetrieveCookie *rc = [RetrieveCookie ;
+        RetrieveCookie *rc = [[RetrieveCookie alloc]init];
 
         /* cookie処理 */
+        NSString *cookie = [rc getcsrftoken];
         
-        
+        if(cookie==nil){
+            cookie = [rc setcookie];
+        }
         /* cookie処理ここまで */
         
+        
+        NSLog(@"cookie: %@",cookie);
         [request setURL:[NSURL URLWithString:urlString]];
         [request setHTTPMethod:@"POST"];
         NSString *boundary = @"---------------------------14737809831466499882746641449";
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
         [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
-        //[request addValue:token forHTTPHeaderField:@"X-CSRFToken"];
+        [request addValue:cookie forHTTPHeaderField:@"X-CSRFToken"];
         
         NSMutableData *body = [NSMutableData data];
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
