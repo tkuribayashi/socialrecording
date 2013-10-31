@@ -17,9 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNi-ez-BWe" customClass="UIToggleButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNi-ez-BWe" customClass="UIToggleButton">
                                 <rect key="frame" x="0.0" y="64" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="106" id="XCE-Bw-0hh"/>
+                                </constraints>
                                 <state key="normal" title="検索">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -27,9 +30,12 @@
                                     <action selector="search_button_tapped:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="O2g-CM-lfA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aE-7d-NwN" customClass="UIToggleButton">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aE-7d-NwN" customClass="UIToggleButton">
                                 <rect key="frame" x="106" y="64" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="mds-Wl-z6T"/>
+                                </constraints>
                                 <state key="normal" title="並び替え">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -37,9 +43,12 @@
                                     <action selector="sort_button_tapped:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="RVl-08-csC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cET-7q-1oa" customClass="UIToggleButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cET-7q-1oa" customClass="UIToggleButton">
                                 <rect key="frame" x="213" y="64" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="F0H-xv-Mho"/>
+                                </constraints>
                                 <state key="normal" title="ジャンル">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -47,12 +56,12 @@
                                     <action selector="genre_button_tapped:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="YXO-OR-Zd5"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9OO-fX-TVW">
-                                <rect key="frame" x="0.0" y="102" width="320" height="417"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OO-fX-TVW">
+                                <rect key="frame" x="0.0" y="94" width="320" height="425"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fyi-q4-qao">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="417"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fyi-q4-qao">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="425"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -85,9 +94,30 @@
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fyi-q4-qao" secondAttribute="bottom" id="Tsx-W2-gXT"/>
+                                    <constraint firstItem="fyi-q4-qao" firstAttribute="top" secondItem="9OO-fX-TVW" secondAttribute="top" id="bla-T2-zIl"/>
+                                    <constraint firstItem="fyi-q4-qao" firstAttribute="leading" secondItem="9OO-fX-TVW" secondAttribute="leading" id="ccT-k0-rRb"/>
+                                    <constraint firstAttribute="trailing" secondItem="fyi-q4-qao" secondAttribute="trailing" id="sxy-oy-jBa"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3aE-7d-NwN" firstAttribute="top" secondItem="DQl-1N-6c3" secondAttribute="bottom" id="059-Yr-URg"/>
+                            <constraint firstItem="9OO-fX-TVW" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="PYF-cH-Hwy"/>
+                            <constraint firstItem="YNi-ez-BWe" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="QTO-ui-tV2"/>
+                            <constraint firstItem="YNi-ez-BWe" firstAttribute="top" secondItem="DQl-1N-6c3" secondAttribute="bottom" id="Qa7-qt-dGU"/>
+                            <constraint firstAttribute="trailing" secondItem="9OO-fX-TVW" secondAttribute="trailing" id="Qrx-ai-itS"/>
+                            <constraint firstItem="9OO-fX-TVW" firstAttribute="top" secondItem="3aE-7d-NwN" secondAttribute="bottom" id="ete-Xd-oDv"/>
+                            <constraint firstItem="9OO-fX-TVW" firstAttribute="top" secondItem="cET-7q-1oa" secondAttribute="bottom" id="sPa-Iz-Mj8"/>
+                            <constraint firstItem="6nD-IZ-Sig" firstAttribute="top" secondItem="9OO-fX-TVW" secondAttribute="bottom" id="tta-W3-1uB"/>
+                            <constraint firstAttribute="trailing" secondItem="cET-7q-1oa" secondAttribute="trailing" id="uAC-ll-6gT"/>
+                            <constraint firstItem="9OO-fX-TVW" firstAttribute="top" secondItem="YNi-ez-BWe" secondAttribute="bottom" id="ybz-z0-qbh"/>
+                            <constraint firstItem="cET-7q-1oa" firstAttribute="top" secondItem="DQl-1N-6c3" secondAttribute="bottom" id="zMO-wb-YBW"/>
+                            <constraint firstItem="3aE-7d-NwN" firstAttribute="leading" secondItem="YNi-ez-BWe" secondAttribute="trailing" id="ziz-ep-05w"/>
+                            <constraint firstItem="cET-7q-1oa" firstAttribute="leading" secondItem="3aE-7d-NwN" secondAttribute="trailing" id="zwi-ss-SgP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="投稿一覧" id="YMH-ss-7e9"/>
                     <connections>
@@ -116,13 +146,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ks-gF-aay">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="新規投稿" id="Oe5-go-704"/>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="リクエストしたい言葉" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3s-1q-u1B">
                                 <rect key="frame" x="75" y="84" width="170" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -228,14 +251,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="投稿が完了しました！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGi-Cm-06t">
-                                <rect key="frame" x="0.0" y="75" width="320" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="投稿が完了しました！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGi-Cm-06t">
+                                <rect key="frame" x="0.0" y="73" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOm-Rn-4Dj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOm-Rn-4Dj">
                                 <rect key="frame" x="145" y="269" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="戻る">
@@ -247,6 +270,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="DGi-Cm-06t" secondAttribute="centerX" id="0BD-PR-1pW"/>
+                            <constraint firstItem="DGi-Cm-06t" firstAttribute="top" secondItem="c0a-ek-5EJ" secondAttribute="bottom" constant="10" id="95v-Gu-UhF"/>
+                            <constraint firstAttribute="centerY" secondItem="gOm-Rn-4Dj" secondAttribute="centerY" id="jby-8A-jws"/>
+                            <constraint firstAttribute="centerX" secondItem="gOm-Rn-4Dj" secondAttribute="centerX" id="kRo-dr-jYV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="投稿完了" id="wGb-4O-UNx"/>
                 </viewController>
@@ -266,13 +295,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yb2-Qc-1kD">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="声優一覧" id="8Hj-dE-khB"/>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMr-dE-Hti">
                                 <rect key="frame" x="0.0" y="64" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -737,6 +759,11 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
