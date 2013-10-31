@@ -10,7 +10,9 @@
 #import "UIToggleView.h"
 #import "UIToggleButton.h"
 
-@interface TokoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface TokoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>{
+    NSString *_toko_id;
+}
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigate_title;
 
 - (IBAction)search_button_tapped:(id)sender;
@@ -37,5 +39,4 @@
 @property (nonatomic) BOOL flg_load_record;
 
 @property (nonatomic) UIView *view_load;
-@property (nonatomic, copy) NSDictionary *toko_data;
-@end
+@property (nonatomic, copy) NSDictionary *toko_data;@end

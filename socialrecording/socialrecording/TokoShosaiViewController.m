@@ -7,12 +7,18 @@
 //
 
 #import "TokoShosaiViewController.h"
+#import "RetrieveJson.h"
 
 @interface TokoShosaiViewController ()
 
 @end
 
 @implementation TokoShosaiViewController
+
+@synthesize session;
+@synthesize recorder;
+@synthesize player;
+@synthesize toko_id = _toko_id;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,8 +44,29 @@
     
     //HTTP Request
     //ジャンルの取得、ボイス一覧の取得
-    [self.label_genre setText:@"（ジャンル）"];
-    self.voice_data = [@[@"test1",@"test2",@"test3",@"test4"] mutableCopy];
+    NSLog(@"received id = %@",self.toko_id);
+    
+	RetrieveJson *json = [[RetrieveJson alloc]init];
+    NSString *param = [NSString stringWithFormat:@"odai/%@/",self.toko_id];
+    
+    NSMutableDictionary *toko_shosai = [json retrieveJsonDictionary:param];
+    //[self.label_genre setText:@"（ジャンル）"];
+    NSString *genre = @"no genre";
+    NSArray *tags = toko_shosai[@"tags"];
+    
+    for (NSDictionary *t in tags){
+        if(t[@"genre"]){
+            genre = t[@"name"];
+            break;
+        }
+    }
+    
+    [self.label_genre setText:genre];
+    
+    //self.voice_data = [@[@"test1",@"test2",@"test3",@"test4"] mutableCopy];
+    self.voice_data = toko_shosai[@"voices"];
+    
+    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.voice_data count];
@@ -75,6 +102,91 @@
         //HTTP Request
         //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
         
+        // request
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+
+        NSString *filePath = [NSString stringWithFormat:@"%@/Caches/temp.mp3",[paths objectAtIndex:0]];
+        
+        NSString *reqFilePath = self.voice_data[indexPath.row][@"vfile"];
+        NSLog(@"%@",reqFilePath);
+        
+        
+        NSError *error = nil;
+        
+        NSString *urlString = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/static/%@",reqFilePath];
+        NSLog(@"request url: %@",urlString);
+        
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSURLResponse *response = nil;
+        NSData *data = [
+                        NSURLConnection
+                        sendSynchronousRequest : request
+                        returningResponse : &response
+                        error : &error
+                        ];
+        
+        // error
+        NSString *error_str = [error localizedDescription];
+        if (0<[error_str length]) {
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"RequestError"
+                                  message : error_str
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+        }
+                // responseを受け取ったあとの処理
+        NSFileManager *fm = [NSFileManager defaultManager];
+        [fm createFileAtPath:filePath contents:[NSData data] attributes:nil];
+        NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:filePath];
+        [file writeData:data];
+        
+        NSLog(@"path: %@",[paths objectAtIndex:0]);
+        
+        
+        if(fm) {
+            NSLog(@"s:%@",filePath);
+        } else {
+            NSLog(@"f");
+        }
+        
+        
+        //NSString *mp3path = [[NSBundle mainBundle] pathForResource:filePath ofType:nil];
+        
+        NSLog(@"filepath: %@",filePath);
+        
+        NSURL* mp3url = [NSURL fileURLWithPath:filePath];
+        
+        NSLog(@"url: %@",[mp3url absoluteString]);
+
+        if([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
+            self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:mp3url error:&error];
+            if ( error != nil )
+            {
+                NSLog(@"Error %@", [error localizedDescription]);
+            }
+            NSLog(@"prepare to play");
+            if([self.player prepareToPlay]){
+                NSLog(@"s");
+            } else {
+                NSLog(@"f");
+            }
+
+            NSLog(@"start playing");
+            [self.player play];
+        } else {
+            NSLog(@"failed playing");
+        }
+
+        
+        
     }
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
 }
@@ -95,8 +207,8 @@
     }
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSString *name = self.voice_data[indexPath.row];
-    NSString *iine = self.voice_data[indexPath.row];
+    NSString *name = self.voice_data[indexPath.row][@"username"];
+    NSString *iine = self.voice_data[indexPath.row][@"votes"];
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     [label setText:[NSString stringWithFormat:@"%@さんのボイス",name]];

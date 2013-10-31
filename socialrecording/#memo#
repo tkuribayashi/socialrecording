@@ -1,0 +1,5 @@
+y1 = ax1 + b
+y2 = ax2 + b
+
+y1x2 - y2x1 = b(x2-x1)
+b = ( x1y2 - x2y1 ) / (x2 - x1)

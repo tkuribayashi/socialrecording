@@ -16,6 +16,10 @@
 
 @implementation TokoViewController {
     RetrieveJson *json;
+    NSString *querytext;
+    int target;
+    int sort;
+    int genre;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,14 +51,14 @@
     self.search_tag_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
     [self.search_tag_button setFrame:CGRectMake(106, 0, 107, 30)];
     [self.search_tag_button setTitle:@"タグ" forState:UIControlStateNormal];
-    [self.search_odai_button setTag:1];
+    [self.search_tag_button setTag:1];
     [self.search_tag_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.search_view addSubview:self.search_tag_button];
     
     self.search_seiyu_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
     [self.search_seiyu_button setFrame:CGRectMake(213, 0, 107, 30)];
     [self.search_seiyu_button setTitle:@"声優" forState:UIControlStateNormal];
-    [self.search_odai_button setTag:2];
+    [self.search_seiyu_button setTag:2];
     [self.search_seiyu_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.search_view addSubview:self.search_seiyu_button];
     
@@ -117,18 +121,8 @@
     NSString *param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
     
     //APIアクセスでJSONを取得
-    self.table_data = [json retrieveJson:param];/*
-    NSMutableArray *temp = [NSMutableArray array];
-    for(NSMutableDictionary *dict in data){
-        //self.table_data = [[dict valueForKeyPath:@"comment"] mutableCopy];
-        [temp addObject:[dict valueForKeyPath:@"comment"]];
-        //NSLog(@"%@",[dict valueForKeyPath:@"comment"]);
-    }
-    for(NSString *s  in temp){
-        NSLog(@"here¥n%@",s);
-    }
-    self.table_data = [temp mutableCopy];*/
-    //self.table_data = [@[@{@"name": @"aa",@"comment":@"aa",@"votes":@"10"}] mutableCopy];
+    self.table_data = [json retrieveJson:param];
+    
     NSLog(@"data retrieval and display done");
     
     [self set_load_statusWithOn:NO];
@@ -170,6 +164,30 @@
     }
     [sender toggle];
 }
+
+/* 検索を行うメソッド */
+- (void)searchWithQuery{
+    //HTTP Request
+    //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
+    
+	json = [[RetrieveJson alloc]init];
+    
+    /* 並び替えとジャンルの選択状態を取得*/
+    sort = [self getSort];
+    
+    NSString *param;
+    if (querytext == NULL && genre == 0){//検索クエリがNULLかつジャンル指定がない場合はsortのみ設定
+        param = [NSString stringWithFormat:@"odai/search/?target=%d&sort=%d&page=0",target,sort];
+    } else {
+        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];
+    }
+    
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];
+    
+    NSLog(@"data retrieval and display done");
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     int search_target = 0;
     UIView *view = self.search_view.subviews[0];
@@ -181,11 +199,12 @@
     }
     [self set_load_statusWithOn:YES];
     
-    int sort = [self getSort];
-    int genre = [self getGenre];
+    querytext = searchBar.text;
+    target = search_target;
     
-    //HTTP Request
-    //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
+    [self searchWithQuery];
+    
+    
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
     
@@ -210,12 +229,13 @@
     
     [self sort_button_tapped:self.sort_button];
     
-    int sort = [self getSort];
-    int genre = [self getGenre];
     
     [self set_load_statusWithOn:YES];
     //HTTP Request
     //更新　sort、genre変数を用いる
+    [self searchWithQuery];
+
+    
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
 }
@@ -241,12 +261,33 @@
     
     [self genre_button_tapped:self.genre_button];
     
-    int sort = [self getSort];
-    int genre = [self getGenre];
-    
     [self set_load_statusWithOn:YES];
     //HTTP Request
     //更新　sort、genre変数を用いる
+    
+    sort = [self getSort];
+    genre = [self getGenre];
+    target = 2;
+    
+    NSArray *genre_button_titles = @[@"指定無し",@"萌え",@"モノマネ",@"早口言葉"];
+    
+    if (genre != 0){
+        querytext = genre_button_titles[genre];
+    } else {
+        querytext = NULL;
+    }
+    
+    NSString *param;
+    if (genre != 0){
+        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];
+    } else {
+        param = [NSString stringWithFormat:@"odai/search/?sort=%d&page=0",sort];
+    }
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];
+    
+    NSLog(@"data retrieval and display done");
+
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
 }
@@ -287,11 +328,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.toko_data = self.table_data[indexPath.row];
+    _toko_id = (NSString *)self.table_data[indexPath.row][@"id"];
     [self performSegueWithIdentifier:@"TokoToShosai" sender:self];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"TokoToShosai"]) {
         TokoShosaiViewController *viewController = (TokoShosaiViewController*)[segue destinationViewController];
+        viewController.toko_id = _toko_id;
+        NSLog(@"id=%@",_toko_id);
+
         viewController.toko_data = self.toko_data;
     }
 }
