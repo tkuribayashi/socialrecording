@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic) UIImage *playing_image;
 @property (nonatomic) UIImage *not_playing_image;
-
+- (IBAction)button_recording_tapped:(id)sender;
 
 
 

@@ -227,4 +227,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)button_recording_tapped:(id)sender {
+}
 @end
