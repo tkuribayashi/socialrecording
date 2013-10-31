@@ -87,6 +87,13 @@
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
     
+    
+    //いいねボタンのタグをセット
+    NSInteger voice_id = [self.voice_data[indexPath.row][@"id"] intValue];
+    
+    UIButton *likebutton = (UIButton *)[cell viewWithTag:5];
+    [likebutton setTag:voice_id];
+    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -218,7 +225,9 @@
 /* いいねボタンタップ */
 -(void)like_button_tapped:(id)sender{
     if (like_flag){
-        NSString *voice_id = self.toko_data[@"id"];
+        NSString *voice_id = [NSString stringWithFormat:@"%d",[sender tag]];
+        NSLog(@"like num: %@",voice_id);
+
         
         RetrieveJson *json = [[RetrieveJson alloc]init];
         [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
@@ -229,6 +238,9 @@
 
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"row: %d",indexPath.row);
+    NSLog(@"id: %d",[self.voice_data[indexPath.row][@"id"] intValue]);
+    
     NSString *name = self.voice_data[indexPath.row][@"username"];
     NSString *iine = self.voice_data[indexPath.row][@"votes"];
     
@@ -240,8 +252,9 @@
     
     label = (UILabel *)[cell viewWithTag:4];
     [label setText:[NSString stringWithFormat:@"いいね%@件",iine]];
+    
 }
-
+ 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"TokoShosaiToRecording"]) {
         RecordingViewController *viewController = (RecordingViewController*)[segue destinationViewController];

@@ -86,6 +86,7 @@
 - (void)accessServer:(NSString *)param{NSLog(@"%s", __func__);
     // 引数からURLを生成
     NSString *url = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/%@", param];
+    NSLog(@"request: %@",url);
     
     //URLからリクエストを生成
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
