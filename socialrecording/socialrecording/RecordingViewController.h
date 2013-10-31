@@ -16,6 +16,8 @@
 @property (nonatomic)AVAudioRecorder *recorder;
 @property (nonatomic)AVAudioSession *session;
 @property (nonatomic)AVAudioPlayer *player;
+@property (weak, nonatomic) IBOutlet UILabel *label_name;
+@property (nonatomic) NSString *toko_name;
 - (IBAction)button_record_tapped:(id)sender;
 - (IBAction)button_play_tapped:(id)sender;
 - (IBAction)button_send_tapped:(id)sender;
