@@ -7,6 +7,7 @@
 //
 
 #import "AddTokoViewController.h"
+#import "RetrieveJson.h"
 
 
 @interface AddTokoViewController ()
@@ -122,6 +123,13 @@
     
     //HTTP Request
     //新規投稿
+    
+	RetrieveJson *json = [[RetrieveJson alloc]init];
+    
+    
+    
+    
+    
     self.flag_complete = YES;
     [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
 }
