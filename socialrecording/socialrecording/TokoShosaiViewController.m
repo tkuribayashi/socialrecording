@@ -14,7 +14,9 @@
 
 @end
 
-@implementation TokoShosaiViewController
+@implementation TokoShosaiViewController {
+    BOOL like_flag;
+}
 
 @synthesize session;
 @synthesize recorder;
@@ -33,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    like_flag = YES;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -211,6 +213,21 @@
         
     }
 }
+
+
+/* いいねボタンタップ */
+-(void)like_button_tapped:(id)sender{
+    if (like_flag){
+        NSString *voice_id = self.toko_data[@"id"];
+        
+        RetrieveJson *json = [[RetrieveJson alloc]init];
+        [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
+
+        like_flag = NO;
+    }
+}
+
+
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSString *name = self.voice_data[indexPath.row][@"username"];
     NSString *iine = self.voice_data[indexPath.row][@"votes"];

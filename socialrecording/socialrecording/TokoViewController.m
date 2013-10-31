@@ -291,6 +291,8 @@
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
 }
+
+
 -(int)getSort{
     UIView *view = self.sort_view.subviews[0];
     NSArray *buttons = view.subviews;
@@ -383,13 +385,19 @@
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSString *title = self.table_data[indexPath.row][@"name"];
-    NSString *iine = [NSString stringWithFormat:@"いいね %@件" , self.table_data[indexPath.row][@"votes"]];
+    NSString *iine = [NSString stringWithFormat:@"合計いいね %@件" , self.table_data[indexPath.row][@"votes"]];
+    NSString *posts =[NSString stringWithFormat:@"ボイス %@件" , self.table_data[indexPath.row][@"posts"]];
+    
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     [label setText:title];
     
     label = (UILabel *)[cell viewWithTag:2];
     [label setText:iine];
+
+    label = (UILabel *)[cell viewWithTag:3];
+    [label setText:posts];
+
 }
 - (void)set_load_statusWithOn:(BOOL)on{
     self.flg_load_record = on;

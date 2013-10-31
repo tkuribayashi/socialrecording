@@ -18,6 +18,7 @@
 - (IBAction)search_button_tapped:(id)sender;
 - (IBAction)sort_button_tapped:(id)sender;
 - (IBAction)genre_button_tapped:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIToggleButton *search_button;
 @property (weak, nonatomic) IBOutlet UIToggleButton *sort_button;
 @property (weak, nonatomic) IBOutlet UIToggleButton *genre_button;
