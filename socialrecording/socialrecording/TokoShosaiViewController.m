@@ -101,33 +101,91 @@
         
         //HTTP Request
         //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
-        NSString *filePath = self.voice_data[indexPath.row][@"vfile"];
-        NSLog(@"%@",filePath);
         
-        /*
+        // request
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+
+        NSString *filePath = [NSString stringWithFormat:@"%@/Caches/temp.mp3",[paths objectAtIndex:0]];
+        
+        NSString *reqFilePath = self.voice_data[indexPath.row][@"vfile"];
+        NSLog(@"%@",reqFilePath);
+        
+        
         NSError *error = nil;
         
-        NSString *urlString = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/static/%@",filePath];
-        NSLog(@"%@",urlString);
+        NSString *urlString = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/static/%@",reqFilePath];
+        NSLog(@"request url: %@",urlString);
         
-        NSURL *url = [NSURL fileURLWithPath:urlString];
+        NSURL *url = [NSURL URLWithString:urlString];
         
-        if ( [[NSFileManager defaultManager] fileExistsAtPath:[url path]] )
-        {
-            self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSURLResponse *response = nil;
+        NSData *data = [
+                        NSURLConnection
+                        sendSynchronousRequest : request
+                        returningResponse : &response
+                        error : &error
+                        ];
+        
+        // error
+        NSString *error_str = [error localizedDescription];
+        if (0<[error_str length]) {
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"RequestError"
+                                  message : error_str
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+        }
+                // responseを受け取ったあとの処理
+        NSFileManager *fm = [NSFileManager defaultManager];
+        [fm createFileAtPath:filePath contents:[NSData data] attributes:nil];
+        NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:filePath];
+        [file writeData:data];
+        
+        NSLog(@"path: %@",[paths objectAtIndex:0]);
+        
+        
+        if(fm) {
+            NSLog(@"s:%@",filePath);
+        } else {
+            NSLog(@"f");
+        }
+        
+        
+        //NSString *mp3path = [[NSBundle mainBundle] pathForResource:filePath ofType:nil];
+        
+        NSLog(@"filepath: %@",filePath);
+        
+        NSURL* mp3url = [NSURL fileURLWithPath:filePath];
+        
+        NSLog(@"url: %@",[mp3url absoluteString]);
+
+        if([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
+            self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:mp3url error:&error];
             if ( error != nil )
             {
                 NSLog(@"Error %@", [error localizedDescription]);
             }
-            
-            [self.player prepareToPlay];
+            NSLog(@"prepare to play");
+            if([self.player prepareToPlay]){
+                NSLog(@"s");
+            } else {
+                NSLog(@"f");
+            }
+
             NSLog(@"start playing");
             [self.player play];
+        } else {
+            NSLog(@"failed playing");
         }
-        
-        NSLog(@"failed playing");
 
-        */
+        
         
     }
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
