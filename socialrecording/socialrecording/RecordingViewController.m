@@ -18,6 +18,7 @@
 @synthesize session;
 @synthesize recorder;
 @synthesize player;
+@synthesize toko_id = _toko_id;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -179,6 +180,9 @@
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
         [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
         [request addValue:cookie forHTTPHeaderField:@"X-CSRFToken"];
+        
+        //パラメータはContent-Dispositionに入れる(らしい)
+        NSString *param = [NSString stringWithFormat:@"token=\"%@\"; odai_id=\"%@\"",token];
         
         NSMutableData *body = [NSMutableData data];
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
