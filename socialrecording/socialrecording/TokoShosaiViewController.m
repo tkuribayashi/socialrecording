@@ -8,6 +8,7 @@
 
 #import "TokoShosaiViewController.h"
 #import "RetrieveJson.h"
+#import "RecordingViewController.h"
 
 @interface TokoShosaiViewController ()
 
@@ -220,6 +221,14 @@
     [label setText:[NSString stringWithFormat:@"いいね%@件",iine]];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"TokoShosaiToRecording"]) {
+        RecordingViewController *viewController = (RecordingViewController*)[segue destinationViewController];
+        viewController.toko_id = _toko_id;
+        NSLog(@"id=%@",_toko_id);
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -228,5 +237,6 @@
 }
 
 - (IBAction)button_recording_tapped:(id)sender {
+    [self performSegueWithIdentifier:@"TokoShosaiToRecording" sender:self];
 }
 @end

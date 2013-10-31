@@ -18,6 +18,7 @@
 @synthesize session;
 @synthesize recorder;
 @synthesize player;
+@synthesize toko_id = _toko_id;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -180,13 +181,29 @@
         [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
         [request addValue:cookie forHTTPHeaderField:@"X-CSRFToken"];
         
+        //パラメータはContent-Dispositionに入れる(らしい)
+        NSString *param = [NSString stringWithFormat:@"token=%@&odai_id=%@",@"dummy",self.toko_id];
+        
+        NSLog(@"param: %@",param);
+        NSLog(@"toko_id: %@", self.toko_id);
+        
+        
         NSMutableData *body = [NSMutableData data];
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Disposition: form-data; name=\"token\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData: [@"dummy" dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Disposition: form-data; name=\"odai_id\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData: [[NSString stringWithFormat:@"%@",self.toko_id] dataUsingEncoding:NSUTF8StringEncoding]];
+        
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Disposition: form-data; name=\"userfile\"; filename=\".caf\"\r\n"dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n"dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Disposition: form-data; name=\"userfile\"; filename=\".caf\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[NSData dataWithData:voiceData]];
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
-        
+
         [request setHTTPBody:body];
         
         NSError *error = nil;
