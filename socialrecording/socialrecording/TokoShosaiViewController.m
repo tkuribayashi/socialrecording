@@ -107,7 +107,7 @@
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
 
-        NSString *filePath = [NSString stringWithFormat:@"%@/Caches/temp.mp3",[paths objectAtIndex:0]];
+        NSString *filePath = [NSString stringWithFormat:@"%@/Caches/temp.caf",[paths objectAtIndex:0]];
         
         NSString *reqFilePath = self.voice_data[indexPath.row][@"vfile"];
         NSLog(@"%@",reqFilePath);
