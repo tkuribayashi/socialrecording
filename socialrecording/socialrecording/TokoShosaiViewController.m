@@ -225,7 +225,7 @@
     if ([[segue identifier] isEqualToString:@"TokoShosaiToRecording"]) {
         RecordingViewController *viewController = (RecordingViewController*)[segue destinationViewController];
         viewController.toko_id = _toko_id;
-        viewController.toko_name = @"aa";//お題タイトル
+        viewController.toko_name = self.toko_data[@"name"];
         NSLog(@"id=%@",_toko_id);
     }
 }
