@@ -8,6 +8,7 @@
 
 #import "TokoShosaiViewController.h"
 #import "RetrieveJson.h"
+#import "RecordingViewController.h"
 
 @interface TokoShosaiViewController ()
 
@@ -218,6 +219,14 @@
     
     label = (UILabel *)[cell viewWithTag:4];
     [label setText:[NSString stringWithFormat:@"いいね%@件",iine]];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"Shosai"]) {
+        RecordingViewController *viewController = (RecordingViewController*)[segue destinationViewController];
+        viewController.toko_id = _toko_id;
+        NSLog(@"id=%@",_toko_id);
+    }
 }
 
 
