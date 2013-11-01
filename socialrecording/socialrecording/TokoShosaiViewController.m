@@ -87,13 +87,6 @@
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
     
-    
-    //いいねボタンのタグをセット
-    NSInteger voice_id = [self.voice_data[indexPath.row][@"id"] intValue];
-    
-    UIButton *likebutton = (UIButton *)[cell viewWithTag:5];
-    [likebutton setTag:voice_id];
-    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -223,17 +216,25 @@
 
 
 /* いいねボタンタップ */
--(void)like_button_tapped:(id)sender{
+- (IBAction)like_button_tapped:(id)sender forEvent:(UIEvent *)event {
     if (like_flag){
-        NSString *voice_id = [NSString stringWithFormat:@"%d",[sender tag]];
+        NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+        NSString *voice_id = self.voice_data[indexPath.row][@"id"];
         NSLog(@"like num: %@",voice_id);
-
+        
         
         RetrieveJson *json = [[RetrieveJson alloc]init];
         [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
-
+        
         like_flag = NO;
     }
+}
+// UIControlEventからタッチ位置のindexPathを取得する
+- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint p = [touch locationInView:self.table];
+    NSIndexPath *indexPath = [self.table indexPathForRowAtPoint:p];
+    return indexPath;
 }
 
 

@@ -24,8 +24,7 @@
 @property (nonatomic) UIImage *playing_image;
 @property (nonatomic) UIImage *not_playing_image;
 - (IBAction)button_recording_tapped:(id)sender;
-
-- (IBAction)like_button_tapped:(id)sender;
+- (IBAction)like_button_tapped:(id)sender forEvent:(UIEvent *)event;
 
 
 
