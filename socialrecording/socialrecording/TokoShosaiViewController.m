@@ -188,6 +188,11 @@
 
             NSLog(@"start playing");
             [self.player play];
+            
+            /* 再生したらviewをインクリメント */
+            NSString *voice_id = self.voice_data[indexPath.row][@"id"];
+            RetrieveJson *json = [[RetrieveJson alloc]init];
+            [json accessServer:[NSString stringWithFormat:@"voice/%@/view/",voice_id]];
         } else {
             NSLog(@"failed playing");
         }
