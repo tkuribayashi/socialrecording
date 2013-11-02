@@ -8,7 +8,7 @@
 
 #import "AddTokoViewController.h"
 #import "RetrieveJson.h"
-
+#import "RetrieveCookie.h"
 
 @interface AddTokoViewController ()
 
@@ -124,14 +124,93 @@
     //HTTP Request
     //新規投稿
     
-	RetrieveJson *json = [[RetrieveJson alloc]init];
-    
-    
-    
-    
-    
-    self.flag_complete = YES;
-    [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
+    if (genre == -1){
+        NSLog(@"genre not selected");
+        //to do:ジャンル設定しろの旨のアラートを出すように
+    } else {
+        NSString *urlString = @"http://49.212.174.30/sociareco/api/odai/create/"; // You can give your url here for uploading
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+        
+        @try
+        {
+            RetrieveCookie *rc = [[RetrieveCookie alloc]init];
+            
+            /* cookie処理 */
+            NSString *cookie = [rc getcsrftoken];
+            
+            if(cookie==nil){
+                cookie = [rc setcookie];
+            }
+            /* cookie処理ここまで */
+            
+            
+            NSLog(@"cookie: %@",cookie);
+            [request setURL:[NSURL URLWithString:urlString]];
+            [request setHTTPMethod:@"POST"];
+            NSString *boundary = @"---------------------------14737809831466499882746641449";
+            NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+            [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+            [request addValue:cookie forHTTPHeaderField:@"X-CSRFToken"];
+            
+            NSMutableData *body = [NSMutableData data];
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"Content-Disposition: form-data; name=\"token\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData: [@"hogehoge" dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"Content-Disposition: form-data; name=\"name\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData: [[NSString stringWithFormat:@"%@",name] dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"Content-Disposition: form-data; name=\"comment\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData: [[NSString stringWithFormat:@"%@",comment] dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            
+            
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"Content-Disposition: form-data; name=\"tag_id\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData: [[NSString stringWithFormat:@"%d",genre] dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            [request setHTTPBody:body];
+            
+            NSError *error = nil;
+            NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+            NSString *returnString = [[NSString alloc]initWithData:returnData encoding:NSUTF8StringEncoding];
+            UIAlertView *alert = nil;
+            if(error)
+            {
+                alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"Error in Uploading the odai" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            }
+            else
+            {
+                NSLog(@"Success %@",returnString);
+                alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"Odai get uploaded" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            }
+            [alert show];
+            //[alert release];
+            alert = nil;
+            //[returnString release];
+            returnString = nil;
+            boundary = nil;
+            contentType = nil;
+            body = nil;
+        }
+        @catch (NSException * exception)
+        {
+            NSLog(@"pushLoader in ViewController :Caught %@ : %@",[exception name],[exception reason]);
+        }
+        @finally
+        {
+            urlString = nil;
+        }
+        
+        
+        self.flag_complete = YES;
+        [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
+    }
 }
 
 @end

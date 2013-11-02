@@ -14,7 +14,7 @@
 
 @implementation RetrieveJson
 
-/* JSONを返すAPIにアクセス */
+/* JSON(Array)を返すAPIにアクセス */
 - (NSMutableArray *)retrieveJson:(NSString *)param{
 	NSLog(@"%s %@", __func__, param);
     // 引数からURLを生成
@@ -32,7 +32,7 @@
     NSLog(@"request ready");
     //結果をNSDataで受け取る
     NSData *data = [ NSURLConnection sendSynchronousRequest:request returningResponse: nil error: nil ];
-    NSLog(@"received json");
+    NSLog(@"received json (array)");
     //NSStringに変換(クオテーション処理)
     NSString *jsonstring = [[[NSString alloc] initWithBytes: [data bytes] length:[data length] encoding: NSNonLossyASCIIStringEncoding] stringByReplacingOccurrencesOfString: @"&quot;" withString: @"\""];
     NSLog(@"%@", jsonstring);
@@ -44,11 +44,12 @@
     json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
     
     //NSLog(@"JSON:%@",json);
+
     
     return json;
 }
 
-/* JSONを返すAPIにアクセス */
+/* JSON(Dictionary)を返すAPIにアクセス */
 - (NSMutableDictionary *)retrieveJsonDictionary:(NSString *)param{
 	NSLog(@"%s %@", __func__, param);
     // 引数からURLを生成
@@ -66,7 +67,7 @@
     NSLog(@"request ready");
     //結果をNSDataで受け取る
     NSData *data = [ NSURLConnection sendSynchronousRequest:request returningResponse: nil error: nil ];
-    NSLog(@"received json");
+    NSLog(@"received json (dictionary)");
     //NSStringに変換(クオテーション処理)
     NSString *jsonstring = [[[NSString alloc] initWithBytes: [data bytes] length:[data length] encoding: NSNonLossyASCIIStringEncoding] stringByReplacingOccurrencesOfString: @"&quot;" withString: @"\""];
     NSLog(@"%@", jsonstring);
