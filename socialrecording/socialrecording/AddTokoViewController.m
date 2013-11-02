@@ -123,14 +123,27 @@
     
     //HTTP Request
     //新規投稿
-    
-    if (genre == -1){
+    if ([[name stringByTrimmingCharactersInSet:
+          [NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]){
+        NSLog(@"odai null");
+        //お題入力しろの旨のアラート
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"お題を入力してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        alert = nil;
+    } else if (genre == -1){
         NSLog(@"genre not selected");
         //ジャンル設定しろの旨のアラート
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"ジャンルを設定してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         alert = nil;
-
+    } else if ([[comment stringByTrimmingCharactersInSet:
+                 [NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]){
+        NSLog(@"comment null");
+        //コメント入力しろの旨のアラート
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"コメントを入力してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        alert = nil;
+        
     } else {
         NSString *urlString = @"http://49.212.174.30/sociareco/api/odai/create/"; // You can give your url here for uploading
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
@@ -192,18 +205,18 @@
             {
                 NSLog(@"Success %@",returnString);
                 alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"お題が投稿されました" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                            }
-            [alert show];
-            //[alert release];
-            alert = nil;
-            //[returnString release];
-            returnString = nil;
-            boundary = nil;
-            contentType = nil;
-            body = nil;
-            self.flag_complete = YES;
-            
-            [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
+                [alert show];
+                //[alert release];
+                alert = nil;
+                //[returnString release];
+                returnString = nil;
+                boundary = nil;
+                contentType = nil;
+                body = nil;
+                self.flag_complete = YES;
+                
+                [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
+            }
         }
         @catch (NSException * exception)
         {
