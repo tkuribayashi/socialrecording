@@ -114,8 +114,6 @@
     
     [self set_load_statusWithOn:YES];
     //HTTP Request
-    //self.table_data = [@[@"aa",@"bb",@"cc",@"dd",@"ee",@"ff",@"gg",@"hh"] mutableCopy];
-    
 	json = [[RetrieveJson alloc]init];
     
     NSString *param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
@@ -136,17 +134,17 @@
 
 - (IBAction)search_button_tapped:(id)sender {
     [self.search_bar resignFirstResponder];
-    [UIToggleView animationSelectWithSelectView:self.search_view downview:self.table_view callback:^{}];
+    [UIToggleView animationSelectWithSelectView:self.search_view downview:self.table callback:^{}];
 }
 
 - (IBAction)sort_button_tapped:(id)sender {
     [self.search_bar resignFirstResponder];
-    [UIToggleView animationSelectWithSelectView:self.sort_view downview:self.table_view callback:^{}];
+    [UIToggleView animationSelectWithSelectView:self.sort_view downview:self.table callback:^{}];
 }
 
 - (IBAction)genre_button_tapped:(id)sender {
     [self.search_bar resignFirstResponder];
-    [UIToggleView animationSelectWithSelectView:self.genre_view downview:self.table_view callback:^{}];
+    [UIToggleView animationSelectWithSelectView:self.genre_view downview:self.table callback:^{}];
 }
 -(void)search_select_button_tapped:(id)sender{
     if(self.search_view.is_animating == YES ||
@@ -355,9 +353,10 @@
                                 options:UIViewAnimationOptionCurveLinear
                              animations:^{
                              } completion:^(BOOL finished) {
-                                 CGRect table_frame = self.table_view.frame;
+                                 CGRect table_frame = self.table.frame;
                                  table_frame.origin.y += view.frame.size.height;
-                                 self.table_view.frame = table_frame;
+                                 table_frame.size.height -= view.frame.size.height;
+                                 self.table.frame = table_frame;
                              }];
         }
     }

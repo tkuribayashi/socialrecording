@@ -66,8 +66,10 @@
     CGRect downview_end_frame = downview.frame;
     if(self.is_hidden == YES){
         downview_end_frame.origin.y += self.original_frame.size.height;
+        downview_end_frame.size.height -= self.original_frame.size.height;
     }else{
         downview_end_frame.origin.y -= self.original_frame.size.height;
+        downview_end_frame.size.height += self.original_frame.size.height;
     }
     
     self.is_animating = YES;
@@ -92,9 +94,6 @@
                          self.is_animating = NO;
                          callback();
                      }];
-}
-+ (BOOL)animationToggle{
-    return YES;
 }
 + (void)animationSelectWithSelectView:(UIToggleView *)target_view downview:(UIView *)downview callback:(void(^)())callback{
     UIView *superview = target_view.superview;
