@@ -112,18 +112,13 @@
     NSString *comment = self.text_comment.text;
     int genre = -1;
     int i = 0;
+    //genreチェック無し=(genre=-1)萌え=0→8 ものまね=1→7 早口言葉=2→2
+    int genre_converter[] = {8,7,2};
     for (UIToggleButton *button in self.buttons_genre) {
         if(button.is_on){
-            genre = i;
+            genre = genre_converter[i];
         }
         i++;
-    }
-    
-    //genreチェック無し=(genre=-1)萌え=0→8 ものまね=1→7 早口言葉=2→2
-    if (genre == 0){
-        genre = 8;
-    } else if(genre == 1){
-        genre = 7;
     }
     
     //HTTP Request
