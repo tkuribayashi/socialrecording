@@ -33,6 +33,7 @@
 		319824381806A73400796825 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824171806A73400796825 /* UIKit.framework */; };
 		319824401806A73400796825 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3198243E1806A73400796825 /* InfoPlist.strings */; };
 		319824421806A73400796825 /* socialrecordingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 319824411806A73400796825 /* socialrecordingTests.m */; };
+		31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31BB2AC8182600A70043A48D /* SVProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		3198243D1806A73400796825 /* socialrecordingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "socialrecordingTests-Info.plist"; sourceTree = "<group>"; };
 		3198243F1806A73400796825 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		319824411806A73400796825 /* socialrecordingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = socialrecordingTests.m; sourceTree = "<group>"; };
+		31BB2AC7182600A70043A48D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		31BB2AC8182600A70043A48D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,8 @@
 				0DD43512181163B3001DF5A1 /* UIToggleButton.m */,
 				31859E34182257F700DDDBC1 /* RetrieveCookie.h */,
 				31859E35182257F700DDDBC1 /* RetrieveCookie.m */,
+				31BB2AC7182600A70043A48D /* SVProgressHUD.h */,
+				31BB2AC8182600A70043A48D /* SVProgressHUD.m */,
 			);
 			path = socialrecording;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				0DE813EC182630D90088CDF4 /* SeiyuShosaiViewController.m in Sources */,
 				319824201806A73400796825 /* main.m in Sources */,
 				0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */,
+				31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */,
 				0DDBE553181FBDCD00E5FAB7 /* CompleteAddTokoViewController.m in Sources */,
 				0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */,
 				0DE813E918261EB60088CDF4 /* SeiyuViewController.m in Sources */,

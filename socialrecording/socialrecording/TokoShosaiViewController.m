@@ -10,6 +10,7 @@
 #import "RetrieveJson.h"
 #import "RecordingViewController.h"
 #import "SeiyuShosaiViewController.h"
+#import "SVProgressHUD.h"
 
 @interface TokoShosaiViewController ()
 
@@ -90,15 +91,17 @@
     
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{    UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
     UIImageView *image_view = (UIImageView *)[cell viewWithTag:2];
     if( indexPath.row == self.playing_number ){
         self.playing_number = -1;
         [image_view setImage:self.not_playing_image];
+        [self.player stop];
     }else{
+        [SVProgressHUD show];//くるくる
+        [self.view setNeedsDisplay];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+
         if( self.playing_number != -1 ){
             UITableViewCell *cell2 = [self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
             UIImageView *image_view2 = (UIImageView *)[cell2 viewWithTag:2];
@@ -107,10 +110,9 @@
         [image_view setImage:self.playing_image];
         self.playing_number = indexPath.row;
         
-        //HTTP Request
-        //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
         
-        // request
+        //HTTP Request
+        //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。        // request
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
 
@@ -197,7 +199,8 @@
         } else {
             NSLog(@"failed playing");
         }
-
+        
+        [SVProgressHUD dismiss];//くるくる
         
         
     }

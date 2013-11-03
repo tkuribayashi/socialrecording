@@ -9,6 +9,7 @@
 #import "AddTokoViewController.h"
 #import "RetrieveJson.h"
 #import "RetrieveCookie.h"
+#import "SVProgressHUD.h"
 
 @interface AddTokoViewController ()
 
@@ -112,24 +113,46 @@
     NSString *comment = self.text_comment.text;
     int genre = -1;
     int i = 0;
+    //genreチェック無し=(genre=-1)萌え=0→8 ものまね=1→7 早口言葉=2→2
+    int genre_converter[] = {8,7,2};
     for (UIToggleButton *button in self.buttons_genre) {
         if(button.is_on){
-            genre = i;
+            genre = genre_converter[i];
         }
         i++;
     }
     
-    //未入力チェックよろしく　genreチェック無し=(genre=-1)萌え=0 ものまね=1 早口言葉=2
-    
     //HTTP Request
     //新規投稿
-    
-    if (genre == -1){
+    if ([[name stringByTrimmingCharactersInSet:
+          [NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]){
+        NSLog(@"odai null");
+        //お題入力しろの旨のアラート
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"お題を入力してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        alert = nil;
+    } else if (genre == -1){
         NSLog(@"genre not selected");
-        //to do:ジャンル設定しろの旨のアラートを出すように
+        //ジャンル設定しろの旨のアラート
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"ジャンルを設定してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        alert = nil;
+    } else if ([[comment stringByTrimmingCharactersInSet:
+                 [NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]){
+        NSLog(@"comment null");
+        //コメント入力しろの旨のアラート
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"コメントを入力してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        alert = nil;
+        
     } else {
         NSString *urlString = @"http://49.212.174.30/sociareco/api/odai/create/"; // You can give your url here for uploading
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+        
+        [SVProgressHUD show];//くるくる表示
+        [self.view setNeedsDisplay];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+
         
         @try
         {
@@ -180,23 +203,28 @@
             NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
             NSString *returnString = [[NSString alloc]initWithData:returnData encoding:NSUTF8StringEncoding];
             UIAlertView *alert = nil;
-            if(error)
+            if(error || [returnString rangeOfString:@"failed"].length>0)
             {
-                alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"Error in Uploading the odai" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"お題投稿に失敗しました" delegate:nil cancelButtonTitle:@"残念" otherButtonTitles:nil];
             }
             else
             {
                 NSLog(@"Success %@",returnString);
-                alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"Odai get uploaded" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                            }
-            [alert show];
-            //[alert release];
-            alert = nil;
-            //[returnString release];
-            returnString = nil;
-            boundary = nil;
-            contentType = nil;
-            body = nil;
+                alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"お題が投稿されました" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+                //[alert release];
+                alert = nil;
+                //[returnString release];
+                returnString = nil;
+                boundary = nil;
+                contentType = nil;
+                body = nil;
+                self.flag_complete = YES;
+                
+                [SVProgressHUD dismiss];//くるくる消える
+                
+                [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
+            }
         }
         @catch (NSException * exception)
         {
@@ -207,9 +235,6 @@
             urlString = nil;
         }
         
-        
-        self.flag_complete = YES;
-        [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "RecordingViewController.h"
 #import "RetrieveCookie.h"
+#import "SVProgressHUD.h"
 
 @interface RecordingViewController ()
 
@@ -155,6 +156,10 @@
 }
 
 - (IBAction)button_send_tapped:(id)sender {
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+
 
     NSString *dir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [dir stringByAppendingPathComponent:@"test.caf"];
@@ -246,5 +251,6 @@
         pathURL = nil;
         urlString = nil;
     }
+    [SVProgressHUD dismiss];//くるくる
 }
 @end

@@ -17,6 +17,7 @@
 @implementation TokoViewController {
     RetrieveJson *json;
     NSString *querytext;
+    NSString *param;
     int target;
     int sort;
     int genre;
@@ -116,7 +117,7 @@
     //HTTP Request
 	json = [[RetrieveJson alloc]init];
     
-    NSString *param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
+    param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
     
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
@@ -173,7 +174,6 @@
     /* 並び替えとジャンルの選択状態を取得*/
     sort = [self getSort];
     
-    NSString *param;
     if (querytext == NULL && genre == 0){//検索クエリがNULLかつジャンル指定がない場合はsortのみ設定
         param = [NSString stringWithFormat:@"odai/search/?target=%d&sort=%d&page=0",target,sort];
     } else {
@@ -276,7 +276,6 @@
         querytext = NULL;
     }
     
-    NSString *param;
     if (genre != 0){
         param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];
     } else {
@@ -368,7 +367,14 @@
         if(!self.flg_load_record){
             [self set_load_statusWithOn:YES];
             //HTTP Request
-            //同じ条件下での更なるデータを追加
+            //同じ条件下での更なるデータを追加(pageをインクリメント)
+            NSRange range = [param rangeOfString:@"page="];
+            int page = [[param substringFromIndex:range.location+range.length] intValue];
+            NSLog(@"current page: %d",page);
+            param = [param stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"page=%d",page] withString:[NSString stringWithFormat:@"page=%d",page+1]];
+            [self.table_data addObjectsFromArray:[json retrieveJson:param]];
+            
+            
             [self.table reloadData];
             [self set_load_statusWithOn:NO];
         }
