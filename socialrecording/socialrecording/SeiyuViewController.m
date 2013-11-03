@@ -1,20 +1,19 @@
 //
-//  TokoViewController.m
+//  SeiyuViewController.m
 //  socialrecording
 //
-//  Created by 丹後 偉也 on 2013/10/17.
+//  Created by 丹後 偉也 on 2013/11/03.
 //  Copyright (c) 2013年 taku. All rights reserved.
 //
 
-#import "TokoViewController.h"
+#import "SeiyuViewController.h"
 #import "RetrieveJson.h"
-#import "TokoShosaiViewController.h"
-
-@interface TokoViewController ()
+#import "SeiyuShosaiViewController.h"
+@interface SeiyuViewController ()
 
 @end
 
-@implementation TokoViewController {
+@implementation SeiyuViewController{
     RetrieveJson *json;
     NSString *querytext;
     int target;
@@ -39,28 +38,23 @@
     //////////////////////////////////////////////////
     self.search_view = [[UIToggleView alloc] initWithFrame:CGRectMake(0, 94, 320, 74) sync_toggle_button:self.search_button];
     [self.view addSubview:self.search_view];
-
-    self.search_odai_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.search_odai_button setFrame:CGRectMake(0, 0, 106, 30)];
-    [self.search_odai_button setTitle:@"お題" forState:UIControlStateNormal];
-    [self.search_odai_button setTag:0];
-    [self.search_odai_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.search_view addSubview:self.search_odai_button];
-    [self.search_odai_button toggle];
     
-    self.search_tag_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.search_tag_button setFrame:CGRectMake(106, 0, 107, 30)];
-    [self.search_tag_button setTitle:@"タグ" forState:UIControlStateNormal];
-    [self.search_tag_button setTag:1];
-    [self.search_tag_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.search_view addSubview:self.search_tag_button];
-    
-    self.search_seiyu_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.search_seiyu_button setFrame:CGRectMake(213, 0, 107, 30)];
-    [self.search_seiyu_button setTitle:@"声優" forState:UIControlStateNormal];
-    [self.search_seiyu_button setTag:2];
-    [self.search_seiyu_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.search_view addSubview:self.search_seiyu_button];
+    NSArray *search_button_titles = @[@"指定無し", @"男", @"女"];
+    int button_height = 30;
+    int button_width = self.view.frame.size.width/[search_button_titles count];
+    for (int i = 0; i < [search_button_titles count]; i++) {
+        NSString *title = search_button_titles[i];
+        CGRect button_frame =CGRectMake(button_width*i, 0, button_width, button_height);
+        UIToggleButton *button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
+        [button setTitle:title forState:UIControlStateNormal];
+        [button setFrame:button_frame];
+        [button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
+        [button setTag:i];
+        if(i == 0){
+            [button toggle];
+        }
+        [self.search_view addSubview:button];
+    }
     
     self.search_bar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 30, 320, 44)];
     [self.search_bar setDelegate:self];
@@ -72,8 +66,7 @@
     self.sort_view = [[UIToggleView alloc] initWithFrame:CGRectMake(0, 94, 320, 150) sync_toggle_button:self.sort_button];
     [self.view addSubview:self.sort_view];
     
-    NSArray *sort_button_titles = @[@"新しい投稿順",@"古い投稿順",@"いいねが多い順",@"いいねが少ない順",@"再生数が多い順",@"再生数が少ない順",@"ボイスが多い順",@"ボイスが少ない順",@"新しいボイス順",@"古いボイス順"];
-    int button_height = 30;
+    NSArray *sort_button_titles = @[@"新しい登録順",@"古い登録順",@"総いいねが多い順",@"総いいねが少ない順",@"ボイスが多い順",@"ボイスが少ない順",@"新しいボイス順",@"古いボイス順",@"総視聴者数が多い順",@"総視聴者数が少ない順"];
     for (int i = 0; i < [sort_button_titles count]; i++) {
         NSString *title = sort_button_titles[i];
         CGRect button_frame =CGRectMake(160*(i%2), button_height * (i / 2), 160, button_height);
@@ -112,7 +105,6 @@
     self.table.delegate = self;
     self.table.dataSource = self;
     
-    [self set_load_statusWithOn:YES];
     //HTTP Request
 	json = [[RetrieveJson alloc]init];
     
@@ -123,7 +115,6 @@
     
     NSLog(@"data retrieval and display done");
     
-    [self set_load_statusWithOn:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -195,18 +186,15 @@
             search_target = button.tag;
         }
     }
-    [self set_load_statusWithOn:YES];
     
     querytext = searchBar.text;
     target = search_target;
     
     [self searchWithQuery];
     
+    
     [self.table reloadData];
     [self search_button_tapped:self.search_button];
-    
-    [self set_load_statusWithOn:NO];
-    
     
     [searchBar resignFirstResponder];
 }
@@ -229,14 +217,12 @@
     [self sort_button_tapped:self.sort_button];
     
     
-    [self set_load_statusWithOn:YES];
     //HTTP Request
     //更新　sort、genre変数を用いる
     [self searchWithQuery];
-
+    
     
     [self.table reloadData];
-    [self set_load_statusWithOn:NO];
 }
 
 -(void)genre_select_button_tapped:(id)sender{
@@ -260,7 +246,6 @@
     
     [self genre_button_tapped:self.genre_button];
     
-    [self set_load_statusWithOn:YES];
     //HTTP Request
     //更新　sort、genre変数を用いる
     
@@ -286,9 +271,8 @@
     self.table_data = [json retrieveJson:param];
     
     NSLog(@"data retrieval and display done");
-
+    
     [self.table reloadData];
-    [self set_load_statusWithOn:NO];
 }
 
 
@@ -317,7 +301,7 @@
     return [self.table_data count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *cellIdentifier = @"toko_cell";
+    NSString *cellIdentifier = @"seiyu_cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -328,17 +312,13 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.toko_data = self.table_data[indexPath.row];
-    _toko_id = (NSString *)self.table_data[indexPath.row][@"id"];
-    [self performSegueWithIdentifier:@"TokoToShosai" sender:self];
+    self.seiyu_data = self.table_data[indexPath.row];
+    [self performSegueWithIdentifier:@"SeiyuToSeiyuShosai" sender:self];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([[segue identifier] isEqualToString:@"TokoToShosai"]) {
-        TokoShosaiViewController *viewController = (TokoShosaiViewController*)[segue destinationViewController];
-        viewController.toko_id = _toko_id;
-        NSLog(@"id=%@",_toko_id);
-
-        viewController.toko_data = self.toko_data;
+    if ([[segue identifier] isEqualToString:@"SeiyuToSeiyuShosai"]) {
+        SeiyuShosaiViewController *viewController = (SeiyuShosaiViewController*)[segue destinationViewController];
+        viewController.seiyu_id = [self.seiyu_data[@"id"] stringValue];
     }
 }
 - (void) viewWillAppear:(BOOL)animated {
@@ -365,28 +345,20 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){
-        if(!self.flg_load_record){
-            [self set_load_statusWithOn:YES];
-            //HTTP Request
-            //同じ条件下での更なるデータを追加
-            [self.table reloadData];
-            [self set_load_statusWithOn:NO];
-        }
+        //HTTP Request
+        //同じ条件下での更なるデータを追加
+        [self.table reloadData];
     }else if(self.table.contentOffset.y <= 70){
-        if(!self.flg_load_record){
-            [self set_load_statusWithOn:YES];
-            //HTTP Request
-            //同じ条件下でのデータを更新
-            [self.table reloadData];
-            [self set_load_statusWithOn:NO];
-        }
-        
+        //HTTP Request
+        //同じ条件下でのデータを更新
+        [self.table reloadData];
     }
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSString *title = self.table_data[indexPath.row][@"name"];
     NSString *iine = [NSString stringWithFormat:@"合計いいね %@件" , self.table_data[indexPath.row][@"votes"]];
     NSString *posts =[NSString stringWithFormat:@"ボイス %@件" , self.table_data[indexPath.row][@"posts"]];
+    NSString *view_num =[NSString stringWithFormat:@"総視聴者数 %@回" , self.table_data[indexPath.row][@"posts"]];
     
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
@@ -394,32 +366,12 @@
     
     label = (UILabel *)[cell viewWithTag:2];
     [label setText:iine];
-
+    
     label = (UILabel *)[cell viewWithTag:3];
     [label setText:posts];
-
-}
-- (void)set_load_statusWithOn:(BOOL)on{
-    self.flg_load_record = on;
-    if(!self.view_load){
-        self.view_load = [[UIView alloc] initWithFrame: self.view.frame];
-        [self.view_load setBackgroundColor:[UIColor grayColor]];
-        [self.view_load setAlpha:0.7f];
-        [self.view addSubview:self.view_load];
-        
-        UIActivityIndicatorView  *indicator =
-        [[UIActivityIndicatorView alloc]
-         initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [indicator setFrame: self.view.frame];
-        [indicator startAnimating];
-        [self.view_load addSubview:indicator];
-    }
-    if(self.flg_load_record){
-        //ボタンが押せないようView表示
-        self.view_load.hidden = NO;
-    }else{
-        //View非表示
-        self.view_load.hidden = YES;
-    }
+    
+    label = (UILabel *)[cell viewWithTag:4];
+    [label setText:view_num];
+    
 }
 @end

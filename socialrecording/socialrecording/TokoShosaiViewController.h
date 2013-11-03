@@ -25,12 +25,14 @@
 @property (nonatomic) UIImage *not_playing_image;
 - (IBAction)button_recording_tapped:(id)sender;
 - (IBAction)like_button_tapped:(id)sender forEvent:(UIEvent *)event;
+- (IBAction)button_seiyu_tapped:(id)sender forEvent:(UIEvent *)event;
 
 
 
 
 @property (nonatomic, copy) NSDictionary *toko_data;
 @property (nonatomic) NSString *toko_id;
+@property (nonatomic) NSString *seiyu_id;
 @property (nonatomic) NSMutableArray *voice_data;
 @property (nonatomic) BOOL flg_load_record;
 @property (nonatomic) int playing_number;@end

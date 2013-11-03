@@ -9,6 +9,7 @@
 #import "TokoShosaiViewController.h"
 #import "RetrieveJson.h"
 #import "RecordingViewController.h"
+#import "SeiyuShosaiViewController.h"
 
 @interface TokoShosaiViewController ()
 
@@ -234,6 +235,13 @@
         like_flag = NO;
     }
 }
+
+- (IBAction)button_seiyu_tapped:(id)sender forEvent:(UIEvent *)event {
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    //************************声優のIDを送るようにすること************************
+    self.seiyu_id = self.voice_data[indexPath.row][@"id"];
+    [self performSegueWithIdentifier:@"TokoShosaiToSeiyuShosai" sender:self];
+}
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
@@ -267,6 +275,10 @@
         viewController.toko_id = _toko_id;
         viewController.toko_name = self.toko_data[@"name"];
         NSLog(@"id=%@",_toko_id);
+    }else if([[segue identifier] isEqualToString:@"TokoShosaiToSeiyuShosai"]){
+        SeiyuShosaiViewController *viewController = (SeiyuShosaiViewController*)[segue destinationViewController];
+        viewController.seiyu_id = self.seiyu_id;
+        NSLog(@"id=%@",self.seiyu_id);
     }
 }
 
