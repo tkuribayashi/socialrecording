@@ -9,6 +9,7 @@
 #import "AddTokoViewController.h"
 #import "RetrieveJson.h"
 #import "RetrieveCookie.h"
+#import "SVProgressHUD.h"
 
 @interface AddTokoViewController ()
 
@@ -148,6 +149,11 @@
         NSString *urlString = @"http://49.212.174.30/sociareco/api/odai/create/"; // You can give your url here for uploading
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
         
+        [SVProgressHUD show];//くるくる表示
+        [self.view setNeedsDisplay];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+
+        
         @try
         {
             RetrieveCookie *rc = [[RetrieveCookie alloc]init];
@@ -214,6 +220,8 @@
                 contentType = nil;
                 body = nil;
                 self.flag_complete = YES;
+                
+                [SVProgressHUD dismiss];//くるくる消える
                 
                 [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
             }
