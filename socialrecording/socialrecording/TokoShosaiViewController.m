@@ -241,8 +241,7 @@
 
 - (IBAction)button_seiyu_tapped:(id)sender forEvent:(UIEvent *)event {
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    //************************声優のIDを送るようにすること************************
-    self.seiyu_id = self.voice_data[indexPath.row][@"id"];
+    self.seiyu_id = self.voice_data[indexPath.row][@"user_id"];
     [self performSegueWithIdentifier:@"TokoShosaiToSeiyuShosai" sender:self];
 }
 // UIControlEventからタッチ位置のindexPathを取得する
