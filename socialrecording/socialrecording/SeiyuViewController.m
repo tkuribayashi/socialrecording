@@ -16,9 +16,9 @@
 @implementation SeiyuViewController{
     RetrieveJson *json;
     NSString *querytext;
-    int target;
-    int sort;
-    int genre;
+    NSString *param;
+
+    NSString *gender;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -108,7 +108,7 @@
     //HTTP Request
 	json = [[RetrieveJson alloc]init];
     
-    NSString *param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
+    param = @"user/search/?sort=0&page=0";//初期は新着順、ジャンル指定無しで表示
     
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
@@ -162,17 +162,28 @@
 	json = [[RetrieveJson alloc]init];
     
     /* 並び替えとジャンルの選択状態を取得*/
-    sort = [self getSort];
+    int sort = [self getSort];
+    int genre = [self getGenre];
     
-    NSString *param;
-    if (querytext == NULL && genre == 0){//検索クエリがNULLかつジャンル指定がない場合はsortのみ設定
-        param = [NSString stringWithFormat:@"odai/search/?target=%d&sort=%d&page=0",target,sort];
-    } else {
-        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];
+    //検索クエリがNULLかつジャンル指定がない場合はsortのみ設定
+    param = [NSString stringWithFormat:@"user/search/?sort=%d&page=0",sort];
+    if (genre !=0){//ジャンル指定がされている場合はcを設定
+        param = [param stringByAppendingString:[NSString stringWithFormat:@"&c=%d",genre]];
+    }
+    if (querytext != NULL){//検索クエリが入力されている場合はqueryを設定
+        param = [param stringByAppendingString:[NSString stringWithFormat:@"&query=%@",querytext]];
     }
     
+    if (querytext != NULL && gender != NULL){//検索クエリが入力されていてgenderが指定されている場合はgenderを設定
+        param = [param stringByAppendingString:[NSString stringWithFormat:@"&gender=%@",gender]];
+    }
     //APIアクセスでJSONを取得
-    self.table_data = [json retrieveJson:param];
+    @try {
+        self.table_data = [json retrieveJson:param];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"[ERROR]\nexception[%@]", exception);
+    }
     
     NSLog(@"data retrieval and display done");
 }
@@ -187,8 +198,10 @@
         }
     }
     
+    NSString *gender_select[] ={NULL,@"M",@"F"};
+    
     querytext = searchBar.text;
-    target = search_target;
+    gender = gender_select[search_target];
     
     [self searchWithQuery];
     
@@ -247,26 +260,9 @@
     [self genre_button_tapped:self.genre_button];
     
     //HTTP Request
-    //更新　sort、genre変数を用いる
     
-    sort = [self getSort];
-    genre = [self getGenre];
-    target = 2;
-    
-    NSArray *genre_button_titles = @[@"指定無し",@"萌え",@"モノマネ",@"早口言葉"];
-    
-    if (genre != 0){
-        querytext = genre_button_titles[genre];
-    } else {
-        querytext = NULL;
-    }
-    
-    NSString *param;
-    if (genre != 0){
-        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];
-    } else {
-        param = [NSString stringWithFormat:@"odai/search/?sort=%d&page=0",sort];
-    }
+    [self searchWithQuery];
+
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
     
@@ -286,12 +282,15 @@
     }
     return 0;
 }
--(int)getGenre{
+-(int)getGenre{//genre選択→2:早口言葉、7:モノマネ、8:萌え
+    int genre_converter[] = {0,8,7,2};
+    
     UIView *view = self.genre_view.subviews[0];
     NSArray *buttons = view.subviews;
     for(UIToggleButton *button in buttons){
         if(button.is_on){
-            return button.tag;
+            //ジャンルボタンが選択されていればそれに該当するジャンル番号を返す。指定なしは0。
+            return genre_converter[button.tag];
         }
     }
     return 0;

@@ -9,6 +9,8 @@
 #import "TokoViewController.h"
 #import "RetrieveJson.h"
 #import "TokoShosaiViewController.h"
+#import "SVProgressHUD.h"
+
 
 @interface TokoViewController ()
 
@@ -50,14 +52,14 @@
     self.search_tag_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
     [self.search_tag_button setFrame:CGRectMake(106, 0, 107, 30)];
     [self.search_tag_button setTitle:@"タグ" forState:UIControlStateNormal];
-    [self.search_tag_button setTag:1];
+    [self.search_tag_button setTag:2];
     [self.search_tag_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.search_view addSubview:self.search_tag_button];
     
     self.search_seiyu_button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
     [self.search_seiyu_button setFrame:CGRectMake(213, 0, 107, 30)];
     [self.search_seiyu_button setTitle:@"声優" forState:UIControlStateNormal];
-    [self.search_seiyu_button setTag:2];
+    [self.search_seiyu_button setTag:1];
     [self.search_seiyu_button addTarget:self action:@selector(search_select_button_tapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.search_view addSubview:self.search_seiyu_button];
     
@@ -182,9 +184,15 @@
         param = [param stringByAppendingString:[NSString stringWithFormat:@"&query=%@&target=%d",querytext,target]];
     }
     //APIアクセスでJSONを取得
-    self.table_data = [json retrieveJson:param];
+    @try {
+        self.table_data = [json retrieveJson:param];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"[ERROR]\nexception[%@]", exception);
+    }
     
     NSLog(@"data retrieval and display done");
+    
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -265,25 +273,6 @@
     
     [self searchWithQuery];
 
-    /* to be deleted
-    sort = [self getSort];
-    genre = [self getGenre];
-    target = 2;
-    
-    
-    NSArray *genre_button_titles = @[@"指定無し",@"萌え",@"モノマネ",@"早口言葉"];
-    
-    if (genre != 0){
-        querytext = genre_button_titles[genre];
-    } else {
-        querytext = NULL;
-    }
-    
-    if (genre != 0){
-        param = [NSString stringWithFormat:@"odai/search/?query=%@&target=%d&sort=%d&page=0",querytext,target,sort];
-    } else {
-        param = [NSString stringWithFormat:@"odai/search/?sort=%d&page=0",sort];
-    }*/
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
     
