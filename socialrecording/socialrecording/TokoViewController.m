@@ -14,6 +14,9 @@
 
 @interface TokoViewController ()
 
+//キーボードを外タップで閉じるために追加
+@property(nonatomic, strong) UITapGestureRecognizer *singleTap;
+
 @end
 
 @implementation TokoViewController {
@@ -34,6 +37,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    //キーボードを外タップで閉じるために追加
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
+    self.singleTap.delegate = self;
+    self.singleTap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.singleTap];
+
     
     //////////////////////////////////////////////////
     ////////////////////サーチビュー////////////////////
@@ -147,6 +158,24 @@
     [self.search_bar resignFirstResponder];
     [UIToggleView animationSelectWithSelectView:self.genre_view downview:self.table callback:^{}];
 }
+
+//キーボードを外タップで閉じるために追加
+-(void)onSingleTap:(UITapGestureRecognizer *)recognizer {
+    [self.search_bar resignFirstResponder];
+}
+-(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (gestureRecognizer == self.singleTap) {
+        // キーボード表示中のみ有効
+        if (self.search_bar.isFirstResponder){
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+
 -(void)search_select_button_tapped:(id)sender{
     if(self.search_view.is_animating == YES ||
        self.sort_view  .is_animating == YES ||
@@ -166,6 +195,12 @@
 
 /* 検索を行うメソッド */
 - (void)searchWithQuery{
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+
+    
+    
     //HTTP Request
     //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
     
@@ -193,6 +228,7 @@
     
     NSLog(@"data retrieval and display done");
     
+    [SVProgressHUD dismiss];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -209,6 +245,8 @@
     querytext = searchBar.text;
     target = search_target;
     
+    [searchBar resignFirstResponder];
+    
     [self searchWithQuery];
     
     [self.table reloadData];
@@ -217,7 +255,6 @@
     [self set_load_statusWithOn:NO];
     
     
-    [searchBar resignFirstResponder];
 }
 -(void)sort_select_button_tapped:(id)sender{
     if(self.search_view.is_animating == YES ||

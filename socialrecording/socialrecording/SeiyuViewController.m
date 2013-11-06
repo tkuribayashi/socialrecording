@@ -9,8 +9,11 @@
 #import "SeiyuViewController.h"
 #import "RetrieveJson.h"
 #import "SeiyuShosaiViewController.h"
+#import "SVProgressHUD.h"
 @interface SeiyuViewController ()
 
+//キーボードを外タップで閉じるために追加
+@property(nonatomic, strong) UITapGestureRecognizer *singleTap;
 @end
 
 @implementation SeiyuViewController{
@@ -32,6 +35,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    //キーボードを外タップで閉じるために追加
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
+    self.singleTap.delegate = self;
+    self.singleTap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.singleTap];
+    
     
     //////////////////////////////////////////////////
     ////////////////////サーチビュー////////////////////
@@ -117,6 +128,25 @@
     
 }
 
+
+//キーボードを外タップで閉じるために追加
+-(void)onSingleTap:(UITapGestureRecognizer *)recognizer {
+    [self.search_bar resignFirstResponder];
+}
+-(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (gestureRecognizer == self.singleTap) {
+        // キーボード表示中のみ有効
+        if (self.search_bar.isFirstResponder){
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -156,6 +186,11 @@
 
 /* 検索を行うメソッド */
 - (void)searchWithQuery{
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+
     //HTTP Request
     //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
     
@@ -186,6 +221,7 @@
     }
     
     NSLog(@"data retrieval and display done");
+    [SVProgressHUD dismiss];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
