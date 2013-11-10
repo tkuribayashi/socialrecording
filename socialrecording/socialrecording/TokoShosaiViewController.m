@@ -120,7 +120,8 @@
         
         
         //HTTP Request
-        //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。        // request
+        //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
+        // request
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
 
@@ -250,6 +251,13 @@
         [like_flag replaceObjectAtIndex:indexPath.row withObject:flag];
         NSLog(@"like_flag: %@ (%@)",like_flag[indexPath.row],flag);
         NSLog(@"%@",like_flag);
+        
+        //いいねタップで表示をインクリメント
+        int like = [self.voice_data[indexPath.row][@"votes"] intValue]+1;
+        UITableView *tableview = self.table;
+        UITableViewCell *cell = [tableview cellForRowAtIndexPath:indexPath];
+        UILabel *label = (UILabel *)[cell viewWithTag:4];
+        [label setText:[NSString stringWithFormat:@"いいね%d件",like]];
     }
 }
 
@@ -297,7 +305,6 @@
         NSLog(@"id=%@",self.seiyu_id);
     }
 }
-
 
 - (void)didReceiveMemoryWarning
 {
