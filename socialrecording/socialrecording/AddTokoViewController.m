@@ -159,7 +159,7 @@
             RetrieveCookie *rc = [[RetrieveCookie alloc]init];
             
             /* cookie処理 */
-            NSString *cookie = [rc getcsrftoken];
+            NSString *cookie = nil;//[rc getcsrftoken];
             
             if(cookie==nil){
                 cookie = [rc setcookie];
@@ -176,9 +176,9 @@
             [request addValue:cookie forHTTPHeaderField:@"X-CSRFToken"];
             
             NSMutableData *body = [NSMutableData data];
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+            /*[body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Disposition: form-data; name=\"token\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData: [@"hogehoge" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData: [@"hogehoge" dataUsingEncoding:NSUTF8StringEncoding]];*/
             
             
             [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];

@@ -34,7 +34,7 @@
 - (NSString *)setcookie {
     
     // リクエストを作成し、送信します
-    NSString *urlString = @"http://49.212.174.30/sociareco/api/cookie/";
+    NSString *urlString = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/login/?token=%@",[self getUUID]];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request  queue:[[NSOperationQueue alloc] init]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -55,4 +55,20 @@
     return self.getcsrftoken; //csrfトークンの値を返す
 }
 
+-(NSString*)getUUID{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *my_token = (NSString *)[ud objectForKey:@"my_token"];
+    if (my_token) {
+        return my_token;
+    }else{
+        //create a new UUID
+        CFUUIDRef uuidObj = CFUUIDCreate(nil);
+        //get the string representation of the UUID
+        NSString *uuidString = (NSString*)CFBridgingRelease(CFUUIDCreateString(nil, uuidObj));
+        [ud setObject:uuidString forKey:@"my_token"];
+        [ud synchronize];
+        CFRelease(uuidObj);
+        return uuidString;
+    }
+}
 @end

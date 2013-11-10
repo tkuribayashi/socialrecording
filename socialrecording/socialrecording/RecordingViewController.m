@@ -197,9 +197,9 @@
         
         
         NSMutableData *body = [NSMutableData data];
-        [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+        /*[body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[@"Content-Disposition: form-data; name=\"token\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData: [@"hogehoge" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData: [@"hogehoge" dataUsingEncoding:NSUTF8StringEncoding]];*/
         
         
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
