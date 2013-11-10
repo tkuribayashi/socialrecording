@@ -11,6 +11,7 @@
 		0D121319181A559C00AB1C92 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D121318181A559C00AB1C92 /* RecordingViewController.m */; };
 		0D72F14E181D71B5004CEA03 /* CompleteRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F14D181D71B5004CEA03 /* CompleteRecordingViewController.m */; };
 		0D72F151181D7702004CEA03 /* AddTokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F150181D7702004CEA03 /* AddTokoViewController.m */; };
+		0DBC44C91830485300B1EA6C /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBC44C81830485300B1EA6C /* MyPageViewController.m */; };
 		0DD4350D180FA9EF001DF5A1 /* TokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */; };
 		0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350F1810F480001DF5A1 /* UIToggleView.m */; };
 		0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD43512181163B3001DF5A1 /* UIToggleButton.m */; };
@@ -55,6 +56,8 @@
 		0D72F14D181D71B5004CEA03 /* CompleteRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteRecordingViewController.m; sourceTree = "<group>"; };
 		0D72F14F181D7702004CEA03 /* AddTokoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTokoViewController.h; sourceTree = "<group>"; };
 		0D72F150181D7702004CEA03 /* AddTokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTokoViewController.m; sourceTree = "<group>"; };
+		0DBC44C71830485300B1EA6C /* MyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPageViewController.h; sourceTree = "<group>"; };
+		0DBC44C81830485300B1EA6C /* MyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPageViewController.m; sourceTree = "<group>"; };
 		0DD4350B180FA9EF001DF5A1 /* TokoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokoViewController.h; sourceTree = "<group>"; };
 		0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokoViewController.m; sourceTree = "<group>"; };
 		0DD4350E1810F480001DF5A1 /* UIToggleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIToggleView.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				0D72F150181D7702004CEA03 /* AddTokoViewController.m */,
 				0DDBE551181FBDCD00E5FAB7 /* CompleteAddTokoViewController.h */,
 				0DDBE552181FBDCD00E5FAB7 /* CompleteAddTokoViewController.m */,
+				0DBC44C71830485300B1EA6C /* MyPageViewController.h */,
+				0DBC44C81830485300B1EA6C /* MyPageViewController.m */,
 				319824251806A73400796825 /* Main.storyboard */,
 				310B78BB1819451100BE54F3 /* RetrieveJson.h */,
 				310B78BC1819451100BE54F3 /* RetrieveJson.m */,
@@ -319,6 +324,7 @@
 				0D121319181A559C00AB1C92 /* RecordingViewController.m in Sources */,
 				0D72F151181D7702004CEA03 /* AddTokoViewController.m in Sources */,
 				319824241806A73400796825 /* AppDelegate.m in Sources */,
+				0DBC44C91830485300B1EA6C /* MyPageViewController.m in Sources */,
 				310B78BD1819451100BE54F3 /* RetrieveJson.m in Sources */,
 				0D72F14E181D71B5004CEA03 /* CompleteRecordingViewController.m in Sources */,
 				0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */,
