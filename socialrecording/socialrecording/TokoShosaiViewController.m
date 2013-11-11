@@ -17,7 +17,7 @@
 @end
 
 @implementation TokoShosaiViewController {
-    BOOL like_flag;
+    NSMutableArray *like_flag;
 }
 
 @synthesize session;
@@ -37,7 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    like_flag = YES;
+
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -76,6 +76,14 @@
     //self.voice_data = [@[@"test1",@"test2",@"test3",@"test4"] mutableCopy];
     self.voice_data = toko_shosai[@"voices"];
     
+    
+    //いいね！ができるかどうかのフラグの初期化
+    like_flag =[[NSMutableArray alloc] init];
+    for (int i=0;i<self.voice_data.count;i++){
+        NSNumber *flag = [NSNumber numberWithBool:YES];
+        [like_flag addObject:flag];
+    }
+
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.voice_data count];
@@ -112,7 +120,8 @@
         
         
         //HTTP Request
-        //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。        // request
+        //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
+        // request
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
 
@@ -226,8 +235,10 @@
 
 /* いいねボタンタップ */
 - (IBAction)like_button_tapped:(id)sender forEvent:(UIEvent *)event {
-    if (like_flag){
-        NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"like_flag: %@",like_flag[indexPath.row]);
+
+    if ([like_flag[indexPath.row] boolValue]){
         NSString *voice_id = self.voice_data[indexPath.row][@"id"];
         NSLog(@"like num: %@",voice_id);
         
@@ -235,7 +246,18 @@
         RetrieveJson *json = [[RetrieveJson alloc]init];
         [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
         
-        like_flag = NO;
+        NSNumber *flag = [[NSNumber alloc] initWithBool:NO];
+        
+        [like_flag replaceObjectAtIndex:indexPath.row withObject:flag];
+        NSLog(@"like_flag: %@ (%@)",like_flag[indexPath.row],flag);
+        NSLog(@"%@",like_flag);
+        
+        //いいねタップで表示をインクリメント
+        int like = [self.voice_data[indexPath.row][@"votes"] intValue]+1;
+        UITableView *tableview = self.table;
+        UITableViewCell *cell = [tableview cellForRowAtIndexPath:indexPath];
+        UILabel *label = (UILabel *)[cell viewWithTag:4];
+        [label setText:[NSString stringWithFormat:@"いいね%d件",like]];
     }
 }
 
@@ -283,7 +305,6 @@
         NSLog(@"id=%@",self.seiyu_id);
     }
 }
-
 
 - (void)didReceiveMemoryWarning
 {
