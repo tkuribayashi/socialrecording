@@ -644,7 +644,7 @@
         <!--My Page View Controller - マイページ-->
         <scene sceneID="ldL-os-YrU">
             <objects>
-                <viewController title="マイページ" id="vwa-IS-iJV" customClass="MyPageViewController" sceneMemberID="viewController">
+                <viewController title="マイページ" automaticallyAdjustsScrollViewInsets="NO" id="vwa-IS-iJV" customClass="MyPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wOE-Me-9zl"/>
                         <viewControllerLayoutGuide type="bottom" id="pxw-UV-ge3"/>
@@ -653,33 +653,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-lW-WIJ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-lW-WIJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="sJj-Ix-01a"/>
+                                    <constraint firstAttribute="height" constant="50" id="csC-lF-W4m"/>
                                 </constraints>
                             </scrollView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6v-cN-b1X">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="-1" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6v-cN-b1X">
                                 <rect key="frame" x="0.0" y="114" width="320" height="405"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="r6v-cN-b1X" firstAttribute="leading" secondItem="71o-2K-T0y" secondAttribute="leading" id="Agp-qu-A8k"/>
-                            <constraint firstItem="EDa-lW-WIJ" firstAttribute="leading" secondItem="71o-2K-T0y" secondAttribute="leading" id="GFt-x3-28G"/>
-                            <constraint firstItem="pxw-UV-ge3" firstAttribute="top" secondItem="r6v-cN-b1X" secondAttribute="bottom" id="NTn-P2-6jV"/>
-                            <constraint firstItem="r6v-cN-b1X" firstAttribute="top" secondItem="EDa-lW-WIJ" secondAttribute="bottom" id="NWh-hn-eKB"/>
-                            <constraint firstAttribute="trailing" secondItem="r6v-cN-b1X" secondAttribute="trailing" id="PJg-gS-7FS"/>
-                            <constraint firstAttribute="trailing" secondItem="EDa-lW-WIJ" secondAttribute="trailing" id="bca-Wo-6ee"/>
-                            <constraint firstItem="EDa-lW-WIJ" firstAttribute="top" secondItem="wOE-Me-9zl" secondAttribute="bottom" id="fSJ-au-7Gb"/>
+                            <constraint firstItem="r6v-cN-b1X" firstAttribute="leading" secondItem="71o-2K-T0y" secondAttribute="leading" id="380-sG-al6"/>
+                            <constraint firstAttribute="trailing" secondItem="EDa-lW-WIJ" secondAttribute="trailing" id="AKA-Qt-P8C"/>
+                            <constraint firstItem="r6v-cN-b1X" firstAttribute="top" secondItem="EDa-lW-WIJ" secondAttribute="bottom" id="JeU-4Q-EkR"/>
+                            <constraint firstItem="EDa-lW-WIJ" firstAttribute="top" secondItem="wOE-Me-9zl" secondAttribute="bottom" id="WMo-Li-Zns"/>
+                            <constraint firstAttribute="trailing" secondItem="r6v-cN-b1X" secondAttribute="trailing" id="arN-XX-lNc"/>
+                            <constraint firstItem="EDa-lW-WIJ" firstAttribute="leading" secondItem="71o-2K-T0y" secondAttribute="leading" id="uW5-yE-zny"/>
+                            <constraint firstItem="pxw-UV-ge3" firstAttribute="top" secondItem="r6v-cN-b1X" secondAttribute="bottom" id="xC1-7q-Ij6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="マイページ" id="zLG-YB-Fs8"/>
                     <connections>
                         <outlet property="scroll_content" destination="r6v-cN-b1X" id="RB1-gJ-uhY"/>
                         <outlet property="scroll_title" destination="EDa-lW-WIJ" id="Xs2-GK-GVe"/>
+                        <segue destination="Nsc-z7-y80" kind="push" identifier="MyPageToTokoShosai" id="p0m-e4-vZS"/>
+                        <segue destination="uEq-Kn-OW0" kind="push" identifier="MyPageToSeiyuShosai" id="8vP-Cu-nLu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4x-oR-Mt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1062,7 +1064,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YeT-bd-dt6"/>
-        <segue reference="cAf-5W-2cP"/>
+        <segue reference="p0m-e4-vZS"/>
+        <segue reference="8vP-Cu-nLu"/>
     </inferredMetricsTieBreakers>
 </document>

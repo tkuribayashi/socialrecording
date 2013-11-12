@@ -9,9 +9,15 @@
 /* Begin PBXBuildFile section */
 		0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D121315181A25A400AB1C92 /* TokoShosaiViewController.m */; };
 		0D121319181A559C00AB1C92 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D121318181A559C00AB1C92 /* RecordingViewController.m */; };
+		0D2939421832300C00E5F056 /* VoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2939411832300C00E5F056 /* VoiceCell.xib */; };
+		0D29394518323B5900E5F056 /* VoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D29394418323B5900E5F056 /* VoiceCell.m */; };
+		0D29394718324D9A00E5F056 /* SeiyuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D29394618324D9A00E5F056 /* SeiyuCell.xib */; };
+		0D29394A18324DA800E5F056 /* SeiyuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D29394918324DA800E5F056 /* SeiyuCell.m */; };
 		0D72F14E181D71B5004CEA03 /* CompleteRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F14D181D71B5004CEA03 /* CompleteRecordingViewController.m */; };
 		0D72F151181D7702004CEA03 /* AddTokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F150181D7702004CEA03 /* AddTokoViewController.m */; };
 		0DBC44C91830485300B1EA6C /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBC44C81830485300B1EA6C /* MyPageViewController.m */; };
+		0DBC44CB1831302200B1EA6C /* MypageTokoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DBC44CA1831302200B1EA6C /* MypageTokoCell.xib */; };
+		0DBC44CE1831315900B1EA6C /* MypageTokoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBC44CD1831315900B1EA6C /* MypageTokoCell.m */; };
 		0DD4350D180FA9EF001DF5A1 /* TokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */; };
 		0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350F1810F480001DF5A1 /* UIToggleView.m */; };
 		0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD43512181163B3001DF5A1 /* UIToggleButton.m */; };
@@ -52,12 +58,21 @@
 		0D121315181A25A400AB1C92 /* TokoShosaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokoShosaiViewController.m; sourceTree = "<group>"; };
 		0D121317181A559C00AB1C92 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
 		0D121318181A559C00AB1C92 /* RecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingViewController.m; sourceTree = "<group>"; };
+		0D2939411832300C00E5F056 /* VoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceCell.xib; sourceTree = "<group>"; };
+		0D29394318323B5900E5F056 /* VoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceCell.h; sourceTree = "<group>"; };
+		0D29394418323B5900E5F056 /* VoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceCell.m; sourceTree = "<group>"; };
+		0D29394618324D9A00E5F056 /* SeiyuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeiyuCell.xib; sourceTree = "<group>"; };
+		0D29394818324DA800E5F056 /* SeiyuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeiyuCell.h; sourceTree = "<group>"; };
+		0D29394918324DA800E5F056 /* SeiyuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeiyuCell.m; sourceTree = "<group>"; };
 		0D72F14C181D71B5004CEA03 /* CompleteRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteRecordingViewController.h; sourceTree = "<group>"; };
 		0D72F14D181D71B5004CEA03 /* CompleteRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteRecordingViewController.m; sourceTree = "<group>"; };
 		0D72F14F181D7702004CEA03 /* AddTokoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTokoViewController.h; sourceTree = "<group>"; };
 		0D72F150181D7702004CEA03 /* AddTokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTokoViewController.m; sourceTree = "<group>"; };
 		0DBC44C71830485300B1EA6C /* MyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPageViewController.h; sourceTree = "<group>"; };
 		0DBC44C81830485300B1EA6C /* MyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPageViewController.m; sourceTree = "<group>"; };
+		0DBC44CA1831302200B1EA6C /* MypageTokoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MypageTokoCell.xib; sourceTree = "<group>"; };
+		0DBC44CC1831315900B1EA6C /* MypageTokoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MypageTokoCell.h; sourceTree = "<group>"; };
+		0DBC44CD1831315900B1EA6C /* MypageTokoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MypageTokoCell.m; sourceTree = "<group>"; };
 		0DD4350B180FA9EF001DF5A1 /* TokoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokoViewController.h; sourceTree = "<group>"; };
 		0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokoViewController.m; sourceTree = "<group>"; };
 		0DD4350E1810F480001DF5A1 /* UIToggleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIToggleView.h; sourceTree = "<group>"; };
@@ -121,6 +136,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D2939401832015B00E5F056 /* cellxib */ = {
+			isa = PBXGroup;
+			children = (
+				0DBC44CA1831302200B1EA6C /* MypageTokoCell.xib */,
+				0DBC44CC1831315900B1EA6C /* MypageTokoCell.h */,
+				0DBC44CD1831315900B1EA6C /* MypageTokoCell.m */,
+				0D2939411832300C00E5F056 /* VoiceCell.xib */,
+				0D29394318323B5900E5F056 /* VoiceCell.h */,
+				0D29394418323B5900E5F056 /* VoiceCell.m */,
+				0D29394618324D9A00E5F056 /* SeiyuCell.xib */,
+				0D29394818324DA800E5F056 /* SeiyuCell.h */,
+				0D29394918324DA800E5F056 /* SeiyuCell.m */,
+			);
+			name = cellxib;
+			sourceTree = "<group>";
+		};
 		319824071806A73400796825 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +219,7 @@
 				31859E35182257F700DDDBC1 /* RetrieveCookie.m */,
 				31BB2AC7182600A70043A48D /* SVProgressHUD.h */,
 				31BB2AC8182600A70043A48D /* SVProgressHUD.m */,
+				0D2939401832015B00E5F056 /* cellxib */,
 			);
 			path = socialrecording;
 			sourceTree = "<group>";
@@ -300,9 +332,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D2939421832300C00E5F056 /* VoiceCell.xib in Resources */,
 				3198242F1806A73400796825 /* Images.xcassets in Resources */,
 				3198241E1806A73400796825 /* InfoPlist.strings in Resources */,
 				319824271806A73400796825 /* Main.storyboard in Resources */,
+				0DBC44CB1831302200B1EA6C /* MypageTokoCell.xib in Resources */,
+				0D29394718324D9A00E5F056 /* SeiyuCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D121319181A559C00AB1C92 /* RecordingViewController.m in Sources */,
+				0DBC44CE1831315900B1EA6C /* MypageTokoCell.m in Sources */,
 				0D72F151181D7702004CEA03 /* AddTokoViewController.m in Sources */,
 				319824241806A73400796825 /* AppDelegate.m in Sources */,
 				0DBC44C91830485300B1EA6C /* MyPageViewController.m in Sources */,
@@ -329,7 +365,9 @@
 				0D72F14E181D71B5004CEA03 /* CompleteRecordingViewController.m in Sources */,
 				0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */,
 				0DD4350D180FA9EF001DF5A1 /* TokoViewController.m in Sources */,
+				0D29394A18324DA800E5F056 /* SeiyuCell.m in Sources */,
 				0DE813EC182630D90088CDF4 /* SeiyuShosaiViewController.m in Sources */,
+				0D29394518323B5900E5F056 /* VoiceCell.m in Sources */,
 				319824201806A73400796825 /* main.m in Sources */,
 				0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */,
 				31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */,

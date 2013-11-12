@@ -35,8 +35,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     
     
@@ -133,6 +132,9 @@
     
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
+    
+    UINib *nib = [UINib nibWithNibName:@"MypageTokoCell" bundle:nil];
+    [self.table registerNib:nib forCellReuseIdentifier:@"MypageTokoCell"];
     
     NSLog(@"data retrieval and display done");
     
@@ -349,7 +351,7 @@
     return [self.table_data count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *cellIdentifier = @"toko_cell";
+    NSString *cellIdentifier = @"MypageTokoCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -435,15 +437,11 @@
     NSString *iine = [NSString stringWithFormat:@"合計いいね %@件" , self.table_data[indexPath.row][@"votes"]];
     NSString *posts =[NSString stringWithFormat:@"ボイス %@件" , self.table_data[indexPath.row][@"posts"]];
     
+    MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
+    toko_cell.title_label.text = title;
+    toko_cell.voice_label.text = posts;
+    toko_cell.like_label.text = iine;
     
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
-    [label setText:title];
-    
-    label = (UILabel *)[cell viewWithTag:2];
-    [label setText:iine];
-
-    label = (UILabel *)[cell viewWithTag:3];
-    [label setText:posts];
 
 }
 - (void)set_load_statusWithOn:(BOOL)on{

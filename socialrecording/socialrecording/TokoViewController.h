@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIToggleView.h"
 #import "UIToggleButton.h"
-
+#import "MypageTokoCell.h"
 @interface TokoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>{
     NSString *_toko_id;
 }
