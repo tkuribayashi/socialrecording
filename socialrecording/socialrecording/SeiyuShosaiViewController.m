@@ -8,6 +8,7 @@
 
 #import "SeiyuShosaiViewController.h"
 #import "TokoShosaiViewController.h"
+#import "RetrieveJson.h"
 
 @interface SeiyuShosaiViewController ()
 
@@ -35,14 +36,19 @@
     self.playing_image = [UIImage imageNamed:@"first.png"];
     self.not_playing_image = [UIImage imageNamed:@"second.png"];
     
-    //Comment:self.seiyu_idを用いてデータ取得して、セットして下さい。
+    //ユーザの詳細を取得する
+    RetrieveJson *json = [[RetrieveJson alloc] init];
+    NSString *param = [NSString stringWithFormat:@"user/%@/",self.seiyu_id];
+    NSMutableDictionary *user = [json retrieveJsonDictionary:param];
+    
+    //取得したユーザ詳細を表示部にセットする
     [self.label_name setText:@"声優名"];
-    [self.label_good setText:[NSString stringWithFormat:@"いいね%d件",10]];
-    [self.label_voice setText:[NSString stringWithFormat:@"ボイス%d個",10]];
-    [self.label_watch setText:[NSString stringWithFormat:@"再生数%d回",10]];
-    [self.label_good_rank setText:[NSString stringWithFormat:@"%d位",3]];
-    [self.label_voice_rank setText:[NSString stringWithFormat:@"%d位",3]];
-    [self.label_watch_rank setText:[NSString stringWithFormat:@"%d位",3]];
+    [self.label_good setText:[NSString stringWithFormat:@"いいね%@件",user[@"votes"]]];
+    [self.label_voice setText:[NSString stringWithFormat:@"ボイス%@個",user[@"posts"]]];
+    [self.label_watch setText:[NSString stringWithFormat:@"再生数%@回",user[@"views"]]];
+    [self.label_good_rank setText:[NSString stringWithFormat:@"%@位",user[@"voterank"]]];
+    [self.label_voice_rank setText:[NSString stringWithFormat:@"%@位",user[@"postrank"]]];
+    [self.label_watch_rank setText:[NSString stringWithFormat:@"%@位",user[@"viewrank"]]];
     
     self.table.delegate = self;
     self.table.dataSource = self;
@@ -222,8 +228,10 @@
 
 -(void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
     //Comment:セリフタイトルといいねの個数をセットして下さい
-    NSString *title = self.voice_data[indexPath.row][@"username"];//セリフタイトル
-    NSString *iine = self.voice_data[indexPath.row][@"votes"];//いいねの個数
+    //NSString *title = self.voice_data[indexPath.row][@"username"];//セリフタイトル
+    //NSString *iine = self.voice_data[indexPath.row][@"votes"];//いいねの個数
+    NSString *title = @"10";
+    NSString *iine = @"10";
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     [label setText:title];
