@@ -10,6 +10,7 @@
 #import "RetrieveJson.h"
 #import "TokoShosaiViewController.h"
 #import "SVProgressHUD.h"
+#import "RetrieveCookie.h"
 
 
 @interface TokoViewController ()
@@ -123,8 +124,22 @@
     
     self.table.delegate = self;
     self.table.dataSource = self;
+    UINib *nib = [UINib nibWithNibName:@"MypageTokoCell" bundle:nil];
+    [self.table registerNib:nib forCellReuseIdentifier:@"MypageTokoCell"];
     
-    [self set_load_statusWithOn:YES];
+    
+    NSLog(@"data retrieval and display done");
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    RetrieveCookie *rc = [[RetrieveCookie alloc]init];
+    
+    /* ログイン処理 */
+    [rc setcookie];
+    
+
+    
     //HTTP Request
 	json = [[RetrieveJson alloc]init];
     
@@ -132,13 +147,23 @@
     
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
+    [self.table reloadData];
     
-    UINib *nib = [UINib nibWithNibName:@"MypageTokoCell" bundle:nil];
-    [self.table registerNib:nib forCellReuseIdentifier:@"MypageTokoCell"];
+    for (UIToggleView *view in self.view.subviews) {
+        if([view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO){
+            [UIView animateWithDuration:0.0f
+                                  delay:0.0f
+                                options:UIViewAnimationOptionCurveLinear
+                             animations:^{
+                             } completion:^(BOOL finished) {
+                                 CGRect table_frame = self.table.frame;
+                                 table_frame.origin.y += view.frame.size.height;
+                                 table_frame.size.height -= view.frame.size.height;
+                                 self.table.frame = table_frame;
+                             }];
+        }
+    }
     
-    NSLog(@"data retrieval and display done");
-    
-    [self set_load_statusWithOn:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -379,24 +404,6 @@
     newpage = YES;
     [super viewWillAppear:animated];
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
-}
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    for (UIToggleView *view in self.view.subviews) {
-        if([view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO){
-            [UIView animateWithDuration:0.0f
-                                  delay:0.0f
-                                options:UIViewAnimationOptionCurveLinear
-                             animations:^{
-                             } completion:^(BOOL finished) {
-                                 CGRect table_frame = self.table.frame;
-                                 table_frame.origin.y += view.frame.size.height;
-                                 table_frame.size.height -= view.frame.size.height;
-                                 self.table.frame = table_frame;
-                             }];
-        }
-    }
-    
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){
