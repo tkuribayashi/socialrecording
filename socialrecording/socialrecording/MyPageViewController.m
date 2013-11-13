@@ -30,10 +30,26 @@
     [super viewDidLoad];
     //Comment:ここのdataの部分に、それぞれのデータを入れて下さい。
     //データ追加も想定して、データクラスはNSMutableArray,NSMutableDirectionaryが望ましいです。
-    self.contents = @[
+    
+    //マイリストなどの情報はuser情報で得られる
+    RetrieveJson *json = [[RetrieveJson alloc] init];
+    NSString *param = @"user/0/";
+    
+    NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
+    if ([userdata count] == 0){//ユーザデータがない場合はどうする？？？
+        self.contents = @[
                       @{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":@[@"data1",@"data2",@"data3"]},
                       @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":@[@"data1",@"data2",@"data3",@"data4"]},
-                      @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":@[@"data1",@"data2",@"data3"]}];
+                      @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":@[@"data1",@"data2",@"data3"]}
+                      ];
+    } else {
+        self.contents = @[ @{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":userdata[@"OdaiMylist"]},
+                           @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":userdata[@"VoiceMylist"]},
+                           @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":userdata[@"UserMylist"]}
+                           ];
+
+    }
+                     
     for (int i = 0; i < [self.contents count]; i++) {
         UIToggleButton *button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:self.contents[i][@"title"] forState:UIControlStateNormal];
@@ -149,14 +165,14 @@
     NSDictionary *data = self.contents[tag][@"data"][indexPath.row];
     if(tag == 0){
         MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
-        toko_cell.title_label.text = @"お前の中ではな！";
-        toko_cell.voice_label.text = @"ボイス";
-        toko_cell.like_label.text = @"いいね";
+        toko_cell.title_label.text = data[@"name"];
+        toko_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
+        toko_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
     }else if(tag == 1){
         VoiceCell *voice_cell = (VoiceCell *)cell;
-        voice_cell.title_label.text = @"お前の中ではな！";
-        voice_cell.like_label.text = @"いいね";
-        voice_cell.seiyu_label.text = @"田中太郎";
+        voice_cell.title_label.text = data[@"odainame"];
+        voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
+        voice_cell.seiyu_label.text = [NSString stringWithFormat:@"声優: %@",data[@"user_id"]];
         [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
         [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
     }else if(tag==2){
