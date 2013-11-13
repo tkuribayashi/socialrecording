@@ -192,7 +192,7 @@
         [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
     }else if(tableView.tag == 1){
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        UIImageView *image_view = (UIImageView *)[cell viewWithTag:2];
+        UIImageView *image_view = ((VoiceCell *)cell).playing_image;
         if( indexPath.row == self.playing_number ){
             self.playing_number = -1;
             [image_view setImage:self.not_playing_image];
@@ -204,7 +204,7 @@
             
             if( self.playing_number != -1 ){
                 UITableViewCell *cell2 = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
-                UIImageView *image_view2 = (UIImageView *)[cell2 viewWithTag:2];
+                UIImageView *image_view2 = ((VoiceCell *)cell2).playing_image;
                 [image_view2 setImage:self.not_playing_image];
             }
             [image_view setImage:self.playing_image];
