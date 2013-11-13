@@ -548,7 +548,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UA4-Jp-CGm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seiyu_cell" id="UA4-Jp-CGm">
                                         <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UA4-Jp-CGm" id="kWf-Vu-4Ov">
@@ -1064,7 +1064,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="p0m-e4-vZS"/>
         <segue reference="8vP-Cu-nLu"/>
+        <segue reference="cAf-5W-2cP"/>
     </inferredMetricsTieBreakers>
 </document>

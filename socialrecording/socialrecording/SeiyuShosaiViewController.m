@@ -54,7 +54,7 @@
     return [self.voice_data count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *cellIdentifier = @"voice_cell";
+    NSString *cellIdentifier = @"seiyu_cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -222,8 +222,8 @@
 
 -(void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
     //Comment:セリフタイトルといいねの個数をセットして下さい
-    NSString *title = self.voice_data[indexPath.row][@"username"];//セリフタイトル
-    NSString *iine = self.voice_data[indexPath.row][@"votes"];//いいねの個数
+    NSString *title = @"a";//self.voice_data[indexPath.row][@"username"];//セリフタイトル
+    NSString *iine = @"a";//self.voice_data[indexPath.row][@"votes"];//いいねの個数
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     [label setText:title];
