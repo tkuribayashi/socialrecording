@@ -28,6 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.playing_number = -1;
+    self.playing_image = [UIImage imageNamed:@"first.png"];
+    self.not_playing_image = [UIImage imageNamed:@"second.png"];
+    
     //Comment:ここのdataの部分に、それぞれのデータを入れて下さい。
     //データ追加も想定して、データクラスはNSMutableArray,NSMutableDirectionaryが望ましいです。
     self.contents = @[
