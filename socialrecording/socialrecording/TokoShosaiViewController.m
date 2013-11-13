@@ -42,6 +42,20 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    
+    //HTTP Request
+    //ジャンルの取得、ボイス一覧の取得
+    NSLog(@"received id = %@",self.toko_id);
+    
+	RetrieveJson *json = [[RetrieveJson alloc]init];
+    NSString *param = [NSString stringWithFormat:@"odai/%@/",self.toko_id];
+    
+    NSMutableDictionary *toko_shosai = [json retrieveJsonDictionary:param];
+
+    if (self.toko_data == NULL){
+        self.toko_data = toko_shosai;
+        NSLog(@"name: %@", toko_shosai[@"name"]);
+    }
     [self.label_name setText:self.toko_data[@"name"]];
     [self.text_comment setText:self.toko_data[@"comment"]];
     
@@ -52,15 +66,6 @@
     self.not_playing_image = [UIImage imageNamed:@"first"];
     self.playing_image = [UIImage imageNamed:@"second"];
     
-    //HTTP Request
-    //ジャンルの取得、ボイス一覧の取得
-    NSLog(@"received id = %@",self.toko_id);
-    
-	RetrieveJson *json = [[RetrieveJson alloc]init];
-    NSString *param = [NSString stringWithFormat:@"odai/%@/",self.toko_id];
-    
-    NSMutableDictionary *toko_shosai = [json retrieveJsonDictionary:param];
-    //[self.label_genre setText:@"（ジャンル）"];
     NSString *genre = @"no genre";
     NSArray *tags = toko_shosai[@"tags"];
     

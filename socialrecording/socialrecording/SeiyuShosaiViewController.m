@@ -53,8 +53,7 @@
     self.table.delegate = self;
     self.table.dataSource = self;
     
-    //Comment:声優のボイスデータを入れて下さい。投稿詳細画面と違い、それぞれの投稿名、投稿ID等も必要です。
-    self.voice_data = [@[@"test1",@"test2",@"test3",@"test4",@"test5"] mutableCopy];
+    self.voice_data = user[@"Voices"];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.voice_data count];
@@ -214,8 +213,9 @@
 - (IBAction)button_toko_tapped:(id)sender forEvent:(UIEvent *)event {
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     //Comment:投稿IDと投稿データをセットして下さい
-    self.toko_id = self.voice_data[indexPath.row][@"user_id"];
-    //self.toko_data =
+    self.toko_id = self.voice_data[indexPath.row][@"odai_id"];
+    self.toko_data = NULL;
+    
     [self performSegueWithIdentifier:@"SeiyuShosaiToTokoShosai" sender:self];
 }
 // UIControlEventからタッチ位置のindexPathを取得する
@@ -226,12 +226,8 @@
     return indexPath;
 }
 
--(void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-    //Comment:セリフタイトルといいねの個数をセットして下さい
-    //NSString *title = self.voice_data[indexPath.row][@"username"];//セリフタイトル
-    //NSString *iine = self.voice_data[indexPath.row][@"votes"];//いいねの個数
-    NSString *title = @"10";
-    NSString *iine = @"10";
+-(void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{    NSString *title = self.voice_data[indexPath.row][@"odainame"];//セリフタイトル
+    NSString *iine = self.voice_data[indexPath.row][@"votes"];//いいねの個数
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     [label setText:title];
