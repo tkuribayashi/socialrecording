@@ -183,10 +183,10 @@
         [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
     }else if(tag==2){
         SeiyuCell *seiyu_cell = (SeiyuCell *)cell;
-        seiyu_cell.name_label.text = @"声優名";
-        seiyu_cell.like_label.text = @"いいね";
-        seiyu_cell.voice_label.text = @"ボイス";
-        seiyu_cell.watch_label.text = @"総視聴数";
+        seiyu_cell.name_label.text = [NSString stringWithFormat:@"%@", data[@"name"]];
+        seiyu_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
+        seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
+        seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@回視聴", data[@"views"]];
     }
 }
 -(void)like_button_tapped:(id)sender event:(UIEvent *)event{
@@ -198,6 +198,8 @@
     
     RetrieveJson *json = [[RetrieveJson alloc]init];
     [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
+    
+    
     /*
     //いいねタップで表示をインクリメント
     int like = [self.voice_data[indexpath.row][@"votes"] intValue]+1;
@@ -206,6 +208,7 @@
     UILabel *label = (UILabel *)[cell viewWithTag:4];
     [label setText:[NSString stringWithFormat:@"いいね%d件",like]];
      */
+    
 }
 
 /* ボイスマイリスト→投稿詳細タップ時に投稿詳細に飛ぶ */
@@ -342,7 +345,7 @@
         }
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:NO];
     }else if(tableView .tag == 2){
-        self.seiyu_id = @"1";
+        self.seiyu_id = self.contents[2][@"data"][indexPath.row][@"id"];
         [self performSegueWithIdentifier:@"MyPageToSeiyuShosai" sender:self];
     }
 }
