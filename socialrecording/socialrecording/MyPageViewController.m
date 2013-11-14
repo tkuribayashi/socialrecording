@@ -212,7 +212,7 @@
 -(void)shosai_button_tapped:(id)sender event:(UIEvent *)event{
     NSIndexPath *indexpath = [self indexPathForControlEvent:event];
     
-    self.toko_id = self.contents[1][@"data"][indexpath.row][@"id"];
+    self.toko_id = self.contents[1][@"data"][indexpath.row][@"odai_id"];
     self.toko_data = NULL;
     [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
 }
