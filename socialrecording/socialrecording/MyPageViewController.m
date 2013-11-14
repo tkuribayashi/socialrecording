@@ -178,7 +178,7 @@
         VoiceCell *voice_cell = (VoiceCell *)cell;
         voice_cell.title_label.text = data[@"odainame"];
         voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
-        voice_cell.seiyu_label.text = [NSString stringWithFormat:@"声優: %@",data[@"user_id"]];
+        voice_cell.seiyu_label.text = [NSString stringWithFormat:@"声優: %@",data[@"username"]];
         [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
         [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
     }else if(tag==2){
