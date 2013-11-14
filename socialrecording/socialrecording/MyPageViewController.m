@@ -220,8 +220,8 @@
     //Comment:セル選択した時の動作。それぞれ動作するようにして下さい。
     //tag==0は１ページ目、つまりお気に入り投稿のテーブルです。
     if(tableView.tag == 0){
-        self.toko_id = @"1";
-        self.toko_data = @{};
+        self.toko_id = self.contents[0][@"data"][indexPath.row][@"id"];
+        self.toko_data = NULL;
         [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
     }else if(tableView.tag == 1){
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -253,7 +253,7 @@
             NSString *filePath = [NSString stringWithFormat:@"%@/Caches/temp.caf",[paths objectAtIndex:0]];
             
             //Comment:ボイスデータから取得
-            NSString *reqFilePath = @"";//self.voice_data[indexPath.row][@"vfile"];
+            NSString *reqFilePath = self.contents[1][@"data"][indexPath.row][@"vfile"];
             NSLog(@"%@",reqFilePath);
             
             
@@ -329,7 +329,7 @@
                 
                 /* 再生したらviewをインクリメント */
                 //Comment:ボイスデータから取得
-                NSString *voice_id = @"";//self.voice_data[indexPath.row][@"id"];
+                NSString *voice_id = self.contents[1][@"data"][indexPath.row][@"id"];
                 RetrieveJson *json = [[RetrieveJson alloc]init];
                 [json accessServer:[NSString stringWithFormat:@"voice/%@/view/",voice_id]];
             } else {
