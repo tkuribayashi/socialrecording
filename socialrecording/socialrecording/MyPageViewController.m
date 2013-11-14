@@ -174,6 +174,7 @@
         toko_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
         toko_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
     }else if(tag == 1){
+        NSLog(@"data: %@",data);
         VoiceCell *voice_cell = (VoiceCell *)cell;
         voice_cell.title_label.text = data[@"odainame"];
         voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
@@ -191,13 +192,27 @@
 -(void)like_button_tapped:(id)sender event:(UIEvent *)event{
     NSIndexPath *indexpath = [self indexPathForControlEvent:event];
     //Comment:いいね送信
+    NSString *voice_id = self.contents[1][@"data"][indexpath.row][@"id"];
+    NSLog(@"like num: %@",voice_id);
+    
+    
+    RetrieveJson *json = [[RetrieveJson alloc]init];
+    [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
+    /*
+    //いいねタップで表示をインクリメント
+    int like = [self.voice_data[indexpath.row][@"votes"] intValue]+1;
+    UITableView *tableview = self.table;
+    UITableViewCell *cell = [tableview cellForRowAtIndexPath:indexpath];
+    UILabel *label = (UILabel *)[cell viewWithTag:4];
+    [label setText:[NSString stringWithFormat:@"いいね%d件",like]];
+     */
 }
 
 /* ボイスマイリスト→投稿詳細タップ時に投稿詳細に飛ぶ */
 -(void)shosai_button_tapped:(id)sender event:(UIEvent *)event{
     NSIndexPath *indexpath = [self indexPathForControlEvent:event];
     
-    self.toko_id = self.contents[0][@"data"][indexpath.row][@"id"];
+    self.toko_id = self.contents[1][@"data"][indexpath.row][@"id"];
     self.toko_data = NULL;
     [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
 }
