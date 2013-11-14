@@ -192,11 +192,13 @@
     NSIndexPath *indexpath = [self indexPathForControlEvent:event];
     //Comment:いいね送信
 }
+
+/* ボイスマイリスト→投稿詳細タップ時に投稿詳細に飛ぶ */
 -(void)shosai_button_tapped:(id)sender event:(UIEvent *)event{
     NSIndexPath *indexpath = [self indexPathForControlEvent:event];
-    //Comment:indexpathに従って投稿IDと投稿データを入れて下さい。
-    self.toko_id = @"1";
-    self.toko_data = @{};
+    
+    self.toko_id = self.contents[0][@"data"][indexpath.row][@"id"];
+    self.toko_data = NULL;
     [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
