@@ -131,38 +131,41 @@
     NSLog(@"data retrieval and display done");
 }
 - (void)viewDidAppear:(BOOL)animated{
+    NSLog(@"table data: %d",[self.table_data count]);
+    
     [super viewDidAppear:animated];
     
     RetrieveCookie *rc = [[RetrieveCookie alloc]init];
     
     /* ログイン処理 */
     [rc setcookie];
-
     
-    //HTTP Request
-	json = [[RetrieveJson alloc]init];
     
-    param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
-    
-    //APIアクセスでJSONを取得
-    self.table_data = [json retrieveJson:param];
-    [self.table reloadData];
-    
-    for (UIToggleView *view in self.view.subviews) {
-        if([view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO){
-            [UIView animateWithDuration:0.0f
-                                  delay:0.0f
-                                options:UIViewAnimationOptionCurveLinear
-                             animations:^{
-                             } completion:^(BOOL finished) {
-                                 CGRect table_frame = self.table.frame;
-                                 table_frame.origin.y += view.frame.size.height;
-                                 table_frame.size.height -= view.frame.size.height;
-                                 self.table.frame = table_frame;
-                             }];
+    if([self.table_data count] == 0){//初回のみ一覧をロードするように
+        //HTTP Request
+        json = [[RetrieveJson alloc]init];
+        
+        param = @"odai/search/?sort=0&page=0";//初期は新着ボイス順、ジャンル指定無しで表示
+        
+        //APIアクセスでJSONを取得
+        self.table_data = [json retrieveJson:param];
+        [self.table reloadData];
+        
+        for (UIToggleView *view in self.view.subviews) {
+            if([view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO){
+                [UIView animateWithDuration:0.0f
+                                      delay:0.0f
+                                    options:UIViewAnimationOptionCurveLinear
+                                 animations:^{
+                                 } completion:^(BOOL finished) {
+                                     CGRect table_frame = self.table.frame;
+                                     table_frame.origin.y += view.frame.size.height;
+                                     table_frame.size.height -= view.frame.size.height;
+                                     self.table.frame = table_frame;
+                                 }];
+            }
         }
     }
-    
 }
 
 - (void)didReceiveMemoryWarning
