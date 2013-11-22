@@ -84,7 +84,7 @@
 }
 
 /* JSONを返さないAPI(vote, view etc.)にアクセス */
-- (void)accessServer:(NSString *)param{NSLog(@"%s", __func__);
+- (BOOL)accessServer:(NSString *)param{NSLog(@"%s", __func__);
     // 引数からURLを生成
     NSString *url = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/%@", param];
     NSLog(@"request: %@",url);
@@ -99,7 +99,12 @@
     //NSStringに変換(クオテーション処理)
     NSString *jsonstring = [[NSString alloc] initWithBytes: [data bytes] length:[data length] encoding: NSNonLossyASCIIStringEncoding];
     NSLog(@"%@", jsonstring);
-
+    
+    if ([jsonstring rangeOfString:@"success"].location == NSNotFound){
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 
