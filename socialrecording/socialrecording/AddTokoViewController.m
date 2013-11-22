@@ -43,6 +43,7 @@
     [self.button_edit_end setHidden:YES];
     [self.view addSubview:self.button_edit_end];
     [self.view bringSubviewToFront:self.text_comment];
+    //[self.view bringSubviewToFront:self.];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -89,8 +90,7 @@
     
     [UIView animateWithDuration:0.2f animations:^{
         CGRect frame = self.text_comment.frame;
-        frame.origin.y = 85;
-        frame.size.height = 200;
+        frame.origin.y -= 150;
         self.text_comment.frame = frame;
     }];
     
@@ -102,8 +102,7 @@
     
     [UIView animateWithDuration:0.2f animations:^{
         CGRect frame = self.text_comment.frame;
-        frame.origin.y = 245;
-        frame.size.height = 128;
+        frame.origin.y += 150;
         self.text_comment.frame = frame;
     }];
 }

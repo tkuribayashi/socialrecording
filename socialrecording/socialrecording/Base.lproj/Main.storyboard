@@ -682,11 +682,105 @@
                         <outlet property="scroll_title" destination="EDa-lW-WIJ" id="Xs2-GK-GVe"/>
                         <segue destination="Nsc-z7-y80" kind="push" identifier="MyPageToTokoShosai" id="p0m-e4-vZS"/>
                         <segue destination="uEq-Kn-OW0" kind="push" identifier="MyPageToSeiyuShosai" id="8vP-Cu-nLu"/>
+                        <segue destination="Z7N-m7-eVA" kind="push" identifier="MyPageToCreateSeiyu" id="BVj-GP-1Cg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4x-oR-Mt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1263" y="2082"/>
+        </scene>
+        <!--Create Seiyu View Controller - 声優登録-->
+        <scene sceneID="AHS-Wp-hJc">
+            <objects>
+                <viewController id="Z7N-m7-eVA" customClass="CreateSeiyuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fHv-U9-9k7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jsw-Tp-cF5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ta6-dU-lz4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcc-jn-OUW">
+                                <rect key="frame" x="137" y="262" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="button_ok_tapped:" destination="Z7N-m7-eVA" eventType="touchUpInside" id="WoW-0B-AVe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="声優登録" id="y0C-mo-9um"/>
+                    <connections>
+                        <segue destination="3DR-WU-dNQ" kind="push" identifier="CreateSeiyuToEditSeiyu" id="WOr-gj-pVc"/>
+                        <segue destination="Gb2-IX-UYH" kind="push" id="BnD-Zk-Oip"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXb-Tx-tTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="2082"/>
+        </scene>
+        <!--Edit Seiyu View Controller - 声優情報-->
+        <scene sceneID="wZI-HW-Yhv">
+            <objects>
+                <viewController id="3DR-WU-dNQ" customClass="EditSeiyuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h4W-Xu-lB6"/>
+                        <viewControllerLayoutGuide type="bottom" id="V7x-0f-gtT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dm5-kg-4K8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="声優情報" id="6M5-hY-Ngf"/>
+                    <connections>
+                        <segue destination="Gb2-IX-UYH" kind="push" id="dwb-My-CFy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P80-hf-eqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912" y="2082"/>
+        </scene>
+        <!--Complete Seiyu View Controller - 完了-->
+        <scene sceneID="KeG-kq-ovb">
+            <objects>
+                <viewController id="Gb2-IX-UYH" customClass="CompleteSeiyuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OfW-ut-pKe"/>
+                        <viewControllerLayoutGuide type="bottom" id="9uF-AJ-UIM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9u3-YA-DRD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xib-2o-vcG">
+                                <rect key="frame" x="0.0" y="74" width="320" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="leading" secondItem="9u3-YA-DRD" secondAttribute="leading" id="L5D-zV-Tz8"/>
+                            <constraint firstAttribute="trailing" secondItem="xib-2o-vcG" secondAttribute="trailing" id="g8j-2C-8qQ"/>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="top" secondItem="OfW-ut-pKe" secondAttribute="bottom" constant="10" id="gx6-2h-NvH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="完了" id="wRG-sY-Utd"/>
+                    <connections>
+                        <outlet property="label_message" destination="xib-2o-vcG" id="mMr-NE-OhF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ap-7k-e4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2236" y="2082"/>
         </scene>
         <!--Toko Shosai View Controller - 投稿詳細-->
         <scene sceneID="RSF-zM-DT0">
@@ -1065,6 +1159,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="8vP-Cu-nLu"/>
-        <segue reference="cAf-5W-2cP"/>
+        <segue reference="p0m-e4-vZS"/>
+        <segue reference="dwb-My-CFy"/>
     </inferredMetricsTieBreakers>
 </document>

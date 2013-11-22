@@ -150,20 +150,21 @@
         //APIアクセスでJSONを取得
         self.table_data = [json retrieveJson:param];
         [self.table reloadData];
-        
-        for (UIToggleView *view in self.view.subviews) {
-            if([view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO){
-                [UIView animateWithDuration:0.0f
-                                      delay:0.0f
-                                    options:UIViewAnimationOptionCurveLinear
-                                 animations:^{
-                                 } completion:^(BOOL finished) {
-                                     CGRect table_frame = self.table.frame;
-                                     table_frame.origin.y += view.frame.size.height;
-                                     table_frame.size.height -= view.frame.size.height;
-                                     self.table.frame = table_frame;
-                                 }];
-            }
+    }
+    
+    
+    for (UIToggleView *view in self.view.subviews) {
+        if([view isKindOfClass:[UIToggleView class]] && view.is_hidden == NO){
+            [UIView animateWithDuration:0.0f
+                                  delay:0.0f
+                                options:UIViewAnimationOptionCurveLinear
+                             animations:^{
+                             } completion:^(BOOL finished) {
+                                 CGRect table_frame = self.table.frame;
+                                 table_frame.origin.y += view.frame.size.height;
+                                 table_frame.size.height -= view.frame.size.height;
+                                 self.table.frame = table_frame;
+                             }];
         }
     }
 }
