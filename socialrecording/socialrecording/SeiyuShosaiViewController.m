@@ -42,7 +42,7 @@
     NSMutableDictionary *user = [json retrieveJsonDictionary:param];
     
     //取得したユーザ詳細を表示部にセットする
-    [self.label_name setText:@"声優名"];
+    [self.label_name setText:[NSString stringWithFormat:@"%@",user[@"name"]]];
     [self.label_good setText:[NSString stringWithFormat:@"いいね%@件",user[@"votes"]]];
     [self.label_voice setText:[NSString stringWithFormat:@"ボイス%@個",user[@"posts"]]];
     [self.label_watch setText:[NSString stringWithFormat:@"再生数%@回",user[@"views"]]];
