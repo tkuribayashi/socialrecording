@@ -13,6 +13,9 @@
 
 @interface AddTokoViewController ()
 
+//キーボードを外タップで閉じるために追加
+@property(nonatomic, strong) UITapGestureRecognizer *singleTap;
+
 @end
 
 @implementation AddTokoViewController
@@ -29,6 +32,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
+    //キーボードを外タップで閉じるために追加
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
+    self.singleTap.delegate = self;
+    self.singleTap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.singleTap];
+    
     self.buttons_genre = @[self.toggle_button_1, self.toggle_button_2, self.toggle_button_3];
     
     self.text_comment.layer.borderWidth = 1;
@@ -56,6 +68,11 @@
             }
         }
     }
+}
+
+//キーボードを外タップで閉じるために追加
+-(void)onSingleTap:(UITapGestureRecognizer *)recognizer {
+    [self.text_name resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

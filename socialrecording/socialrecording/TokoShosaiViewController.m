@@ -249,7 +249,7 @@
         
         
         RetrieveJson *json = [[RetrieveJson alloc]init];
-        [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
+        BOOL *result = [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
         
         NSNumber *flag = [[NSNumber alloc] initWithBool:NO];
         
@@ -258,11 +258,13 @@
         NSLog(@"%@",like_flag);
         
         //いいねタップで表示をインクリメント
-        int like = [self.voice_data[indexPath.row][@"votes"] intValue]+1;
-        UITableView *tableview = self.table;
-        UITableViewCell *cell = [tableview cellForRowAtIndexPath:indexPath];
-        UILabel *label = (UILabel *)[cell viewWithTag:4];
-        [label setText:[NSString stringWithFormat:@"いいね%d件",like]];
+        if (result){
+            int like = [self.voice_data[indexPath.row][@"votes"] intValue]+1;
+            UITableView *tableview = self.table;
+            UITableViewCell *cell = [tableview cellForRowAtIndexPath:indexPath];
+            UILabel *label = (UILabel *)[cell viewWithTag:4];
+            [label setText:[NSString stringWithFormat:@"いいね%d件",like]];
+        }
     }
 }
 

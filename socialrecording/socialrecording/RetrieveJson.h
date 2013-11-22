@@ -15,7 +15,7 @@
 
 - (NSMutableArray *)retrieveJson:(NSString *)param;
 - (NSMutableDictionary *)retrieveJsonDictionary:(NSString *)param;
-- (void)accessServer:(NSString *)param;
+- (BOOL)accessServer:(NSString *)param;
 
 
 @end
