@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.label_message.text = self.message;
 }
 
 - (void)didReceiveMemoryWarning

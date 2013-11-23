@@ -10,5 +10,5 @@
 
 @interface CreateSeiyuViewController : UIViewController
 - (IBAction)button_ok_tapped:(id)sender;
-
+@property (nonatomic)BOOL complete_flg;
 @end

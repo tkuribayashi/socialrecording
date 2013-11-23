@@ -10,5 +10,5 @@
 
 @interface CompleteSeiyuViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *label_message;
-
+@property (nonatomic)NSString *message;
 @end
