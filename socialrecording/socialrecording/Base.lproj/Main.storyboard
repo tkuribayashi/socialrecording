@@ -272,6 +272,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="新規投稿" id="0cF-yW-b1g"/>
                     <connections>
+                        <outlet property="label_comment" destination="ALP-Ro-DU9" id="0OE-yW-mnz"/>
+                        <outlet property="label_name" destination="a3s-1q-u1B" id="KH4-8q-95x"/>
                         <outlet property="text_comment" destination="fYM-cB-Paf" id="UI0-X4-9R0"/>
                         <outlet property="text_name" destination="1gO-Mu-9yD" id="Akh-zt-4nk"/>
                         <outlet property="toggle_button_1" destination="kyN-mM-QWo" id="Edt-V3-jHj"/>
@@ -1330,6 +1332,12 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
