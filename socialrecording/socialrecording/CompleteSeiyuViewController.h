@@ -11,4 +11,5 @@
 @interface CompleteSeiyuViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *label_message;
 @property (nonatomic)NSString *message;
+- (IBAction)button_back_tapped:(id)sender;
 @end

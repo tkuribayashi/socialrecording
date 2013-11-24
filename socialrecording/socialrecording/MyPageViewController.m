@@ -203,7 +203,7 @@
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath tag:(int)tag {
     //Comment:dataを使って、ラベル表示させて下さい。
     //tag==0は１ページ目、つまりお気に入り投稿のテーブルのセルです。
-    NSDictionary *data = self.contents[tag][@"data"][indexPath.row];
+    NSDictionary *data = self.contents[tag][@"data"][indexPath.row];return;
     if(tag == 0 ||  tag == 3){
         MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
         toko_cell.title_label.text = data[@"name"];

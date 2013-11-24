@@ -16,7 +16,6 @@
 		0D72F14E181D71B5004CEA03 /* CompleteRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F14D181D71B5004CEA03 /* CompleteRecordingViewController.m */; };
 		0D72F151181D7702004CEA03 /* AddTokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F150181D7702004CEA03 /* AddTokoViewController.m */; };
 		0DABABC1183F639900829F8F /* CreateSeiyuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DABABC0183F639900829F8F /* CreateSeiyuViewController.m */; };
-		0DABABC4183F63B900829F8F /* EditSeiyuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DABABC3183F63B900829F8F /* EditSeiyuViewController.m */; };
 		0DABABC7183F63E900829F8F /* CompleteSeiyuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DABABC6183F63E900829F8F /* CompleteSeiyuViewController.m */; };
 		0DBC44C91830485300B1EA6C /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBC44C81830485300B1EA6C /* MyPageViewController.m */; };
 		0DBC44CB1831302200B1EA6C /* MypageTokoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DBC44CA1831302200B1EA6C /* MypageTokoCell.xib */; };
@@ -75,8 +74,6 @@
 		0D72F150181D7702004CEA03 /* AddTokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTokoViewController.m; sourceTree = "<group>"; };
 		0DABABBF183F639900829F8F /* CreateSeiyuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSeiyuViewController.h; sourceTree = "<group>"; };
 		0DABABC0183F639900829F8F /* CreateSeiyuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSeiyuViewController.m; sourceTree = "<group>"; };
-		0DABABC2183F63B900829F8F /* EditSeiyuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSeiyuViewController.h; sourceTree = "<group>"; };
-		0DABABC3183F63B900829F8F /* EditSeiyuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSeiyuViewController.m; sourceTree = "<group>"; };
 		0DABABC5183F63E900829F8F /* CompleteSeiyuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteSeiyuViewController.h; sourceTree = "<group>"; };
 		0DABABC6183F63E900829F8F /* CompleteSeiyuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteSeiyuViewController.m; sourceTree = "<group>"; };
 		0DBC44C71830485300B1EA6C /* MyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPageViewController.h; sourceTree = "<group>"; };
@@ -223,8 +220,6 @@
 				0DBC44C81830485300B1EA6C /* MyPageViewController.m */,
 				0DABABBF183F639900829F8F /* CreateSeiyuViewController.h */,
 				0DABABC0183F639900829F8F /* CreateSeiyuViewController.m */,
-				0DABABC2183F63B900829F8F /* EditSeiyuViewController.h */,
-				0DABABC3183F63B900829F8F /* EditSeiyuViewController.m */,
 				0DABABC5183F63E900829F8F /* CompleteSeiyuViewController.h */,
 				0DABABC6183F63E900829F8F /* CompleteSeiyuViewController.m */,
 				319824251806A73400796825 /* Main.storyboard */,
@@ -386,7 +381,6 @@
 				0DABABC7183F63E900829F8F /* CompleteSeiyuViewController.m in Sources */,
 				319824241806A73400796825 /* AppDelegate.m in Sources */,
 				0DABABC1183F639900829F8F /* CreateSeiyuViewController.m in Sources */,
-				0DABABC4183F63B900829F8F /* EditSeiyuViewController.m in Sources */,
 				0DBC44C91830485300B1EA6C /* MyPageViewController.m in Sources */,
 				310B78BD1819451100BE54F3 /* RetrieveJson.m in Sources */,
 				0D72F14E181D71B5004CEA03 /* CompleteRecordingViewController.m in Sources */,
