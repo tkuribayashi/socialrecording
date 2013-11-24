@@ -21,6 +21,8 @@
 		0DBC44C91830485300B1EA6C /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBC44C81830485300B1EA6C /* MyPageViewController.m */; };
 		0DBC44CB1831302200B1EA6C /* MypageTokoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DBC44CA1831302200B1EA6C /* MypageTokoCell.xib */; };
 		0DBC44CE1831315900B1EA6C /* MypageTokoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBC44CD1831315900B1EA6C /* MypageTokoCell.m */; };
+		0DC063981841EC1900610ADD /* VoiceCellNoSeiyu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC063971841EC1900610ADD /* VoiceCellNoSeiyu.xib */; };
+		0DC0639B1841EC9A00610ADD /* VoiceCellNoSeiyu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0639A1841EC9A00610ADD /* VoiceCellNoSeiyu.m */; };
 		0DD4350D180FA9EF001DF5A1 /* TokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */; };
 		0DD435101810F480001DF5A1 /* UIToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4350F1810F480001DF5A1 /* UIToggleView.m */; };
 		0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD43512181163B3001DF5A1 /* UIToggleButton.m */; };
@@ -82,6 +84,9 @@
 		0DBC44CA1831302200B1EA6C /* MypageTokoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MypageTokoCell.xib; sourceTree = "<group>"; };
 		0DBC44CC1831315900B1EA6C /* MypageTokoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MypageTokoCell.h; sourceTree = "<group>"; };
 		0DBC44CD1831315900B1EA6C /* MypageTokoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MypageTokoCell.m; sourceTree = "<group>"; };
+		0DC063971841EC1900610ADD /* VoiceCellNoSeiyu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceCellNoSeiyu.xib; sourceTree = "<group>"; };
+		0DC063991841EC9A00610ADD /* VoiceCellNoSeiyu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceCellNoSeiyu.h; sourceTree = "<group>"; };
+		0DC0639A1841EC9A00610ADD /* VoiceCellNoSeiyu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceCellNoSeiyu.m; sourceTree = "<group>"; };
 		0DD4350B180FA9EF001DF5A1 /* TokoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokoViewController.h; sourceTree = "<group>"; };
 		0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokoViewController.m; sourceTree = "<group>"; };
 		0DD4350E1810F480001DF5A1 /* UIToggleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIToggleView.h; sourceTree = "<group>"; };
@@ -154,6 +159,9 @@
 				0D2939411832300C00E5F056 /* VoiceCell.xib */,
 				0D29394318323B5900E5F056 /* VoiceCell.h */,
 				0D29394418323B5900E5F056 /* VoiceCell.m */,
+				0DC063971841EC1900610ADD /* VoiceCellNoSeiyu.xib */,
+				0DC063991841EC9A00610ADD /* VoiceCellNoSeiyu.h */,
+				0DC0639A1841EC9A00610ADD /* VoiceCellNoSeiyu.m */,
 				0D29394618324D9A00E5F056 /* SeiyuCell.xib */,
 				0D29394818324DA800E5F056 /* SeiyuCell.h */,
 				0D29394918324DA800E5F056 /* SeiyuCell.m */,
@@ -350,6 +358,7 @@
 				0D2939421832300C00E5F056 /* VoiceCell.xib in Resources */,
 				3198242F1806A73400796825 /* Images.xcassets in Resources */,
 				3198241E1806A73400796825 /* InfoPlist.strings in Resources */,
+				0DC063981841EC1900610ADD /* VoiceCellNoSeiyu.xib in Resources */,
 				319824271806A73400796825 /* Main.storyboard in Resources */,
 				0DBC44CB1831302200B1EA6C /* MypageTokoCell.xib in Resources */,
 				0D29394718324D9A00E5F056 /* SeiyuCell.xib in Resources */,
@@ -387,6 +396,7 @@
 				0DE813EC182630D90088CDF4 /* SeiyuShosaiViewController.m in Sources */,
 				0D29394518323B5900E5F056 /* VoiceCell.m in Sources */,
 				319824201806A73400796825 /* main.m in Sources */,
+				0DC0639B1841EC9A00610ADD /* VoiceCellNoSeiyu.m in Sources */,
 				0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */,
 				31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */,
 				0DDBE553181FBDCD00E5FAB7 /* CompleteAddTokoViewController.m in Sources */,

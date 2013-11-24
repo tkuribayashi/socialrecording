@@ -45,14 +45,14 @@
                       @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":@[@"data1",@"data2",@"data3",@"data4"]},
                       @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":@[@"data1",@"data2",@"data3"]},
                       @{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":@[@"data1",@"data2",@"data3"]},
-                      @{@"title":@"自分のボイス", @"cell_id":@"VoiceCell", @"data":@[@"data1",@"data2",@"data3"]}
+                      @{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":@[@"data1",@"data2",@"data3"]}
                       ];
     } else {
         self.contents = @[ @{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell",                             @"data":userdata[@"OdaiMylist"]},
                            @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":userdata[@"VoiceMylist"]},
                            @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":userdata[@"UserMylist"]},
                            @{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":userdata[@"OdaiMylist"]},//Comment:データはどこ？
-                           @{@"title":@"自分のボイス", @"cell_id":@"VoiceCell", @"data":userdata[@"VoiceMylist"]}//Comment:データはどこ？
+                           @{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":userdata[@"VoiceMylist"]}//Comment:データはどこ？
                            ];
     }
                      
