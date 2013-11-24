@@ -51,8 +51,8 @@
         self.contents = @[ @{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell",                             @"data":userdata[@"OdaiMylist"]},
                            @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":userdata[@"VoiceMylist"]},
                            @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":userdata[@"UserMylist"]},
-                           @{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":userdata[@"OdaiMylist"]},//Comment:データはどこ？
-                           @{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":userdata[@"VoiceMylist"]}//Comment:データはどこ？
+                           @{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":userdata[@"Odais"]},//Comment:データはどこ？
+                           @{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":userdata[@"Voices"]}//Comment:データはどこ？
                            ];
     }
                      
@@ -210,7 +210,6 @@
         toko_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
         toko_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
     }else if(tag == 1){
-        NSLog(@"data: %@",data);
         VoiceCell *voice_cell = (VoiceCell *)cell;
         voice_cell.title_label.text = data[@"odainame"];
         voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
