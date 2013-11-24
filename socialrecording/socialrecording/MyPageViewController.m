@@ -209,7 +209,7 @@
         toko_cell.title_label.text = data[@"name"];
         toko_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
         toko_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
-    }else if(tag == 1 || tag == 4){
+    }else if(tag == 1){
         NSLog(@"data: %@",data);
         VoiceCell *voice_cell = (VoiceCell *)cell;
         voice_cell.title_label.text = data[@"odainame"];
@@ -223,6 +223,13 @@
         seiyu_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
         seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
         seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@回視聴", data[@"views"]];
+    }else if(tag == 4){
+        NSLog(@"data: %@",data);
+        VoiceCellNoSeiyu *voice_cell = (VoiceCellNoSeiyu *)cell;
+        voice_cell.title_label.text = data[@"odainame"];
+        voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
+        [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+        [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 -(void)like_button_tapped:(id)sender event:(UIEvent *)event{
