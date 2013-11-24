@@ -30,32 +30,15 @@
     self.playing_number = -1;
     self.playing_image = [UIImage imageNamed:@"first.png"];
     self.not_playing_image = [UIImage imageNamed:@"second.png"];
-    
-    //Comment:ここのdataの部分に、それぞれのデータを入れて下さい。
-    //データ追加も想定して、データクラスはNSMutableArray,NSMutableDirectionaryが望ましいです。
-    
-    //マイリストなどの情報はuser情報で得られる
-    RetrieveJson *json = [[RetrieveJson alloc] init];
-    NSString *param = @"user/0/";
-    
-    NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
-    if ([userdata count] == 0){//ユーザデータがない場合はどうする？？？
-        self.contents = @[
-                      @{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":@[@"data1",@"data2",@"data3"]},
-                      @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":@[@"data1",@"data2",@"data3",@"data4"]},
-                      @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":@[@"data1",@"data2",@"data3"]},
-                      @{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":@[@"data1",@"data2",@"data3"]},
-                      @{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":@[@"data1",@"data2",@"data3"]}
+
+    self.contents = @[
+                      [@{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":@""} mutableCopy],
+                      [@{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":@""} mutableCopy],
+                      [@{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":@""} mutableCopy],
+                      [@{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":@""} mutableCopy],
+                      [@{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":@""} mutableCopy]
                       ];
-    } else {
-        self.contents = @[ @{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell",                             @"data":userdata[@"OdaiMylist"]},
-                           @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":userdata[@"VoiceMylist"]},
-                           @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":userdata[@"UserMylist"]},
-                           @{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":userdata[@"Odais"]},//Comment:データはどこ？
-                           @{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":userdata[@"Voices"]}//Comment:データはどこ？
-                           ];
-    }
-                     
+    
     for (int i = 0; i < [self.contents count]; i++) {
         UIToggleButton *button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:self.contents[i][@"title"] forState:UIControlStateNormal];
@@ -84,6 +67,27 @@
     UIBarButtonItem *person = [[UIBarButtonItem alloc] initWithTitle:@"人画像" style:UIBarButtonItemStylePlain target:self action:@selector(button_seiyu_tapped:)];
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:@"編集" style:UIBarButtonItemStylePlain target:self action:@selector(button_edit_tapped:)];
     self.navigationItem.rightBarButtonItems = @[edit, person];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    //マイリストなどの情報はuser情報で得られる
+    RetrieveJson *json = [[RetrieveJson alloc] init];
+    NSString *param = @"user/0/";
+    
+    NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
+    //ユーザデータがない場合はどうする？？？→北口さんが配列サイズ0のユーザデータを返すようにして下さい。
+    self.contents[0][@"data"] = userdata[@"OdaiMylist"];
+    self.contents[1][@"data"] = userdata[@"VoiceMylist"];
+    self.contents[2][@"data"] = userdata[@"UserMylist"];
+    self.contents[3][@"data"] = userdata[@"Odais"];
+    self.contents[4][@"data"] = userdata[@"Voices"];
+    
+    for (UITableView *table in self.scroll_content.subviews) {
+        if( [table isKindOfClass:[UITableView class]]){
+            [table reloadData];
+        }
+    }
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -203,7 +207,7 @@
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath tag:(int)tag {
     //Comment:dataを使って、ラベル表示させて下さい。
     //tag==0は１ページ目、つまりお気に入り投稿のテーブルのセルです。
-    NSDictionary *data = self.contents[tag][@"data"][indexPath.row];return;
+    NSDictionary *data = self.contents[tag][@"data"][indexPath.row];
     if(tag == 0 ||  tag == 3){
         MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
         toko_cell.title_label.text = data[@"name"];
@@ -229,6 +233,18 @@
         voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
         [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
         [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete){
+        // データを削除
+        NSMutableArray *data = self.contents[tableView.tag][@"data"];
+        //HTTP Request
+        
+        //成功すれば以下を実行
+        [data removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.row]];        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 -(void)like_button_tapped:(id)sender event:(UIEvent *)event{
