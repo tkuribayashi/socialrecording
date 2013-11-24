@@ -757,7 +757,11 @@
                                     <constraint firstAttribute="height" constant="30" id="L5S-cE-QaK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="text_name_begin:" destination="Z7N-m7-eVA" eventType="editingDidBegin" id="TF2-3W-epc"/>
+                                    <action selector="text_name_end:" destination="Z7N-m7-eVA" eventType="editingDidEndOnExit" id="YGg-7s-pSr"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-yH-VrF">
                                 <rect key="frame" x="20" y="174" width="280" height="50"/>
@@ -893,6 +897,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="声優登録" id="y0C-mo-9um"/>
                     <connections>
+                        <outlet property="label_comment" destination="ym8-gN-54Z" id="Bqx-WP-ODN"/>
+                        <outlet property="label_name" destination="CBx-cW-N2G" id="nUL-gc-nKh"/>
                         <outlet property="text_name" destination="o6q-AY-HeA" id="oTU-YQ-EBd"/>
                         <outlet property="textview_comment" destination="Qt8-yH-VrF" id="swn-l5-Gbv"/>
                         <outlet property="toggle_genre_1" destination="fle-Ie-PFV" id="czG-Fq-ZGw"/>
