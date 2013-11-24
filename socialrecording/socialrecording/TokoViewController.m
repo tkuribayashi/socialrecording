@@ -39,7 +39,19 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    /* 引っ張って更新 */
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     
+    // 更新アクションを設定
+    [refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    self.refreshControl = refreshControl;
+    
+    // UITableView* tableViewにくっつける場合.
+    [self.table addSubview:refreshControl];
+    /* ここまで */
+
     //キーボードを外タップで閉じるために追加
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
     self.singleTap.delegate = self;
@@ -477,4 +489,32 @@
         self.view_load.hidden = YES;
     }
 }
+
+/* 引っ張って更新 */
+- (void)onRefresh:(id)sender
+{
+    // 更新開始
+    [self.refreshControl beginRefreshing];
+    
+    // 更新処理をここに記述
+    
+    [self set_load_statusWithOn:YES];
+    //HTTP Request
+    
+    [self searchWithQuery];
+    
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];
+    
+    NSLog(@"data retrieval and display done");
+    
+    [self.table reloadData];
+    [self set_load_statusWithOn:NO];
+
+    
+    // 更新終了
+    [self.refreshControl endRefreshing];
+}
+/* ここまで */
+
 @end
