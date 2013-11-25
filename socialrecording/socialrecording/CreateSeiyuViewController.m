@@ -154,10 +154,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     NSLog(@"here: %@",path);
     
-    NSMutableArray *params = [NSMutableArray arrayWithObjects: [NSMutableArray arrayWithObjects:@"name",name, nil],[NSMutableArray arrayWithObjects:@"comment",comment, nil],[NSMutableArray arrayWithObjects:@"gender",sex, nil],[NSMutableArray arrayWithObjects:@"tag_id",genre, nil],nil];
-    
+   /*
+    NSMutableArray *params = [[NSMutableArray alloc ] initWithObjects: [[NSMutableArray alloc] initWithObjects:@"comment",comment, nil],[[NSMutableArray alloc] initWithObjects:@"gender",sex, nil],[[NSMutableArray alloc] initWithObjects:@"tag_id",genre, nil],nil];
+    */
+    NSArray *params = @[
+                               [@[@"comment",comment] mutableCopy],
+                               [@[@"name",name] mutableCopy],
+                               [@[@"gender",[NSString stringWithFormat:@"%d",sex]] mutableCopy],
+                               [@[@"tag_id",[NSString stringWithFormat:@"%d",genre]] mutableCopy],
+                               ];
     NSLog(@"here: %@",path);
 
+    
     NSString *result = [post HttpPost:path params:params];
     
     //声優登録成功したら以下実行

@@ -73,6 +73,7 @@
     @finally
     {
         urlString = nil;
+        NSLog(@"%@",result);
         return result;
     }
 
