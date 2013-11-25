@@ -9,6 +9,8 @@
 #import "MyPageViewController.h"
 #import "TokoShosaiViewController.h"
 #import "SeiyuShosaiViewController.h"
+#import "RetrieveJson.h"
+#import "HttpPost.h"
 
 @interface MyPageViewController ()
 
@@ -227,7 +229,6 @@
         seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
         seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@回視聴", data[@"views"]];
     }else if(tag == 4){
-        NSLog(@"data: %@",data);
         VoiceCellNoSeiyu *voice_cell = (VoiceCellNoSeiyu *)cell;
         voice_cell.title_label.text = data[@"odainame"];
         voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
@@ -239,7 +240,23 @@
     if (editingStyle == UITableViewCellEditingStyleDelete){
         // データを削除
         NSMutableArray *data = self.contents[tableView.tag][@"data"];
+        NSString *id = @"";
+        NSLog(@"data?:%@, %d",data[0][@"id"],indexPath.row);
+        
+        
         //HTTP Request
+        /* マイリストの編集はPOST */
+        if (tableView.tag <= 2){
+            HttpPost *p = [[HttpPost alloc] init];
+            NSArray *path = @[@"odaimylist/remove/",@"voicemylist/remove/",@"usermylist/remove/"];
+            NSArray *n = @[@"odai_id",@"voice_id",@"user_id"];
+            id = data[indexPath.row][@"id"];
+            NSArray *params = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:n[tableView.tag],id,nil],nil];
+            [p HttpPost:path[tableView.tag] params:params];
+        } else {
+        /* 自分の投稿とボイスの編集はGET */
+            //not yet
+        }
         
         //成功すれば以下を実行
         [data removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.row]];        

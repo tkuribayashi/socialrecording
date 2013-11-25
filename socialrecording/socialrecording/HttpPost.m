@@ -15,6 +15,8 @@
     NSString *urlString = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/%@",path];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
     
+    NSLog(@"POST request URL: %@", urlString);
+    
     @try
     {
         RetrieveCookie *rc = [[RetrieveCookie alloc]init];
