@@ -10,6 +10,7 @@
 #import "UIToggleButton.h"
 #import "MypageTokoCell.h"
 #import "VoiceCell.h"
+#import "VoiceCellNoSeiyu.h"
 #import "SeiyuCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "SVProgressHUD.h"

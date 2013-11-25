@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Toko View Controller - 投稿一覧-->
@@ -272,6 +272,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="新規投稿" id="0cF-yW-b1g"/>
                     <connections>
+                        <outlet property="label_comment" destination="ALP-Ro-DU9" id="0OE-yW-mnz"/>
+                        <outlet property="label_name" destination="a3s-1q-u1B" id="KH4-8q-95x"/>
                         <outlet property="text_comment" destination="fYM-cB-Paf" id="UI0-X4-9R0"/>
                         <outlet property="text_name" destination="1gO-Mu-9yD" id="Akh-zt-4nk"/>
                         <outlet property="toggle_button_1" destination="kyN-mM-QWo" id="Edt-V3-jHj"/>
@@ -682,11 +684,285 @@
                         <outlet property="scroll_title" destination="EDa-lW-WIJ" id="Xs2-GK-GVe"/>
                         <segue destination="Nsc-z7-y80" kind="push" identifier="MyPageToTokoShosai" id="p0m-e4-vZS"/>
                         <segue destination="uEq-Kn-OW0" kind="push" identifier="MyPageToSeiyuShosai" id="8vP-Cu-nLu"/>
+                        <segue destination="Z7N-m7-eVA" kind="push" identifier="MyPageToCreateSeiyu" id="BVj-GP-1Cg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4x-oR-Mt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1263" y="2082"/>
+        </scene>
+        <!--Create Seiyu View Controller - 声優登録-->
+        <scene sceneID="AHS-Wp-hJc">
+            <objects>
+                <viewController id="Z7N-m7-eVA" customClass="CreateSeiyuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fHv-U9-9k7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jsw-Tp-cF5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ta6-dU-lz4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcc-jn-OUW">
+                                <rect key="frame" x="0.0" y="388" width="320" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="inw-wS-TY5"/>
+                                </constraints>
+                                <state key="normal" title="決定">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="button_ok_tapped:" destination="Z7N-m7-eVA" eventType="touchUpInside" id="WoW-0B-AVe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-cW-N2G">
+                                <rect key="frame" x="0.0" y="74" width="320" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="oo2-wr-5ID"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="コメント" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ym8-gN-54Z">
+                                <rect key="frame" x="0.0" y="143" width="320" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="oA3-SB-Sf1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性別" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwO-Wp-U9q">
+                                <rect key="frame" x="0.0" y="232" width="320" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="834-rJ-0yn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お得意ジャンル" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D99-pJ-ISd">
+                                <rect key="frame" x="0.0" y="301" width="320" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="0F1-8l-VQe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o6q-AY-HeA">
+                                <rect key="frame" x="20" y="105" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="L5S-cE-QaK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="text_name_begin:" destination="Z7N-m7-eVA" eventType="editingDidBegin" id="TF2-3W-epc"/>
+                                    <action selector="text_name_end:" destination="Z7N-m7-eVA" eventType="editingDidEndOnExit" id="YGg-7s-pSr"/>
+                                </connections>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-yH-VrF">
+                                <rect key="frame" x="20" y="174" width="280" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ktg-p4-zNZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fle-Ie-PFV" customClass="UIToggleButton">
+                                <rect key="frame" x="0.0" y="332" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="106" id="FIB-Ge-Ep0"/>
+                                    <constraint firstAttribute="height" constant="30" id="XVt-dW-JuY"/>
+                                </constraints>
+                                <state key="normal" title="萌え">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggle_genre_1_tapped:" destination="Z7N-m7-eVA" eventType="touchUpInside" id="YiO-wN-zp8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTp-Pv-7qO" customClass="UIToggleButton">
+                                <rect key="frame" x="106" y="332" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="9KN-gA-ILU"/>
+                                    <constraint firstAttribute="height" constant="30" id="H7L-vN-fzg"/>
+                                </constraints>
+                                <state key="normal" title="モノマネ">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggle_genre_2_tapped:" destination="Z7N-m7-eVA" eventType="touchUpInside" id="qjL-mf-0qd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYK-zc-AeI" customClass="UIToggleButton">
+                                <rect key="frame" x="213" y="332" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gLb-Mq-bt0"/>
+                                </constraints>
+                                <state key="normal" title="早口言葉">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggle_genre_3_tapped:" destination="Z7N-m7-eVA" eventType="touchUpInside" id="gtt-aX-x62"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJb-J6-HYZ" customClass="UIToggleButton">
+                                <rect key="frame" x="0.0" y="263" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="106" id="6KO-oW-7Ni"/>
+                                    <constraint firstAttribute="height" constant="30" id="y9n-yj-oja"/>
+                                </constraints>
+                                <state key="normal" title="男">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggle_sex_1_tapped:" destination="Z7N-m7-eVA" eventType="touchUpInside" id="QST-uZ-Tee"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebO-7f-4cd" customClass="UIToggleButton">
+                                <rect key="frame" x="106" y="263" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="DMi-gF-bAi"/>
+                                    <constraint firstAttribute="height" constant="30" id="scX-E9-lsE"/>
+                                </constraints>
+                                <state key="normal" title="女">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggle_sex_2_tapped:" destination="Z7N-m7-eVA" eventType="touchUpInside" id="kph-0m-lHj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUA-3p-uTd" customClass="UIToggleButton">
+                                <rect key="frame" x="213" y="263" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="k3l-Vd-jeZ"/>
+                                </constraints>
+                                <state key="normal" title="その他">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggle_sex_3_tapped:" destination="Z7N-m7-eVA" eventType="touchUpInside" id="3WY-hH-PtC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CwO-Wp-U9q" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" id="0JN-Jx-8Nt"/>
+                            <constraint firstItem="ym8-gN-54Z" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" id="3mh-aO-Phi"/>
+                            <constraint firstAttribute="trailing" secondItem="CwO-Wp-U9q" secondAttribute="trailing" id="63E-Ov-kM0"/>
+                            <constraint firstAttribute="trailing" secondItem="Qt8-yH-VrF" secondAttribute="trailing" constant="20" id="6mb-Qw-ZVo"/>
+                            <constraint firstAttribute="trailing" secondItem="o6q-AY-HeA" secondAttribute="trailing" constant="20" id="8nY-Y6-e14"/>
+                            <constraint firstItem="Jcc-jn-OUW" firstAttribute="top" secondItem="fTp-Pv-7qO" secondAttribute="bottom" constant="26" id="8qK-xL-Cjd"/>
+                            <constraint firstAttribute="trailing" secondItem="ym8-gN-54Z" secondAttribute="trailing" id="9cs-Wj-qEs"/>
+                            <constraint firstItem="fTp-Pv-7qO" firstAttribute="leading" secondItem="fle-Ie-PFV" secondAttribute="trailing" id="9pQ-Ls-nux"/>
+                            <constraint firstAttribute="trailing" secondItem="D99-pJ-ISd" secondAttribute="trailing" id="EXt-xP-d8I"/>
+                            <constraint firstItem="o6q-AY-HeA" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" constant="20" id="Emk-To-zf2"/>
+                            <constraint firstAttribute="trailing" secondItem="xYK-zc-AeI" secondAttribute="trailing" id="IfH-Sj-EIN"/>
+                            <constraint firstItem="CwO-Wp-U9q" firstAttribute="top" secondItem="Qt8-yH-VrF" secondAttribute="bottom" constant="8" id="NNr-GN-96F"/>
+                            <constraint firstItem="lJb-J6-HYZ" firstAttribute="top" secondItem="CwO-Wp-U9q" secondAttribute="bottom" constant="8" id="PVE-kp-Jqq"/>
+                            <constraint firstItem="GUA-3p-uTd" firstAttribute="leading" secondItem="ebO-7f-4cd" secondAttribute="trailing" id="QY9-bj-FWf"/>
+                            <constraint firstItem="Qt8-yH-VrF" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" constant="20" id="QmS-9P-pAn"/>
+                            <constraint firstItem="CBx-cW-N2G" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" id="SP0-kg-fBK"/>
+                            <constraint firstItem="D99-pJ-ISd" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" id="WT5-BA-mnb"/>
+                            <constraint firstItem="Qt8-yH-VrF" firstAttribute="top" secondItem="ym8-gN-54Z" secondAttribute="bottom" constant="8" id="Wt7-we-Q7n"/>
+                            <constraint firstAttribute="trailing" secondItem="Jcc-jn-OUW" secondAttribute="trailing" id="YaY-V8-mtE"/>
+                            <constraint firstAttribute="trailing" secondItem="CBx-cW-N2G" secondAttribute="trailing" id="Z8l-bS-6sU"/>
+                            <constraint firstItem="xYK-zc-AeI" firstAttribute="top" secondItem="D99-pJ-ISd" secondAttribute="bottom" constant="8" id="ZId-Bw-Z7A"/>
+                            <constraint firstItem="CBx-cW-N2G" firstAttribute="top" secondItem="fHv-U9-9k7" secondAttribute="bottom" constant="10" id="ZaZ-p8-ejH"/>
+                            <constraint firstItem="Jcc-jn-OUW" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" id="ZrD-kb-0IW"/>
+                            <constraint firstItem="ebO-7f-4cd" firstAttribute="top" secondItem="CwO-Wp-U9q" secondAttribute="bottom" constant="8" id="bdU-bu-aiH"/>
+                            <constraint firstItem="fTp-Pv-7qO" firstAttribute="top" secondItem="D99-pJ-ISd" secondAttribute="bottom" constant="8" id="hSq-aw-QvJ"/>
+                            <constraint firstItem="o6q-AY-HeA" firstAttribute="top" secondItem="CBx-cW-N2G" secondAttribute="bottom" constant="8" id="ick-3U-eKC"/>
+                            <constraint firstItem="lJb-J6-HYZ" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" id="jl7-3G-1Yi"/>
+                            <constraint firstItem="xYK-zc-AeI" firstAttribute="leading" secondItem="fTp-Pv-7qO" secondAttribute="trailing" id="mnb-Mb-kEz"/>
+                            <constraint firstItem="ebO-7f-4cd" firstAttribute="leading" secondItem="lJb-J6-HYZ" secondAttribute="trailing" id="oKv-yb-N4a"/>
+                            <constraint firstItem="fle-Ie-PFV" firstAttribute="top" secondItem="D99-pJ-ISd" secondAttribute="bottom" constant="8" id="oXN-MP-raw"/>
+                            <constraint firstItem="fle-Ie-PFV" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" id="qKb-D1-7Cg"/>
+                            <constraint firstItem="ym8-gN-54Z" firstAttribute="top" secondItem="o6q-AY-HeA" secondAttribute="bottom" constant="8" id="v8q-Dn-OCy"/>
+                            <constraint firstItem="GUA-3p-uTd" firstAttribute="top" secondItem="CwO-Wp-U9q" secondAttribute="bottom" constant="8" id="wLo-fj-ZvN"/>
+                            <constraint firstItem="D99-pJ-ISd" firstAttribute="top" secondItem="lJb-J6-HYZ" secondAttribute="bottom" constant="8" id="xOH-jx-kFg"/>
+                            <constraint firstAttribute="trailing" secondItem="GUA-3p-uTd" secondAttribute="trailing" id="xzX-u4-Gop"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="声優登録" id="y0C-mo-9um"/>
+                    <connections>
+                        <outlet property="label_comment" destination="ym8-gN-54Z" id="Bqx-WP-ODN"/>
+                        <outlet property="label_name" destination="CBx-cW-N2G" id="nUL-gc-nKh"/>
+                        <outlet property="text_name" destination="o6q-AY-HeA" id="oTU-YQ-EBd"/>
+                        <outlet property="textview_comment" destination="Qt8-yH-VrF" id="swn-l5-Gbv"/>
+                        <outlet property="toggle_genre_1" destination="fle-Ie-PFV" id="czG-Fq-ZGw"/>
+                        <outlet property="toggle_genre_2" destination="fTp-Pv-7qO" id="KMW-Ih-Pbs"/>
+                        <outlet property="toggle_genre_3" destination="xYK-zc-AeI" id="Ycu-Tr-PBf"/>
+                        <outlet property="toggle_sex_1" destination="lJb-J6-HYZ" id="8YP-5f-JWH"/>
+                        <outlet property="toggle_sex_2" destination="ebO-7f-4cd" id="WjD-r3-Ce4"/>
+                        <outlet property="toggle_sex_3" destination="GUA-3p-uTd" id="goA-Pq-84m"/>
+                        <segue destination="Gb2-IX-UYH" kind="push" identifier="CreateSeiyuToCompleteSeiyu" id="BnD-Zk-Oip"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXb-Tx-tTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="2082"/>
+        </scene>
+        <!--Complete Seiyu View Controller - 完了-->
+        <scene sceneID="KeG-kq-ovb">
+            <objects>
+                <viewController id="Gb2-IX-UYH" customClass="CompleteSeiyuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OfW-ut-pKe"/>
+                        <viewControllerLayoutGuide type="bottom" id="9uF-AJ-UIM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9u3-YA-DRD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xib-2o-vcG">
+                                <rect key="frame" x="0.0" y="74" width="320" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YE-YW-DTf">
+                                <rect key="frame" x="145" y="269" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="button_back_tapped:" destination="Gb2-IX-UYH" eventType="touchUpInside" id="LGT-3F-LWN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="6YE-YW-DTf" secondAttribute="centerY" id="20L-5C-fbk"/>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="leading" secondItem="9u3-YA-DRD" secondAttribute="leading" id="L5D-zV-Tz8"/>
+                            <constraint firstAttribute="trailing" secondItem="xib-2o-vcG" secondAttribute="trailing" id="g8j-2C-8qQ"/>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="top" secondItem="OfW-ut-pKe" secondAttribute="bottom" constant="10" id="gx6-2h-NvH"/>
+                            <constraint firstAttribute="centerX" secondItem="6YE-YW-DTf" secondAttribute="centerX" id="vHF-Uj-Ngd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="完了" id="wRG-sY-Utd"/>
+                    <connections>
+                        <outlet property="label_message" destination="xib-2o-vcG" id="mMr-NE-OhF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ap-7k-e4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912" y="2082"/>
         </scene>
         <!--Toko Shosai View Controller - 投稿詳細-->
         <scene sceneID="RSF-zM-DT0">
@@ -1065,6 +1341,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="8vP-Cu-nLu"/>
-        <segue reference="cAf-5W-2cP"/>
+        <segue reference="p0m-e4-vZS"/>
     </inferredMetricsTieBreakers>
 </document>

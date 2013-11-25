@@ -16,8 +16,7 @@
 
 @implementation MyPageViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -25,36 +24,21 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     
     self.playing_number = -1;
     self.playing_image = [UIImage imageNamed:@"first.png"];
     self.not_playing_image = [UIImage imageNamed:@"second.png"];
-    
-    //Comment:ここのdataの部分に、それぞれのデータを入れて下さい。
-    //データ追加も想定して、データクラスはNSMutableArray,NSMutableDirectionaryが望ましいです。
-    
-    //マイリストなどの情報はuser情報で得られる
-    RetrieveJson *json = [[RetrieveJson alloc] init];
-    NSString *param = @"user/0/";
-    
-    NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
-    if ([userdata count] == 0){//ユーザデータがない場合はどうする？？？
-        self.contents = @[
-                      @{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":@[@"data1",@"data2",@"data3"]},
-                      @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":@[@"data1",@"data2",@"data3",@"data4"]},
-                      @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":@[@"data1",@"data2",@"data3"]}
-                      ];
-    } else {
-        self.contents = @[ @{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":userdata[@"OdaiMylist"]},
-                           @{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":userdata[@"VoiceMylist"]},
-                           @{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":userdata[@"UserMylist"]}
-                           ];
 
-    }
-                     
+    self.contents = @[
+                      [@{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":@""} mutableCopy],
+                      [@{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":@""} mutableCopy],
+                      [@{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":@""} mutableCopy],
+                      [@{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":@""} mutableCopy],
+                      [@{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":@""} mutableCopy]
+                      ];
+    
     for (int i = 0; i < [self.contents count]; i++) {
         UIToggleButton *button = [UIToggleButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:self.contents[i][@"title"] forState:UIControlStateNormal];
@@ -78,6 +62,32 @@
         [self.scroll_content addSubview:table];
     }
     self.scroll_content.delegate = self;
+    
+    
+    UIBarButtonItem *person = [[UIBarButtonItem alloc] initWithTitle:@"人画像" style:UIBarButtonItemStylePlain target:self action:@selector(button_seiyu_tapped:)];
+    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:@"編集" style:UIBarButtonItemStylePlain target:self action:@selector(button_edit_tapped:)];
+    self.navigationItem.rightBarButtonItems = @[edit, person];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    //マイリストなどの情報はuser情報で得られる
+    RetrieveJson *json = [[RetrieveJson alloc] init];
+    NSString *param = @"user/0/";
+    
+    NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
+    //ユーザデータがない場合はどうする？？？→北口さんが配列サイズ0のユーザデータを返すようにして下さい。
+    self.contents[0][@"data"] = userdata[@"OdaiMylist"];
+    self.contents[1][@"data"] = userdata[@"VoiceMylist"];
+    self.contents[2][@"data"] = userdata[@"UserMylist"];
+    self.contents[3][@"data"] = userdata[@"Odais"];
+    self.contents[4][@"data"] = userdata[@"Voices"];
+    
+    for (UITableView *table in self.scroll_content.subviews) {
+        if( [table isKindOfClass:[UITableView class]]){
+            [table reloadData];
+        }
+    }
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -88,8 +98,39 @@
     
     [self.scroll_title setContentSize:CGSizeMake(130*[self.contents count]+20, 50)];
     [self.scroll_content setContentSize:CGSizeMake(self.scroll_content.frame.size.width*[self.contents count], self.scroll_content.frame.size.height)];
-    
-    
+}
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"b");
+}
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"a");
+}
+- (void)button_seiyu_tapped:(id)sender{
+    NSUserDefaults *ui = [NSUserDefaults standardUserDefaults];
+    NSNumber *is_seiyu = [ui objectForKey:@"is_seiyu"];
+    if([is_seiyu boolValue]){
+        [self performSegueWithIdentifier:@"MyPageToEditSeiyu" sender:self];
+    }else{
+        [self performSegueWithIdentifier:@"MyPageToCreateSeiyu" sender:self];
+    }
+}
+- (void)button_edit_tapped:(id)sender{
+    UIBarButtonItem *edit = sender;
+    if([edit.title isEqualToString:@"編集"]){
+        for (UITableView *table in self.scroll_content.subviews) {
+            if( [table isKindOfClass:[UITableView class]]){
+                table.editing = YES;
+            }
+        }
+        [edit setTitle:@"完了"];
+    }else{
+        for (UITableView *table in self.scroll_content.subviews) {
+            if( [table isKindOfClass:[UITableView class]]){
+                table.editing = NO;
+            }
+        }
+        [edit setTitle:@"編集"];
+    }
 }
 
 - (void)button_title_tapped:(id)sender{
@@ -104,35 +145,34 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(scrollView.tag == -1){
-    
-    CGPoint offset = scrollView.contentOffset;
-    int page = (offset.x + 160)/320;
-    
-    if (self.current_page != page) {
-        UIToggleButton *button = (UIToggleButton *)[self.scroll_title viewWithTag:self.current_page ];
-        [button toggle];
-        self.current_page = page;
-        button = (UIToggleButton *)[self.scroll_title viewWithTag:self.current_page ];
-        [button toggle];
-        if( self.scroll_title.frame.size.width + self.scroll_title.contentOffset.x < button.frame.origin.x+button.frame.size.width + 10){
-            [UIView animateWithDuration:0.2f animations:^{
-                CGPoint content_offset = self.scroll_title.contentOffset;
-                content_offset.x += (button.frame.origin.x+button.frame.size.width + 10) - (self.scroll_title.frame.size.width + self.scroll_title.contentOffset.x);
-                self.scroll_title.contentOffset = content_offset;
-            }];
-        }else if(button.frame.origin.x - 10 < self.scroll_title.contentOffset.x){
-            [UIView animateWithDuration:0.2f animations:^{
-                CGPoint content_offset = self.scroll_title.contentOffset;
-                content_offset.x -= (self.scroll_title.contentOffset.x) - (button.frame.origin.x - 10);
-                self.scroll_title.contentOffset = content_offset;
-            }];
+        CGPoint offset = scrollView.contentOffset;
+        int page = (offset.x + 160)/320;
+        
+        if (self.current_page != page) {
+            UIToggleButton *button = (UIToggleButton *)[self.scroll_title viewWithTag:self.current_page ];
+            [button toggle];
+            self.current_page = page;
+            button = (UIToggleButton *)[self.scroll_title viewWithTag:self.current_page ];
+            [button toggle];
+            if( self.scroll_title.frame.size.width + self.scroll_title.contentOffset.x < button.frame.origin.x+button.frame.size.width + 10){
+                [UIView animateWithDuration:0.2f animations:^{
+                    CGPoint content_offset = self.scroll_title.contentOffset;
+                    content_offset.x += (button.frame.origin.x+button.frame.size.width + 10) - (self.scroll_title.frame.size.width + self.scroll_title.contentOffset.x);
+                    self.scroll_title.contentOffset = content_offset;
+                }];
+            }else if(button.frame.origin.x - 10 < self.scroll_title.contentOffset.x){
+                [UIView animateWithDuration:0.2f animations:^{
+                    CGPoint content_offset = self.scroll_title.contentOffset;
+                    content_offset.x -= (self.scroll_title.contentOffset.x) - (button.frame.origin.x - 10);
+                    self.scroll_title.contentOffset = content_offset;
+                }];
+            }
         }
-    }
     }else{
         UITableView *table = (UITableView *)scrollView;
         //テーブルビューのスクロール
         if(table.contentOffset.y >= (table.contentSize.height - table.bounds.size.height + 70)){
-            //Comment:newpageまわりの実装お願いします。テーブル３個あるので注意。
+            //Comment:newpageまわりの実装お願いします。テーブル5個あるので注意。
             if (true/*newpage*/){
                 //HTTP Request
                 //Comment:table.tagをもとにデータ追加
@@ -168,13 +208,12 @@
     //Comment:dataを使って、ラベル表示させて下さい。
     //tag==0は１ページ目、つまりお気に入り投稿のテーブルのセルです。
     NSDictionary *data = self.contents[tag][@"data"][indexPath.row];
-    if(tag == 0){
+    if(tag == 0 ||  tag == 3){
         MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
         toko_cell.title_label.text = data[@"name"];
         toko_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
         toko_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
     }else if(tag == 1){
-        NSLog(@"data: %@",data);
         VoiceCell *voice_cell = (VoiceCell *)cell;
         voice_cell.title_label.text = data[@"odainame"];
         voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
@@ -187,6 +226,25 @@
         seiyu_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
         seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
         seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@回視聴", data[@"views"]];
+    }else if(tag == 4){
+        NSLog(@"data: %@",data);
+        VoiceCellNoSeiyu *voice_cell = (VoiceCellNoSeiyu *)cell;
+        voice_cell.title_label.text = data[@"odainame"];
+        voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
+        [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+        [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete){
+        // データを削除
+        NSMutableArray *data = self.contents[tableView.tag][@"data"];
+        //HTTP Request
+        
+        //成功すれば以下を実行
+        [data removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.row]];        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 -(void)like_button_tapped:(id)sender event:(UIEvent *)event{
@@ -223,10 +281,10 @@
     //Comment:セル選択した時の動作。それぞれ動作するようにして下さい。
     //tag==0は１ページ目、つまりお気に入り投稿のテーブルです。
     if(tableView.tag == 0){
-        self.toko_id = self.contents[0][@"data"][indexPath.row][@"id"];
+        self.toko_id = self.contents[tableView.tag][@"data"][indexPath.row][@"id"];
         self.toko_data = NULL;
         [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
-    }else if(tableView.tag == 1){
+    }else if(tableView.tag == 1 || tableView.tag == 4){
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         UIImageView *image_view = ((VoiceCell *)cell).playing_image;
         if( indexPath.row == self.playing_number ){
@@ -256,7 +314,7 @@
             NSString *filePath = [NSString stringWithFormat:@"%@/Caches/temp.caf",[paths objectAtIndex:0]];
             
             //Comment:ボイスデータから取得
-            NSString *reqFilePath = self.contents[1][@"data"][indexPath.row][@"vfile"];
+            NSString *reqFilePath = self.contents[tableView.tag][@"data"][indexPath.row][@"vfile"];
             NSLog(@"%@",reqFilePath);
             
             
@@ -345,8 +403,13 @@
         }
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:NO];
     }else if(tableView .tag == 2){
-        self.seiyu_id = self.contents[2][@"data"][indexPath.row][@"id"];
+        self.seiyu_id = self.contents[tableView .tag][@"data"][indexPath.row][@"id"];
         [self performSegueWithIdentifier:@"MyPageToSeiyuShosai" sender:self];
+    }else if(tableView .tag == 3){
+        //Comment:投稿詳細へ
+        self.toko_id = self.contents[tableView .tag][@"data"][indexPath.row][@"id"];
+        self.toko_data = NULL;
+        [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
     }
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
