@@ -8,6 +8,8 @@
 
 #import "CreateSeiyuViewController.h"
 #import "CompleteSeiyuViewController.h"
+#import "RetrieveJson.h"
+#import "HttpPost.h"
 
 @interface CreateSeiyuViewController ()
 
@@ -49,23 +51,61 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     //HTTP Request
+    //マイリストなどの情報はuser情報で得られる
+    RetrieveJson *json = [[RetrieveJson alloc] init];
+    NSString *param = @"user/0/";
+    
+    NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
+    
     //声優登録住みか？登録住みなら
-    [self.navigationItem setTitle:@"声優情報編集"];
-    self.text_name.text = @"声優名";
-    self.textview_comment.text = @"コメント";
-    [self.buttons_sex[0] toggle];
-    [self.buttons_genre[0] toggle];
-    UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
-    self.navigationItem.rightBarButtonItem = delete;
+    if ([userdata[@"seiyu_flg"] boolValue]){
+        [self.navigationItem setTitle:@"声優情報編集"];
+        self.text_name.text = userdata[@"name"];
+        self.textview_comment.text = userdata[@"comment"];
+        [self.buttons_sex[0] toggle];
+        [self.buttons_genre[0] toggle];
+        UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
+        self.navigationItem.rightBarButtonItem = delete;
+    } else {
+        [self.navigationItem setTitle:@"声優情報編集"];
+        self.text_name.text = @"声優名";
+        self.textview_comment.text = @"コメント";
+        [self.buttons_sex[0] toggle];
+        [self.buttons_genre[0] toggle];
+        UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
+        self.navigationItem.rightBarButtonItem = delete;
+    }
 }
 - (void)button_delete_tapped:(id)sender{
     //本当に削除しますか？ってきいて下さい
+    // １行で書くタイプ（複数ボタンタイプ）
+    UIAlertView *alert =
+    [[UIAlertView alloc] initWithTitle:@"確認" message:@"本当に削除しますか？"
+                              delegate:self cancelButtonTitle:@"いいえ" otherButtonTitles:@"はい", nil];
+    [alert show];
+}
+// アラートのボタンが押された時に呼ばれるデリゲート例文
+-(void)alertView:(UIAlertView*)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    //HTTP Request
-    //声優情報削除成功したら以下実行
-    self.complete_flg = true;
-    self.delete_flg = true;
-    [self performSegueWithIdentifier:@"CreateSeiyuToCompleteSeiyu" sender:self];
+    switch (buttonIndex) {
+        case 0:
+            //１番目のボタンが押されたときの処理を記述する
+            break;
+        case 1:
+            //２番目のボタンが押されたときの処理を記述する
+            //HTTP Request
+            
+            
+            
+            //声優情報削除成功したら以下実行
+            self.complete_flg = true;
+            self.delete_flg = true;
+            [self performSegueWithIdentifier:@"CreateSeiyuToCompleteSeiyu" sender:self];
+            
+            break;
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -109,10 +149,30 @@
     }
     
     //HTTP Request
+    HttpPost *post = [[HttpPost alloc] init];
+    NSString *path = @"user/edit/";
+    
+    NSLog(@"here: %@",path);
+    
+   /*
+    NSMutableArray *params = [[NSMutableArray alloc ] initWithObjects: [[NSMutableArray alloc] initWithObjects:@"comment",comment, nil],[[NSMutableArray alloc] initWithObjects:@"gender",sex, nil],[[NSMutableArray alloc] initWithObjects:@"tag_id",genre, nil],nil];
+    */
+    NSArray *params = @[
+                               [@[@"comment",comment] mutableCopy],
+                               [@[@"name",name] mutableCopy],
+                               [@[@"gender",[NSString stringWithFormat:@"%d",sex]] mutableCopy],
+                               [@[@"tag_id",[NSString stringWithFormat:@"%d",genre]] mutableCopy],
+                               ];
+    NSLog(@"here: %@",path);
+
+    
+    NSString *result = [post HttpPost:path params:params];
     
     //声優登録成功したら以下実行
-    [self performSegueWithIdentifier:@"CreateSeiyuToCompleteSeiyu" sender:self];
-    self.complete_flg = true;
+    if ([result rangeOfString:@"failed"].location != NSNotFound){
+        [self performSegueWithIdentifier:@"CreateSeiyuToCompleteSeiyu" sender:self];
+        self.complete_flg = true;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

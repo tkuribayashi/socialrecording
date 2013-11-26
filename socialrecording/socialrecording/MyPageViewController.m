@@ -9,6 +9,8 @@
 #import "MyPageViewController.h"
 #import "TokoShosaiViewController.h"
 #import "SeiyuShosaiViewController.h"
+#import "RetrieveJson.h"
+#import "HttpPost.h"
 
 @interface MyPageViewController ()
 
@@ -227,7 +229,6 @@
         seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
         seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@回視聴", data[@"views"]];
     }else if(tag == 4){
-        NSLog(@"data: %@",data);
         VoiceCellNoSeiyu *voice_cell = (VoiceCellNoSeiyu *)cell;
         voice_cell.title_label.text = data[@"odainame"];
         voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
@@ -239,12 +240,52 @@
     if (editingStyle == UITableViewCellEditingStyleDelete){
         // データを削除
         NSMutableArray *data = self.contents[tableView.tag][@"data"];
+        NSString *id = @"";
+        NSLog(@"data?:%@, %d",data[0][@"id"],indexPath.row);
+        
+        BOOL result_flag = YES;
+        
         //HTTP Request
+        /* マイリストの編集はPOST */
+        if (tableView.tag <= 2){
+            HttpPost *p = [[HttpPost alloc] init];
+            NSArray *path = @[@"odaimylist/remove/",@"voicemylist/remove/",@"usermylist/remove/"];
+            NSArray *n = @[@"odai_id",@"voice_id",@"user_id"];
+            id = data[indexPath.row][@"id"];
+            NSArray *params = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:n[tableView.tag],id,nil],nil];
+            if ([[p HttpPost:path[tableView.tag] params:params] rangeOfString:@"failed"].location != NSNotFound){
+                result_flag = NO;
+            };
+        } else {
+        /* 自分の投稿とボイスの編集はGET */
+            RetrieveJson *j = [[RetrieveJson alloc] init];
+            
+            id = data[indexPath.row][@"id"];
+            
+            NSArray *path = @[[NSString stringWithFormat:@"odai/%@/delete/",id],[NSString stringWithFormat:@"voice/%@/delete/",id]];
+            
+            if (![j accessServer:path[tableView.tag - 3]]) {
+                result_flag = NO;
+            }
+        }
         
         //成功すれば以下を実行
-        [data removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.row]];        
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                         withRowAnimation:UITableViewRowAnimationAutomatic];
+        if (result_flag){
+            [data removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.row]];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"エラー"
+                                  message : @"削除に失敗しました"
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+
+        }
     }
 }
 -(void)like_button_tapped:(id)sender event:(UIEvent *)event{
