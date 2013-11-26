@@ -598,6 +598,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTh-r1-pV7">
+                                <rect key="frame" x="255" y="71" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="お気に">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="button_favo_tapped:" destination="uEq-Kn-OW0" eventType="touchUpInside" id="U4X-9n-7Bm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -993,10 +1003,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ジャンル" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVk-Gl-YBF">
-                                <rect key="frame" x="10" y="153" width="242" height="50"/>
+                                <rect key="frame" x="10" y="153" width="150" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FMg-nj-T3H"/>
+                                    <constraint firstAttribute="width" constant="150" id="MnY-FD-TSL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -1036,9 +1047,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Coi-Uo-Lp1">
-                                                    <rect key="frame" x="20" y="64" width="145" height="30"/>
+                                                    <rect key="frame" x="20" y="64" width="74" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="◯◯さんの詳細tag=3">
+                                                    <state key="normal" title="詳細">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -1061,27 +1072,49 @@
                                                         <action selector="like_button_tapped:forEvent:" destination="Nsc-z7-y80" eventType="touchUpInside" id="sf9-bB-oOP"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBn-kH-2fi">
+                                                    <rect key="frame" x="102" y="64" width="75" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="お気に">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="button_voice_favo_tapped:forEvent:" destination="Nsc-z7-y80" eventType="touchUpInside" id="3Ql-1E-hWi"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dh9-Sk-khO">
+                                <rect key="frame" x="168" y="163" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="お気に">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="button_favo_tapped:" destination="Nsc-z7-y80" eventType="touchUpInside" id="jRZ-lC-jcZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uEe-AA-g85" firstAttribute="leading" secondItem="rVk-Gl-YBF" secondAttribute="trailing" constant="8" id="5kY-ko-7wL"/>
                             <constraint firstItem="dKt-Ow-BA2" firstAttribute="top" secondItem="w5I-we-dzH" secondAttribute="bottom" constant="10" id="962-NT-H00"/>
                             <constraint firstAttribute="trailing" secondItem="3Bl-Np-cuT" secondAttribute="trailing" id="FJ6-Xc-Xg5"/>
                             <constraint firstItem="uEe-AA-g85" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="8" id="FlM-pj-SQb"/>
                             <constraint firstItem="3Bl-Np-cuT" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" id="GjV-da-tCt"/>
                             <constraint firstAttribute="trailing" secondItem="dKt-Ow-BA2" secondAttribute="trailing" id="O8T-2v-6uD"/>
+                            <constraint firstItem="Dh9-Sk-khO" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="18" id="Q5T-7C-ZY5"/>
                             <constraint firstItem="rVk-Gl-YBF" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="10" id="Vyl-kr-0UQ"/>
                             <constraint firstItem="rVk-Gl-YBF" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="8" id="WBK-gp-VFd"/>
                             <constraint firstItem="Nli-Dp-pyW" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="10" id="XFB-an-YWG"/>
                             <constraint firstAttribute="trailing" secondItem="Nli-Dp-pyW" secondAttribute="trailing" constant="10" id="av4-Ou-7av"/>
                             <constraint firstItem="l77-eG-VJb" firstAttribute="top" secondItem="3Bl-Np-cuT" secondAttribute="bottom" id="b2q-CZ-hIP"/>
+                            <constraint firstItem="uEe-AA-g85" firstAttribute="leading" secondItem="Dh9-Sk-khO" secondAttribute="trailing" constant="8" id="kRd-BE-fiC"/>
                             <constraint firstItem="3Bl-Np-cuT" firstAttribute="top" secondItem="rVk-Gl-YBF" secondAttribute="bottom" constant="8" id="nAC-5w-v86"/>
+                            <constraint firstItem="Dh9-Sk-khO" firstAttribute="leading" secondItem="rVk-Gl-YBF" secondAttribute="trailing" constant="8" id="rz0-ob-PRm"/>
                             <constraint firstItem="dKt-Ow-BA2" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" id="tZ8-Nl-jQS"/>
                             <constraint firstAttribute="trailing" secondItem="uEe-AA-g85" secondAttribute="trailing" constant="10" id="yzq-Bq-kxi"/>
                             <constraint firstItem="Nli-Dp-pyW" firstAttribute="top" secondItem="dKt-Ow-BA2" secondAttribute="bottom" constant="8" id="zU0-y6-ZAD"/>
@@ -1114,7 +1147,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="セリフ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-4q-tnn">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="セリフ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-4q-tnn">
                                 <rect key="frame" x="0.0" y="74" width="320" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -1123,7 +1156,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjI-Qq-4Eu">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjI-Qq-4Eu">
                                 <rect key="frame" x="93" y="348" width="34" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1134,7 +1167,7 @@
                                     <action selector="button_play_tapped:" destination="Mi1-5L-nGs" eventType="touchUpInside" id="Eic-PI-m1D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMJ-h3-nEd">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMJ-h3-nEd">
                                 <rect key="frame" x="193" y="348" width="34" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1145,7 +1178,7 @@
                                     <action selector="button_send_tapped:" destination="Mi1-5L-nGs" eventType="touchUpInside" id="lhJ-tO-EFC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-iX-Rso">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-iX-Rso">
                                 <rect key="frame" x="60" y="118" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -1332,12 +1365,6 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1346,7 +1373,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8vP-Cu-nLu"/>
-        <segue reference="p0m-e4-vZS"/>
+        <segue reference="cAf-5W-2cP"/>
+        <segue reference="00H-cy-0rs"/>
     </inferredMetricsTieBreakers>
 </document>

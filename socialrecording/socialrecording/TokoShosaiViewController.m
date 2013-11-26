@@ -273,6 +273,17 @@
     self.seiyu_id = self.voice_data[indexPath.row][@"user_id"];
     [self performSegueWithIdentifier:@"TokoShosaiToSeiyuShosai" sender:self];
 }
+
+- (IBAction)button_favo_tapped:(id)sender {
+    //投稿のお気に入り登録
+    
+}
+
+- (IBAction)button_voice_favo_tapped:(id)sender forEvent:(UIEvent *)event {
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    //ボイスのお気に入り登録
+    
+}
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];

@@ -219,6 +219,11 @@
     
     [self performSegueWithIdentifier:@"SeiyuShosaiToTokoShosai" sender:self];
 }
+
+- (IBAction)button_favo_tapped:(id)sender {
+    //声優お気に入り登録
+    
+}
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];

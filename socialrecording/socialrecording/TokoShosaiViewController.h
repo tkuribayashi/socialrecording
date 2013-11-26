@@ -26,6 +26,8 @@
 - (IBAction)button_recording_tapped:(id)sender;
 - (IBAction)like_button_tapped:(id)sender forEvent:(UIEvent *)event;
 - (IBAction)button_seiyu_tapped:(id)sender forEvent:(UIEvent *)event;
+- (IBAction)button_favo_tapped:(id)sender;
+- (IBAction)button_voice_favo_tapped:(id)sender forEvent:(UIEvent *)event;
 
 
 
