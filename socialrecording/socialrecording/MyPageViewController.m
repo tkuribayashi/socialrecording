@@ -243,6 +243,7 @@
         NSString *id = @"";
         NSLog(@"data?:%@, %d",data[0][@"id"],indexPath.row);
         
+        BOOL result_flag = YES;
         
         //HTTP Request
         /* マイリストの編集はPOST */
@@ -252,16 +253,39 @@
             NSArray *n = @[@"odai_id",@"voice_id",@"user_id"];
             id = data[indexPath.row][@"id"];
             NSArray *params = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:n[tableView.tag],id,nil],nil];
-            [p HttpPost:path[tableView.tag] params:params];
+            if ([[p HttpPost:path[tableView.tag] params:params] rangeOfString:@"failed"].location != NSNotFound){
+                result_flag = NO;
+            };
         } else {
         /* 自分の投稿とボイスの編集はGET */
-            //not yet
+            RetrieveJson *j = [[RetrieveJson alloc] init];
+            
+            id = data[indexPath.row][@"id"];
+            
+            NSArray *path = @[[NSString stringWithFormat:@"odai/%@/delete/",id],[NSString stringWithFormat:@"voice/%@/delete/",id]];
+            
+            if (![j accessServer:path[tableView.tag - 3]]) {
+                result_flag = NO;
+            }
         }
         
         //成功すれば以下を実行
-        [data removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.row]];        
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                         withRowAnimation:UITableViewRowAnimationAutomatic];
+        if (result_flag){
+            [data removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.row]];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"エラー"
+                                  message : @"削除に失敗しました"
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+
+        }
     }
 }
 -(void)like_button_tapped:(id)sender event:(UIEvent *)event{
