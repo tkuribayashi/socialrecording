@@ -153,8 +153,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     HttpPost *post = [[HttpPost alloc] init];
     NSString *path = @"user/edit/";
     
-    NSLog(@"here: %@",path);
-    
    /*
     NSMutableArray *params = [[NSMutableArray alloc ] initWithObjects: [[NSMutableArray alloc] initWithObjects:@"comment",comment, nil],[[NSMutableArray alloc] initWithObjects:@"gender",sex, nil],[[NSMutableArray alloc] initWithObjects:@"tag_id",genre, nil],nil];
     */
@@ -164,13 +162,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
                                [@[@"gender",[NSString stringWithFormat:@"%d",sex]] mutableCopy],
                                [@[@"tag_id",[NSString stringWithFormat:@"%d",genre]] mutableCopy],
                                ];
-    NSLog(@"here: %@",path);
 
     
     NSString *result = [post HttpPost:path params:params];
     
+    NSLog(@"result: %@", result);
+    
     //声優登録成功したら以下実行
-    if ([result rangeOfString:@"failed"].location != NSNotFound){
+    if ([result rangeOfString:@"failed"].location == NSNotFound){
         [self performSegueWithIdentifier:@"CreateSeiyuToCompleteSeiyu" sender:self];
         self.complete_flg = true;
     }
