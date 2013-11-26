@@ -23,5 +23,6 @@
 - (IBAction)button_send_tapped:(id)sender;
 @property (nonatomic)BOOL flag_end;
 @property (nonatomic) NSString *toko_id;
+@property (weak, nonatomic) IBOutlet UIImageView *recImage;
 
 @end

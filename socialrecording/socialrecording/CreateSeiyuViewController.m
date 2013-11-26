@@ -64,8 +64,10 @@
         self.textview_comment.text = userdata[@"comment"];
         [self.buttons_sex[0] toggle];
         [self.buttons_genre[0] toggle];
+        /*
         UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
         self.navigationItem.rightBarButtonItem = delete;
+        */
     } else {
         [self.navigationItem setTitle:@"声優情報編集"];
         //Comment:既にある情報を入れてあげて下さい。
@@ -77,6 +79,7 @@
         self.navigationItem.rightBarButtonItem = delete;*/
     }
 }
+/*
 - (void)button_delete_tapped:(id)sender{
     //本当に削除しますか？ってきいて下さい
     // １行で書くタイプ（複数ボタンタイプ）
@@ -84,7 +87,7 @@
     [[UIAlertView alloc] initWithTitle:@"確認" message:@"本当に削除しますか？"
                               delegate:self cancelButtonTitle:@"いいえ" otherButtonTitles:@"はい", nil];
     [alert show];
-}
+}*/
 // アラートのボタンが押された時に呼ばれるデリゲート例文
 -(void)alertView:(UIAlertView*)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex {

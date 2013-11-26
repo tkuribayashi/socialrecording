@@ -46,6 +46,23 @@
 		319824401806A73400796825 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3198243E1806A73400796825 /* InfoPlist.strings */; };
 		319824421806A73400796825 /* socialrecordingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 319824411806A73400796825 /* socialrecordingTests.m */; };
 		31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31BB2AC8182600A70043A48D /* SVProgressHUD.m */; };
+		CE70498A1844E71900EA3A4F /* cell_back2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049791844E71900EA3A4F /* cell_back2.png */; };
+		CE70498B1844E71900EA3A4F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70497A1844E71900EA3A4F /* Default.png */; };
+		CE70498C1844E71900EA3A4F /* ichiran.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70497B1844E71900EA3A4F /* ichiran.png */; };
+		CE70498D1844E71900EA3A4F /* iine.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70497C1844E71900EA3A4F /* iine.png */; };
+		CE70498E1844E71900EA3A4F /* iine_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70497D1844E71900EA3A4F /* iine_buttom.png */; };
+		CE70498F1844E71900EA3A4F /* mike.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70497E1844E71900EA3A4F /* mike.png */; };
+		CE7049901844E71900EA3A4F /* mike_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70497F1844E71900EA3A4F /* mike_buttom.png */; };
+		CE7049911844E71900EA3A4F /* mimi.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049801844E71900EA3A4F /* mimi.png */; };
+		CE7049921844E71900EA3A4F /* mylist_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049811844E71900EA3A4F /* mylist_buttom.png */; };
+		CE7049931844E71900EA3A4F /* mypage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049821844E71900EA3A4F /* mypage.png */; };
+		CE7049941844E71900EA3A4F /* rec.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049831844E71900EA3A4F /* rec.png */; };
+		CE7049951844E71900EA3A4F /* saisei.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049841844E71900EA3A4F /* saisei.png */; };
+		CE7049961844E71900EA3A4F /* saisei_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049851844E71900EA3A4F /* saisei_buttom.png */; };
+		CE7049971844E71900EA3A4F /* seiyu.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049861844E71900EA3A4F /* seiyu.png */; };
+		CE7049981844E71900EA3A4F /* sociareco_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049871844E71900EA3A4F /* sociareco_icon.png */; };
+		CE7049991844E71900EA3A4F /* teishi.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049881844E71900EA3A4F /* teishi.png */; };
+		CE70499A1844E71900EA3A4F /* toukou.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049891844E71900EA3A4F /* toukou.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +140,23 @@
 		319824411806A73400796825 /* socialrecordingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = socialrecordingTests.m; sourceTree = "<group>"; };
 		31BB2AC7182600A70043A48D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		31BB2AC8182600A70043A48D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		CE7049791844E71900EA3A4F /* cell_back2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_back2.png; sourceTree = "<group>"; };
+		CE70497A1844E71900EA3A4F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CE70497B1844E71900EA3A4F /* ichiran.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ichiran.png; sourceTree = "<group>"; };
+		CE70497C1844E71900EA3A4F /* iine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iine.png; sourceTree = "<group>"; };
+		CE70497D1844E71900EA3A4F /* iine_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iine_buttom.png; sourceTree = "<group>"; };
+		CE70497E1844E71900EA3A4F /* mike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mike.png; sourceTree = "<group>"; };
+		CE70497F1844E71900EA3A4F /* mike_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mike_buttom.png; sourceTree = "<group>"; };
+		CE7049801844E71900EA3A4F /* mimi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mimi.png; sourceTree = "<group>"; };
+		CE7049811844E71900EA3A4F /* mylist_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mylist_buttom.png; sourceTree = "<group>"; };
+		CE7049821844E71900EA3A4F /* mypage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mypage.png; sourceTree = "<group>"; };
+		CE7049831844E71900EA3A4F /* rec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rec.png; sourceTree = "<group>"; };
+		CE7049841844E71900EA3A4F /* saisei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saisei.png; sourceTree = "<group>"; };
+		CE7049851844E71900EA3A4F /* saisei_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saisei_buttom.png; sourceTree = "<group>"; };
+		CE7049861844E71900EA3A4F /* seiyu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seiyu.png; sourceTree = "<group>"; };
+		CE7049871844E71900EA3A4F /* sociareco_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sociareco_icon.png; sourceTree = "<group>"; };
+		CE7049881844E71900EA3A4F /* teishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teishi.png; sourceTree = "<group>"; };
+		CE7049891844E71900EA3A4F /* toukou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toukou.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +237,7 @@
 		319824191806A73400796825 /* socialrecording */ = {
 			isa = PBXGroup;
 			children = (
+				CE7049781844E71900EA3A4F /* images */,
 				0DD4350B180FA9EF001DF5A1 /* TokoViewController.h */,
 				0DD4350C180FA9EF001DF5A1 /* TokoViewController.m */,
 				0D121314181A25A400AB1C92 /* TokoShosaiViewController.h */,
@@ -274,6 +309,30 @@
 				3198243E1806A73400796825 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE7049781844E71900EA3A4F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CE7049791844E71900EA3A4F /* cell_back2.png */,
+				CE70497A1844E71900EA3A4F /* Default.png */,
+				CE70497B1844E71900EA3A4F /* ichiran.png */,
+				CE70497C1844E71900EA3A4F /* iine.png */,
+				CE70497D1844E71900EA3A4F /* iine_buttom.png */,
+				CE70497E1844E71900EA3A4F /* mike.png */,
+				CE70497F1844E71900EA3A4F /* mike_buttom.png */,
+				CE7049801844E71900EA3A4F /* mimi.png */,
+				CE7049811844E71900EA3A4F /* mylist_buttom.png */,
+				CE7049821844E71900EA3A4F /* mypage.png */,
+				CE7049831844E71900EA3A4F /* rec.png */,
+				CE7049841844E71900EA3A4F /* saisei.png */,
+				CE7049851844E71900EA3A4F /* saisei_buttom.png */,
+				CE7049861844E71900EA3A4F /* seiyu.png */,
+				CE7049871844E71900EA3A4F /* sociareco_icon.png */,
+				CE7049881844E71900EA3A4F /* teishi.png */,
+				CE7049891844E71900EA3A4F /* toukou.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,13 +414,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7049941844E71900EA3A4F /* rec.png in Resources */,
+				CE7049921844E71900EA3A4F /* mylist_buttom.png in Resources */,
+				CE7049901844E71900EA3A4F /* mike_buttom.png in Resources */,
 				0D2939421832300C00E5F056 /* VoiceCell.xib in Resources */,
+				CE7049971844E71900EA3A4F /* seiyu.png in Resources */,
+				CE7049961844E71900EA3A4F /* saisei_buttom.png in Resources */,
+				CE70498B1844E71900EA3A4F /* Default.png in Resources */,
 				3198242F1806A73400796825 /* Images.xcassets in Resources */,
 				3198241E1806A73400796825 /* InfoPlist.strings in Resources */,
+				CE7049991844E71900EA3A4F /* teishi.png in Resources */,
+				CE70498D1844E71900EA3A4F /* iine.png in Resources */,
+				CE70498F1844E71900EA3A4F /* mike.png in Resources */,
+				CE70499A1844E71900EA3A4F /* toukou.png in Resources */,
+				CE70498E1844E71900EA3A4F /* iine_buttom.png in Resources */,
+				CE70498A1844E71900EA3A4F /* cell_back2.png in Resources */,
 				0DC063981841EC1900610ADD /* VoiceCellNoSeiyu.xib in Resources */,
 				319824271806A73400796825 /* Main.storyboard in Resources */,
+				CE7049931844E71900EA3A4F /* mypage.png in Resources */,
+				CE7049911844E71900EA3A4F /* mimi.png in Resources */,
 				0DBC44CB1831302200B1EA6C /* MypageTokoCell.xib in Resources */,
+				CE70498C1844E71900EA3A4F /* ichiran.png in Resources */,
+				CE7049951844E71900EA3A4F /* saisei.png in Resources */,
 				0D29394718324D9A00E5F056 /* SeiyuCell.xib in Resources */,
+				CE7049981844E71900EA3A4F /* sociareco_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,8 +603,8 @@
 		319824461806A73400796825 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -543,8 +619,8 @@
 		319824471806A73400796825 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -33,7 +33,9 @@
 {
     [super viewDidLoad];
     
-    
+    //ナビゲーションバー、タブバーの変更
+    self.navigationController.navigationBar.backgroundColor = [UIColor yellowColor];
+    self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
     
     //キーボードを外タップで閉じるために追加
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];

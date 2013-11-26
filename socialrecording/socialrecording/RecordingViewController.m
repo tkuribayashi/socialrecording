@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.recImage.hidden = true;
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.label_name setText:self.toko_name];
@@ -142,10 +144,12 @@
     if ( self.recorder != nil && self.recorder.isRecording )
     {
         [self stopRecord];
+        self.recImage.hidden = true;
         //[self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
     }
     else
     {
+        self.recImage.hidden = false;
         [self recordFile];
         //[self.recordButton setTitle:@"..." forState:UIControlStateNormal];
     }

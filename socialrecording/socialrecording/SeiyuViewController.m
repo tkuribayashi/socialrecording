@@ -36,6 +36,9 @@
 {
     [super viewDidLoad];
     
+    //ナビゲーションバー、タブバーの変更
+    self.navigationController.navigationBar.backgroundColor = [UIColor yellowColor];
+    self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
     
     //キーボードを外タップで閉じるために追加
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
@@ -391,9 +394,9 @@
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSString *title = self.table_data[indexPath.row][@"name"];
-    NSString *iine = [NSString stringWithFormat:@"合計いいね %@件" , self.table_data[indexPath.row][@"votes"]];
-    NSString *posts =[NSString stringWithFormat:@"ボイス %@件" , self.table_data[indexPath.row][@"posts"]];
-    NSString *view_num =[NSString stringWithFormat:@"総視聴者数 %@回" , self.table_data[indexPath.row][@"posts"]];
+    NSString *iine = [NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"votes"]];
+    NSString *posts =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"posts"]];
+    NSString *view_num =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"posts"]];
     
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];

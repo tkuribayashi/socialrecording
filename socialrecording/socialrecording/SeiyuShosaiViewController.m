@@ -43,9 +43,9 @@
     
     //取得したユーザ詳細を表示部にセットする
     [self.label_name setText:[NSString stringWithFormat:@"%@",user[@"name"]]];
-    [self.label_good setText:[NSString stringWithFormat:@"いいね%@件",user[@"votes"]]];
-    [self.label_voice setText:[NSString stringWithFormat:@"ボイス%@個",user[@"posts"]]];
-    [self.label_watch setText:[NSString stringWithFormat:@"再生数%@回",user[@"views"]]];
+    [self.label_good setText:[NSString stringWithFormat:@"%@",user[@"votes"]]];
+    [self.label_voice setText:[NSString stringWithFormat:@"%@",user[@"posts"]]];
+    [self.label_watch setText:[NSString stringWithFormat:@"%@",user[@"views"]]];
     [self.label_good_rank setText:[NSString stringWithFormat:@"%@位",user[@"voterank"]]];
     [self.label_voice_rank setText:[NSString stringWithFormat:@"%@位",user[@"postrank"]]];
     [self.label_watch_rank setText:[NSString stringWithFormat:@"%@位",user[@"viewrank"]]];
@@ -239,7 +239,7 @@
     [label setText:title];
     
     label = (UILabel *)[cell viewWithTag:4];
-    [label setText:[NSString stringWithFormat:@"いいね%@件",iine]];
+    [label setText:[NSString stringWithFormat:@"%@",iine]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -29,6 +29,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    //ナビゲーションバー、タブバーの変更
+    self.navigationController.navigationBar.backgroundColor = [UIColor yellowColor];
+    self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
+    
     self.playing_number = -1;
     self.playing_image = [UIImage imageNamed:@"first.png"];
     self.not_playing_image = [UIImage imageNamed:@"second.png"];
@@ -67,6 +71,7 @@
     
     
     UIBarButtonItem *person = [[UIBarButtonItem alloc] initWithTitle:@"人画像" style:UIBarButtonItemStylePlain target:self action:@selector(button_seiyu_tapped:)];
+    person.image = [UIImage imageNamed:@"mypage.png"];;
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:@"編集" style:UIBarButtonItemStylePlain target:self action:@selector(button_edit_tapped:)];
     self.navigationItem.rightBarButtonItems = @[edit, person];
 }
@@ -213,25 +218,25 @@
     if(tag == 0 ||  tag == 3){
         MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
         toko_cell.title_label.text = data[@"name"];
-        toko_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
-        toko_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
+        toko_cell.voice_label.text = [NSString stringWithFormat:@"%@", data[@"posts"]];
+        toko_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
     }else if(tag == 1){
         VoiceCell *voice_cell = (VoiceCell *)cell;
         voice_cell.title_label.text = data[@"odainame"];
-        voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
+        voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
         voice_cell.seiyu_label.text = [NSString stringWithFormat:@"声優: %@",data[@"username"]];
         [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
         [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
     }else if(tag==2){
         SeiyuCell *seiyu_cell = (SeiyuCell *)cell;
         seiyu_cell.name_label.text = [NSString stringWithFormat:@"%@", data[@"name"]];
-        seiyu_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
-        seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@ボイス", data[@"posts"]];
-        seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@回視聴", data[@"views"]];
+        seiyu_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
+        seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@", data[@"posts"]];
+        seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@", data[@"views"]];
     }else if(tag == 4){
         VoiceCellNoSeiyu *voice_cell = (VoiceCellNoSeiyu *)cell;
         voice_cell.title_label.text = data[@"odainame"];
-        voice_cell.like_label.text = [NSString stringWithFormat:@"%@いいね", data[@"votes"]];
+        voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
         [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
         [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
     }

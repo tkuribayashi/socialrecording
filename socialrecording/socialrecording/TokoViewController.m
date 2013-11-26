@@ -39,6 +39,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    //ナビゲーションバー、タブバーの変更
+    self.navigationController.navigationBar.backgroundColor = [UIColor yellowColor];
+    self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
     
     //キーボードを外タップで閉じるために追加
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
@@ -444,8 +447,8 @@
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSString *title = self.table_data[indexPath.row][@"name"];
-    NSString *iine = [NSString stringWithFormat:@"合計いいね %@件" , self.table_data[indexPath.row][@"votes"]];
-    NSString *posts =[NSString stringWithFormat:@"ボイス %@件" , self.table_data[indexPath.row][@"posts"]];
+    NSString *iine = [NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"votes"]];
+    NSString *posts =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"posts"]];
     
     MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
     toko_cell.title_label.text = title;
