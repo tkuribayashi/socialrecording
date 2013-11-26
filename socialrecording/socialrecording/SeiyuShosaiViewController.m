@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

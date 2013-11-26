@@ -65,6 +65,8 @@
         [table registerNib:nib forCellReuseIdentifier:self.contents[i][@"cell_id"]];
         [table setRowHeight:100];
         [table setTag:i];
+        table.separatorStyle = UITableViewCellSeparatorStyleNone;
+        table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
         [self.scroll_content addSubview:table];
     }
     self.scroll_content.delegate = self;
