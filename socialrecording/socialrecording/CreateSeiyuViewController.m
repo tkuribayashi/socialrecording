@@ -62,8 +62,9 @@
         [self.navigationItem setTitle:@"声優情報編集"];
         self.text_name.text = userdata[@"name"];
         self.textview_comment.text = userdata[@"comment"];
-        [self.buttons_sex[0] toggle];
-        [self.buttons_genre[0] toggle];
+        
+        [self.buttons_sex[[userdata[@"gender"] intValue]] toggle];
+        [self.buttons_genre[[userdata[@"tags"][0][@"id"] intValue]] toggle];
         /*
         UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
         self.navigationItem.rightBarButtonItem = delete;

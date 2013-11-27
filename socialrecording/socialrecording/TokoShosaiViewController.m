@@ -12,6 +12,7 @@
 #import "SeiyuShosaiViewController.h"
 #import "SVProgressHUD.h"
 #import "HttpPost.h"
+#import "RetrieveJson.h"
 
 @interface TokoShosaiViewController ()
 
@@ -19,6 +20,7 @@
 
 @implementation TokoShosaiViewController {
     NSMutableArray *like_flag;
+    BOOL seiyu_flg;
 }
 
 @synthesize session;
@@ -39,6 +41,20 @@
 {
     [super viewDidLoad];
     self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+    
+    
+    //マイリストなどの情報はuser情報で得られる
+    RetrieveJson *json = [[RetrieveJson alloc] init];
+    NSString *param = @"user/0/";
+    
+    NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
+
+    if (userdata[@"seiyu_flg"]){
+        seiyu_flg = YES;
+    } else {
+        seiyu_flg = NO;
+    }
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -368,6 +384,11 @@
 }
 
 - (IBAction)button_recording_tapped:(id)sender {
-    [self performSegueWithIdentifier:@"TokoShosaiToRecording" sender:self];
+    if (seiyu_flg){
+        [self performSegueWithIdentifier:@"TokoShosaiToRecording" sender:self];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"マイページから声優情報を編集してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 @end
