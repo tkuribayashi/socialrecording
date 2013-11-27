@@ -353,14 +353,14 @@
     
     NSString *name = self.voice_data[indexPath.row][@"username"];
     NSString *iine = self.voice_data[indexPath.row][@"votes"];
-    
+    /*
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     [label setText:[NSString stringWithFormat:@"%@さんのボイス",name]];
-    
+    */
     UIButton *button = (UIButton *)[cell viewWithTag:3];
-    [button setTitle:[NSString stringWithFormat:@"%@さんの詳細",name] forState:UIControlStateNormal];
+    [button setTitle:[NSString stringWithFormat:@"%@ さん",name] forState:UIControlStateNormal];
     
-    label = (UILabel *)[cell viewWithTag:4];
+    UILabel *label = (UILabel *)[cell viewWithTag:4];
     [label setText:[NSString stringWithFormat:@"%@",iine]];
     
 }
