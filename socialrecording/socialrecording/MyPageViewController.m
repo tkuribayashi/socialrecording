@@ -436,11 +436,11 @@
                 NSLog(@"start playing");
                 [self.player play];
                 
-                /* 再生したらviewをインクリメント */
+                /* 再生したらviewをインクリメント *//*
                 //Comment:ボイスデータから取得
                 NSString *voice_id = self.contents[1][@"data"][indexPath.row][@"id"];
                 RetrieveJson *json = [[RetrieveJson alloc]init];
-                [json accessServer:[NSString stringWithFormat:@"voice/%@/view/",voice_id]];
+                [json accessServer:[NSString stringWithFormat:@"voice/%@/view/",voice_id]];*/
             } else {
                 NSLog(@"failed playing");
             }
