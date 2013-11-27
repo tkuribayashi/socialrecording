@@ -43,7 +43,23 @@
     //self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:1.000 green:0.929 blue:0.600 alpha:1.0];
     self.navigationController.navigationBar.backgroundColor = [UIColor yellowColor];
     self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
+<<<<<<< HEAD
+=======
+    self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+
+    /* 引っ張って更新 */
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];    
+    // 更新アクションを設定
+    [refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
     
+>>>>>>> master
+    
+    self.refreshControl = refreshControl;
+    
+    // UITableView* tableViewにくっつける場合.
+    [self.table addSubview:refreshControl];
+    /* ここまで */
+
     //キーボードを外タップで閉じるために追加
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
     self.singleTap.delegate = self;
@@ -231,12 +247,6 @@
 
 /* 検索を行うメソッド */
 - (void)searchWithQuery{
-    [SVProgressHUD show];//くるくる
-    [self.view setNeedsDisplay];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-
-    
-    
     //HTTP Request
     //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
     
@@ -264,7 +274,6 @@
     
     NSLog(@"data retrieval and display done");
     
-    [SVProgressHUD dismiss];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -276,19 +285,26 @@
             search_target = button.tag;
         }
     }
-    [self set_load_statusWithOn:YES];
+    //[self set_load_statusWithOn:YES];
     
     querytext = searchBar.text;
     target = search_target;
     
-    [searchBar resignFirstResponder];
     
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+    
+    [searchBar resignFirstResponder];
+
     [self searchWithQuery];
     
+    [SVProgressHUD dismiss];
     [self.table reloadData];
     [self search_button_tapped:self.search_button];
     
-    [self set_load_statusWithOn:NO];
+    //[self set_load_statusWithOn:NO];
     
     
 }
@@ -311,13 +327,20 @@
     [self sort_button_tapped:self.sort_button];
     
     
-    [self set_load_statusWithOn:YES];
+    //[self set_load_statusWithOn:YES];
     //HTTP Request
-    [self searchWithQuery];
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+    
 
+    [self searchWithQuery];
+    
+    [SVProgressHUD dismiss];
     
     [self.table reloadData];
-    [self set_load_statusWithOn:NO];
+    //[self set_load_statusWithOn:NO];
 }
 
 -(void)genre_select_button_tapped:(id)sender{
@@ -341,18 +364,25 @@
     
     [self genre_button_tapped:self.genre_button];
     
-    [self set_load_statusWithOn:YES];
+    //[self set_load_statusWithOn:YES];
     //HTTP Request
     
-    [self searchWithQuery];
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+    
 
+    [self searchWithQuery];
+    
+    [SVProgressHUD dismiss];
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
     
     NSLog(@"data retrieval and display done");
 
     [self.table reloadData];
-    [self set_load_statusWithOn:NO];
+    //[self set_load_statusWithOn:NO];
 }
 
 
@@ -417,7 +447,7 @@
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){
         if(!self.flg_load_record){
             if (newpage){
-                [self set_load_statusWithOn:YES];
+                //[self set_load_statusWithOn:YES];
                 //HTTP Request
                 //同じ条件下での更なるデータを追加(pageをインクリメント)
                 NSRange range = [param rangeOfString:@"page="];
@@ -433,16 +463,16 @@
                 
                 
                 [self.table reloadData];
-                [self set_load_statusWithOn:NO];
+                //[self set_load_statusWithOn:NO];
             }
         }
     }else if(self.table.contentOffset.y <= 70){
         if(!self.flg_load_record){
-            [self set_load_statusWithOn:YES];
+            //[self set_load_statusWithOn:YES];
             //HTTP Request
             //同じ条件下でのデータを更新
             [self.table reloadData];
-            [self set_load_statusWithOn:NO];
+            //[self set_load_statusWithOn:NO];
         }
         
     }
@@ -482,4 +512,32 @@
         self.view_load.hidden = YES;
     }
 }
+
+/* 引っ張って更新 */
+- (void)onRefresh:(id)sender
+{
+    // 更新開始
+    [self.refreshControl beginRefreshing];
+    
+    // 更新処理をここに記述
+    
+    [self set_load_statusWithOn:YES];
+    //HTTP Request
+    
+    [self searchWithQuery];
+    
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];
+    
+    NSLog(@"data retrieval and display done");
+    
+    [self.table reloadData];
+    [self set_load_statusWithOn:NO];
+
+    
+    // 更新終了
+    [self.refreshControl endRefreshing];
+}
+/* ここまで */
+
 @end

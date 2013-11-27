@@ -40,4 +40,8 @@
 
 @property (nonatomic) UIView *view_load;
 @property (nonatomic, copy) NSDictionary *toko_data;
+
+/* 引っ張って更新 */
+@property(nonatomic) UIRefreshControl *refreshControl;
+
 @end

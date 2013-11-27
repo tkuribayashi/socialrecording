@@ -11,6 +11,8 @@
 #import "RecordingViewController.h"
 #import "SeiyuShosaiViewController.h"
 #import "SVProgressHUD.h"
+#import "HttpPost.h"
+#import "RetrieveJson.h"
 
 @interface TokoShosaiViewController ()
 
@@ -18,6 +20,7 @@
 
 @implementation TokoShosaiViewController {
     NSMutableArray *like_flag;
+    BOOL seiyu_flg;
 }
 
 @synthesize session;
@@ -38,6 +41,20 @@
 {
     [super viewDidLoad];
     self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+    
+    
+    //マイリストなどの情報はuser情報で得られる
+    RetrieveJson *json = [[RetrieveJson alloc] init];
+    NSString *param = @"user/0/";
+    
+    NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
+
+    if (userdata[@"seiyu_flg"]){
+        seiyu_flg = YES;
+    } else {
+        seiyu_flg = NO;
+    }
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -104,23 +121,24 @@
     
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{    UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
-    UIImageView *image_view = (UIImageView *)[cell viewWithTag:2];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
+    //UIImageView *image_view = (UIImageView *)[cell viewWithTag:2];
     if( indexPath.row == self.playing_number ){
         self.playing_number = -1;
-        [image_view setImage:self.not_playing_image];
+        //[image_view setImage:self.not_playing_image];
         [self.player stop];
     }else{
         [SVProgressHUD show];//くるくる
         [self.view setNeedsDisplay];
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-
+/*
         if( self.playing_number != -1 ){
             UITableViewCell *cell2 = [self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
-            UIImageView *image_view2 = (UIImageView *)[cell2 viewWithTag:2];
-            [image_view2 setImage:self.not_playing_image];
-        }
-        [image_view setImage:self.playing_image];
+            //UIImageView *image_view2 = (UIImageView *)[cell2 viewWithTag:2];
+            //[image_view2 setImage:self.not_playing_image];
+        }*/
+        //[image_view setImage:self.playing_image];
         self.playing_number = indexPath.row;
         
         
@@ -249,7 +267,7 @@
         
         
         RetrieveJson *json = [[RetrieveJson alloc]init];
-        BOOL *result = [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
+        BOOL result = [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
         
         NSNumber *flag = [[NSNumber alloc] initWithBool:NO];
         
@@ -276,12 +294,48 @@
 
 - (IBAction)button_favo_tapped:(id)sender {
     //投稿のお気に入り登録
+    HttpPost *p = [[HttpPost alloc] init];
     
+    NSString *path = @"odaimylist/add/";
+    NSArray *params = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"odai_id",self.toko_id,nil],nil];
+    
+    
+    if ([[p HttpPost:path params:params]rangeOfString:@"failed"].location != NSNotFound){
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"エラー"
+                              message : @"登録に失敗しました"
+                              delegate : nil
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
+    }
+
 }
 
 - (IBAction)button_voice_favo_tapped:(id)sender forEvent:(UIEvent *)event {
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     //ボイスのお気に入り登録
+    HttpPost *p = [[HttpPost alloc] init];
+    
+    NSString *path = @"voicemylist/add/";
+    NSArray *params = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"voice_id",self.voice_data[indexPath.row][@"id"],nil],nil];
+    
+    
+    if ([[p HttpPost:path params:params]rangeOfString:@"failed"].location != NSNotFound){
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"エラー"
+                              message : @"登録に失敗しました"
+                              delegate : nil
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
+    }
+    
+
     
 }
 // UIControlEventからタッチ位置のindexPathを取得する
@@ -331,6 +385,11 @@
 }
 
 - (IBAction)button_recording_tapped:(id)sender {
-    [self performSegueWithIdentifier:@"TokoShosaiToRecording" sender:self];
+    if (seiyu_flg){
+        [self performSegueWithIdentifier:@"TokoShosaiToRecording" sender:self];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"マイページから声優情報を編集してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 @end

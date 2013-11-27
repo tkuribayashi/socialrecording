@@ -41,6 +41,18 @@
     self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
     self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
     
+    /* 引っ張って更新 */
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    // 更新アクションを設定
+    [refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    self.refreshControl = refreshControl;
+    
+    // UITableView* tableViewにくっつける場合.
+    [self.table addSubview:refreshControl];
+    /* ここまで */
+
     //キーボードを外タップで閉じるために追加
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
     self.singleTap.delegate = self;
@@ -190,11 +202,6 @@
 
 /* 検索を行うメソッド */
 - (void)searchWithQuery{
-    [SVProgressHUD show];//くるくる
-    [self.view setNeedsDisplay];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-    
-
     //HTTP Request
     //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
     
@@ -224,9 +231,7 @@
         NSLog(@"[ERROR]\nexception[%@]", exception);
     }
     
-    NSLog(@"data retrieval and display done");
-    [SVProgressHUD dismiss];
-}
+    NSLog(@"data retrieval and display done");}
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     int search_target = 0;
@@ -243,9 +248,16 @@
     querytext = searchBar.text;
     gender = gender_select[search_target];
     
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+
     [self searchWithQuery];
     
     
+    [SVProgressHUD dismiss];
+
     [self.table reloadData];
     [self search_button_tapped:self.search_button];
     
@@ -272,9 +284,17 @@
     
     //HTTP Request
     //更新　sort、genre変数を用いる
+    
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+
     [self searchWithQuery];
     
     
+    [SVProgressHUD dismiss];
+
     [self.table reloadData];
 }
 
@@ -301,7 +321,14 @@
     
     //HTTP Request
     
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+
     [self searchWithQuery];
+    
+    [SVProgressHUD dismiss];
 
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
@@ -397,7 +424,7 @@
     NSString *title = self.table_data[indexPath.row][@"name"];
     NSString *iine = [NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"votes"]];
     NSString *posts =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"posts"]];
-    NSString *view_num =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"posts"]];
+    NSString *view_num =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"views"]];
     
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
@@ -413,4 +440,33 @@
     [label setText:view_num];
     
 }
+
+
+/* 引っ張って更新 */
+- (void)onRefresh:(id)sender
+{
+    // 更新開始
+    [self.refreshControl beginRefreshing];
+    
+    // 更新処理をここに記述
+    
+    //[self set_load_statusWithOn:YES];
+    //HTTP Request
+    
+    [self searchWithQuery];
+    
+    //APIアクセスでJSONを取得
+    self.table_data = [json retrieveJson:param];
+    
+    NSLog(@"data retrieval and display done");
+    
+    [self.table reloadData];
+    //[self set_load_statusWithOn:NO];
+    
+    
+    // 更新終了
+    [self.refreshControl endRefreshing];
+}
+/* ここまで */
+
 @end
