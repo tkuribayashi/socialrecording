@@ -280,18 +280,18 @@
             search_target = button.tag;
         }
     }
-    [self set_load_statusWithOn:YES];
+    //[self set_load_statusWithOn:YES];
     
     querytext = searchBar.text;
     target = search_target;
     
-    [searchBar resignFirstResponder];
     
     [SVProgressHUD show];//くるくる
     [self.view setNeedsDisplay];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
     
     
+    [searchBar resignFirstResponder];
 
     [self searchWithQuery];
     
@@ -299,7 +299,7 @@
     [self.table reloadData];
     [self search_button_tapped:self.search_button];
     
-    [self set_load_statusWithOn:NO];
+    //[self set_load_statusWithOn:NO];
     
     
 }
@@ -322,7 +322,7 @@
     [self sort_button_tapped:self.sort_button];
     
     
-    [self set_load_statusWithOn:YES];
+    //[self set_load_statusWithOn:YES];
     //HTTP Request
     [SVProgressHUD show];//くるくる
     [self.view setNeedsDisplay];
@@ -335,7 +335,7 @@
     [SVProgressHUD dismiss];
     
     [self.table reloadData];
-    [self set_load_statusWithOn:NO];
+    //[self set_load_statusWithOn:NO];
 }
 
 -(void)genre_select_button_tapped:(id)sender{
@@ -359,7 +359,7 @@
     
     [self genre_button_tapped:self.genre_button];
     
-    [self set_load_statusWithOn:YES];
+    //[self set_load_statusWithOn:YES];
     //HTTP Request
     
     [SVProgressHUD show];//くるくる
@@ -377,7 +377,7 @@
     NSLog(@"data retrieval and display done");
 
     [self.table reloadData];
-    [self set_load_statusWithOn:NO];
+    //[self set_load_statusWithOn:NO];
 }
 
 
@@ -442,7 +442,7 @@
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){
         if(!self.flg_load_record){
             if (newpage){
-                [self set_load_statusWithOn:YES];
+                //[self set_load_statusWithOn:YES];
                 //HTTP Request
                 //同じ条件下での更なるデータを追加(pageをインクリメント)
                 NSRange range = [param rangeOfString:@"page="];
@@ -458,16 +458,16 @@
                 
                 
                 [self.table reloadData];
-                [self set_load_statusWithOn:NO];
+                //[self set_load_statusWithOn:NO];
             }
         }
     }else if(self.table.contentOffset.y <= 70){
         if(!self.flg_load_record){
-            [self set_load_statusWithOn:YES];
+            //[self set_load_statusWithOn:YES];
             //HTTP Request
             //同じ条件下でのデータを更新
             [self.table reloadData];
-            [self set_load_statusWithOn:NO];
+            //[self set_load_statusWithOn:NO];
         }
         
     }
