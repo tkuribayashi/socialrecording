@@ -24,6 +24,7 @@
                                     <constraint firstAttribute="width" constant="106" id="XCE-Bw-0hh"/>
                                 </constraints>
                                 <state key="normal" title="検索">
+                                    <color key="titleColor" red="0.1803921568627451" green="0.88627450980392153" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -37,6 +38,7 @@
                                     <constraint firstAttribute="width" constant="107" id="mds-Wl-z6T"/>
                                 </constraints>
                                 <state key="normal" title="並び替え">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -50,6 +52,7 @@
                                     <constraint firstAttribute="width" constant="107" id="F0H-xv-Mho"/>
                                 </constraints>
                                 <state key="normal" title="ジャンル">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -191,6 +194,7 @@
                                     <constraint firstAttribute="height" constant="30" id="qgT-ZB-jFB"/>
                                 </constraints>
                                 <state key="normal" title="投稿">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -205,6 +209,7 @@
                                     <constraint firstAttribute="height" constant="30" id="YFu-g2-IGZ"/>
                                 </constraints>
                                 <state key="normal" title="萌え">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -219,6 +224,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Dcm-Kt-d3X"/>
                                 </constraints>
                                 <state key="normal" title="モノマネ">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -232,6 +238,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Z7x-FO-sod"/>
                                 </constraints>
                                 <state key="normal" title="早口言葉">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -320,6 +327,7 @@
                                 <rect key="frame" x="145" y="319" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="戻る">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -362,6 +370,7 @@
                                     <constraint firstAttribute="height" constant="30" id="jlJ-BX-84a"/>
                                 </constraints>
                                 <state key="normal" title="検索">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -376,6 +385,7 @@
                                     <constraint firstAttribute="height" constant="30" id="f81-Hv-uF1"/>
                                 </constraints>
                                 <state key="normal" title="並び替え">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -389,31 +399,32 @@
                                     <constraint firstAttribute="height" constant="30" id="8zw-ht-8KX"/>
                                 </constraints>
                                 <state key="normal" title="ジャンル">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="genre_button_tapped:" destination="QUy-BD-bpt" eventType="touchUpInside" id="2mm-o4-pgD"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6gF-Ic-cNG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="101" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6gF-Ic-cNG">
                                 <rect key="frame" x="0.0" y="94" width="320" height="425"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.99215686270000003" green="0.97254901959999995" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="seiyu_cell" id="tnm-X2-DRC">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="seiyu_cell" rowHeight="101" id="tnm-X2-DRC">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tnm-X2-DRC" id="taX-YE-9KB">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="JEu-vI-w6M">
-                                                    <rect key="frame" x="1" y="0.0" width="320" height="94"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="声優名tag=1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="np0-b8-GWG">
-                                                    <rect key="frame" x="28" y="8" width="300" height="71"/>
+                                                    <rect key="frame" x="28" y="9" width="300" height="71"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -432,21 +443,21 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHD-yO-55U">
-                                                    <rect key="frame" x="113" y="64" width="28" height="21"/>
+                                                    <rect key="frame" x="113" y="64" width="31" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="vn" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTd-T8-s2f">
-                                                    <rect key="frame" x="181" y="63" width="21" height="21"/>
+                                                    <rect key="frame" x="181" y="63" width="38" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="vin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAA-Iq-qJe">
-                                                    <rect key="frame" x="243" y="63" width="23" height="21"/>
+                                                    <rect key="frame" x="243" y="63" width="37" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -501,18 +512,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="rYe-nr-Ce8">
-                                <rect key="frame" x="0.0" y="66" width="320" height="119"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mike.png" translatesAutoresizingMaskIntoConstraints="NO" id="SOu-kX-f3S">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mike.png" translatesAutoresizingMaskIntoConstraints="NO" id="SOu-kX-f3S">
                                 <rect key="frame" x="92" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mimi.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z4f-9F-P5P">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mimi.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z4f-9F-P5P">
                                 <rect key="frame" x="161" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iine.png" translatesAutoresizingMaskIntoConstraints="NO" id="lJO-2z-1nB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="iine.png" translatesAutoresizingMaskIntoConstraints="NO" id="lJO-2z-1nB">
                                 <rect key="frame" x="20" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -539,21 +550,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="vn" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYm-ch-8S9">
-                                <rect key="frame" x="127" y="120" width="25" height="21"/>
+                                <rect key="frame" x="127" y="120" width="33" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="106" id="3gt-t7-QZC"/>
-                                    <constraint firstAttribute="height" constant="21" id="Wmc-h5-Sbf"/>
+                                    <constraint firstAttribute="width" constant="33" id="L6V-wy-DNX"/>
+                                    <constraint firstAttribute="height" constant="21" id="z4v-Kd-zDY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="vin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bS-ni-tIX">
-                                <rect key="frame" x="192" y="120" width="27" height="21"/>
+                                <rect key="frame" x="192" y="120" width="34" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="2NY-dc-9zn"/>
+                                    <constraint firstAttribute="width" constant="34" id="RF9-Yj-rDp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -605,7 +616,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Zca-ff-G8Z">
-                                                    <rect key="frame" x="0.0" y="5" width="320" height="90"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="セリフ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgE-Ip-jTI">
@@ -619,6 +630,7 @@
                                                     <rect key="frame" x="34" y="58" width="60" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="投稿詳細">
+                                                        <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -651,8 +663,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTh-r1-pV7">
-                                <rect key="frame" x="241" y="123" width="49" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTh-r1-pV7">
+                                <rect key="frame" x="251" y="123" width="49" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="mylist_buttom.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -665,23 +677,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XT7-a2-0hS" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" id="1aF-Vv-c0n"/>
-                            <constraint firstItem="oYm-ch-8S9" firstAttribute="top" secondItem="XT7-a2-0hS" secondAttribute="bottom" constant="23" id="4hl-WC-zbc"/>
+                            <constraint firstItem="SOu-kX-f3S" firstAttribute="leading" secondItem="IX8-be-2aX" secondAttribute="trailing" constant="8" symbolic="YES" id="3o4-ps-Zf4"/>
+                            <constraint firstItem="SOu-kX-f3S" firstAttribute="top" secondItem="Z4f-9F-P5P" secondAttribute="top" id="5HI-fm-qnP"/>
                             <constraint firstItem="b5F-lW-3hB" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" id="6Cf-Sj-hRl"/>
-                            <constraint firstItem="0bS-ni-tIX" firstAttribute="top" secondItem="XT7-a2-0hS" secondAttribute="bottom" constant="23" id="6zf-wJ-bir"/>
                             <constraint firstItem="IX8-be-2aX" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" constant="54" id="8Xo-I3-jBU"/>
-                            <constraint firstItem="eYV-Py-Xbl" firstAttribute="top" secondItem="oYm-ch-8S9" secondAttribute="bottom" constant="11" id="9nB-a1-j8h"/>
                             <constraint firstItem="qZQ-71-3w2" firstAttribute="leading" secondItem="eYV-Py-Xbl" secondAttribute="trailing" constant="-37" id="9wG-LK-a3k"/>
-                            <constraint firstItem="0bS-ni-tIX" firstAttribute="leading" secondItem="oYm-ch-8S9" secondAttribute="trailing" constant="-41" id="Alg-FQ-IuU"/>
+                            <constraint firstItem="qZQ-71-3w2" firstAttribute="top" secondItem="0bS-ni-tIX" secondAttribute="bottom" constant="11" id="BT9-Zb-z64"/>
+                            <constraint firstItem="SOu-kX-f3S" firstAttribute="top" secondItem="lJO-2z-1nB" secondAttribute="top" id="C6a-mv-lfJ"/>
                             <constraint firstItem="XT7-a2-0hS" firstAttribute="top" secondItem="sCg-fg-K6M" secondAttribute="bottom" constant="10" id="Ds3-bt-snd"/>
-                            <constraint firstAttribute="trailing" secondItem="0bS-ni-tIX" secondAttribute="trailing" constant="20" id="Gxl-5g-6HA"/>
+                            <constraint firstItem="eYV-Py-Xbl" firstAttribute="top" secondItem="oYm-ch-8S9" secondAttribute="bottom" constant="11" id="Fa8-Xi-bP5"/>
                             <constraint firstItem="IX8-be-2aX" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" constant="54" id="Hpp-c3-rmz"/>
-                            <constraint firstItem="qZQ-71-3w2" firstAttribute="top" secondItem="0bS-ni-tIX" secondAttribute="bottom" constant="11" id="IdS-y9-PAV"/>
+                            <constraint firstItem="oYm-ch-8S9" firstAttribute="top" secondItem="0bS-ni-tIX" secondAttribute="top" id="Ia7-Qz-B3d"/>
                             <constraint firstAttribute="trailing" secondItem="qZQ-71-3w2" secondAttribute="trailing" constant="30" id="Ji9-Ja-YEo"/>
                             <constraint firstItem="Kpt-8p-MOl" firstAttribute="top" secondItem="IX8-be-2aX" secondAttribute="bottom" constant="8" id="Kam-kt-mlM"/>
-                            <constraint firstItem="oTh-r1-pV7" firstAttribute="trailing" secondItem="qZQ-71-3w2" secondAttribute="trailing" id="OAn-1b-0Hr"/>
-                            <constraint firstItem="oYm-ch-8S9" firstAttribute="leading" secondItem="IX8-be-2aX" secondAttribute="trailing" constant="-33" id="OOR-Fa-R2G"/>
+                            <constraint firstItem="oTh-r1-pV7" firstAttribute="trailing" secondItem="qZQ-71-3w2" secondAttribute="trailing" constant="10" id="OAn-1b-0Hr"/>
                             <constraint firstItem="eYV-Py-Xbl" firstAttribute="leading" secondItem="Kpt-8p-MOl" secondAttribute="trailing" constant="-25" id="UoA-DU-It4"/>
-                            <constraint firstItem="oTh-r1-pV7" firstAttribute="leading" secondItem="oYm-ch-8S9" secondAttribute="trailing" constant="8" symbolic="YES" id="cKW-Gv-kFw"/>
+                            <constraint firstItem="0bS-ni-tIX" firstAttribute="leading" secondItem="Z4f-9F-P5P" secondAttribute="trailing" constant="1" id="ZlR-io-JJg"/>
                             <constraint firstItem="oTh-r1-pV7" firstAttribute="top" secondItem="IX8-be-2aX" secondAttribute="top" id="esj-Md-qBY"/>
                             <constraint firstItem="IX8-be-2aX" firstAttribute="top" secondItem="XT7-a2-0hS" secondAttribute="bottom" constant="26" id="gUh-mv-AnN"/>
                             <constraint firstItem="IX8-be-2aX" firstAttribute="top" secondItem="XT7-a2-0hS" secondAttribute="bottom" constant="26" id="huj-EG-l5B"/>
@@ -689,8 +700,13 @@
                             <constraint firstAttribute="trailing" secondItem="b5F-lW-3hB" secondAttribute="trailing" id="mKu-nW-tQn"/>
                             <constraint firstItem="oTh-r1-pV7" firstAttribute="bottom" secondItem="qZQ-71-3w2" secondAttribute="bottom" id="n3C-qu-b72"/>
                             <constraint firstItem="dxe-4u-XBv" firstAttribute="top" secondItem="b5F-lW-3hB" secondAttribute="bottom" id="nfv-1n-RZx"/>
+                            <constraint firstItem="oYm-ch-8S9" firstAttribute="baseline" secondItem="0bS-ni-tIX" secondAttribute="baseline" id="o4R-GJ-ywe"/>
+                            <constraint firstItem="oYm-ch-8S9" firstAttribute="top" secondItem="XT7-a2-0hS" secondAttribute="bottom" constant="23" id="sPP-kM-ArX"/>
                             <constraint firstAttribute="trailing" secondItem="XT7-a2-0hS" secondAttribute="trailing" id="ufC-mr-4sR"/>
+                            <constraint firstItem="oYm-ch-8S9" firstAttribute="leading" secondItem="SOu-kX-f3S" secondAttribute="trailing" constant="5" id="vDn-SZ-WEm"/>
                             <constraint firstItem="b5F-lW-3hB" firstAttribute="top" secondItem="qZQ-71-3w2" secondAttribute="bottom" constant="20" id="wL2-Cl-WXQ"/>
+                            <constraint firstItem="Z4f-9F-P5P" firstAttribute="leading" secondItem="oYm-ch-8S9" secondAttribute="trailing" constant="1" id="yFK-cT-1zk"/>
+                            <constraint firstItem="eYV-Py-Xbl" firstAttribute="top" secondItem="SOu-kX-f3S" secondAttribute="bottom" constant="6" id="z6c-sU-YEa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="声優詳細" id="zNb-gM-JlI"/>
@@ -781,6 +797,7 @@
                                     <constraint firstAttribute="height" constant="30" id="inw-wS-TY5"/>
                                 </constraints>
                                 <state key="normal" title="決定">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -858,6 +875,7 @@
                                     <constraint firstAttribute="height" constant="30" id="XVt-dW-JuY"/>
                                 </constraints>
                                 <state key="normal" title="萌え">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -872,6 +890,7 @@
                                     <constraint firstAttribute="height" constant="30" id="H7L-vN-fzg"/>
                                 </constraints>
                                 <state key="normal" title="モノマネ">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -885,6 +904,7 @@
                                     <constraint firstAttribute="height" constant="30" id="gLb-Mq-bt0"/>
                                 </constraints>
                                 <state key="normal" title="早口言葉">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -899,6 +919,7 @@
                                     <constraint firstAttribute="height" constant="30" id="y9n-yj-oja"/>
                                 </constraints>
                                 <state key="normal" title="男">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -913,6 +934,7 @@
                                     <constraint firstAttribute="height" constant="30" id="scX-E9-lsE"/>
                                 </constraints>
                                 <state key="normal" title="女">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -926,6 +948,7 @@
                                     <constraint firstAttribute="height" constant="30" id="k3l-Vd-jeZ"/>
                                 </constraints>
                                 <state key="normal" title="その他">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1018,6 +1041,7 @@
                                 <rect key="frame" x="145" y="317" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="戻る">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1056,7 +1080,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="SW2-l0-8Qt">
-                                <rect key="frame" x="0.0" y="64" width="320" height="139"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="149"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="セリフ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKt-Ow-BA2">
@@ -1131,6 +1155,7 @@
                                                     <rect key="frame" x="20" y="64" width="74" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="詳細">
+                                                        <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -1138,14 +1163,14 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZl-c6-78x">
-                                                    <rect key="frame" x="230" y="57" width="22" height="21"/>
+                                                    <rect key="frame" x="218" y="57" width="40" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phf-gD-yBc">
-                                                    <rect key="frame" x="185" y="48" width="41" height="41"/>
+                                                    <rect key="frame" x="175" y="48" width="41" height="41"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" backgroundImage="iine_buttom.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1247,6 +1272,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="再生">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1258,6 +1284,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="登録">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1337,6 +1364,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="戻る">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

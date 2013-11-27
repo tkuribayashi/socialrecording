@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hqa-gf-JKd">
-                        <rect key="frame" x="1" y="1" width="323" height="93"/>
+                        <rect key="frame" x="0.0" y="0.0" width="329" height="111"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="セリフ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8j-do-f9x">
@@ -29,13 +29,7 @@
                         <rect key="frame" x="25" y="59" width="60" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="投稿詳細">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCw-qZ-cyE">
-                        <rect key="frame" x="165" y="48" width="40" height="41"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="iine_buttom.png">
+                            <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -44,16 +38,19 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVK-zd-rmE">
-                        <rect key="frame" x="206" y="60" width="28" height="21"/>
+                        <rect key="frame" x="206" y="68" width="28" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iine.png" translatesAutoresizingMaskIntoConstraints="NO" id="p6V-xT-L5R">
+                        <rect key="frame" x="170" y="59" width="33" height="33"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="like_button" destination="ZCw-qZ-cyE" id="X3F-hI-wLc"/>
                 <outlet property="like_label" destination="QVK-zd-rmE" id="uE3-n7-IMK"/>
                 <outlet property="playing_image" destination="WZF-Bg-tcD" id="cIo-sr-exh"/>
                 <outlet property="shosai_button" destination="4dF-wr-ssq" id="rA0-pz-Z36"/>
@@ -63,7 +60,7 @@
     </objects>
     <resources>
         <image name="cell_back2.png" width="1200" height="800"/>
-        <image name="iine_buttom.png" width="30" height="30"/>
+        <image name="iine.png" width="30" height="30"/>
         <image name="saisei_buttom.png" width="30" height="30"/>
     </resources>
 </document>
