@@ -409,7 +409,7 @@
     NSString *title = self.table_data[indexPath.row][@"name"];
     NSString *iine = [NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"votes"]];
     NSString *posts =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"posts"]];
-    NSString *view_num =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"posts"]];
+    NSString *view_num =[NSString stringWithFormat:@"%@" , self.table_data[indexPath.row][@"views"]];
     
     
     UILabel *label = (UILabel *)[cell viewWithTag:1];
