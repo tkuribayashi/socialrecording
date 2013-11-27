@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface VoiceCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *title_label;
+@property (weak, nonatomic) IBOutlet UIButton *title_label;
 @property (weak, nonatomic) IBOutlet UIButton *shosai_button;
 @property (weak, nonatomic) IBOutlet UIButton *like_button;
 @property (weak, nonatomic) IBOutlet UIImageView *playing_image;

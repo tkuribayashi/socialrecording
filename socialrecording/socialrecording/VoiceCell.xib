@@ -18,15 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="セリフ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0Z-yE-ahM">
-                        <rect key="frame" x="32" y="20" width="275" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfK-Hg-Nmh">
-                        <rect key="frame" x="32" y="68" width="60" height="30"/>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfK-Hg-Nmh">
+                        <rect key="frame" x="26" y="11" width="216" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="投稿詳細">
                             <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,7 +59,7 @@
                 <outlet property="playing_image" destination="hlR-md-zoz" id="Bp2-zF-dUr"/>
                 <outlet property="seiyu_label" destination="Bjv-Sa-T2b" id="gae-4G-0W4"/>
                 <outlet property="shosai_button" destination="AfK-Hg-Nmh" id="Tqa-UQ-2cg"/>
-                <outlet property="title_label" destination="u0Z-yE-ahM" id="kBe-2a-UEv"/>
+                <outlet property="title_label" destination="AfK-Hg-Nmh" id="w80-m3-EUv"/>
             </connections>
         </tableViewCell>
     </objects>

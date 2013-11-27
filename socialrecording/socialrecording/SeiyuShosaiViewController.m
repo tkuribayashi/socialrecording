@@ -257,10 +257,10 @@
 -(void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{    NSString *title = self.voice_data[indexPath.row][@"odainame"];//セリフタイトル
     NSString *iine = self.voice_data[indexPath.row][@"votes"];//いいねの個数
     
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
-    [label setText:title];
+    UIButton *button = (UIButton *)[cell viewWithTag:2];
+    [button setTitle:title forState:UIControlStateNormal];
     
-    label = (UILabel *)[cell viewWithTag:4];
+    UILabel *label = (UILabel *)[cell viewWithTag:4];
     [label setText:[NSString stringWithFormat:@"%@",iine]];
 }
 
