@@ -72,7 +72,8 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{    UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
     //UIImageView *image_view = (UIImageView *)[cell viewWithTag:5];
     
     if( indexPath.row == self.playing_number ){
@@ -83,12 +84,13 @@
         [SVProgressHUD show];//くるくる
         [self.view setNeedsDisplay];
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-        
+        /*
         if( self.playing_number != -1 ){
             UITableViewCell *cell2 = [self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
            // UIImageView *image_view2 = (UIImageView *)[cell2 viewWithTag:5];
             //[image_view2 setImage:self.not_playing_image];
         }
+         */
         //[image_view setImage:self.playing_image];
         self.playing_number = indexPath.row;
         

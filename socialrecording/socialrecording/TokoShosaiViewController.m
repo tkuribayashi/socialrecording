@@ -121,7 +121,8 @@
     
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{    UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //UITableViewCell *cell = [self.table cellForRowAtIndexPath:indexPath];
     //UIImageView *image_view = (UIImageView *)[cell viewWithTag:2];
     if( indexPath.row == self.playing_number ){
         self.playing_number = -1;
@@ -131,12 +132,12 @@
         [SVProgressHUD show];//くるくる
         [self.view setNeedsDisplay];
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-
+/*
         if( self.playing_number != -1 ){
             UITableViewCell *cell2 = [self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
             //UIImageView *image_view2 = (UIImageView *)[cell2 viewWithTag:2];
             //[image_view2 setImage:self.not_playing_image];
-        }
+        }*/
         //[image_view setImage:self.playing_image];
         self.playing_number = indexPath.row;
         
@@ -266,7 +267,7 @@
         
         
         RetrieveJson *json = [[RetrieveJson alloc]init];
-        BOOL *result = [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
+        BOOL result = [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
         
         NSNumber *flag = [[NSNumber alloc] initWithBool:NO];
         
