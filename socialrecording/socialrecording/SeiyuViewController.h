@@ -28,4 +28,8 @@
 @property (nonatomic) UIToggleView *genre_view;
 
 @property (nonatomic, copy) NSDictionary *seiyu_data;
+
+/* 引っ張って更新 */
+@property(nonatomic) UIRefreshControl *refreshControl;
+
 @end
