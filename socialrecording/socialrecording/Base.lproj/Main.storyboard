@@ -206,7 +206,6 @@
                                     <constraint firstAttribute="height" constant="30" id="YFu-g2-IGZ"/>
                                 </constraints>
                                 <state key="normal" title="萌え">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -221,7 +220,6 @@
                                     <constraint firstAttribute="height" constant="30" id="Dcm-Kt-d3X"/>
                                 </constraints>
                                 <state key="normal" title="モノマネ">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -235,7 +233,6 @@
                                     <constraint firstAttribute="height" constant="30" id="Z7x-FO-sod"/>
                                 </constraints>
                                 <state key="normal" title="早口言葉">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -367,7 +364,6 @@
                                     <constraint firstAttribute="height" constant="30" id="jlJ-BX-84a"/>
                                 </constraints>
                                 <state key="normal" title="検索">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -382,7 +378,6 @@
                                     <constraint firstAttribute="height" constant="30" id="f81-Hv-uF1"/>
                                 </constraints>
                                 <state key="normal" title="並び替え">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -396,7 +391,6 @@
                                     <constraint firstAttribute="height" constant="30" id="8zw-ht-8KX"/>
                                 </constraints>
                                 <state key="normal" title="ジャンル">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -869,7 +863,6 @@
                                     <constraint firstAttribute="height" constant="30" id="XVt-dW-JuY"/>
                                 </constraints>
                                 <state key="normal" title="萌え">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -884,7 +877,6 @@
                                     <constraint firstAttribute="height" constant="30" id="H7L-vN-fzg"/>
                                 </constraints>
                                 <state key="normal" title="モノマネ">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -898,7 +890,6 @@
                                     <constraint firstAttribute="height" constant="30" id="gLb-Mq-bt0"/>
                                 </constraints>
                                 <state key="normal" title="早口言葉">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -913,7 +904,6 @@
                                     <constraint firstAttribute="height" constant="30" id="y9n-yj-oja"/>
                                 </constraints>
                                 <state key="normal" title="男">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -928,7 +918,6 @@
                                     <constraint firstAttribute="height" constant="30" id="scX-E9-lsE"/>
                                 </constraints>
                                 <state key="normal" title="女">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -942,7 +931,6 @@
                                     <constraint firstAttribute="height" constant="30" id="k3l-Vd-jeZ"/>
                                 </constraints>
                                 <state key="normal" title="その他">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1488,7 +1476,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cAf-5W-2cP"/>
+        <segue reference="emT-bA-y4d"/>
         <segue reference="YeT-bd-dt6"/>
     </inferredMetricsTieBreakers>
 </document>
