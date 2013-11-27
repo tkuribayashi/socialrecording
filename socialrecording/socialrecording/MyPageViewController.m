@@ -34,8 +34,8 @@
     self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
     
     self.playing_number = -1;
-    self.playing_image = [UIImage imageNamed:@"first.png"];
-    self.not_playing_image = [UIImage imageNamed:@"second.png"];
+    self.playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
+    self.not_playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
 
     self.contents = @[
                       [@{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":@""} mutableCopy],
