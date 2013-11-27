@@ -14,7 +14,9 @@
 
 @end
 
-@implementation RecordingViewController
+@implementation RecordingViewController {
+    BOOL recorded;
+}
 
 @synthesize session;
 @synthesize recorder;
@@ -39,6 +41,8 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.label_name setText:self.toko_name];
+    
+    recorded = NO;
 }
 - (void)viewDidAppear:(BOOL)animated{
     if(self.flag_end){
@@ -106,6 +110,7 @@
         return;
     }
     [recorder record];
+    
 }
 
 
@@ -116,10 +121,24 @@
         [recorder stop];
         self.recorder = nil;
     }
+    recorded = YES;
 }
 
 -(void)playRecord
 {
+    if (!recorded) {
+        UIAlertView *alert =[
+                             [UIAlertView alloc]
+                             initWithTitle : @"エラー"
+                             message : @"録音してください"
+                             delegate : nil
+                             cancelButtonTitle : @"OK"
+                             otherButtonTitles : nil
+                             ];
+        [alert show];
+        return;
+    }
+    
     NSError *error = nil;
     
     // File Path
@@ -160,6 +179,19 @@
 }
 
 - (IBAction)button_send_tapped:(id)sender {
+    if (!recorded) {
+        UIAlertView *alert =[
+                             [UIAlertView alloc]
+                             initWithTitle : @"エラー"
+                             message : @"録音してください"
+                             delegate : nil
+                             cancelButtonTitle : @"OK"
+                             otherButtonTitles : nil
+                             ];
+        [alert show];
+        return;
+    }
+
     [SVProgressHUD show];//くるくる
     [self.view setNeedsDisplay];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
