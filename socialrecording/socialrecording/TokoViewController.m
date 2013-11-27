@@ -95,6 +95,7 @@
     [self.search_bar setDelegate:self];
     [self.search_view addSubview:self.search_bar];
     
+    
     //////////////////////////////////////////////////
     ////////////////////ソートビュー////////////////////
     //////////////////////////////////////////////////
@@ -194,8 +195,7 @@
 
 - (IBAction)search_button_tapped:(id)sender {
     [self.search_bar resignFirstResponder];
-    [UIToggleView animationSelectWithSelectView:self.search_view downview:self.table callback:^{}];
-}
+    [UIToggleView animationSelectWithSelectView:self.search_view downview:self.table callback:^{}];}
 
 - (IBAction)sort_button_tapped:(id)sender {
     [self.search_bar resignFirstResponder];

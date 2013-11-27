@@ -24,7 +24,6 @@
                                     <constraint firstAttribute="width" constant="106" id="XCE-Bw-0hh"/>
                                 </constraints>
                                 <state key="normal" title="検索">
-                                    <color key="titleColor" red="0.1803921568627451" green="0.88627450980392153" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -38,7 +37,6 @@
                                     <constraint firstAttribute="width" constant="107" id="mds-Wl-z6T"/>
                                 </constraints>
                                 <state key="normal" title="並び替え">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -52,7 +50,6 @@
                                     <constraint firstAttribute="width" constant="107" id="F0H-xv-Mho"/>
                                 </constraints>
                                 <state key="normal" title="ジャンル">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1484,6 +1481,7 @@
         <image name="seiyu.png" width="30" height="30"/>
         <image name="toukou.png" width="30" height="30"/>
     </resources>
+    <color key="tintColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

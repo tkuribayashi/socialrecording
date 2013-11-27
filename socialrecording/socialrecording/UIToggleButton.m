@@ -8,7 +8,9 @@
 
 #import "UIToggleButton.h"
 
-@implementation UIToggleButton
+@implementation UIToggleButton {
+    UIColor *current;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -17,13 +19,19 @@
         // Initialization code
         self.is_on = false;
     }
+    
+    self.tintColor = [UIColor colorWithRed:46/255.0 green:226/255.0 blue:233/255.0 alpha:1.0];
+    
     return self;
 }
 -(void)toggle{
     if(!self.is_on){
-        self.backgroundColor = [UIColor colorWithRed:0.2f green:(CGFloat)0.8f blue:(CGFloat)1.0f alpha:1.0f];
+        current = [self currentTitleColor];
+        self.backgroundColor = [UIColor colorWithRed:46/255.0 green:226/255.0 blue:233/255.0 alpha:1.0];
+        self.tintColor = [UIColor whiteColor];
     }else{
         self.backgroundColor = [UIColor whiteColor];
+        self.tintColor = current;
     }
     self.is_on = !self.is_on;
 }
