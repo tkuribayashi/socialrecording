@@ -1252,8 +1252,8 @@
                                 <rect key="frame" x="0.0" y="61" width="326" height="459"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="セリフ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-4q-tnn">
-                                <rect key="frame" x="46" y="105" width="57" height="23"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="セリフ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-4q-tnn">
+                                <rect key="frame" x="20" y="82" width="280" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -1300,11 +1300,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XSy-4q-tnn" firstAttribute="top" secondItem="g4x-nh-fTa" secondAttribute="bottom" constant="41" id="NSd-k1-bk9"/>
                             <constraint firstItem="UMJ-h3-nEd" firstAttribute="baseline" secondItem="wjI-Qq-4Eu" secondAttribute="baseline" id="Vph-6V-Qts"/>
                             <constraint firstItem="UMJ-h3-nEd" firstAttribute="leading" secondItem="wjI-Qq-4Eu" secondAttribute="trailing" constant="73" id="j6D-80-A3g"/>
                             <constraint firstAttribute="trailing" secondItem="UMJ-h3-nEd" secondAttribute="trailing" constant="91" id="n7S-tK-ctb"/>
-                            <constraint firstItem="XSy-4q-tnn" firstAttribute="leading" secondItem="0yp-hf-5Jy" secondAttribute="leading" constant="46" id="t2X-ky-P2J"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="レコーディング" id="B2N-Oc-p5B"/>
@@ -1334,7 +1332,7 @@
                                 <rect key="frame" x="0.0" y="65" width="326" height="459"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="レコーディングが完了しました！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQQ-4U-VAo">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="レコーディングが完了しました！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQQ-4U-VAo">
                                 <rect key="frame" x="0.0" y="234" width="320" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -1492,7 +1490,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cAf-5W-2cP"/>
+        <segue reference="emT-bA-y4d"/>
         <segue reference="00H-cy-0rs"/>
     </inferredMetricsTieBreakers>
 </document>
