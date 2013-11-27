@@ -375,6 +375,7 @@
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
     
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -40,7 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+    //self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
     
     
     //マイリストなどの情報はuser情報で得られる
@@ -119,6 +120,7 @@
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
     
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

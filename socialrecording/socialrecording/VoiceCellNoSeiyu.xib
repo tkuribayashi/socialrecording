@@ -17,6 +17,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hqa-gf-JKd">
                         <rect key="frame" x="0.0" y="0.0" width="329" height="111"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
                     <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dF-wr-ssq">
                         <rect key="frame" x="20" y="25" width="214" height="30"/>
@@ -43,6 +44,7 @@
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="like_label" destination="QVK-zd-rmE" id="uE3-n7-IMK"/>
                 <outlet property="playing_image" destination="WZF-Bg-tcD" id="cIo-sr-exh"/>
