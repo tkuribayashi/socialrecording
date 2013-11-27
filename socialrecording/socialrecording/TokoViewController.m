@@ -242,12 +242,6 @@
 
 /* 検索を行うメソッド */
 - (void)searchWithQuery{
-    [SVProgressHUD show];//くるくる
-    [self.view setNeedsDisplay];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-
-    
-    
     //HTTP Request
     //searchBar.textとsearch_target(0=お題,1=タグ,2=声優)検索ワードに合わせて更新 sort, genreも用いる？
     
@@ -275,7 +269,6 @@
     
     NSLog(@"data retrieval and display done");
     
-    [SVProgressHUD dismiss];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -294,8 +287,15 @@
     
     [searchBar resignFirstResponder];
     
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+    
+
     [self searchWithQuery];
     
+    [SVProgressHUD dismiss];
     [self.table reloadData];
     [self search_button_tapped:self.search_button];
     
@@ -324,8 +324,15 @@
     
     [self set_load_statusWithOn:YES];
     //HTTP Request
-    [self searchWithQuery];
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+    
 
+    [self searchWithQuery];
+    
+    [SVProgressHUD dismiss];
     
     [self.table reloadData];
     [self set_load_statusWithOn:NO];
@@ -355,8 +362,15 @@
     [self set_load_statusWithOn:YES];
     //HTTP Request
     
-    [self searchWithQuery];
+    [SVProgressHUD show];//くるくる
+    [self.view setNeedsDisplay];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    
+    
 
+    [self searchWithQuery];
+    
+    [SVProgressHUD dismiss];
     //APIアクセスでJSONを取得
     self.table_data = [json retrieveJson:param];
     
