@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fyi-q4-qao">
-                                <rect key="frame" x="0.0" y="102" width="320" height="417"/>
+                                <rect key="frame" x="0.0" y="94" width="320" height="425"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.99215686270000003" green="0.97254901959999995" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -104,7 +104,7 @@
                             <constraint firstAttribute="trailing" secondItem="fyi-q4-qao" secondAttribute="trailing" id="1cw-NU-lij"/>
                             <constraint firstItem="YNi-ez-BWe" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="QTO-ui-tV2"/>
                             <constraint firstItem="YNi-ez-BWe" firstAttribute="top" secondItem="DQl-1N-6c3" secondAttribute="bottom" id="Qa7-qt-dGU"/>
-                            <constraint firstItem="fyi-q4-qao" firstAttribute="top" secondItem="YNi-ez-BWe" secondAttribute="bottom" constant="8" id="RRt-Bx-yIA"/>
+                            <constraint firstItem="fyi-q4-qao" firstAttribute="top" secondItem="YNi-ez-BWe" secondAttribute="bottom" id="RRt-Bx-yIA"/>
                             <constraint firstItem="fyi-q4-qao" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="XWH-cW-byj"/>
                             <constraint firstAttribute="trailing" secondItem="cET-7q-1oa" secondAttribute="trailing" id="uAC-ll-6gT"/>
                             <constraint firstItem="cET-7q-1oa" firstAttribute="top" secondItem="DQl-1N-6c3" secondAttribute="bottom" id="zMO-wb-YBW"/>
