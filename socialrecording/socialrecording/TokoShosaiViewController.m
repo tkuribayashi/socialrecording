@@ -11,6 +11,7 @@
 #import "RecordingViewController.h"
 #import "SeiyuShosaiViewController.h"
 #import "SVProgressHUD.h"
+#import "HttpPost.h"
 
 @interface TokoShosaiViewController ()
 
@@ -276,12 +277,48 @@
 
 - (IBAction)button_favo_tapped:(id)sender {
     //投稿のお気に入り登録
+    HttpPost *p = [[HttpPost alloc] init];
     
+    NSString *path = @"odaimylist/add/";
+    NSArray *params = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"odai_id",self.toko_id,nil],nil];
+    
+    
+    if ([[p HttpPost:path params:params]rangeOfString:@"failed"].location != NSNotFound){
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"エラー"
+                              message : @"登録に失敗しました"
+                              delegate : nil
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
+    }
+
 }
 
 - (IBAction)button_voice_favo_tapped:(id)sender forEvent:(UIEvent *)event {
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     //ボイスのお気に入り登録
+    HttpPost *p = [[HttpPost alloc] init];
+    
+    NSString *path = @"voicemylist/add/";
+    NSArray *params = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"voice_id",self.voice_data[indexPath.row][@"id"],nil],nil];
+    
+    
+    if ([[p HttpPost:path params:params]rangeOfString:@"failed"].location != NSNotFound){
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"エラー"
+                              message : @"登録に失敗しました"
+                              delegate : nil
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
+    }
+    
+
     
 }
 // UIControlEventからタッチ位置のindexPathを取得する
