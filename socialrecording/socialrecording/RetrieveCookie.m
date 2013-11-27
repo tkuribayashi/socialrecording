@@ -57,7 +57,7 @@
 
 -(NSString*)getUUID{
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSString *my_token = @"test";//(NSString *)[ud objectForKey:@"my_token"];
+    NSString *my_token = (NSString *)[ud objectForKey:@"my_token"];
     if (my_token) {
         return my_token;
     }else{
