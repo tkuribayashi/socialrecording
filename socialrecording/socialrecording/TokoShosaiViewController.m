@@ -307,7 +307,7 @@
     [button setTitle:[NSString stringWithFormat:@"%@さんの詳細",name] forState:UIControlStateNormal];
     
     label = (UILabel *)[cell viewWithTag:4];
-    [label setText:[NSString stringWithFormat:@"いいね%@件",iine]];
+    [label setText:[NSString stringWithFormat:@"%@",iine]];
     
 }
  
