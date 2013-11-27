@@ -64,7 +64,12 @@
         self.textview_comment.text = userdata[@"comment"];
         
         [self.buttons_sex[[userdata[@"gender"] intValue]] toggle];
-        [self.buttons_genre[[userdata[@"tags"][0][@"id"] intValue]] toggle];
+        
+        
+        NSDictionary *genre_converter = @{@8:@0,@7:@1,@2:@2};
+        int selectedtag = [genre_converter[userdata[@"tags"][0][@"id"]] intValue];
+        NSLog(@"tag: %d",selectedtag);
+        [self.buttons_genre[selectedtag] toggle];
         /*
         UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
         self.navigationItem.rightBarButtonItem = delete;
