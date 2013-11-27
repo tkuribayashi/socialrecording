@@ -1259,8 +1259,8 @@
                                 <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjI-Qq-4Eu">
-                                <rect key="frame" x="88" y="421" width="34" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjI-Qq-4Eu">
+                                <rect key="frame" x="88" y="393" width="34" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="再生">
@@ -1271,8 +1271,8 @@
                                     <action selector="button_play_tapped:" destination="Mi1-5L-nGs" eventType="touchUpInside" id="Eic-PI-m1D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMJ-h3-nEd">
-                                <rect key="frame" x="195" y="421" width="34" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMJ-h3-nEd">
+                                <rect key="frame" x="195" y="393" width="34" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="登録">
@@ -1283,13 +1283,9 @@
                                     <action selector="button_send_tapped:" destination="Mi1-5L-nGs" eventType="touchUpInside" id="lhJ-tO-EFC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-iX-Rso">
-                                <rect key="frame" x="60" y="213" width="200" height="200"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-iX-Rso">
+                                <rect key="frame" x="60" y="185" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="6qG-PW-nB4"/>
-                                    <constraint firstAttribute="height" constant="200" id="DMG-dR-CBq"/>
-                                </constraints>
                                 <state key="normal" backgroundImage="mike_buttom.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1298,19 +1294,16 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rec.png" translatesAutoresizingMaskIntoConstraints="NO" id="31G-54-Ete">
-                                <rect key="frame" x="161" y="164" width="125" height="41"/>
+                                <rect key="frame" x="163" y="136" width="125" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UMJ-h3-nEd" firstAttribute="top" secondItem="w1r-iX-Rso" secondAttribute="bottom" constant="8" id="BuR-p0-xN3"/>
                             <constraint firstItem="XSy-4q-tnn" firstAttribute="top" secondItem="g4x-nh-fTa" secondAttribute="bottom" constant="41" id="NSd-k1-bk9"/>
-                            <constraint firstAttribute="centerX" secondItem="w1r-iX-Rso" secondAttribute="centerX" id="Oo7-eK-wbD"/>
-                            <constraint firstItem="wjI-Qq-4Eu" firstAttribute="top" secondItem="w1r-iX-Rso" secondAttribute="bottom" constant="8" id="bGv-xc-AxR"/>
-                            <constraint firstAttribute="centerX" secondItem="UMJ-h3-nEd" secondAttribute="centerX" constant="-52" id="ceK-rZ-yZU"/>
-                            <constraint firstItem="w1r-iX-Rso" firstAttribute="top" secondItem="XSy-4q-tnn" secondAttribute="bottom" constant="85" id="kmi-BR-rt6"/>
-                            <constraint firstAttribute="centerX" secondItem="wjI-Qq-4Eu" secondAttribute="centerX" constant="55" id="lTt-yt-fH9"/>
+                            <constraint firstItem="UMJ-h3-nEd" firstAttribute="baseline" secondItem="wjI-Qq-4Eu" secondAttribute="baseline" id="Vph-6V-Qts"/>
+                            <constraint firstItem="UMJ-h3-nEd" firstAttribute="leading" secondItem="wjI-Qq-4Eu" secondAttribute="trailing" constant="73" id="j6D-80-A3g"/>
+                            <constraint firstAttribute="trailing" secondItem="UMJ-h3-nEd" secondAttribute="trailing" constant="91" id="n7S-tK-ctb"/>
                             <constraint firstItem="XSy-4q-tnn" firstAttribute="leading" secondItem="0yp-hf-5Jy" secondAttribute="leading" constant="46" id="t2X-ky-P2J"/>
                         </constraints>
                     </view>
