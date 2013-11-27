@@ -47,6 +47,7 @@
 		319824421806A73400796825 /* socialrecordingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 319824411806A73400796825 /* socialrecordingTests.m */; };
 		31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31BB2AC8182600A70043A48D /* SVProgressHUD.m */; };
 		CE0769DC18450C9900803ECD /* back_color.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0769DB18450C9900803ECD /* back_color.png */; };
+		CE0769DE1845A9EF00803ECD /* back_big.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0769DD1845A9EF00803ECD /* back_big.png */; };
 		CE70498A1844E71900EA3A4F /* cell_back2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049791844E71900EA3A4F /* cell_back2.png */; };
 		CE70498B1844E71900EA3A4F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70497A1844E71900EA3A4F /* Default.png */; };
 		CE70498C1844E71900EA3A4F /* ichiran.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70497B1844E71900EA3A4F /* ichiran.png */; };
@@ -142,6 +143,7 @@
 		31BB2AC7182600A70043A48D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		31BB2AC8182600A70043A48D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		CE0769DB18450C9900803ECD /* back_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_color.png; sourceTree = "<group>"; };
+		CE0769DD1845A9EF00803ECD /* back_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_big.png; sourceTree = "<group>"; };
 		CE7049791844E71900EA3A4F /* cell_back2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_back2.png; sourceTree = "<group>"; };
 		CE70497A1844E71900EA3A4F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		CE70497B1844E71900EA3A4F /* ichiran.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ichiran.png; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		CE7049781844E71900EA3A4F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CE0769DD1845A9EF00803ECD /* back_big.png */,
 				CE0769DB18450C9900803ECD /* back_color.png */,
 				CE7049791844E71900EA3A4F /* cell_back2.png */,
 				CE70497A1844E71900EA3A4F /* Default.png */,
@@ -424,6 +427,7 @@
 				CE7049971844E71900EA3A4F /* seiyu.png in Resources */,
 				CE7049961844E71900EA3A4F /* saisei_buttom.png in Resources */,
 				CE70498B1844E71900EA3A4F /* Default.png in Resources */,
+				CE0769DE1845A9EF00803ECD /* back_big.png in Resources */,
 				3198242F1806A73400796825 /* Images.xcassets in Resources */,
 				3198241E1806A73400796825 /* InfoPlist.strings in Resources */,
 				CE7049991844E71900EA3A4F /* teishi.png in Resources */,

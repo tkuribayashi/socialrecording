@@ -80,8 +80,8 @@
     
     self.table.dataSource = self;
     self.table.delegate = self;
-    self.not_playing_image = [UIImage imageNamed:@"first"];
-    self.playing_image = [UIImage imageNamed:@"second"];
+    self.not_playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
+    self.playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
     
     NSString *genre = @"no genre";
     NSArray *tags = toko_shosai[@"tags"];
@@ -361,7 +361,7 @@
     [button setTitle:[NSString stringWithFormat:@"%@さんの詳細",name] forState:UIControlStateNormal];
     
     label = (UILabel *)[cell viewWithTag:4];
-    [label setText:[NSString stringWithFormat:@"いいね%@件",iine]];
+    [label setText:[NSString stringWithFormat:@"%@",iine]];
     
 }
  

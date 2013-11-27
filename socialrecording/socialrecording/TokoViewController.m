@@ -40,15 +40,15 @@
     [super viewDidLoad];
     
     //ナビゲーションバー、タブバーの変更
+    //self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:1.000 green:0.929 blue:0.600 alpha:1.0];
     self.navigationController.navigationBar.backgroundColor = [UIColor yellowColor];
     self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
-    self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+    
 
     /* 引っ張って更新 */
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];    
     // 更新アクションを設定
     [refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
-    
     
     self.refreshControl = refreshControl;
     
@@ -147,6 +147,7 @@
     NSLog(@"data retrieval and display done");
 }
 - (void)viewDidAppear:(BOOL)animated{
+    self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
     NSLog(@"table data: %d",[self.table_data count]);
     
     [super viewDidAppear:animated];

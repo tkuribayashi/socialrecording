@@ -34,8 +34,8 @@
     self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
     
     self.playing_number = -1;
-    self.playing_image = [UIImage imageNamed:@"first.png"];
-    self.not_playing_image = [UIImage imageNamed:@"second.png"];
+    self.playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
+    self.not_playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
 
     self.contents = @[
                       [@{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":@""} mutableCopy],
@@ -240,7 +240,7 @@
         voice_cell.title_label.text = data[@"odainame"];
         voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
         [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
-        [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+        [voice_cell.shosai_button_myvoice addTarget:self action:@selector(shosai_button_myvoice_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -325,6 +325,16 @@
     self.toko_data = NULL;
     [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
 }
+
+/* 自分のボイス→投稿詳細タップ時に投稿詳細に飛ぶ */
+-(void)shosai_button_myvoice_tapped:(id)sender event:(UIEvent *)event{
+    NSIndexPath *indexpath = [self indexPathForControlEvent:event];
+    
+    self.toko_id = self.contents[4][@"data"][indexpath.row][@"odai_id"];
+    self.toko_data = NULL;
+    [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //Comment:セル選択した時の動作。それぞれ動作するようにして下さい。
     //tag==0は１ページ目、つまりお気に入り投稿のテーブルです。

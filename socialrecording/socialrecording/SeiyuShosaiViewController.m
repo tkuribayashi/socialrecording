@@ -35,8 +35,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.playing_number = -1;
-    self.playing_image = [UIImage imageNamed:@"first.png"];
-    self.not_playing_image = [UIImage imageNamed:@"second.png"];
+    self.playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
+    self.not_playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
     
     //ユーザの詳細を取得する
     RetrieveJson *json = [[RetrieveJson alloc] init];
