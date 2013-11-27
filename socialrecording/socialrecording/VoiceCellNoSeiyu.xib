@@ -53,7 +53,7 @@
             <connections>
                 <outlet property="like_label" destination="QVK-zd-rmE" id="uE3-n7-IMK"/>
                 <outlet property="playing_image" destination="WZF-Bg-tcD" id="cIo-sr-exh"/>
-                <outlet property="shosai_button" destination="4dF-wr-ssq" id="rA0-pz-Z36"/>
+                <outlet property="shosai_button_myvoice" destination="4dF-wr-ssq" id="jgE-Vb-nUu"/>
                 <outlet property="title_label" destination="U8j-do-f9x" id="i93-0C-A3y"/>
             </connections>
         </tableViewCell>
