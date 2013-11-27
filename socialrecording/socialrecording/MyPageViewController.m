@@ -333,11 +333,11 @@
         self.toko_data = NULL;
         [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
     }else if(tableView.tag == 1 || tableView.tag == 4){
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        UIImageView *image_view = ((VoiceCell *)cell).playing_image;
+        //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        //UIImageView *image_view = ((VoiceCell *)cell).playing_image;
         if( indexPath.row == self.playing_number ){
             self.playing_number = -1;
-            [image_view setImage:self.not_playing_image];
+            //[image_view setImage:self.not_playing_image];
             [self.player stop];
         }else{
             [SVProgressHUD show];//くるくる
@@ -345,11 +345,11 @@
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
             
             if( self.playing_number != -1 ){
-                UITableViewCell *cell2 = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
-                UIImageView *image_view2 = ((VoiceCell *)cell2).playing_image;
-                [image_view2 setImage:self.not_playing_image];
+                //UITableViewCell *cell2 = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
+               // UIImageView *image_view2 = ((VoiceCell *)cell2).playing_image;
+                //[image_view2 setImage:self.not_playing_image];
             }
-            [image_view setImage:self.playing_image];
+            //[image_view setImage:self.playing_image];
             self.playing_number = indexPath.row;
             
             
