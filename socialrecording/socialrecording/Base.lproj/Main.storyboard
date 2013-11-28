@@ -309,7 +309,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="aGb-Fh-BX2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="aGb-Fh-BX2">
                                 <rect key="frame" x="0.0" y="65" width="320" height="457"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -320,7 +320,7 @@
                                 <color key="textColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOm-Rn-4Dj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOm-Rn-4Dj">
                                 <rect key="frame" x="145" y="319" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="戻る">
@@ -334,11 +334,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gOm-Rn-4Dj" firstAttribute="centerX" secondItem="aGb-Fh-BX2" secondAttribute="centerX" id="12W-kl-v91"/>
+                            <constraint firstItem="gOm-Rn-4Dj" firstAttribute="top" secondItem="DGi-Cm-06t" secondAttribute="bottom" constant="68" id="Hdv-xn-XRw"/>
                             <constraint firstAttribute="trailing" secondItem="DGi-Cm-06t" secondAttribute="trailing" id="Lm2-c2-L1g"/>
                             <constraint firstItem="DGi-Cm-06t" firstAttribute="top" secondItem="c0a-ek-5EJ" secondAttribute="bottom" constant="164" id="PcX-jA-uvN"/>
                             <constraint firstItem="DGi-Cm-06t" firstAttribute="leading" secondItem="OAK-yn-Pan" secondAttribute="leading" id="ava-WZ-Ywx"/>
-                            <constraint firstAttribute="centerY" secondItem="gOm-Rn-4Dj" secondAttribute="centerY" id="jby-8A-jws"/>
-                            <constraint firstAttribute="centerX" secondItem="gOm-Rn-4Dj" secondAttribute="centerX" id="kRo-dr-jYV"/>
+                            <constraint firstItem="gOm-Rn-4Dj" firstAttribute="centerX" secondItem="DGi-Cm-06t" secondAttribute="centerX" id="bez-qa-xyj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="投稿完了" id="wGb-4O-UNx"/>
@@ -732,10 +733,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-lW-WIJ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="-1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-lW-WIJ">
+                                <rect key="frame" x="0.0" y="63" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="csC-lF-W4m"/>
                                 </constraints>
@@ -1015,7 +1016,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="R3o-x7-peV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="R3o-x7-peV">
                                 <rect key="frame" x="0.0" y="64" width="320" height="456"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1041,9 +1042,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="6YE-YW-DTf" secondAttribute="centerY" constant="-48" id="20L-5C-fbk"/>
-                            <constraint firstItem="xib-2o-vcG" firstAttribute="leading" secondItem="9u3-YA-DRD" secondAttribute="leading" id="L5D-zV-Tz8"/>
-                            <constraint firstAttribute="trailing" secondItem="xib-2o-vcG" secondAttribute="trailing" id="g8j-2C-8qQ"/>
-                            <constraint firstItem="xib-2o-vcG" firstAttribute="top" secondItem="OfW-ut-pKe" secondAttribute="bottom" constant="158" id="gx6-2h-NvH"/>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="top" secondItem="OfW-ut-pKe" secondAttribute="bottom" constant="158" id="4HP-pK-thp"/>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="leading" secondItem="9u3-YA-DRD" secondAttribute="leading" id="KzC-Nz-2ra"/>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="centerX" secondItem="6YE-YW-DTf" secondAttribute="centerX" id="Lj4-rK-BVF"/>
+                            <constraint firstItem="6YE-YW-DTf" firstAttribute="top" secondItem="xib-2o-vcG" secondAttribute="bottom" constant="72" id="oa4-zK-dwl"/>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="leading" secondItem="R3o-x7-peV" secondAttribute="leading" id="ote-KT-pCd"/>
+                            <constraint firstItem="xib-2o-vcG" firstAttribute="trailing" secondItem="R3o-x7-peV" secondAttribute="trailing" id="swI-Ej-jaj"/>
                             <constraint firstAttribute="centerX" secondItem="6YE-YW-DTf" secondAttribute="centerX" id="vHF-Uj-Ngd"/>
                         </constraints>
                     </view>
@@ -1322,7 +1326,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="DJ3-IC-KmN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="DJ3-IC-KmN">
                                 <rect key="frame" x="0.0" y="65" width="326" height="459"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1330,7 +1334,7 @@
                                 <rect key="frame" x="0.0" y="234" width="320" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="gES-Su-jHx"/>
+                                    <constraint firstAttribute="height" constant="36" id="hXs-Po-ntm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -1351,11 +1355,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bQQ-4U-VAo" firstAttribute="leading" secondItem="KGj-tI-mfV" secondAttribute="leading" id="1aJ-ci-qnG"/>
-                            <constraint firstItem="bQQ-4U-VAo" firstAttribute="top" secondItem="YO0-mM-ioM" secondAttribute="bottom" constant="170" id="2Vq-3O-bFS"/>
+                            <constraint firstItem="bQQ-4U-VAo" firstAttribute="leading" secondItem="DJ3-IC-KmN" secondAttribute="leading" id="2Cn-vH-vad"/>
+                            <constraint firstItem="bQQ-4U-VAo" firstAttribute="leading" secondItem="KGj-tI-mfV" secondAttribute="leading" id="62F-g2-hCU"/>
                             <constraint firstAttribute="centerY" secondItem="5VZ-MO-tKD" secondAttribute="centerY" constant="-66.5" id="E2q-0w-Rpj"/>
+                            <constraint firstItem="bQQ-4U-VAo" firstAttribute="centerX" secondItem="5VZ-MO-tKD" secondAttribute="centerX" id="Nd0-wu-0mR"/>
+                            <constraint firstItem="bQQ-4U-VAo" firstAttribute="top" secondItem="YO0-mM-ioM" secondAttribute="bottom" constant="170" id="Np3-9e-xuW"/>
+                            <constraint firstItem="5VZ-MO-tKD" firstAttribute="top" secondItem="bQQ-4U-VAo" secondAttribute="bottom" constant="64" id="OLV-y7-aZJ"/>
                             <constraint firstAttribute="centerX" secondItem="5VZ-MO-tKD" secondAttribute="centerX" id="mCK-2v-y39"/>
-                            <constraint firstAttribute="trailing" secondItem="bQQ-4U-VAo" secondAttribute="trailing" id="v8K-oC-ELN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="レコーディング完了" id="ab6-J9-5xm"/>
@@ -1486,6 +1492,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="p0m-e4-vZS"/>
-        <segue reference="00H-cy-0rs"/>
+        <segue reference="8vP-Cu-nLu"/>
     </inferredMetricsTieBreakers>
 </document>
