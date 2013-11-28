@@ -11,9 +11,11 @@
 #import "TokoShosaiViewController.h"
 #import "SVProgressHUD.h"
 #import "RetrieveCookie.h"
-
+#import "Reachability.h"
 
 @interface TokoViewController ()
+
+@property (nonatomic,retain) Reachability *reachability;
 
 //キーボードを外タップで閉じるために追加
 @property(nonatomic, strong) UITapGestureRecognizer *singleTap;
@@ -37,6 +39,11 @@
 }
 
 - (void)viewDidLoad{
+    // ネットワーク状態が変更された際に通知を受け取る
+    reachability  = [Reachability reachabilityForInternetConnection];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    [reachability startNotifier];
+    
     [super viewDidLoad];
     
     //ナビゲーションバー、タブバーの変更
@@ -153,6 +160,33 @@
     
     [super viewDidAppear:animated];
     
+    NetworkStatus netStatus = [reachability currentReachabilityStatus];
+    /*
+     ここで netStatus には
+     NotReachable : 接続されていない
+     ReachableViaWWAN : 3G接続
+     ReachableViaWiFi : Wi-Fi接続
+     が入る
+     */
+    
+    if (netStatus == NotReachable) {
+        // ここに UIAlertView など、圏外の場合の処理
+        UIAlertView *alert =[
+                             [UIAlertView alloc]
+                             initWithTitle : @"エラー"
+                             message : @"ネットワーク接続されていません"
+                             delegate : nil
+                             cancelButtonTitle : @"OK"
+                             otherButtonTitles : nil
+                             ];
+        [alert show];
+    } else {
+        [self networkConnected]; // ここに正常系の処理を関数で書く
+    }
+}
+
+- (void)networkConnected{
+    NSLog(@"%s",__func__);
     RetrieveCookie *rc = [[RetrieveCookie alloc]init];
     
     /* ログイン処理 */
@@ -185,7 +219,21 @@
                              }];
         }
     }
+
 }
+
+- (void)notifiedNetworkStatus:(NSNotification *)notification
+{
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    // ネットワーク接続の通知を受け取った場合に、正常系の処理を行う
+    if (networkStatus != NotReachable) {
+        [self networkConnected];
+    } else if (networkStatus == NotReachable){
+        NSLog(@"connection lost");
+        [self viewDidAppear:YES];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

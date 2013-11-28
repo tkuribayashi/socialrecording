@@ -27,6 +27,13 @@
 }
 
 - (void)viewDidLoad{
+    NSLog(@"%s",__func__);
+    // ネットワーク状態が変更された際に通知を受け取る
+    reachability  = [Reachability reachabilityForInternetConnection];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    [reachability startNotifier];
+    
+
     [super viewDidLoad];
     
     //ナビゲーションバー、タブバーの変更
@@ -39,11 +46,11 @@
     self.not_playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
 
     self.contents = @[
-                      [@{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":@""} mutableCopy],
-                      [@{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":@""} mutableCopy],
-                      [@{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":@""} mutableCopy],
-                      [@{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":@""} mutableCopy],
-                      [@{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":@""} mutableCopy]
+                      [@{@"title":@"お気に入り投稿", @"cell_id":@"MypageTokoCell", @"data":[[NSDictionary alloc] init]} mutableCopy],
+                      [@{@"title":@"お気に入りボイス", @"cell_id":@"VoiceCell", @"data":[[NSDictionary alloc] init]} mutableCopy],
+                      [@{@"title":@"お気に入り声優", @"cell_id":@"SeiyuCell", @"data":[[NSDictionary alloc] init]} mutableCopy],
+                      [@{@"title":@"自分の投稿", @"cell_id":@"MypageTokoCell", @"data":[[NSDictionary alloc] init]} mutableCopy],
+                      [@{@"title":@"自分のボイス", @"cell_id":@"VoiceCellNoSeiyu", @"data":[[NSDictionary alloc] init]} mutableCopy]
                       ];
     
     for (int i = 0; i < [self.contents count]; i++) {
@@ -79,36 +86,94 @@
     self.navigationItem.rightBarButtonItems = @[edit, person];
 }
 - (void)viewWillAppear:(BOOL)animated{
+    NSLog(@"%s",__func__);
+
     [super viewWillAppear:animated];
+    NSLog(@"WillAppearENDED");
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    NSLog(@"DID APPEAR!");
+    NSLog(@"%s",__func__);
+
+    [super viewDidAppear:animated];
     
+    
+    NetworkStatus netStatus = [reachability currentReachabilityStatus];
+    /*
+     ここで netStatus には
+     NotReachable : 接続されていない
+     ReachableViaWWAN : 3G接続
+     ReachableViaWiFi : Wi-Fi接続
+     が入る
+     */
+
+    
+    if (netStatus == NotReachable) {
+        // ここに UIAlertView など、圏外の場合の処理
+        UIAlertView *alert =[
+                             [UIAlertView alloc]
+                             initWithTitle : @"エラー"
+                             message : @"ネットワーク接続されていません"
+                             delegate : nil
+                             cancelButtonTitle : @"OK"
+                             otherButtonTitles : nil
+                             ];
+        [alert show];
+        
+        NSLog(@"alert");
+    } else {
+        [self networkConnected]; // ここに正常系の処理を関数で書く
+        
+        for (UIView *view in self.scroll_content.subviews) {
+            [view setFrame:CGRectMake(view.tag*self.scroll_content.frame.size.width, 0, self.scroll_content.frame.size.width, self.scroll_content.frame.size.height)];
+        }
+        
+        [self.scroll_title setContentSize:CGSizeMake(130*[self.contents count]+20, 50)];
+        [self.scroll_content setContentSize:CGSizeMake(self.scroll_content.frame.size.width*[self.contents count], self.scroll_content.frame.size.height)];
+
+    }
+    NSLog(@"here");
+}
+- (void)networkConnected {
+    NSLog(@"%s",__func__);
     //マイリストなどの情報はuser情報で得られる
     RetrieveJson *json = [[RetrieveJson alloc] init];
     NSString *param = @"user/0/";
     
     NSMutableDictionary *userdata = [json retrieveJsonDictionary:param];
     //ユーザデータがない場合はどうする？？？→北口さんが配列サイズ0のユーザデータを返すようにして下さい。
-    self.contents[0][@"data"] = userdata[@"OdaiMylist"];
-    self.contents[1][@"data"] = userdata[@"VoiceMylist"];
-    self.contents[2][@"data"] = userdata[@"UserMylist"];
-    self.contents[3][@"data"] = userdata[@"Odais"];
-    self.contents[4][@"data"] = userdata[@"Voices"];
+    if ([userdata count] != 0){
+        self.contents[0][@"data"] = userdata[@"OdaiMylist"];
+        self.contents[1][@"data"] = userdata[@"VoiceMylist"];
+        self.contents[2][@"data"] = userdata[@"UserMylist"];
+        self.contents[3][@"data"] = userdata[@"Odais"];
+        self.contents[4][@"data"] = userdata[@"Voices"];
+    }
     
     for (UITableView *table in self.scroll_content.subviews) {
         if( [table isKindOfClass:[UITableView class]]){
             [table reloadData];
         }
     }
-}
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
     
-    for (UIView *view in self.scroll_content.subviews) {
-        [view setFrame:CGRectMake(view.tag*self.scroll_content.frame.size.width, 0, self.scroll_content.frame.size.width, self.scroll_content.frame.size.height)];
+}
+
+- (void)notifiedNetworkStatus:(NSNotification *)notification
+{
+    NSLog(@"%s",__func__);
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    // ネットワーク接続の通知を受け取った場合に、正常系の処理を行う
+    if (networkStatus != NotReachable) {
+        //[self networkConnected];
+    } else if (networkStatus == NotReachable){
+        NSLog(@"connection lost");
+        //[self viewDidAppear:YES];
     }
-    
-    [self.scroll_title setContentSize:CGSizeMake(130*[self.contents count]+20, 50)];
-    [self.scroll_content setContentSize:CGSizeMake(self.scroll_content.frame.size.width*[self.contents count], self.scroll_content.frame.size.height)];
 }
+
+
+
 -(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"b");
 }

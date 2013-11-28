@@ -15,6 +15,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "SVProgressHUD.h"
 #import "RetrieveJson.h"
+//import Reachability class
+#import "Reachability.h"
+
+// declare Reachability, you no longer have a singleton but manage instances
+Reachability* reachability;
 
 @interface MyPageViewController : UIViewController<UIScrollViewDelegate,UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) int playing_number;

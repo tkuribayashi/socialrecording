@@ -10,6 +10,11 @@
 #import "UIToggleView.h"
 #import "UIToggleButton.h"
 #import "MypageTokoCell.h"
+//import Reachability class
+#import "Reachability.h"
+
+// declare Reachability, you no longer have a singleton but manage instances
+Reachability* reachability;
 @interface TokoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>{
     NSString *_toko_id;
 }
@@ -43,5 +48,6 @@
 
 /* 引っ張って更新 */
 @property(nonatomic) UIRefreshControl *refreshControl;
+
 
 @end

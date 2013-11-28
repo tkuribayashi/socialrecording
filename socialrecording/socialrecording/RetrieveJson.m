@@ -70,7 +70,7 @@
     NSLog(@"received json (dictionary)");
     //NSStringに変換(クオテーション処理)
     NSString *jsonstring = [[[NSString alloc] initWithBytes: [data bytes] length:[data length] encoding: NSNonLossyASCIIStringEncoding] stringByReplacingOccurrencesOfString: @"&quot;" withString: @"\""];
-    NSLog(@"%@", jsonstring);
+    NSLog(@"JSON: %@", jsonstring);
     //NSDataに戻す
     data = [jsonstring dataUsingEncoding:NSUnicodeStringEncoding];
     
