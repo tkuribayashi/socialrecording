@@ -107,6 +107,14 @@
      ReachableViaWiFi : Wi-Fi接続
      が入る
      */
+    
+    for (UIView *view in self.scroll_content.subviews) {
+        [view setFrame:CGRectMake(view.tag*self.scroll_content.frame.size.width, 0, self.scroll_content.frame.size.width, self.scroll_content.frame.size.height)];
+    }
+    
+    [self.scroll_title setContentSize:CGSizeMake(130*[self.contents count]+20, 50)];
+    [self.scroll_content setContentSize:CGSizeMake(self.scroll_content.frame.size.width*[self.contents count], self.scroll_content.frame.size.height)];
+    
 
     
     if (netStatus == NotReachable) {
@@ -124,15 +132,7 @@
         NSLog(@"alert");
     } else {
         [self networkConnected]; // ここに正常系の処理を関数で書く
-        
-        for (UIView *view in self.scroll_content.subviews) {
-            [view setFrame:CGRectMake(view.tag*self.scroll_content.frame.size.width, 0, self.scroll_content.frame.size.width, self.scroll_content.frame.size.height)];
-        }
-        
-        [self.scroll_title setContentSize:CGSizeMake(130*[self.contents count]+20, 50)];
-        [self.scroll_content setContentSize:CGSizeMake(self.scroll_content.frame.size.width*[self.contents count], self.scroll_content.frame.size.height)];
-
-    }
+            }
     NSLog(@"here");
 }
 - (void)networkConnected {
@@ -209,6 +209,7 @@
 }
 
 - (void)button_title_tapped:(id)sender{
+    NSLog(@"%s",__func__);
     int i = [sender tag];
     if(self.current_page != i){
         [UIView animateWithDuration:0.2f animations:^{
@@ -216,6 +217,8 @@
         }];
     }
     
+    NSLog(@"%s",__func__);
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -280,34 +283,50 @@
     return cell;
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath tag:(int)tag {
-    //Comment:dataを使って、ラベル表示させて下さい。
-    //tag==0は１ページ目、つまりお気に入り投稿のテーブルのセルです。
-    NSDictionary *data = self.contents[tag][@"data"][indexPath.row];
-    if(tag == 0 ||  tag == 3){
-        MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
-        NSLog(@"name: %@, %@",toko_cell.title_label,data[@"name"]);
-        toko_cell.title_label.text  = data[@"name"];
-        toko_cell.voice_label.text = [NSString stringWithFormat:@"%@", data[@"posts"]];
-        toko_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
-    }else if(tag == 1){
-        VoiceCell *voice_cell = (VoiceCell *)cell;
-        [voice_cell.title_label setTitle:data[@"odainame"] forState:UIControlStateNormal];
-        voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
-        voice_cell.seiyu_label.text = [NSString stringWithFormat:@"%@ さん",data[@"username"]];
-        [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
-        [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
-    }else if(tag==2){
-        SeiyuCell *seiyu_cell = (SeiyuCell *)cell;
-        seiyu_cell.name_label.text = [NSString stringWithFormat:@"%@", data[@"name"]];
-        seiyu_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
-        seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@", data[@"posts"]];
-        seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@", data[@"views"]];
-    }else if(tag == 4){
-        VoiceCellNoSeiyu *voice_cell = (VoiceCellNoSeiyu *)cell;
-        [voice_cell.title_label setTitle:data[@"odainame"] forState:UIControlStateNormal];
-        voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
-        [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
-        [voice_cell.shosai_button_myvoice addTarget:self action:@selector(shosai_button_myvoice_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NetworkStatus netStatus = [reachability currentReachabilityStatus];
+    /*
+     ここで netStatus には
+     NotReachable : 接続されていない
+     ReachableViaWWAN : 3G接続
+     ReachableViaWiFi : Wi-Fi接続
+     が入る
+     */
+    
+    
+    if (netStatus == NotReachable) {
+        // ここに UIAlertView など、圏外の場合の処理
+    } else {
+        
+        //Comment:dataを使って、ラベル表示させて下さい。
+        //tag==0は１ページ目、つまりお気に入り投稿のテーブルのセルです。
+        NSDictionary *data = self.contents[tag][@"data"][indexPath.row];
+        if(tag == 0 ||  tag == 3){
+            MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
+            NSLog(@"name: %@, %@",toko_cell.title_label,data[@"name"]);
+            toko_cell.title_label.text  = data[@"name"];
+            toko_cell.voice_label.text = [NSString stringWithFormat:@"%@", data[@"posts"]];
+            toko_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
+        }else if(tag == 1){
+            VoiceCell *voice_cell = (VoiceCell *)cell;
+            [voice_cell.title_label setTitle:data[@"odainame"] forState:UIControlStateNormal];
+            voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
+            voice_cell.seiyu_label.text = [NSString stringWithFormat:@"%@ さん",data[@"username"]];
+            [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+            [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+        }else if(tag==2){
+            SeiyuCell *seiyu_cell = (SeiyuCell *)cell;
+            seiyu_cell.name_label.text = [NSString stringWithFormat:@"%@", data[@"name"]];
+            seiyu_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
+            seiyu_cell.voice_label.text = [NSString stringWithFormat:@"%@", data[@"posts"]];
+            seiyu_cell.watch_label.text = [NSString stringWithFormat:@"%@", data[@"views"]];
+        }else if(tag == 4){
+            VoiceCellNoSeiyu *voice_cell = (VoiceCellNoSeiyu *)cell;
+            [voice_cell.title_label setTitle:data[@"odainame"] forState:UIControlStateNormal];
+            voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
+            [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+            [voice_cell.shosai_button_myvoice addTarget:self action:@selector(shosai_button_myvoice_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{

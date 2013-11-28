@@ -25,6 +25,7 @@
     return self;
 }
 -(void)toggle{
+    NSLog(@"%s",__func__);
     if(!self.is_on){
         current = [self currentTitleColor];
         self.backgroundColor = [UIColor colorWithRed:46/255.0 green:226/255.0 blue:233/255.0 alpha:1.0];
