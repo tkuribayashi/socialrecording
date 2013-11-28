@@ -148,7 +148,7 @@
     NSLog(@"data retrieval and display done");
 }
 - (void)viewDidAppear:(BOOL)animated{
-    self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
     NSLog(@"table data: %d",[self.table_data count]);
     
     [super viewDidAppear:animated];

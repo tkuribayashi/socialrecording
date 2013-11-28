@@ -39,7 +39,7 @@
     //ナビゲーションバー、タブバーの変更
     self.navigationController.navigationBar.backgroundColor = [UIColor yellowColor];
     self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
-    self.table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
     
     /* 引っ張って更新 */
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
