@@ -786,9 +786,12 @@
                                 <rect key="frame" x="0.0" y="61" width="325" height="456"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcc-jn-OUW">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcc-jn-OUW">
                                 <rect key="frame" x="-1" y="392" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="yOR-zX-5ib"/>
+                                </constraints>
                                 <state key="normal" title="決定">
                                     <color key="titleColor" red="0.18039215689999999" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -830,6 +833,9 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お得意ジャンル" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D99-pJ-ISd">
                                 <rect key="frame" x="0.0" y="323" width="320" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="JFs-O6-Gw0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -860,6 +866,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fle-Ie-PFV" customClass="UIToggleButton">
                                 <rect key="frame" x="0.0" y="354" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hWg-Zq-33g"/>
+                                </constraints>
                                 <state key="normal" title="萌え">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -870,6 +879,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTp-Pv-7qO" customClass="UIToggleButton">
                                 <rect key="frame" x="106" y="354" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QId-0u-Dcb"/>
+                                </constraints>
                                 <state key="normal" title="モノマネ">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -880,6 +892,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYK-zc-AeI" customClass="UIToggleButton">
                                 <rect key="frame" x="213" y="354" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gbv-ng-2Hx"/>
+                                </constraints>
                                 <state key="normal" title="早口言葉">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -892,6 +907,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="106" id="gv4-UW-bpt"/>
+                                    <constraint firstAttribute="height" constant="30" id="wQo-ju-rzo"/>
                                 </constraints>
                                 <state key="normal" title="男">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -903,6 +919,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebO-7f-4cd" customClass="UIToggleButton">
                                 <rect key="frame" x="106" y="285" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mWo-aB-NxV"/>
+                                </constraints>
                                 <state key="normal" title="女">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -914,6 +933,7 @@
                                 <rect key="frame" x="213" y="285" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Hox-s7-5rn"/>
                                     <constraint firstAttribute="width" constant="107" id="kTd-Vt-go0"/>
                                 </constraints>
                                 <state key="normal" title="その他">
@@ -934,11 +954,10 @@
                             <constraint firstAttribute="trailing" secondItem="Qt8-yH-VrF" secondAttribute="trailing" constant="20" id="6mb-Qw-ZVo"/>
                             <constraint firstAttribute="trailing" secondItem="o6q-AY-HeA" secondAttribute="trailing" constant="20" id="8nY-Y6-e14"/>
                             <constraint firstAttribute="trailing" secondItem="ym8-gN-54Z" secondAttribute="trailing" id="9cs-Wj-qEs"/>
-                            <constraint firstItem="Jcc-jn-OUW" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" constant="-1" id="Apd-pu-dam"/>
                             <constraint firstItem="o6q-AY-HeA" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" constant="20" id="Emk-To-zf2"/>
+                            <constraint firstItem="Jcc-jn-OUW" firstAttribute="top" secondItem="xYK-zc-AeI" secondAttribute="bottom" constant="8" id="ILu-cI-aDP"/>
                             <constraint firstItem="fle-Ie-PFV" firstAttribute="top" secondItem="D99-pJ-ISd" secondAttribute="bottom" constant="8" symbolic="YES" id="JVY-ea-3IT"/>
                             <constraint firstItem="D99-pJ-ISd" firstAttribute="trailing" secondItem="GUA-3p-uTd" secondAttribute="trailing" id="KHd-Kc-6Xb"/>
-                            <constraint firstItem="Jcc-jn-OUW" firstAttribute="centerX" secondItem="fTp-Pv-7qO" secondAttribute="centerX" id="MPG-bC-dNn"/>
                             <constraint firstItem="CwO-Wp-U9q" firstAttribute="top" secondItem="Qt8-yH-VrF" secondAttribute="bottom" constant="8" id="NNr-GN-96F"/>
                             <constraint firstItem="fle-Ie-PFV" firstAttribute="baseline" secondItem="xYK-zc-AeI" secondAttribute="baseline" id="Nkk-qE-YoB"/>
                             <constraint firstItem="lJb-J6-HYZ" firstAttribute="top" secondItem="CwO-Wp-U9q" secondAttribute="bottom" constant="8" symbolic="YES" id="OhP-Ky-28z"/>
@@ -962,7 +981,6 @@
                             <constraint firstItem="xYK-zc-AeI" firstAttribute="leading" secondItem="fTp-Pv-7qO" secondAttribute="trailing" id="v56-sN-QKz"/>
                             <constraint firstItem="ym8-gN-54Z" firstAttribute="top" secondItem="o6q-AY-HeA" secondAttribute="bottom" constant="8" id="v8q-Dn-OCy"/>
                             <constraint firstItem="fle-Ie-PFV" firstAttribute="leading" secondItem="D99-pJ-ISd" secondAttribute="leading" id="x6k-Pf-hSy"/>
-                            <constraint firstItem="Jcc-jn-OUW" firstAttribute="top" secondItem="fle-Ie-PFV" secondAttribute="bottom" constant="8" symbolic="YES" id="x9g-xh-bjv"/>
                             <constraint firstItem="xYK-zc-AeI" firstAttribute="leading" secondItem="GUA-3p-uTd" secondAttribute="leading" id="z5v-rS-mcQ"/>
                         </constraints>
                     </view>
@@ -1056,7 +1074,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="セリフ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKt-Ow-BA2">
-                                <rect key="frame" x="35" y="74" width="57" height="23"/>
+                                <rect key="frame" x="35" y="74" width="255" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -1177,22 +1195,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dKt-Ow-BA2" firstAttribute="top" secondItem="w5I-we-dzH" secondAttribute="bottom" constant="10" id="962-NT-H00"/>
                             <constraint firstItem="3Bl-Np-cuT" firstAttribute="top" secondItem="Dh9-Sk-khO" secondAttribute="bottom" constant="16" id="DXN-BK-Szy"/>
                             <constraint firstAttribute="trailing" secondItem="3Bl-Np-cuT" secondAttribute="trailing" id="FJ6-Xc-Xg5"/>
                             <constraint firstItem="uEe-AA-g85" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="5" id="FlM-pj-SQb"/>
                             <constraint firstItem="3Bl-Np-cuT" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" id="GjV-da-tCt"/>
+                            <constraint firstAttribute="trailing" secondItem="dKt-Ow-BA2" secondAttribute="trailing" constant="30" id="NaP-gl-No2"/>
+                            <constraint firstItem="dKt-Ow-BA2" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="35" id="V20-jt-w0g"/>
                             <constraint firstItem="rVk-Gl-YBF" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="35" id="Vyl-kr-0UQ"/>
                             <constraint firstItem="rVk-Gl-YBF" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="8" id="WBK-gp-VFd"/>
                             <constraint firstItem="Nli-Dp-pyW" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="10" id="XFB-an-YWG"/>
                             <constraint firstAttribute="trailing" secondItem="Nli-Dp-pyW" secondAttribute="trailing" constant="10" id="av4-Ou-7av"/>
                             <constraint firstItem="l77-eG-VJb" firstAttribute="top" secondItem="3Bl-Np-cuT" secondAttribute="bottom" id="b2q-CZ-hIP"/>
+                            <constraint firstItem="dKt-Ow-BA2" firstAttribute="top" secondItem="w5I-we-dzH" secondAttribute="bottom" constant="10" id="dTF-dx-jTG"/>
+                            <constraint firstItem="dKt-Ow-BA2" firstAttribute="leading" secondItem="rVk-Gl-YBF" secondAttribute="leading" id="e5o-cI-kWK"/>
+                            <constraint firstItem="Nli-Dp-pyW" firstAttribute="top" secondItem="dKt-Ow-BA2" secondAttribute="bottom" constant="8" symbolic="YES" id="frd-fn-XE7"/>
                             <constraint firstItem="3Bl-Np-cuT" firstAttribute="top" secondItem="rVk-Gl-YBF" secondAttribute="bottom" constant="8" id="nAC-5w-v86"/>
-                            <constraint firstItem="dKt-Ow-BA2" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="35" id="tZ8-Nl-jQS"/>
                             <constraint firstItem="uEe-AA-g85" firstAttribute="leading" secondItem="Dh9-Sk-khO" secondAttribute="trailing" constant="42" id="vf2-fJ-FsU"/>
                             <constraint firstItem="Dh9-Sk-khO" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="10" id="yie-UF-nvd"/>
                             <constraint firstAttribute="trailing" secondItem="uEe-AA-g85" secondAttribute="trailing" constant="37" id="yzq-Bq-kxi"/>
-                            <constraint firstItem="Nli-Dp-pyW" firstAttribute="top" secondItem="dKt-Ow-BA2" secondAttribute="bottom" constant="8" id="zU0-y6-ZAD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="投稿詳細" id="4lM-ns-uEl"/>
@@ -1465,7 +1485,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YeT-bd-dt6"/>
         <segue reference="p0m-e4-vZS"/>
+        <segue reference="00H-cy-0rs"/>
     </inferredMetricsTieBreakers>
 </document>

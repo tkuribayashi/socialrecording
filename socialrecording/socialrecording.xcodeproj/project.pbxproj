@@ -67,6 +67,14 @@
 		CE7049981844E71900EA3A4F /* sociareco_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049871844E71900EA3A4F /* sociareco_icon.png */; };
 		CE7049991844E71900EA3A4F /* teishi.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049881844E71900EA3A4F /* teishi.png */; };
 		CE70499A1844E71900EA3A4F /* toukou.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7049891844E71900EA3A4F /* toukou.png */; };
+		CEC12EDC1846DA72005A955D /* sociareco_icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC12ED71846DA72005A955D /* sociareco_icon29.png */; };
+		CEC12EDD1846DA72005A955D /* sociareco_icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC12ED81846DA72005A955D /* sociareco_icon57.png */; };
+		CEC12EDE1846DA72005A955D /* sociareco_icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC12ED91846DA72005A955D /* sociareco_icon58.png */; };
+		CEC12EDF1846DA72005A955D /* sociareco_icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC12EDA1846DA72005A955D /* sociareco_icon80.png */; };
+		CEC12EE01846DA72005A955D /* sociareco_icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC12EDB1846DA72005A955D /* sociareco_icon114.png */; };
+		CEC12EE31846DB3C005A955D /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC12EE11846DB3C005A955D /* Default~iphone.png */; };
+		CEC12EE41846DB3C005A955D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC12EE21846DB3C005A955D /* Default@2x.png */; };
+		CEC12EE81846DDDC005A955D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC12EE71846DDDC005A955D /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +173,14 @@
 		CE7049871844E71900EA3A4F /* sociareco_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sociareco_icon.png; sourceTree = "<group>"; };
 		CE7049881844E71900EA3A4F /* teishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teishi.png; sourceTree = "<group>"; };
 		CE7049891844E71900EA3A4F /* toukou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toukou.png; sourceTree = "<group>"; };
+		CEC12ED71846DA72005A955D /* sociareco_icon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sociareco_icon29.png; sourceTree = "<group>"; };
+		CEC12ED81846DA72005A955D /* sociareco_icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sociareco_icon57.png; sourceTree = "<group>"; };
+		CEC12ED91846DA72005A955D /* sociareco_icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sociareco_icon58.png; sourceTree = "<group>"; };
+		CEC12EDA1846DA72005A955D /* sociareco_icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sociareco_icon80.png; sourceTree = "<group>"; };
+		CEC12EDB1846DA72005A955D /* sociareco_icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sociareco_icon114.png; sourceTree = "<group>"; };
+		CEC12EE11846DB3C005A955D /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
+		CEC12EE21846DB3C005A955D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CEC12EE71846DDDC005A955D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +338,14 @@
 		CE7049781844E71900EA3A4F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CEC12EE71846DDDC005A955D /* Default-568h@2x.png */,
+				CEC12EE11846DB3C005A955D /* Default~iphone.png */,
+				CEC12EE21846DB3C005A955D /* Default@2x.png */,
+				CEC12ED71846DA72005A955D /* sociareco_icon29.png */,
+				CEC12ED81846DA72005A955D /* sociareco_icon57.png */,
+				CEC12ED91846DA72005A955D /* sociareco_icon58.png */,
+				CEC12EDA1846DA72005A955D /* sociareco_icon80.png */,
+				CEC12EDB1846DA72005A955D /* sociareco_icon114.png */,
 				CE43951E1846559D00BF6C22 /* back_big_sub.png */,
 				CE43951F1846559D00BF6C22 /* cell_back_sub.png */,
 				CE0769DD1845A9EF00803ECD /* back_big.png */,
@@ -426,8 +450,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC12EE31846DB3C005A955D /* Default~iphone.png in Resources */,
 				CE7049941844E71900EA3A4F /* rec.png in Resources */,
 				CE4395211846559D00BF6C22 /* cell_back_sub.png in Resources */,
+				CEC12EE81846DDDC005A955D /* Default-568h@2x.png in Resources */,
 				CE7049921844E71900EA3A4F /* mylist_buttom.png in Resources */,
 				CE7049901844E71900EA3A4F /* mike_buttom.png in Resources */,
 				0D2939421832300C00E5F056 /* VoiceCell.xib in Resources */,
@@ -435,14 +461,18 @@
 				CE7049961844E71900EA3A4F /* saisei_buttom.png in Resources */,
 				CE70498B1844E71900EA3A4F /* Default.png in Resources */,
 				CE0769DE1845A9EF00803ECD /* back_big.png in Resources */,
+				CEC12EDD1846DA72005A955D /* sociareco_icon57.png in Resources */,
 				3198242F1806A73400796825 /* Images.xcassets in Resources */,
 				3198241E1806A73400796825 /* InfoPlist.strings in Resources */,
 				CE7049991844E71900EA3A4F /* teishi.png in Resources */,
 				CE70498D1844E71900EA3A4F /* iine.png in Resources */,
 				CE70498F1844E71900EA3A4F /* mike.png in Resources */,
+				CEC12EDF1846DA72005A955D /* sociareco_icon80.png in Resources */,
+				CEC12EE41846DB3C005A955D /* Default@2x.png in Resources */,
 				CE0769DC18450C9900803ECD /* back_color.png in Resources */,
 				CE70499A1844E71900EA3A4F /* toukou.png in Resources */,
 				CE70498E1844E71900EA3A4F /* iine_buttom.png in Resources */,
+				CEC12EE01846DA72005A955D /* sociareco_icon114.png in Resources */,
 				CE70498A1844E71900EA3A4F /* cell_back2.png in Resources */,
 				0DC063981841EC1900610ADD /* VoiceCellNoSeiyu.xib in Resources */,
 				319824271806A73400796825 /* Main.storyboard in Resources */,
@@ -453,7 +483,9 @@
 				CE7049951844E71900EA3A4F /* saisei.png in Resources */,
 				CE4395201846559D00BF6C22 /* back_big_sub.png in Resources */,
 				0D29394718324D9A00E5F056 /* SeiyuCell.xib in Resources */,
+				CEC12EDC1846DA72005A955D /* sociareco_icon29.png in Resources */,
 				CE7049981844E71900EA3A4F /* sociareco_icon.png in Resources */,
+				CEC12EDE1846DA72005A955D /* sociareco_icon58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,8 +651,6 @@
 		319824461806A73400796825 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -635,8 +665,6 @@
 		319824471806A73400796825 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
