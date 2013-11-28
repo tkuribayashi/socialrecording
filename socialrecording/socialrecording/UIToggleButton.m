@@ -18,9 +18,9 @@
     if (self) {
         // Initialization code
         self.is_on = false;
+        self.tintColor = [UIColor colorWithRed:46/255.0 green:226/255.0 blue:233/255.0 alpha:1.0];
+        self.backgroundColor = [UIColor whiteColor];
     }
-    
-    self.tintColor = [UIColor colorWithRed:46/255.0 green:226/255.0 blue:233/255.0 alpha:1.0];
     
     return self;
 }

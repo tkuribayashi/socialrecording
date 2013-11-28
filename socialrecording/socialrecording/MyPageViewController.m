@@ -32,6 +32,7 @@
     //ナビゲーションバー、タブバーの変更
     self.navigationController.navigationBar.backgroundColor = [UIColor yellowColor];
     self.tabBarController.tabBar.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
     
     self.playing_number = -1;
     self.playing_image = [UIImage imageNamed:@"saisei_buttom.png"];
@@ -66,7 +67,7 @@
         [table setRowHeight:100];
         [table setTag:i];
         table.separatorStyle = UITableViewCellSeparatorStyleNone;
-        table.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_color.png"]];
+        table.backgroundColor = [UIColor clearColor];
         [self.scroll_content addSubview:table];
     }
     self.scroll_content.delegate = self;
