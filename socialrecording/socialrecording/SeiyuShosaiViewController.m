@@ -248,7 +248,7 @@
         UIAlertView *alert = [
                               [UIAlertView alloc]
                               initWithTitle : @"成功"
-                              message : @"マイリストに登録されました！"
+                              message : @"お気に入り声優に登録されました！"
                               delegate : nil
                               cancelButtonTitle : @"OK"
                               otherButtonTitles : nil
