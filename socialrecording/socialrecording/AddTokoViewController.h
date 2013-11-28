@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "UIToggleButton.h"
 
+//import Reachability class
+#import "Reachability.h"
+
+// declare Reachability, you no longer have a singleton but manage instances
+Reachability* reachability;
+
 @interface AddTokoViewController : UIViewController<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *label_name;
 @property (weak, nonatomic) IBOutlet UITextField *text_name;

@@ -256,12 +256,12 @@
         UIAlertView *alert = nil;
         if(error)
         {
-            alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"Error in Uploading the File" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"登録できませんでした" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         }
         else
         {
             NSLog(@"Success %@",returnString);
-            alert = [[UIAlertView alloc]initWithTitle:@"Message" message:@"File get uploaded" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            alert = [[UIAlertView alloc]initWithTitle:@"成功" message:@"ボイスが登録されました" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             
             //投稿が成功すれば投稿完了画面へ
             self.flag_end = YES;
