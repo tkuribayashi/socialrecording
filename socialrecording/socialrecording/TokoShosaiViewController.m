@@ -312,6 +312,16 @@
                               otherButtonTitles : nil
                               ];
         [alert show];
+    } else {
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"成功"
+                              message : @"マイリストに登録されました！"
+                              delegate : nil
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
     }
 
 }
@@ -335,7 +345,18 @@
                               otherButtonTitles : nil
                               ];
         [alert show];
+    } else {
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"成功"
+                              message : @"マイリストに登録されました！"
+                              delegate : nil
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
     }
+
     
 
     
