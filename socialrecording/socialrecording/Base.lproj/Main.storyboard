@@ -787,7 +787,7 @@
                                 <rect key="frame" x="0.0" y="61" width="325" height="456"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcc-jn-OUW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcc-jn-OUW">
                                 <rect key="frame" x="-1" y="392" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -970,6 +970,8 @@
                             <constraint firstItem="CBx-cW-N2G" firstAttribute="top" secondItem="fHv-U9-9k7" secondAttribute="bottom" constant="24" id="ZaZ-p8-ejH"/>
                             <constraint firstItem="D99-pJ-ISd" firstAttribute="leading" secondItem="lJb-J6-HYZ" secondAttribute="leading" id="cbx-lr-uXQ"/>
                             <constraint firstItem="fle-Ie-PFV" firstAttribute="baseline" secondItem="fTp-Pv-7qO" secondAttribute="baseline" id="eaC-cm-6EK"/>
+                            <constraint firstItem="Jcc-jn-OUW" firstAttribute="leading" secondItem="Ta6-dU-lz4" secondAttribute="leading" constant="-1" id="egr-PB-6R0"/>
+                            <constraint firstAttribute="trailing" secondItem="Jcc-jn-OUW" secondAttribute="trailing" constant="1" id="ekB-Wz-DLR"/>
                             <constraint firstItem="D99-pJ-ISd" firstAttribute="top" secondItem="lJb-J6-HYZ" secondAttribute="bottom" constant="8" symbolic="YES" id="hPK-FE-kZ8"/>
                             <constraint firstItem="ebO-7f-4cd" firstAttribute="leading" secondItem="lJb-J6-HYZ" secondAttribute="trailing" id="hTZ-wz-C0Z"/>
                             <constraint firstItem="fle-Ie-PFV" firstAttribute="trailing" secondItem="lJb-J6-HYZ" secondAttribute="trailing" id="iKK-lP-cml"/>
@@ -1247,7 +1249,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="uFc-LK-Yd0">
-                                <rect key="frame" x="0.0" y="61" width="326" height="459"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="セリフ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-4q-tnn">
@@ -1281,7 +1283,7 @@
                                     <action selector="button_send_tapped:" destination="Mi1-5L-nGs" eventType="touchUpInside" id="lhJ-tO-EFC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-iX-Rso">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-iX-Rso">
                                 <rect key="frame" x="60" y="185" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="mike_buttom.png">
@@ -1291,7 +1293,7 @@
                                     <action selector="button_record_tapped:" destination="Mi1-5L-nGs" eventType="touchUpInside" id="7yZ-Un-tV9"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rec.png" translatesAutoresizingMaskIntoConstraints="NO" id="31G-54-Ete">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="rec.png" translatesAutoresizingMaskIntoConstraints="NO" id="31G-54-Ete">
                                 <rect key="frame" x="163" y="136" width="125" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1301,6 +1303,9 @@
                             <constraint firstItem="UMJ-h3-nEd" firstAttribute="baseline" secondItem="wjI-Qq-4Eu" secondAttribute="baseline" id="Vph-6V-Qts"/>
                             <constraint firstItem="UMJ-h3-nEd" firstAttribute="leading" secondItem="wjI-Qq-4Eu" secondAttribute="trailing" constant="73" id="j6D-80-A3g"/>
                             <constraint firstAttribute="trailing" secondItem="UMJ-h3-nEd" secondAttribute="trailing" constant="91" id="n7S-tK-ctb"/>
+                            <constraint firstItem="UMJ-h3-nEd" firstAttribute="top" secondItem="w1r-iX-Rso" secondAttribute="bottom" constant="8" id="p2p-3C-ajC"/>
+                            <constraint firstItem="w1r-iX-Rso" firstAttribute="top" secondItem="31G-54-Ete" secondAttribute="bottom" constant="8" id="qQ7-aA-QqI"/>
+                            <constraint firstItem="wjI-Qq-4Eu" firstAttribute="top" secondItem="w1r-iX-Rso" secondAttribute="bottom" constant="8" id="wro-eR-iYG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="レコーディング" id="B2N-Oc-p5B"/>
@@ -1326,8 +1331,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="DJ3-IC-KmN">
-                                <rect key="frame" x="0.0" y="65" width="326" height="459"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="DJ3-IC-KmN">
+                                <rect key="frame" x="0.0" y="64" width="320" height="453"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="レコーディングが完了しました！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQQ-4U-VAo">
@@ -1355,7 +1360,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bQQ-4U-VAo" firstAttribute="leading" secondItem="DJ3-IC-KmN" secondAttribute="leading" id="2Cn-vH-vad"/>
                             <constraint firstItem="bQQ-4U-VAo" firstAttribute="leading" secondItem="KGj-tI-mfV" secondAttribute="leading" id="62F-g2-hCU"/>
                             <constraint firstAttribute="centerY" secondItem="5VZ-MO-tKD" secondAttribute="centerY" constant="-66.5" id="E2q-0w-Rpj"/>
                             <constraint firstItem="bQQ-4U-VAo" firstAttribute="centerX" secondItem="5VZ-MO-tKD" secondAttribute="centerX" id="Nd0-wu-0mR"/>

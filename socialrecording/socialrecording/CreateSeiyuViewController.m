@@ -77,8 +77,8 @@
     } else {
         [self.navigationItem setTitle:@"声優情報編集"];
         //Comment:既にある情報を入れてあげて下さい。
-        self.text_name.text = @"声優名";
-        self.textview_comment.text = @"コメント";
+        self.text_name.text = @"ここに声優名を入力";
+        self.textview_comment.text = @"ここにコメントを入力";
         [self.buttons_sex[0] toggle];
         [self.buttons_genre[0] toggle];
         /*UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
