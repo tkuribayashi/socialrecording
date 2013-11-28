@@ -283,7 +283,7 @@
             UITableView *tableview = self.table;
             UITableViewCell *cell = [tableview cellForRowAtIndexPath:indexPath];
             UILabel *label = (UILabel *)[cell viewWithTag:4];
-            [label setText:[NSString stringWithFormat:@"いいね%d件",like]];
+            [label setText:[NSString stringWithFormat:@"%d",like]];
         }
     }
 }
