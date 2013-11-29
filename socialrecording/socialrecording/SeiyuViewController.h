@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIToggleButton.h"
 #import "UIToggleView.h"
-@interface SeiyuViewController : UIViewController<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SeiyuViewController : UIViewController<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigate_title;
 @property (weak, nonatomic) IBOutlet UIToggleButton *search_button;
 @property (weak, nonatomic) IBOutlet UIToggleButton *sort_button;

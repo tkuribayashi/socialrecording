@@ -15,7 +15,7 @@
 
 // declare Reachability, you no longer have a singleton but manage instances
 Reachability* reachability;
-@interface TokoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>{
+@interface TokoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate>{
     NSString *_toko_id;
 }
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigate_title;

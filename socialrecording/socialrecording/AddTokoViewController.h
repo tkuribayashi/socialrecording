@@ -15,7 +15,7 @@
 // declare Reachability, you no longer have a singleton but manage instances
 Reachability* reachability;
 
-@interface AddTokoViewController : UIViewController<UITextViewDelegate>
+@interface AddTokoViewController : UIViewController<UITextViewDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *label_name;
 @property (weak, nonatomic) IBOutlet UITextField *text_name;
 @property (weak, nonatomic) IBOutlet UIToggleButton *toggle_button_1;
