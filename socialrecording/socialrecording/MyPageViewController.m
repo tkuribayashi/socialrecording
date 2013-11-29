@@ -429,122 +429,106 @@
         self.toko_data = NULL;
         [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
     }else if(tableView.tag == 1 || tableView.tag == 4){
-        //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        //UIImageView *image_view = ((VoiceCell *)cell).playing_image;
-        if( indexPath.row == self.playing_number ){
-            self.playing_number = -1;
-            //[image_view setImage:self.not_playing_image];
-            [self.player stop];
-        }else{
-            [SVProgressHUD show];//くるくる
-            [self.view setNeedsDisplay];
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-            
-            if( self.playing_number != -1 ){
-                //UITableViewCell *cell2 = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.playing_number inSection:0]];
-               // UIImageView *image_view2 = ((VoiceCell *)cell2).playing_image;
-                //[image_view2 setImage:self.not_playing_image];
+        [SVProgressHUD show];//くるくる
+        [self.view setNeedsDisplay];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+        
+        //HTTP Request
+        //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
+        // request
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+        
+        NSString *filePath = [NSString stringWithFormat:@"%@/Caches/temp.caf",[paths objectAtIndex:0]];
+        
+        //Comment:ボイスデータから取得
+        NSString *reqFilePath = self.contents[tableView.tag][@"data"][indexPath.row][@"vfile"];
+        NSLog(@"%@",reqFilePath);
+        
+        
+        NSError *error = nil;
+        
+        NSString *urlString = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/static/%@",reqFilePath];
+        NSLog(@"request url: %@",urlString);
+        
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSURLResponse *response = nil;
+        NSData *data = [
+                        NSURLConnection
+                        sendSynchronousRequest : request
+                        returningResponse : &response
+                        error : &error
+                        ];
+        
+        // error
+        NSString *error_str = [error localizedDescription];
+        if (0<[error_str length]) {
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"RequestError"
+                                  message : error_str
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+        }
+        // responseを受け取ったあとの処理
+        NSFileManager *fm = [NSFileManager defaultManager];
+        [fm createFileAtPath:filePath contents:[NSData data] attributes:nil];
+        NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:filePath];
+        [file writeData:data];
+        
+        NSLog(@"path: %@",[paths objectAtIndex:0]);
+        
+        
+        if(fm) {
+            NSLog(@"s:%@",filePath);
+        } else {
+            NSLog(@"f");
+        }
+        
+        
+        //NSString *mp3path = [[NSBundle mainBundle] pathForResource:filePath ofType:nil];
+        
+        NSLog(@"filepath: %@",filePath);
+        
+        NSURL* mp3url = [NSURL fileURLWithPath:filePath];
+        
+        NSLog(@"url: %@",[mp3url absoluteString]);
+        
+        if([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
+            self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:mp3url error:&error];
+            if ( error != nil )
+            {
+                NSLog(@"Error %@", [error localizedDescription]);
             }
-            //[image_view setImage:self.playing_image];
-            self.playing_number = indexPath.row;
-            
-            
-            //HTTP Request
-            //音データをDLして再生　再生が終了した時のイベント関数もどこかに追加して下さい。
-            // request
-            
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-            
-            NSString *filePath = [NSString stringWithFormat:@"%@/Caches/temp.caf",[paths objectAtIndex:0]];
-            
-            //Comment:ボイスデータから取得
-            NSString *reqFilePath = self.contents[tableView.tag][@"data"][indexPath.row][@"vfile"];
-            NSLog(@"%@",reqFilePath);
-            
-            
-            NSError *error = nil;
-            
-            NSString *urlString = [NSString stringWithFormat:@"http://49.212.174.30/sociareco/api/static/%@",reqFilePath];
-            NSLog(@"request url: %@",urlString);
-            
-            NSURL *url = [NSURL URLWithString:urlString];
-            
-            
-            NSURLRequest *request = [NSURLRequest requestWithURL:url];
-            NSURLResponse *response = nil;
-            NSData *data = [
-                            NSURLConnection
-                            sendSynchronousRequest : request
-                            returningResponse : &response
-                            error : &error
-                            ];
-            
-            // error
-            NSString *error_str = [error localizedDescription];
-            if (0<[error_str length]) {
-                UIAlertView *alert = [
-                                      [UIAlertView alloc]
-                                      initWithTitle : @"RequestError"
-                                      message : error_str
-                                      delegate : nil
-                                      cancelButtonTitle : @"OK"
-                                      otherButtonTitles : nil
-                                      ];
-                [alert show];
-            }
-            // responseを受け取ったあとの処理
-            NSFileManager *fm = [NSFileManager defaultManager];
-            [fm createFileAtPath:filePath contents:[NSData data] attributes:nil];
-            NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:filePath];
-            [file writeData:data];
-            
-            NSLog(@"path: %@",[paths objectAtIndex:0]);
-            
-            
-            if(fm) {
-                NSLog(@"s:%@",filePath);
+            NSLog(@"prepare to play");
+            if([self.player prepareToPlay]){
+                NSLog(@"s");
             } else {
                 NSLog(@"f");
             }
             
+            NSLog(@"start playing");
+            [self.player play];
             
-            //NSString *mp3path = [[NSBundle mainBundle] pathForResource:filePath ofType:nil];
-            
-            NSLog(@"filepath: %@",filePath);
-            
-            NSURL* mp3url = [NSURL fileURLWithPath:filePath];
-            
-            NSLog(@"url: %@",[mp3url absoluteString]);
-            
-            if([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
-                self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:mp3url error:&error];
-                if ( error != nil )
-                {
-                    NSLog(@"Error %@", [error localizedDescription]);
-                }
-                NSLog(@"prepare to play");
-                if([self.player prepareToPlay]){
-                    NSLog(@"s");
-                } else {
-                    NSLog(@"f");
-                }
-                
-                NSLog(@"start playing");
-                [self.player play];
-                
-                /* 再生したらviewをインクリメント *//*
-                //Comment:ボイスデータから取得
-                NSString *voice_id = self.contents[1][@"data"][indexPath.row][@"id"];
-                RetrieveJson *json = [[RetrieveJson alloc]init];
-                [json accessServer:[NSString stringWithFormat:@"voice/%@/view/",voice_id]];*/
-            } else {
-                NSLog(@"failed playing");
-            }
-            
-            [SVProgressHUD dismiss];//くるくる
-            
-            
+            /* 再生したらviewをインクリメント *//*
+                                    //Comment:ボイスデータから取得
+                                    NSString *voice_id = self.contents[1][@"data"][indexPath.row][@"id"];
+                                    RetrieveJson *json = [[RetrieveJson alloc]init];
+                                    [json accessServer:[NSString stringWithFormat:@"voice/%@/view/",voice_id]];*/
+        } else {
+            NSLog(@"failed playing");
         }
+        
+        [SVProgressHUD dismiss];//くるくる
+        
+        
+        
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:NO];
     }else if(tableView .tag == 2){
         self.seiyu_id = self.contents[tableView .tag][@"data"][indexPath.row][@"id"];
