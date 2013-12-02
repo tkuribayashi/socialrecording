@@ -48,8 +48,8 @@
     [self.view bringSubviewToFront:self.text_name];
     [self.view bringSubviewToFront:self.label_comment];
     [self.view bringSubviewToFront:self.textview_comment];
-}
-- (void)viewWillAppear:(BOOL)animated{
+    
+    
     //HTTP Request
     //マイリストなどの情報はuser情報で得られる
     RetrieveJson *json = [[RetrieveJson alloc] init];
@@ -71,9 +71,9 @@
         NSLog(@"tag: %d",selectedtag);
         [self.buttons_genre[selectedtag] toggle];
         /*
-        UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
-        self.navigationItem.rightBarButtonItem = delete;
-        */
+         UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
+         self.navigationItem.rightBarButtonItem = delete;
+         */
     } else {
         [self.navigationItem setTitle:@"声優情報編集"];
         //Comment:既にある情報を入れてあげて下さい。
@@ -82,8 +82,12 @@
         [self.buttons_sex[0] toggle];
         [self.buttons_genre[0] toggle];
         /*UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithTitle:@"削除" style:UIBarButtonItemStylePlain target:self action:@selector(button_delete_tapped:)];
-        self.navigationItem.rightBarButtonItem = delete;*/
+         self.navigationItem.rightBarButtonItem = delete;*/
     }
+
+    
+}
+- (void)viewWillAppear:(BOOL)animated{
 }
 /*
 - (void)button_delete_tapped:(id)sender{
@@ -179,7 +183,20 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     //声優登録成功したら以下実行
     if ([result rangeOfString:@"failed"].location == NSNotFound){
-        [self performSegueWithIdentifier:@"CreateSeiyuToCompleteSeiyu" sender:self];
+        //[self performSegueWithIdentifier:@"CreateSeiyuToCompleteSeiyu" sender:self];
+        
+        //成功の旨のアラート
+        UIAlertView *alert =[
+                             [UIAlertView alloc]
+                             initWithTitle : @"成功"
+                             message : @"声優情報を更新しました"
+                             delegate : nil
+                             cancelButtonTitle : @"OK"
+                             otherButtonTitles : nil
+                             ];
+        [alert show];
+
+        
         self.complete_flg = true;
     }
 }
