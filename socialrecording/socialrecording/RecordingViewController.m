@@ -109,7 +109,7 @@
         NSLog(@"Error when preparing audio recorder :%@", [error localizedDescription]);
         return;
     }
-    [recorder record];
+    [recorder recordForDuration:10.0];
     
 }
 
