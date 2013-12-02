@@ -93,7 +93,7 @@
     self.sort_view = [[UIToggleView alloc] initWithFrame:CGRectMake(0, 94, 320, 150) sync_toggle_button:self.sort_button];
     [self.view addSubview:self.sort_view];
     
-    NSArray *sort_button_titles = @[@"新しい登録順",@"古い登録順",@"総いいねが多い順",@"総いいねが少ない順",@"ボイスが多い順",@"ボイスが少ない順",@"新しいボイス順",@"古いボイス順",@"総視聴者数が多い順",@"総視聴者数が少ない順"];
+    NSArray *sort_button_titles = @[@"新しい登録順",@"古い登録順",@"総いいねが多い順",@"総いいねが少ない順",@"ボイスが多い順",@"ボイスが少ない順",@"新しいボイス順",@"古いボイス順",@"総再生数が多い順",@"総再生数が少ない順"];
     for (int i = 0; i < [sort_button_titles count]; i++) {
         NSString *title = sort_button_titles[i];
         CGRect button_frame =CGRectMake(160*(i%2), button_height * (i / 2), 160, button_height);
