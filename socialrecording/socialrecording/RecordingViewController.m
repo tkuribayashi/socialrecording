@@ -36,43 +36,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.recImage.hidden = true;
     
-}
-- (void)viewWillAppear:(BOOL)animated{
-    [self.label_name setText:self.toko_name];
+    self.recImage.hidden = YES;
     
-    recorded = NO;
-}
-- (void)viewDidAppear:(BOOL)animated{
-    if(self.flag_end){
-        self.flag_end = NO;
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
--(NSMutableDictionary *)setAudioRecorder
-{
-    NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
-    [settings setValue:[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
-    [settings setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
-    [settings setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
-    [settings setValue:[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
-    [settings setValue:[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
-    [settings setValue:[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
     
-    return settings;
-}
-
--(void)recordFile
-{
     // Prepare recording(Audio session)
     NSError *error = nil;
     self.session = [AVAudioSession sharedInstance];
@@ -109,8 +76,109 @@
         NSLog(@"Error when preparing audio recorder :%@", [error localizedDescription]);
         return;
     }
+
+    
+    //再生中かどうか調べてREC画像の表示をコントロールする
+    [NSTimer
+     scheduledTimerWithTimeInterval:0.5f
+     target:self
+     selector:@selector(RecordingImage:)
+     userInfo:nil
+     repeats:YES
+     ];
+    
+    
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [self.label_name setText:self.toko_name];
+    
+    recorded = NO;
+}
+- (void)viewDidAppear:(BOOL)animated{
+    if(self.flag_end){
+        self.flag_end = NO;
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+-(NSMutableDictionary *)setAudioRecorder
+{
+    NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
+    [settings setValue:[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
+    [settings setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
+    [settings setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
+    [settings setValue:[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
+    [settings setValue:[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
+    [settings setValue:[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
+    
+    return settings;
+}
+
+//再生中かどうか調べて、REC画像の表示をコントロールする関数
+-(void)RecordingImage:(NSTimer*)timer{
+    if (self.recorder.isRecording){
+        self.recImage.hidden = NO;
+    } else {
+        self.recImage.hidden = YES;
+    }
+}
+
+-(void)recordFile
+{
+    NSLog(@"%s",__func__);
+    NSLog(@"recording?: %hhd",self.recorder.isRecording);
+    
+    
+    
+    // Prepare recording(Audio session)
+    NSError *error = nil;
+    self.session = [AVAudioSession sharedInstance];
+    
+    if ( session.inputAvailable )   // for iOS6 [session inputIsAvailable]  iOS5
+    {
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    }
+    
+    if ( error != nil )
+    {
+        NSLog(@"Error when preparing audio session :%@", [error localizedDescription]);
+        return;
+    }
+    [session setActive:YES error:&error];
+    if ( error != nil )
+    {
+        NSLog(@"Error when enabling audio session :%@", [error localizedDescription]);
+        return;
+    }
+    
+    // File Path
+    NSString *dir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *filePath = [dir stringByAppendingPathComponent:@"test.caf"];
+    
+    NSURL *url = [NSURL fileURLWithPath:filePath];
+    
+    // recorder = [[AVAudioRecorder alloc] initWithURL:url settings:nil error:&error];
+    recorder = [[AVAudioRecorder alloc] initWithURL:url settings:[self setAudioRecorder] error:&error];
+    
+    //recorder.meteringEnabled = YES;
+    if ( error != nil )
+    {
+        NSLog(@"Error when preparing audio recorder :%@", [error localizedDescription]);
+        return;
+    }
+
+    
+    //record for maximum of ten seconds
     [recorder recordForDuration:10.0];
     
+    NSLog(@"%f",self.recorder.currentTime);
 }
 
 
@@ -162,12 +230,15 @@
 - (IBAction)button_record_tapped:(id)sender {
     if ( self.recorder != nil && self.recorder.isRecording )
     {
-        [self stopRecord];
+        NSLog(@"stop recording");
         self.recImage.hidden = true;
+
+        [self stopRecord];
         //[self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
     }
     else
     {
+        NSLog(@"start recording");
         self.recImage.hidden = false;
         [self recordFile];
         //[self.recordButton setTitle:@"..." forState:UIControlStateNormal];
@@ -191,12 +262,12 @@
         [alert show];
         return;
     }
-
+    
     [SVProgressHUD show];//くるくる
     [self.view setNeedsDisplay];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-
-
+    
+    
     NSString *dir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [dir stringByAppendingPathComponent:@"test.caf"];
     NSURL *pathURL = [NSURL fileURLWithPath:filePath];//File Url of the recorded audio
@@ -207,7 +278,7 @@
     @try
     {
         RetrieveCookie *rc = [[RetrieveCookie alloc]init];
-
+        
         /* cookie処理 */
         NSString *cookie = [rc getcsrftoken];
         
@@ -234,8 +305,8 @@
         
         NSMutableData *body = [NSMutableData data];
         /*[body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Disposition: form-data; name=\"token\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData: [@"hogehoge" dataUsingEncoding:NSUTF8StringEncoding]];*/
+         [body appendData:[@"Content-Disposition: form-data; name=\"token\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+         [body appendData: [@"hogehoge" dataUsingEncoding:NSUTF8StringEncoding]];*/
         
         
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
@@ -247,7 +318,7 @@
         [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[NSData dataWithData:voiceData]];
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary]dataUsingEncoding:NSUTF8StringEncoding]];
-
+        
         [request setHTTPBody:body];
         
         NSError *error = nil;
