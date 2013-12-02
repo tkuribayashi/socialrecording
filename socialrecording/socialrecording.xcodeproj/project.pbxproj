@@ -657,13 +657,13 @@
 		319824461806A73400796825 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Taku Kuribayashi (7227T2USU9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Taku Kuribayashi (7227T2USU9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "socialrecording/socialrecording-Prefix.pch";
 				INFOPLIST_FILE = "socialrecording/socialrecording-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B06482DC-2152-4C4B-A34A-81D447C2ABAD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -671,13 +671,13 @@
 		319824471806A73400796825 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Taku Kuribayashi (W24WW7UQBW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Taku Kuribayashi (7227T2USU9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Taku Kuribayashi (7227T2USU9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "socialrecording/socialrecording-Prefix.pch";
 				INFOPLIST_FILE = "socialrecording/socialrecording-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B06482DC-2152-4C4B-A34A-81D447C2ABAD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
