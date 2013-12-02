@@ -1,5 +1,5 @@
 //
-//  playVoice.m
+//  PlayVoice.m
 //  socialrecording
 //
 //  Created by taku on 12/2/13.
@@ -9,7 +9,7 @@
 #import "playVoice.h"
 #import "RetrieveJson.h"
 
-@implementation playVoice
+@implementation PlayVoice
 
 
 -(void) playVoice:(NSMutableArray *)voice_data :(NSIndexPath *)indexPath{
@@ -88,13 +88,20 @@
             NSLog(@"f");
         }
         
-        NSLog(@"start playing");
-        [self.player play];
+        if (self.player.isPlaying){
+            [self.player stop];
+        } else {
+            NSLog(@"start playing");
+            [self.player play];
+            NSLog(@"%f",self.player.duration);
+        }
         
         /* 再生したらviewをインクリメント */
-        NSString *voice_id = voice_data[indexPath.row][@"id"];
-        RetrieveJson *json = [[RetrieveJson alloc]init];
-        [json accessServer:[NSString stringWithFormat:@"voice/%@/view/",voice_id]];
+        //NSString *voice_id = voice_data[indexPath.row][@"id"];
+        //RetrieveJson *json = [[RetrieveJson alloc]init];
+        //[json accessServer:[NSString stringWithFormat:@"voice/%@/view/",voice_id]];
+        
+        [self.player stop];
     } else {
         NSLog(@"failed playing");
     }

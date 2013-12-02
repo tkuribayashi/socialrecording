@@ -1,5 +1,5 @@
 //
-//  playVoice.h
+//  PlayVoice.h
 //  socialrecording
 //
 //  Created by taku on 12/2/13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface playVoice : NSObject
+@interface PlayVoice : NSObject
 
 
 @property (nonatomic)AVAudioRecorder *recorder;

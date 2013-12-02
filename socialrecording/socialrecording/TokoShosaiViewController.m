@@ -13,7 +13,7 @@
 #import "SVProgressHUD.h"
 #import "HttpPost.h"
 #import "RetrieveJson.h"
-#import "playVoice.h"
+#import "PlayVoice.h"
 
 @interface TokoShosaiViewController ()
 
@@ -130,7 +130,7 @@
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
     
     /* play voice */
-    playVoice *p = [[playVoice alloc] init];
+    PlayVoice *p = [[PlayVoice alloc] init];
     
     [p playVoice:self.voice_data :indexPath];
     

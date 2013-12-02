@@ -12,7 +12,7 @@
 #import "RetrieveJson.h"
 #import "HttpPost.h"
 #import "RetrieveJson.h"
-#import "playVoice.h"
+#import "PlayVoice.h"
 
 @interface MyPageViewController ()
 
@@ -437,7 +437,7 @@
         
         /* play voice */
         
-        playVoice *p = [[playVoice alloc] init];
+        PlayVoice *p = [[PlayVoice alloc] init];
         
         [p playVoice:self.contents[tableView.tag][@"data"] :indexPath];
         

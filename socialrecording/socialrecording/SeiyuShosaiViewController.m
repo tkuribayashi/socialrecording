@@ -10,7 +10,7 @@
 #import "TokoShosaiViewController.h"
 #import "RetrieveJson.h"
 #import "HttpPost.h"
-#import "playVoice.h"
+#import "PlayVoice.h"
 
 @interface SeiyuShosaiViewController ()
 
@@ -80,7 +80,7 @@
     
     /* play voice */
     
-    playVoice *p = [[playVoice alloc] init];
+    PlayVoice *p = [[PlayVoice alloc] init];
     
     [p playVoice:self.voice_data :indexPath];
     
