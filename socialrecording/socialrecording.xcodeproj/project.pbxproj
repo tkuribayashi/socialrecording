@@ -30,6 +30,7 @@
 		0DE813EC182630D90088CDF4 /* SeiyuShosaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE813EB182630D90088CDF4 /* SeiyuShosaiViewController.m */; };
 		310B78BD1819451100BE54F3 /* RetrieveJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 310B78BC1819451100BE54F3 /* RetrieveJson.m */; };
 		310B78BF181A7B0600BE54F3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310B78BE181A7B0600BE54F3 /* AVFoundation.framework */; };
+		311F7417184C7056007728B9 /* playVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 311F7416184C7056007728B9 /* playVoice.m */; };
 		31859E36182257F700DDDBC1 /* RetrieveCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 31859E35182257F700DDDBC1 /* RetrieveCookie.m */; };
 		3185D9E2183C4FC1009FAA13 /* HttpPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3185D9E1183C4FC1009FAA13 /* HttpPost.m */; };
 		31867D4918472A3D0022C8A1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 31867D4818472A3D0022C8A1 /* Reachability.m */; };
@@ -130,6 +131,8 @@
 		310B78BB1819451100BE54F3 /* RetrieveJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveJson.h; sourceTree = "<group>"; };
 		310B78BC1819451100BE54F3 /* RetrieveJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveJson.m; sourceTree = "<group>"; };
 		310B78BE181A7B0600BE54F3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		311F7415184C7056007728B9 /* playVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playVoice.h; sourceTree = "<group>"; };
+		311F7416184C7056007728B9 /* playVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playVoice.m; sourceTree = "<group>"; };
 		31859E34182257F700DDDBC1 /* RetrieveCookie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveCookie.h; sourceTree = "<group>"; };
 		31859E35182257F700DDDBC1 /* RetrieveCookie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveCookie.m; sourceTree = "<group>"; };
 		3185D9E0183C4FC1009FAA13 /* HttpPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpPost.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				0D2939401832015B00E5F056 /* cellxib */,
 				3185D9E0183C4FC1009FAA13 /* HttpPost.h */,
 				3185D9E1183C4FC1009FAA13 /* HttpPost.m */,
+				311F7415184C7056007728B9 /* playVoice.h */,
+				311F7416184C7056007728B9 /* playVoice.m */,
 			);
 			path = socialrecording;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				0DE813EC182630D90088CDF4 /* SeiyuShosaiViewController.m in Sources */,
 				0D29394518323B5900E5F056 /* VoiceCell.m in Sources */,
 				319824201806A73400796825 /* main.m in Sources */,
+				311F7417184C7056007728B9 /* playVoice.m in Sources */,
 				0DC0639B1841EC9A00610ADD /* VoiceCellNoSeiyu.m in Sources */,
 				0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */,
 				31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */,
