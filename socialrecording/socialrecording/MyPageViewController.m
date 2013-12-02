@@ -11,6 +11,9 @@
 #import "SeiyuShosaiViewController.h"
 #import "RetrieveJson.h"
 #import "HttpPost.h"
+#import "RetrieveJson.h"
+#import "SVProgressHUD.h"
+
 
 @interface MyPageViewController ()
 
@@ -131,8 +134,14 @@
         
         NSLog(@"alert");
     } else {
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];//くるくる
+        [self.view setNeedsDisplay];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+
         [self networkConnected]; // ここに正常系の処理を関数で書く
-            }
+        
+        [SVProgressHUD dismiss];
+    }
     NSLog(@"here");
 }
 - (void)networkConnected {
