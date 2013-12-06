@@ -21,6 +21,7 @@
 @implementation TokoShosaiViewController {
     NSMutableArray *like_flag;
     BOOL seiyu_flg;
+    NSString *reportpath;
 }
 
 @synthesize session;
@@ -343,6 +344,90 @@
 
     
 }
+
+/* スパム報告ボタン */
+- (IBAction)spam_odai_tapped:(id)sender{
+    odaialert = [
+                          [UIAlertView alloc]
+                          initWithTitle : @"確認"
+                          message : @"このお題をスパム報告しますか？"
+                          delegate : self
+                          cancelButtonTitle : @"いいえ"
+                          otherButtonTitles : @"はい", nil
+                          ];
+    [odaialert show];
+
+}
+- (IBAction)spam_voice_tapped:(id)sender forEvent:(UIEvent *)event{
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    reportpath = [NSString stringWithFormat:@"voice/%@/report/",self.voice_data[indexPath.row][@"id"]];
+
+    voicealert = [
+                          [UIAlertView alloc]
+                          initWithTitle : @"確認"
+                          message : @"このボイスをスパム報告しますか？"
+                          delegate : self
+                          cancelButtonTitle : @"いいえ"
+                          otherButtonTitles : @"はい", nil
+                          ];
+
+    [voicealert show];
+
+}
+
+/* スパム報告ボタン→アラート選択のときの */
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(odaialert == alertView){
+        switch (buttonIndex) {
+            case 0:
+                NSLog(@"お題をスパム報告しませんでした。");
+                break;
+            case 1:
+                NSLog(@"お題をスパム報告します！！！");
+                RetrieveJson *r = [[RetrieveJson alloc] init];
+                NSString *path = [NSString stringWithFormat:@"odai/%@/report/",self.toko_id];
+                
+                NSLog(@"url: %@", path);
+                
+                BOOL result = [r accessServer:path];
+                
+                if (result) {
+                    NSLog(@"スパム報告に成功しました。");
+                } else {
+                    NSLog(@"スパム報告に失敗しました。");
+                }
+                
+                break;
+        }
+    } else if(voicealert == alertView){
+        switch (buttonIndex) {
+            case 0:
+                NSLog(@"ボイスをスパム報告しませんでした。");
+                break;
+            case 1:
+                NSLog(@"ボイスをスパム報告します！！！");
+                
+                RetrieveJson *r = [[RetrieveJson alloc] init];
+                
+                NSLog(@"url: %@", reportpath);
+                
+                BOOL result = [r accessServer:reportpath];
+                
+                if (result) {
+                    NSLog(@"スパム報告に成功しました。");
+                } else {
+                    NSLog(@"スパム報告に失敗しました。");
+                }
+                
+
+                break;
+        }
+    }
+}
+
+
+
+
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];

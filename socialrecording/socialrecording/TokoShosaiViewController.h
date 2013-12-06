@@ -11,6 +11,8 @@
 
 @interface TokoShosaiViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
     NSString *_toko_id;
+    UIAlertView *odaialert;
+    UIAlertView *voicealert;
 }
 @property (nonatomic)AVAudioRecorder *recorder;
 @property (nonatomic)AVAudioSession *session;
@@ -28,7 +30,8 @@
 - (IBAction)button_seiyu_tapped:(id)sender forEvent:(UIEvent *)event;
 - (IBAction)button_favo_tapped:(id)sender;
 - (IBAction)button_voice_favo_tapped:(id)sender forEvent:(UIEvent *)event;
-
+- (IBAction)spam_odai_tapped:(id)sender;
+- (IBAction)spam_voice_tapped:(id)sender forEvent:(UIEvent *)event;
 
 
 

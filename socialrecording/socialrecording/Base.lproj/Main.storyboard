@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Toko View Controller - 投稿一覧-->
@@ -1084,7 +1084,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="SW2-l0-8Qt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="SW2-l0-8Qt">
                                 <rect key="frame" x="0.0" y="64" width="320" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1107,22 +1107,21 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ジャンル" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVk-Gl-YBF">
-                                <rect key="frame" x="35" y="153" width="150" height="50"/>
+                                <rect key="frame" x="35" y="153" width="82" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="FMg-nj-T3H"/>
-                                    <constraint firstAttribute="width" constant="150" id="MnY-FD-TSL"/>
+                                    <constraint firstAttribute="width" constant="82" id="Zbq-jZ-d0U"/>
+                                    <constraint firstAttribute="height" constant="50" id="f37-lO-1RC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEe-AA-g85">
-                                <rect key="frame" x="233" y="150" width="50" height="50"/>
+                                <rect key="frame" x="201" y="150" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="2xR-Bd-dg2"/>
-                                    <constraint firstAttribute="height" constant="50" id="cFx-uQ-AFc"/>
+                                    <constraint firstAttribute="width" constant="50" id="rqr-DL-2eL"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="mike_buttom.png"/>
                                 <connections>
@@ -1151,7 +1150,7 @@
                                                     <rect key="frame" x="252" y="32" width="48" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Coi-Uo-Lp1">
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Coi-Uo-Lp1">
                                                     <rect key="frame" x="20" y="20" width="213" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="詳細">
@@ -1179,7 +1178,7 @@
                                                         <action selector="like_button_tapped:forEvent:" destination="Nsc-z7-y80" eventType="touchUpInside" id="sf9-bB-oOP"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBn-kH-2fi">
+                                                <button opaque="NO" tag="6" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBn-kH-2fi">
                                                     <rect key="frame" x="116" y="48" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" backgroundImage="mylist_buttom.png">
@@ -1189,18 +1188,35 @@
                                                         <action selector="button_voice_favo_tapped:forEvent:" destination="Nsc-z7-y80" eventType="touchUpInside" id="3Ql-1E-hWi"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g84-9p-669">
+                                                    <rect key="frame" x="50" y="54" width="32" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="KXi-A8-sf0"/>
+                                                        <constraint firstAttribute="width" constant="32" id="eJe-zU-qHe"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="rfs.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="spam_voice_tapped:forEvent:" destination="Nsc-z7-y80" eventType="touchUpInside" id="9dQ-rm-Org"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="g84-9p-669" firstAttribute="leading" secondItem="7rJ-Ij-yoJ" secondAttribute="leading" constant="50" id="NAj-Vk-gRo"/>
+                                                <constraint firstAttribute="bottom" secondItem="g84-9p-669" secondAttribute="bottom" constant="16" id="eqT-Zx-R0w"/>
+                                                <constraint firstItem="g84-9p-669" firstAttribute="top" secondItem="Coi-Uo-Lp1" secondAttribute="bottom" constant="4" id="mAa-yB-rNh"/>
+                                                <constraint firstItem="vBn-kH-2fi" firstAttribute="leading" secondItem="g84-9p-669" secondAttribute="trailing" constant="34" id="tbL-Ag-VYj"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dh9-Sk-khO">
-                                <rect key="frame" x="151" y="155" width="40" height="40"/>
+                                <rect key="frame" x="140" y="155" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="ATC-T1-pxI"/>
-                                </constraints>
                                 <state key="normal" backgroundImage="mylist_buttom.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1208,27 +1224,43 @@
                                     <action selector="button_favo_tapped:" destination="Nsc-z7-y80" eventType="touchUpInside" id="jRZ-lC-jcZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28i-BU-azW">
+                                <rect key="frame" x="271" y="155" width="39" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="rfs.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="spam_odai_tapped:" destination="Nsc-z7-y80" eventType="touchUpInside" id="up2-m7-7qv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3Bl-Np-cuT" firstAttribute="top" secondItem="Dh9-Sk-khO" secondAttribute="bottom" constant="16" id="DXN-BK-Szy"/>
+                            <constraint firstItem="3Bl-Np-cuT" firstAttribute="top" secondItem="Dh9-Sk-khO" secondAttribute="bottom" constant="16" id="1I9-mL-XBL"/>
+                            <constraint firstItem="3Bl-Np-cuT" firstAttribute="top" secondItem="rVk-Gl-YBF" secondAttribute="bottom" constant="8" symbolic="YES" id="4fZ-dP-x1b"/>
+                            <constraint firstItem="3Bl-Np-cuT" firstAttribute="top" secondItem="28i-BU-azW" secondAttribute="bottom" constant="17" id="7Dg-8M-6gC"/>
                             <constraint firstAttribute="trailing" secondItem="3Bl-Np-cuT" secondAttribute="trailing" id="FJ6-Xc-Xg5"/>
-                            <constraint firstItem="uEe-AA-g85" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="5" id="FlM-pj-SQb"/>
+                            <constraint firstItem="Dh9-Sk-khO" firstAttribute="centerX" secondItem="SW2-l0-8Qt" secondAttribute="centerX" id="G2x-u5-Yf2"/>
                             <constraint firstItem="3Bl-Np-cuT" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" id="GjV-da-tCt"/>
+                            <constraint firstItem="Dh9-Sk-khO" firstAttribute="centerX" secondItem="Nli-Dp-pyW" secondAttribute="centerX" id="H39-yi-ypa"/>
+                            <constraint firstItem="rVk-Gl-YBF" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="8" symbolic="YES" id="HoG-k3-W2o"/>
+                            <constraint firstItem="Dh9-Sk-khO" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="10" id="Lzb-RI-mIj"/>
+                            <constraint firstItem="uEe-AA-g85" firstAttribute="centerY" secondItem="Dh9-Sk-khO" secondAttribute="centerY" id="N0h-jN-Hzk"/>
                             <constraint firstAttribute="trailing" secondItem="dKt-Ow-BA2" secondAttribute="trailing" constant="30" id="NaP-gl-No2"/>
+                            <constraint firstItem="rVk-Gl-YBF" firstAttribute="leading" secondItem="dKt-Ow-BA2" secondAttribute="leading" id="PgO-5E-xmC"/>
+                            <constraint firstItem="uEe-AA-g85" firstAttribute="leading" secondItem="Dh9-Sk-khO" secondAttribute="trailing" constant="21" id="RMk-OU-SvF"/>
+                            <constraint firstItem="uEe-AA-g85" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="5" id="Udx-Hr-hUG"/>
                             <constraint firstItem="dKt-Ow-BA2" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="35" id="V20-jt-w0g"/>
-                            <constraint firstItem="rVk-Gl-YBF" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="35" id="Vyl-kr-0UQ"/>
-                            <constraint firstItem="rVk-Gl-YBF" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="8" id="WBK-gp-VFd"/>
+                            <constraint firstItem="28i-BU-azW" firstAttribute="top" secondItem="Dh9-Sk-khO" secondAttribute="top" id="W08-XK-Ued"/>
                             <constraint firstItem="Nli-Dp-pyW" firstAttribute="leading" secondItem="Zei-fA-Yc7" secondAttribute="leading" constant="10" id="XFB-an-YWG"/>
+                            <constraint firstItem="28i-BU-azW" firstAttribute="trailing" secondItem="Nli-Dp-pyW" secondAttribute="trailing" id="ZcE-gz-L7a"/>
                             <constraint firstAttribute="trailing" secondItem="Nli-Dp-pyW" secondAttribute="trailing" constant="10" id="av4-Ou-7av"/>
                             <constraint firstItem="l77-eG-VJb" firstAttribute="top" secondItem="3Bl-Np-cuT" secondAttribute="bottom" id="b2q-CZ-hIP"/>
+                            <constraint firstItem="28i-BU-azW" firstAttribute="leading" secondItem="uEe-AA-g85" secondAttribute="trailing" constant="20" id="b7A-s1-Egm"/>
                             <constraint firstItem="dKt-Ow-BA2" firstAttribute="top" secondItem="w5I-we-dzH" secondAttribute="bottom" constant="10" id="dTF-dx-jTG"/>
-                            <constraint firstItem="dKt-Ow-BA2" firstAttribute="leading" secondItem="rVk-Gl-YBF" secondAttribute="leading" id="e5o-cI-kWK"/>
                             <constraint firstItem="Nli-Dp-pyW" firstAttribute="top" secondItem="dKt-Ow-BA2" secondAttribute="bottom" constant="8" symbolic="YES" id="frd-fn-XE7"/>
-                            <constraint firstItem="3Bl-Np-cuT" firstAttribute="top" secondItem="rVk-Gl-YBF" secondAttribute="bottom" constant="8" id="nAC-5w-v86"/>
-                            <constraint firstItem="uEe-AA-g85" firstAttribute="leading" secondItem="Dh9-Sk-khO" secondAttribute="trailing" constant="42" id="vf2-fJ-FsU"/>
-                            <constraint firstItem="Dh9-Sk-khO" firstAttribute="top" secondItem="Nli-Dp-pyW" secondAttribute="bottom" constant="10" id="yie-UF-nvd"/>
-                            <constraint firstAttribute="trailing" secondItem="uEe-AA-g85" secondAttribute="trailing" constant="37" id="yzq-Bq-kxi"/>
+                            <constraint firstItem="Dh9-Sk-khO" firstAttribute="leading" secondItem="rVk-Gl-YBF" secondAttribute="trailing" constant="23" id="iFl-4f-EIP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="投稿詳細" id="4lM-ns-uEl"/>
@@ -1500,33 +1532,17 @@
     </scenes>
     <resources>
         <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="cell_back2.png" width="1200" height="800"/>
-        <image name="cell_back2.png" width="1200" height="800"/>
-        <image name="cell_back2.png" width="1200" height="800"/>
-        <image name="cell_back2.png" width="1200" height="800"/>
         <image name="cell_back2.png" width="1200" height="800"/>
         <image name="ichiran.png" width="30" height="30"/>
         <image name="iine.png" width="30" height="30"/>
-        <image name="iine.png" width="30" height="30"/>
-        <image name="iine_buttom.png" width="30" height="30"/>
         <image name="iine_buttom.png" width="30" height="30"/>
         <image name="mike.png" width="30" height="30"/>
-        <image name="mike.png" width="30" height="30"/>
-        <image name="mike_buttom.png" width="30" height="30"/>
         <image name="mike_buttom.png" width="30" height="30"/>
         <image name="mimi.png" width="30" height="30"/>
-        <image name="mimi.png" width="30" height="30"/>
-        <image name="mylist_buttom.png" width="30" height="30"/>
-        <image name="mylist_buttom.png" width="30" height="30"/>
         <image name="mylist_buttom.png" width="30" height="30"/>
         <image name="mypage.png" width="30" height="30"/>
         <image name="rec.png" width="80" height="40"/>
-        <image name="saisei_buttom.png" width="30" height="30"/>
+        <image name="rfs.png" width="128" height="128"/>
         <image name="saisei_buttom.png" width="30" height="30"/>
         <image name="seiyu.png" width="30" height="30"/>
         <image name="toukou.png" width="30" height="30"/>
@@ -1538,7 +1554,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="p0m-e4-vZS"/>
+        <segue reference="emT-bA-y4d"/>
         <segue reference="00H-cy-0rs"/>
     </inferredMetricsTieBreakers>
 </document>
