@@ -264,7 +264,7 @@
                     body = nil;
                     self.flag_complete = YES;
                     
-                    [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
+                   // [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
                 }
                 [SVProgressHUD dismiss];//くるくる消える
 

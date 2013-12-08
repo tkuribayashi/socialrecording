@@ -264,8 +264,9 @@
             alert = [[UIAlertView alloc]initWithTitle:@"成功" message:@"ボイスが登録されました" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             
             //投稿が成功すれば投稿完了画面へ
+            //→行かないことにしました。
             self.flag_end = YES;
-            [self performSegueWithIdentifier:@"RecordingToCompleteRecording" sender:self];
+            //[self performSegueWithIdentifier:@"RecordingToCompleteRecording" sender:self];
         }
         [alert show];
         //[alert release];
