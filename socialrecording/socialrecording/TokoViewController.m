@@ -39,6 +39,29 @@
 }
 
 - (void)viewDidLoad{
+    
+    //初回起動時にEULAをアラートで表示
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
+        NSLog(@"FIRST LAUNCH");
+        
+        NSError *error = nil;
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"eula" ofType:@"txt"];
+        NSString *string = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+
+        
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"利用規約"
+                              message : string
+                              delegate : nil
+                              cancelButtonTitle : @"承諾"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
+    } else {
+        NSLog(@"NOT FIRST LAUNCH");
+    }
+    
     // ネットワーク状態が変更された際に通知を受け取る
     reachability  = [Reachability reachabilityForInternetConnection];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedNetworkStatus:) name:kReachabilityChangedNotification object:nil];
