@@ -514,7 +514,6 @@
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){
         if(!self.flg_load_record){
             if (newpage){
-                //[self set_load_statusWithOn:YES];
                 //HTTP Request
                 //同じ条件下での更なるデータを追加(pageをインクリメント)
                 NSRange range = [param rangeOfString:@"page="];
@@ -530,18 +529,8 @@
                 
                 
                 [self.table reloadData];
-                //[self set_load_statusWithOn:NO];
             }
         }
-    }else if(self.table.contentOffset.y <= 70){
-        if(!self.flg_load_record){
-            //[self set_load_statusWithOn:YES];
-            //HTTP Request
-            //同じ条件下でのデータを更新
-            [self.table reloadData];
-            //[self set_load_statusWithOn:NO];
-        }
-        
     }
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
