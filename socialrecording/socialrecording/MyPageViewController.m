@@ -561,7 +561,13 @@
     }
     return nil;
 }
-
+//スワイプで削除が出ることを禁止
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableview editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableview.editing) {
+        return UITableViewCellEditingStyleDelete;
+    }
+    return UITableViewCellEditingStyleNone;
+}
 
 - (void)didReceiveMemoryWarning
 {

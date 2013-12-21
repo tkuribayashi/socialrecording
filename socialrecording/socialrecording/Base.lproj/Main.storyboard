@@ -1515,17 +1515,35 @@
     </scenes>
     <resources>
         <image name="back_big.png" width="600" height="1000"/>
+        <image name="back_big.png" width="600" height="1000"/>
+        <image name="back_big.png" width="600" height="1000"/>
+        <image name="back_big.png" width="600" height="1000"/>
+        <image name="back_big.png" width="600" height="1000"/>
+        <image name="back_big.png" width="600" height="1000"/>
+        <image name="cell_back2.png" width="1200" height="800"/>
+        <image name="cell_back2.png" width="1200" height="800"/>
+        <image name="cell_back2.png" width="1200" height="800"/>
+        <image name="cell_back2.png" width="1200" height="800"/>
         <image name="cell_back2.png" width="1200" height="800"/>
         <image name="ichiran.png" width="30" height="30"/>
         <image name="iine.png" width="30" height="30"/>
+        <image name="iine.png" width="30" height="30"/>
+        <image name="iine_buttom.png" width="30" height="30"/>
         <image name="iine_buttom.png" width="30" height="30"/>
         <image name="mike.png" width="30" height="30"/>
+        <image name="mike.png" width="30" height="30"/>
+        <image name="mike_buttom.png" width="30" height="30"/>
         <image name="mike_buttom.png" width="30" height="30"/>
         <image name="mimi.png" width="30" height="30"/>
+        <image name="mimi.png" width="30" height="30"/>
+        <image name="mylist_buttom.png" width="30" height="30"/>
+        <image name="mylist_buttom.png" width="30" height="30"/>
         <image name="mylist_buttom.png" width="30" height="30"/>
         <image name="mypage.png" width="30" height="30"/>
         <image name="rec.png" width="80" height="40"/>
         <image name="rfs.png" width="128" height="128"/>
+        <image name="rfs.png" width="128" height="128"/>
+        <image name="saisei_buttom.png" width="30" height="30"/>
         <image name="saisei_buttom.png" width="30" height="30"/>
         <image name="seiyu.png" width="30" height="30"/>
         <image name="toukou.png" width="30" height="30"/>
@@ -1537,7 +1555,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cAf-5W-2cP"/>
-        <segue reference="YeT-bd-dt6"/>
+        <segue reference="p0m-e4-vZS"/>
+        <segue reference="8vP-Cu-nLu"/>
     </inferredMetricsTieBreakers>
 </document>
