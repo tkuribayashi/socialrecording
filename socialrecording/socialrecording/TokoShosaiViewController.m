@@ -410,7 +410,7 @@
     [label setText:[NSString stringWithFormat:@"%@",iine]];
     
     UIButtonLike *button_like = (UIButtonLike *)[cell viewWithTag:5];
-    [button_like setInitWithVoiceID:self.voice_data[indexPath.row][@"id"] SyncLabel:label];
+    [button_like setInitWithSyncLabel:label SyncData:self.voice_data[indexPath.row]];
 }
  
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

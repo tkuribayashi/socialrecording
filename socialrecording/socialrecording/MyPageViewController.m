@@ -13,7 +13,7 @@
 #import "HttpPost.h"
 #import "RetrieveJson.h"
 #import "SVProgressHUD.h"
-
+#import "UIButtonLike.h"
 
 @interface MyPageViewController ()
 
@@ -309,7 +309,7 @@
         
         //Comment:dataを使って、ラベル表示させて下さい。
         //tag==0は１ページ目、つまりお気に入り投稿のテーブルのセルです。
-        NSDictionary *data = self.contents[tag][@"data"][indexPath.row];
+        NSMutableDictionary *data = self.contents[tag][@"data"][indexPath.row];
         if(tag == 0 ||  tag == 3){
             MypageTokoCell *toko_cell = (MypageTokoCell *)cell;
             NSLog(@"name: %@, %@",toko_cell.title_label,data[@"name"]);
@@ -321,7 +321,7 @@
             [voice_cell.title_label setTitle:data[@"odainame"] forState:UIControlStateNormal];
             voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
             voice_cell.seiyu_label.text = [NSString stringWithFormat:@"%@ さん",data[@"username"]];
-            [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
+            [voice_cell.like_button setInitWithSyncLabel:voice_cell.like_label SyncData:data];
             [voice_cell.shosai_button addTarget:self action:@selector(shosai_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
         }else if(tag==2){
             SeiyuCell *seiyu_cell = (SeiyuCell *)cell;
@@ -333,7 +333,6 @@
             VoiceCellNoSeiyu *voice_cell = (VoiceCellNoSeiyu *)cell;
             [voice_cell.title_label setTitle:data[@"odainame"] forState:UIControlStateNormal];
             voice_cell.like_label.text = [NSString stringWithFormat:@"%@", data[@"votes"]];
-            [voice_cell.like_button addTarget:self action:@selector(like_button_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
             [voice_cell.shosai_button_myvoice addTarget:self action:@selector(shosai_button_myvoice_tapped:event:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
@@ -396,20 +395,8 @@
     NSString *voice_id = self.contents[1][@"data"][indexpath.row][@"id"];
     NSLog(@"like num: %@",voice_id);
     
-    
     RetrieveJson *json = [[RetrieveJson alloc]init];
     [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
-    
-    
-    /*
-    //いいねタップで表示をインクリメント
-    int like = [self.voice_data[indexpath.row][@"votes"] intValue]+1;
-    UITableView *tableview = self.table;
-    UITableViewCell *cell = [tableview cellForRowAtIndexPath:indexpath];
-    UILabel *label = (UILabel *)[cell viewWithTag:4];
-    [label setText:[NSString stringWithFormat:@"いいね%d件",like]];
-     */
-    
 }
 
 /* ボイスマイリスト→投稿詳細タップ時に投稿詳細に飛ぶ */

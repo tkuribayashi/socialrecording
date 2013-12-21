@@ -11,8 +11,8 @@
 
 @implementation UIButtonLike
 
-- (void)setInitWithVoiceID:(NSString *)voice_id SyncLabel:(UILabel *)sync_label{
-    self.voice_id = voice_id;
+- (void)setInitWithSyncLabel:(UILabel *)sync_label SyncData:(NSMutableDictionary *)sync_data{
+    self.sync_data = sync_data;
     self.sync_label = sync_label;
     self.like_flag = YES;
     [self setBackgroundImage:[UIImage imageNamed:@"iine_buttom.png"] forState:UIControlStateNormal];
@@ -24,11 +24,11 @@
     NSLog(@"like_flag: %d",self.like_flag);
     
     if (self.like_flag){
-        NSLog(@"like num: %@",self.voice_id);
+        NSLog(@"like num: %@",self.sync_data[@"id"]);
         
         
         RetrieveJson *json = [[RetrieveJson alloc]init];
-        BOOL result = [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",self.voice_id]];
+        BOOL result = [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",self.sync_data[@"id"]]];
         
         self.like_flag = NO;
         
@@ -38,6 +38,7 @@
         if (result){
             int like = [self.sync_label.text intValue]+ 1;
             [self.sync_label setText:[NSString stringWithFormat:@"%d",like]];
+            self.sync_data[@"votes"] = [NSNumber numberWithInteger:like];
         }
     }
 }

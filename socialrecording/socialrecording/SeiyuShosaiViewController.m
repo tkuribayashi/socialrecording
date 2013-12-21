@@ -10,6 +10,7 @@
 #import "TokoShosaiViewController.h"
 #import "RetrieveJson.h"
 #import "HttpPost.h"
+#import "UIButtonLike.h"
 
 @interface SeiyuShosaiViewController ()
 
@@ -182,18 +183,6 @@
     }
 }
 
-
-/* いいねボタンタップ */
-- (IBAction)iine_button_tapped:(id)sender forEvent:(UIEvent *)event {
-    //Comment:いいねが出来るようにして下さい。二重いいねが出来ないようにして下さい
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSString *voice_id = self.voice_data[indexPath.row][@"id"];
-    NSLog(@"like num: %@",voice_id);
-    
-    RetrieveJson *json = [[RetrieveJson alloc]init];
-    [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
-}
-
 - (IBAction)button_toko_tapped:(id)sender forEvent:(UIEvent *)event {
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     //Comment:投稿IDと投稿データをセットして下さい
@@ -252,6 +241,9 @@
     
     UILabel *label = (UILabel *)[cell viewWithTag:4];
     [label setText:[NSString stringWithFormat:@"%@",iine]];
+    
+    UIButtonLike *button_like = (UIButtonLike *)[cell viewWithTag:3];
+    [button_like setInitWithSyncLabel:label SyncData:self.voice_data[indexPath.row]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

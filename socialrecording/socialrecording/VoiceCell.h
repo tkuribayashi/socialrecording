@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIButtonLike.h"
 
 @interface VoiceCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *title_label;
 @property (weak, nonatomic) IBOutlet UIButton *shosai_button;
-@property (weak, nonatomic) IBOutlet UIButton *like_button;
+@property (weak, nonatomic) IBOutlet UIButtonLike *like_button;
 @property (weak, nonatomic) IBOutlet UIImageView *playing_image;
 @property (weak, nonatomic) IBOutlet UILabel *like_label;
 @property (weak, nonatomic) IBOutlet UILabel *seiyu_label;

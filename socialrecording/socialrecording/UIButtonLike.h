@@ -10,7 +10,7 @@
 
 @interface UIButtonLike : UIButton
 @property (nonatomic)UILabel *sync_label;
+@property (nonatomic)NSMutableDictionary *sync_data;
 @property (nonatomic)BOOL like_flag;
-@property (nonatomic)NSString *voice_id;
-- (void)setInitWithVoiceID:(NSString *)voice_id SyncLabel:(UILabel *)sync_label;
+- (void)setInitWithSyncLabel:(UILabel *)sync_label SyncData:(NSMutableDictionary *)sync_data;
 @end
