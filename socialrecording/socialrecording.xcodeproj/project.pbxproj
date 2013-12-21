@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0C62281865327A002B837B /* UIButtonLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C62271865327A002B837B /* UIButtonLike.m */; };
 		0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D121315181A25A400AB1C92 /* TokoShosaiViewController.m */; };
 		0D121319181A559C00AB1C92 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D121318181A559C00AB1C92 /* RecordingViewController.m */; };
 		0D2939421832300C00E5F056 /* VoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2939411832300C00E5F056 /* VoiceCell.xib */; };
@@ -90,6 +91,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0C62261865327A002B837B /* UIButtonLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIButtonLike.h; sourceTree = "<group>"; };
+		0D0C62271865327A002B837B /* UIButtonLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIButtonLike.m; sourceTree = "<group>"; };
 		0D121314181A25A400AB1C92 /* TokoShosaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokoShosaiViewController.h; sourceTree = "<group>"; };
 		0D121315181A25A400AB1C92 /* TokoShosaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokoShosaiViewController.m; sourceTree = "<group>"; };
 		0D121317181A559C00AB1C92 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				0DD4350F1810F480001DF5A1 /* UIToggleView.m */,
 				0DD43511181163B3001DF5A1 /* UIToggleButton.h */,
 				0DD43512181163B3001DF5A1 /* UIToggleButton.m */,
+				0D0C62261865327A002B837B /* UIButtonLike.h */,
+				0D0C62271865327A002B837B /* UIButtonLike.m */,
 				31859E34182257F700DDDBC1 /* RetrieveCookie.h */,
 				31859E35182257F700DDDBC1 /* RetrieveCookie.m */,
 				31BB2AC7182600A70043A48D /* SVProgressHUD.h */,
@@ -533,6 +538,7 @@
 				0D121316181A25A400AB1C92 /* TokoShosaiViewController.m in Sources */,
 				31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */,
 				0DDBE553181FBDCD00E5FAB7 /* CompleteAddTokoViewController.m in Sources */,
+				0D0C62281865327A002B837B /* UIButtonLike.m in Sources */,
 				0DD43513181163B3001DF5A1 /* UIToggleButton.m in Sources */,
 				0DE813E918261EB60088CDF4 /* SeiyuViewController.m in Sources */,
 				31859E36182257F700DDDBC1 /* RetrieveCookie.m in Sources */,

@@ -13,13 +13,13 @@
 #import "SVProgressHUD.h"
 #import "HttpPost.h"
 #import "RetrieveJson.h"
+#import "UIButtonLike.h"
 
 @interface TokoShosaiViewController ()
 
 @end
 
 @implementation TokoShosaiViewController {
-    NSMutableArray *like_flag;
     BOOL seiyu_flg;
     NSString *reportpath;
 }
@@ -99,15 +99,6 @@
     
     //self.voice_data = [@[@"test1",@"test2",@"test3",@"test4"] mutableCopy];
     self.voice_data = toko_shosai[@"voices"];
-    
-    
-    //いいね！ができるかどうかのフラグの初期化
-    like_flag =[[NSMutableArray alloc] init];
-    for (int i=0;i<self.voice_data.count;i++){
-        NSNumber *flag = [NSNumber numberWithBool:YES];
-        [like_flag addObject:flag];
-    }
-
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.voice_data count];
@@ -237,37 +228,6 @@
             [self.table reloadData];
         }
         
-    }
-}
-
-
-/* いいねボタンタップ */
-- (IBAction)like_button_tapped:(id)sender forEvent:(UIEvent *)event {
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"like_flag: %@",like_flag[indexPath.row]);
-
-    if ([like_flag[indexPath.row] boolValue]){
-        NSString *voice_id = self.voice_data[indexPath.row][@"id"];
-        NSLog(@"like num: %@",voice_id);
-        
-        
-        RetrieveJson *json = [[RetrieveJson alloc]init];
-        BOOL result = [json accessServer:[NSString stringWithFormat:@"voice/%@/vote/",voice_id]];
-        
-        NSNumber *flag = [[NSNumber alloc] initWithBool:NO];
-        
-        [like_flag replaceObjectAtIndex:indexPath.row withObject:flag];
-        NSLog(@"like_flag: %@ (%@)",like_flag[indexPath.row],flag);
-        NSLog(@"%@",like_flag);
-        
-        //いいねタップで表示をインクリメント
-        if (result){
-            int like = [self.voice_data[indexPath.row][@"votes"] intValue]+1;
-            UITableView *tableview = self.table;
-            UITableViewCell *cell = [tableview cellForRowAtIndexPath:indexPath];
-            UILabel *label = (UILabel *)[cell viewWithTag:4];
-            [label setText:[NSString stringWithFormat:@"%d",like]];
-        }
     }
 }
 
@@ -443,16 +403,14 @@
     
     NSString *name = self.voice_data[indexPath.row][@"username"];
     NSString *iine = self.voice_data[indexPath.row][@"votes"];
-    /*
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
-    [label setText:[NSString stringWithFormat:@"%@さんのボイス",name]];
-    */
     UIButton *button = (UIButton *)[cell viewWithTag:3];
     [button setTitle:[NSString stringWithFormat:@"%@ さん",name] forState:UIControlStateNormal];
     
     UILabel *label = (UILabel *)[cell viewWithTag:4];
     [label setText:[NSString stringWithFormat:@"%@",iine]];
     
+    UIButtonLike *button_like = (UIButtonLike *)[cell viewWithTag:5];
+    [button_like setInitWithVoiceID:self.voice_data[indexPath.row][@"id"] SyncLabel:label];
 }
  
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
