@@ -19,7 +19,9 @@
 
 @end
 
-@implementation MyPageViewController
+@implementation MyPageViewController{
+    BOOL reachable;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -122,6 +124,7 @@
     
     if (netStatus == NotReachable) {
         // ここに UIAlertView など、圏外の場合の処理
+        reachable = NO;
         UIAlertView *alert =[
                              [UIAlertView alloc]
                              initWithTitle : @"エラー"
@@ -134,6 +137,7 @@
         
         NSLog(@"alert");
     } else {
+        reachable = YES;
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];//くるくる
         [self.view setNeedsDisplay];
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
@@ -174,9 +178,11 @@
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     // ネットワーク接続の通知を受け取った場合に、正常系の処理を行う
     if (networkStatus != NotReachable) {
+        reachable = YES;
         //[self networkConnected];
     } else if (networkStatus == NotReachable){
         NSLog(@"connection lost");
+        reachable = NO;
         //[self viewDidAppear:YES];
     }
 }
@@ -405,7 +411,20 @@
     
     self.toko_id = self.contents[1][@"data"][indexpath.row][@"odai_id"];
     self.toko_data = NULL;
-    [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+    if (reachable){
+        [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+    } else {
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"エラー"
+                              message : @"ネットワーク接続を確認してください"
+                              delegate : nil
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
+
+    }
 }
 
 /* 自分のボイス→投稿詳細タップ時に投稿詳細に飛ぶ */
@@ -414,7 +433,21 @@
     
     self.toko_id = self.contents[4][@"data"][indexpath.row][@"odai_id"];
     self.toko_data = NULL;
-    [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+    if (reachable){
+        [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+    } else {
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"エラー"
+                              message : @"ネットワーク接続を確認してください"
+                              delegate : nil
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
+        
+    }
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -423,7 +456,20 @@
     if(tableView.tag == 0){
         self.toko_id = self.contents[tableView.tag][@"data"][indexPath.row][@"id"];
         self.toko_data = NULL;
-        [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+        if(reachable){
+            [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+        } else {
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"エラー"
+                                  message : @"ネットワーク接続を確認してください"
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+            
+        }
     }else if(tableView.tag == 1 || tableView.tag == 4){
         [SVProgressHUD show];//くるくる
         [self.view setNeedsDisplay];
@@ -528,12 +574,38 @@
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:NO];
     }else if(tableView .tag == 2){
         self.seiyu_id = self.contents[tableView .tag][@"data"][indexPath.row][@"id"];
-        [self performSegueWithIdentifier:@"MyPageToSeiyuShosai" sender:self];
+        if (reachable){
+            [self performSegueWithIdentifier:@"MyPageToSeiyuShosai" sender:self];
+        } else {
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"エラー"
+                                  message : @"ネットワーク接続を確認してください"
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+            
+        }
     }else if(tableView .tag == 3){
         //Comment:投稿詳細へ
         self.toko_id = self.contents[tableView .tag][@"data"][indexPath.row][@"id"];
         self.toko_data = NULL;
-        [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+        if (reachable){
+            [self performSegueWithIdentifier:@"MyPageToTokoShosai" sender:self];
+        } else {
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"エラー"
+                                  message : @"ネットワーク接続を確認してください"
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+            
+        }
     }
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
