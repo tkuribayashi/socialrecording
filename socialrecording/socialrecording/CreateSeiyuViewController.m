@@ -198,6 +198,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 
         
         self.complete_flg = true;
+    } else {
+        //失敗の旨のアラート
+        UIAlertView *alert =[
+                             [UIAlertView alloc]
+                             initWithTitle : @"エラー"
+                             message : @"声優名が他の人と重複しています"
+                             delegate : nil
+                             cancelButtonTitle : @"OK"
+                             otherButtonTitles : nil
+                             ];
+        [alert show];
+
     }
 }
 

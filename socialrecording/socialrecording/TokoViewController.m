@@ -39,6 +39,29 @@
 }
 
 - (void)viewDidLoad{
+    
+    //初回起動時にEULAをアラートで表示
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
+        NSLog(@"FIRST LAUNCH");
+        
+        NSError *error = nil;
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"eula" ofType:@"txt"];
+        NSString *string = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+
+        
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"利用規約"
+                              message : string
+                              delegate : nil
+                              cancelButtonTitle : @"承諾"
+                              otherButtonTitles : nil
+                              ];
+        [alert show];
+    } else {
+        NSLog(@"NOT FIRST LAUNCH");
+    }
+    
     // ネットワーク状態が変更された際に通知を受け取る
     reachability  = [Reachability reachabilityForInternetConnection];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedNetworkStatus:) name:kReachabilityChangedNotification object:nil];
@@ -491,7 +514,6 @@
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){
         if(!self.flg_load_record){
             if (newpage){
-                //[self set_load_statusWithOn:YES];
                 //HTTP Request
                 //同じ条件下での更なるデータを追加(pageをインクリメント)
                 NSRange range = [param rangeOfString:@"page="];
@@ -507,18 +529,8 @@
                 
                 
                 [self.table reloadData];
-                //[self set_load_statusWithOn:NO];
             }
         }
-    }else if(self.table.contentOffset.y <= 70){
-        if(!self.flg_load_record){
-            //[self set_load_statusWithOn:YES];
-            //HTTP Request
-            //同じ条件下でのデータを更新
-            [self.table reloadData];
-            //[self set_load_statusWithOn:NO];
-        }
-        
     }
 }
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

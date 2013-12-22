@@ -22,6 +22,8 @@
     NSString *param;
 
     NSString *gender;
+    
+    BOOL newpage;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -389,6 +391,7 @@
     }
 }
 - (void) viewWillAppear:(BOOL)animated {
+    newpage = YES;
     [super viewWillAppear:animated];
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:NO];
 }
@@ -414,7 +417,25 @@
     if(self.table.contentOffset.y >= (self.table.contentSize.height - self.table.bounds.size.height + 70)){
         //HTTP Request
         //同じ条件下での更なるデータを追加
-        [self.table reloadData];
+        if (newpage){
+            //[self set_load_statusWithOn:YES];
+            //HTTP Request
+            //同じ条件下での更なるデータを追加(pageをインクリメント)
+            NSRange range = [param rangeOfString:@"page="];
+            int page = [[param substringFromIndex:range.location+range.length] intValue];
+            NSLog(@"current page: %d",page);
+            param = [param stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"page=%d",page] withString:[NSString stringWithFormat:@"page=%d",page+1]];
+            NSMutableArray *ret = [json retrieveJson:param];
+            if ([ret count] == 0){//これ以上表示するものがなければnewpageをNOにして、アクセスしないようにする
+                NSLog(@"no more entries!");
+                newpage = NO;
+            }
+            [self.table_data addObjectsFromArray:ret];
+            
+            
+            [self.table reloadData];
+            //[self set_load_statusWithOn:NO];
+        }
     }else if(self.table.contentOffset.y <= 70){
         //HTTP Request
         //同じ条件下でのデータを更新
