@@ -47,6 +47,7 @@
 		319824381806A73400796825 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319824171806A73400796825 /* UIKit.framework */; };
 		319824401806A73400796825 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3198243E1806A73400796825 /* InfoPlist.strings */; };
 		319824421806A73400796825 /* socialrecordingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 319824411806A73400796825 /* socialrecordingTests.m */; };
+		31A506E41855903100C55092 /* eula.txt in Resources */ = {isa = PBXBuildFile; fileRef = 31A506E31855903100C55092 /* eula.txt */; };
 		31BB2AC9182600A70043A48D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31BB2AC8182600A70043A48D /* SVProgressHUD.m */; };
 		31F5B65B1851963F004EC100 /* rfs.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F5B65A1851963F004EC100 /* rfs.png */; };
 		CE0769DC18450C9900803ECD /* back_color.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0769DB18450C9900803ECD /* back_color.png */; };
@@ -157,6 +158,7 @@
 		3198243D1806A73400796825 /* socialrecordingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "socialrecordingTests-Info.plist"; sourceTree = "<group>"; };
 		3198243F1806A73400796825 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		319824411806A73400796825 /* socialrecordingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = socialrecordingTests.m; sourceTree = "<group>"; };
+		31A506E31855903100C55092 /* eula.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eula.txt; sourceTree = "<group>"; };
 		31BB2AC7182600A70043A48D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		31BB2AC8182600A70043A48D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		31F5B65A1851963F004EC100 /* rfs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rfs.png; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		319824191806A73400796825 /* socialrecording */ = {
 			isa = PBXGroup;
 			children = (
+				31A506E31855903100C55092 /* eula.txt */,
 				31867D4718472A3D0022C8A1 /* Reachability.h */,
 				31867D4818472A3D0022C8A1 /* Reachability.m */,
 				CE7049781844E71900EA3A4F /* images */,
@@ -494,6 +497,7 @@
 				CE7049911844E71900EA3A4F /* mimi.png in Resources */,
 				0DBC44CB1831302200B1EA6C /* MypageTokoCell.xib in Resources */,
 				CE70498C1844E71900EA3A4F /* ichiran.png in Resources */,
+				31A506E41855903100C55092 /* eula.txt in Resources */,
 				CE7049951844E71900EA3A4F /* saisei.png in Resources */,
 				CE4395201846559D00BF6C22 /* back_big_sub.png in Resources */,
 				0D29394718324D9A00E5F056 /* SeiyuCell.xib in Resources */,

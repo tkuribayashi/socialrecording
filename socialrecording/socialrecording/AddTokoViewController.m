@@ -246,7 +246,9 @@
                 UIAlertView *alert = nil;
                 if(error || [returnString rangeOfString:@"failed"].length>0)
                 {
+                    NSLog(@"failed");
                     alert = [[UIAlertView alloc]initWithTitle:@"エラー" message:@"お題投稿に失敗しました" delegate:nil cancelButtonTitle:@"残念" otherButtonTitles:nil];
+                    [alert show];
                 }
                 else
                 {
@@ -262,10 +264,10 @@
                     body = nil;
                     self.flag_complete = YES;
                     
-                    [SVProgressHUD dismiss];//くるくる消える
-                    
-                    [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
+                   // [self performSegueWithIdentifier:@"AddTokoToCompleteAddToko" sender:self];
                 }
+                [SVProgressHUD dismiss];//くるくる消える
+
             }
             @catch (NSException * exception)
             {
