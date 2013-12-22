@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label_good_rank;
 @property (weak, nonatomic) IBOutlet UILabel *label_voice_rank;
 @property (weak, nonatomic) IBOutlet UILabel *label_watch_rank;
+@property (weak, nonatomic) IBOutlet UITextView *text_comment;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 - (IBAction)button_toko_tapped:(id)sender forEvent:(UIEvent *)event;
 - (IBAction)button_favo_tapped:(id)sender;

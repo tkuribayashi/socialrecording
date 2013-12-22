@@ -515,7 +515,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell_back2.png" translatesAutoresizingMaskIntoConstraints="NO" id="rYe-nr-Ce8">
-                                <rect key="frame" x="0.0" y="66" width="320" height="127"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -605,7 +605,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b5F-lW-3hB">
-                                <rect key="frame" x="0.0" y="193" width="320" height="326"/>
+                                <rect key="frame" x="0.0" y="253" width="320" height="266"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -667,11 +667,21 @@
                                     <action selector="button_favo_tapped:" destination="uEq-Kn-OW0" eventType="touchUpInside" id="U4X-9n-7Bm"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTT-qo-Mv4">
+                                <rect key="frame" x="20" y="181" width="280" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="Xcf-cM-LBM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XT7-a2-0hS" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" id="1aF-Vv-c0n"/>
                             <constraint firstItem="SOu-kX-f3S" firstAttribute="leading" secondItem="IX8-be-2aX" secondAttribute="trailing" constant="8" symbolic="YES" id="1pV-hy-rll"/>
+                            <constraint firstItem="UTT-qo-Mv4" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" constant="20" id="49e-bb-a23"/>
                             <constraint firstItem="b5F-lW-3hB" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" id="6Cf-Sj-hRl"/>
                             <constraint firstItem="oYm-ch-8S9" firstAttribute="top" secondItem="XT7-a2-0hS" secondAttribute="bottom" constant="23" id="8UR-3q-RnT"/>
                             <constraint firstItem="oYm-ch-8S9" firstAttribute="leading" secondItem="SOu-kX-f3S" secondAttribute="trailing" constant="5" id="98I-Ad-jYT"/>
@@ -686,9 +696,12 @@
                             <constraint firstItem="IX8-be-2aX" firstAttribute="top" secondItem="oTh-r1-pV7" secondAttribute="top" id="ReX-NW-WNS"/>
                             <constraint firstItem="oYm-ch-8S9" firstAttribute="baseline" secondItem="0bS-ni-tIX" secondAttribute="baseline" id="S8a-M2-SsJ"/>
                             <constraint firstItem="eYV-Py-Xbl" firstAttribute="leading" secondItem="Kpt-8p-MOl" secondAttribute="trailing" constant="-25" id="UoA-DU-It4"/>
+                            <constraint firstAttribute="trailing" secondItem="UTT-qo-Mv4" secondAttribute="trailing" constant="20" id="YFY-Fj-7bz"/>
                             <constraint firstItem="oYm-ch-8S9" firstAttribute="top" secondItem="0bS-ni-tIX" secondAttribute="top" id="YIr-40-969"/>
                             <constraint firstItem="eYV-Py-Xbl" firstAttribute="top" secondItem="oYm-ch-8S9" secondAttribute="bottom" constant="11" id="YJv-iN-8pd"/>
+                            <constraint firstItem="b5F-lW-3hB" firstAttribute="top" secondItem="UTT-qo-Mv4" secondAttribute="bottom" constant="10" id="Yo6-bT-jVH"/>
                             <constraint firstItem="Z4f-9F-P5P" firstAttribute="leading" secondItem="oYm-ch-8S9" secondAttribute="trailing" constant="1" id="Z16-3J-wzN"/>
+                            <constraint firstItem="UTT-qo-Mv4" firstAttribute="top" secondItem="oTh-r1-pV7" secondAttribute="bottom" constant="8" id="aVG-u5-kYs"/>
                             <constraint firstItem="Kpt-8p-MOl" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" constant="32" id="iVd-7q-TVI"/>
                             <constraint firstItem="lJO-2z-1nB" firstAttribute="leading" secondItem="aKj-zR-poF" secondAttribute="leading" constant="20" symbolic="YES" id="ik1-Av-lCo"/>
                             <constraint firstItem="oTh-r1-pV7" firstAttribute="leading" secondItem="0bS-ni-tIX" secondAttribute="trailing" constant="25" id="jvk-4p-XqR"/>
@@ -701,7 +714,6 @@
                             <constraint firstItem="Kpt-8p-MOl" firstAttribute="top" secondItem="lJO-2z-1nB" secondAttribute="bottom" constant="6" id="nse-Da-8nv"/>
                             <constraint firstItem="0bS-ni-tIX" firstAttribute="leading" secondItem="Z4f-9F-P5P" secondAttribute="trailing" constant="1" id="rHo-Jc-K0m"/>
                             <constraint firstAttribute="trailing" secondItem="XT7-a2-0hS" secondAttribute="trailing" id="ufC-mr-4sR"/>
-                            <constraint firstItem="b5F-lW-3hB" firstAttribute="top" secondItem="qZQ-71-3w2" secondAttribute="bottom" constant="20" id="wL2-Cl-WXQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="声優詳細" id="zNb-gM-JlI"/>
@@ -714,6 +726,7 @@
                         <outlet property="label_watch" destination="0bS-ni-tIX" id="DZF-v1-04e"/>
                         <outlet property="label_watch_rank" destination="qZQ-71-3w2" id="sNF-jp-6Id"/>
                         <outlet property="table" destination="b5F-lW-3hB" id="NBj-91-p2I"/>
+                        <outlet property="text_comment" destination="UTT-qo-Mv4" id="j4I-zl-nWk"/>
                         <segue destination="Nsc-z7-y80" kind="push" identifier="SeiyuShosaiToTokoShosai" id="cAf-5W-2cP"/>
                     </connections>
                 </viewController>
@@ -1515,35 +1528,17 @@
     </scenes>
     <resources>
         <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="back_big.png" width="600" height="1000"/>
-        <image name="cell_back2.png" width="1200" height="800"/>
-        <image name="cell_back2.png" width="1200" height="800"/>
-        <image name="cell_back2.png" width="1200" height="800"/>
-        <image name="cell_back2.png" width="1200" height="800"/>
         <image name="cell_back2.png" width="1200" height="800"/>
         <image name="ichiran.png" width="30" height="30"/>
         <image name="iine.png" width="30" height="30"/>
-        <image name="iine.png" width="30" height="30"/>
-        <image name="iine_buttom.png" width="30" height="30"/>
         <image name="iine_buttom.png" width="30" height="30"/>
         <image name="mike.png" width="30" height="30"/>
-        <image name="mike.png" width="30" height="30"/>
-        <image name="mike_buttom.png" width="30" height="30"/>
         <image name="mike_buttom.png" width="30" height="30"/>
         <image name="mimi.png" width="30" height="30"/>
-        <image name="mimi.png" width="30" height="30"/>
-        <image name="mylist_buttom.png" width="30" height="30"/>
-        <image name="mylist_buttom.png" width="30" height="30"/>
         <image name="mylist_buttom.png" width="30" height="30"/>
         <image name="mypage.png" width="30" height="30"/>
         <image name="rec.png" width="80" height="40"/>
         <image name="rfs.png" width="128" height="128"/>
-        <image name="rfs.png" width="128" height="128"/>
-        <image name="saisei_buttom.png" width="30" height="30"/>
         <image name="saisei_buttom.png" width="30" height="30"/>
         <image name="seiyu.png" width="30" height="30"/>
         <image name="toukou.png" width="30" height="30"/>
@@ -1555,7 +1550,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="p0m-e4-vZS"/>
+        <segue reference="cAf-5W-2cP"/>
         <segue reference="8vP-Cu-nLu"/>
     </inferredMetricsTieBreakers>
 </document>

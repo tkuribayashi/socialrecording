@@ -52,6 +52,7 @@
     [self.label_good_rank setText:[NSString stringWithFormat:@"%@位",user[@"voterank"]]];
     [self.label_voice_rank setText:[NSString stringWithFormat:@"%@位",user[@"postrank"]]];
     [self.label_watch_rank setText:[NSString stringWithFormat:@"%@位",user[@"viewrank"]]];
+    [self.text_comment setText:user[@"comment"]];
     
     self.table.delegate = self;
     self.table.dataSource = self;
